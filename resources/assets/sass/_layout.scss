@@ -1,0 +1,11 @@
+// Header --------------------------------------------------
+header a {
+  display: none;
+  margin: 1em auto;
+  max-width: 250px;
+
+  @include media-breakpoint-up(sm) {
+    display: block;
+  } // media-breakpoint-up(sm)
+
+} // header a
