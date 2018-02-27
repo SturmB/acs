@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf7bb7769f2d6a755bc310c4b6a383aa",
+    "content-hash": "8de14c13d0f0100e879ae9d52c8e1db0",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1591,16 +1591,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.4",
+            "version": "v5.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ca5ce9e559e1a8f6455f0fbc42638e6e066f73de"
+                "reference": "2e68209991e15aca1382ef9a3443d13f2e0d8755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ca5ce9e559e1a8f6455f0fbc42638e6e066f73de",
-                "reference": "ca5ce9e559e1a8f6455f0fbc42638e6e066f73de",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2e68209991e15aca1382ef9a3443d13f2e0d8755",
+                "reference": "2e68209991e15aca1382ef9a3443d13f2e0d8755",
                 "shasum": ""
             },
             "require": {
@@ -1722,7 +1722,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-02-21T14:41:25+00:00"
+            "time": "2018-02-22T19:21:38+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1948,6 +1948,55 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "mopo922/laravel-treats",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mopo922/LaravelTreats.git",
+                "reference": "cab0207434f67245d016f805358ecd129d942dec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mopo922/LaravelTreats/zipball/cab0207434f67245d016f805358ecd129d942dec",
+                "reference": "cab0207434f67245d016f805358ecd129d942dec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "laravel/framework": ">=5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelTreats\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Potter",
+                    "homepage": "https://github.com/mopo922"
+                }
+            ],
+            "description": "A collection of goodies for Laravel 5.",
+            "homepage": "https://github.com/mopo922/LaravelTreats",
+            "keywords": [
+                "api",
+                "controllers",
+                "eloquent",
+                "l5",
+                "laravel",
+                "models",
+                "web"
+            ],
+            "time": "2017-10-25T01:22:04+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3560,12 +3609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "b7287fbbed8b9187c8062dd33f0c3fa7fc13da53"
+                "reference": "2e3e201345927d8fcd2a56a2836a208e07723958"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/b7287fbbed8b9187c8062dd33f0c3fa7fc13da53",
-                "reference": "b7287fbbed8b9187c8062dd33f0c3fa7fc13da53",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/2e3e201345927d8fcd2a56a2836a208e07723958",
+                "reference": "2e3e201345927d8fcd2a56a2836a208e07723958",
                 "shasum": ""
             },
             "require": {
@@ -3618,7 +3667,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2018-02-20T22:02:12+00:00"
+            "time": "2018-02-26T14:50:24+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4672,16 +4721,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.0.1",
+            "version": "7.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "316555dbd0ed4097bbdd17c65ab416bf27a472e9"
+                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/316555dbd0ed4097bbdd17c65ab416bf27a472e9",
-                "reference": "316555dbd0ed4097bbdd17c65ab416bf27a472e9",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
+                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
                 "shasum": ""
             },
             "require": {
@@ -4748,7 +4797,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-02-13T06:08:08+00:00"
+            "time": "2018-02-26T07:03:12+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

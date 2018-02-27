@@ -197,6 +197,7 @@ return [
 
     'additional_js' => [
         //'js/custom.js',
+        'vendor/fontawesome-pro-5.0.6/svg-with-js/js/fontawesome-all.min.js',
     ],
 
     'googlemaps' => [
