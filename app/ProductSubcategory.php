@@ -15,4 +15,14 @@ class ProductSubcategory extends Model
     {
         return $this->belongsTo(ProductCategory::class);
     }
+
+    /**
+     * ProductLine relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productLines()
+    {
+        return $this->hasMany(ProductLine::class);
+    }
 }

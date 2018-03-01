@@ -32,6 +32,7 @@ class CreateProductSubcategoriesTable extends Migration
 
             $table->foreign('product_category_id')
                 ->references('id')->on('product_categories');
+            $table->unique(['product_category_id', 'short_name']);
         });
 
         DB::statement("ALTER TABLE {$this->tableName} COMMENT '{$this->tableComment}'");

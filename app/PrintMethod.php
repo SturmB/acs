@@ -19,4 +19,14 @@ class PrintMethod extends Model
      * @var string
      */
     protected $keyType = 'string';
+
+    /**
+     * ProductLine relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productLines()
+    {
+        return $this->hasMany(ProductLine::class);
+    }
 }
