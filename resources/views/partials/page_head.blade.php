@@ -7,4 +7,6 @@
 <title>Document</title>
 
 <link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
+<link rel="stylesheet" href="https://use.typekit.net/iky4qsm.css">
+
 @stack('styles')

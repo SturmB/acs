@@ -1,4 +1,4 @@
-<div class="row mb-3">
+<div class="row">
     <div class="col">
         <nav class="navbar navbar-expand-lg navbar-light bg-gradient-light rounded">
 

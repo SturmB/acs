@@ -40,3 +40,25 @@ header a {
   opacity: 1;
 } // .dropdown:hover .dropdown-menu
 
+// Jumbotron --------------------------------------------------
+#splash {
+
+  //background-image: url('/storage/images/hero-01.jpg');
+  overflow: hidden;
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    font-family: $font-script;
+    color: #FFFFFF;
+    text-indent: 1em;
+
+    @include media-breakpoint-up(xl) {
+      font-size: 3.5em;
+      text-shadow: 2px 2px 14px rgba($color-bg-abs, 0.50);
+    } // media-breakpoint-up(xl)
+
+  } // h1
+
+} // #splash

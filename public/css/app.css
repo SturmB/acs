@@ -10148,3 +10148,23 @@ header a {
   opacity: 1;
 }
 
+#splash {
+  overflow: hidden;
+}
+
+#splash h1 {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  font-family: "spumante", script;
+  color: #FFFFFF;
+  text-indent: 1em;
+}
+
+@media (min-width: 1200px) {
+  #splash h1 {
+    font-size: 3.5em;
+    text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.5);
+  }
+}
+
