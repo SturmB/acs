@@ -29,12 +29,15 @@ class CreateProductCategoriesTable extends Migration
                 ->comment('Text notes (if any) that appear below the “Features & Options” list on the Product page.');
             $table->string('menu_category_id', 45)
                 ->comment('Foreign key of the name of the Menu Category to which the Product Category belongs.');
+            $table->tinyInteger('priority')
+                ->comment('The order in which Product Categories should be listed when displayed to the user, from low to high. (Lower numbers appear earlier.)');
             $table->timestamps();
 
             $table->primary('id');
             $table->foreign('menu_category_id')
                 ->references('id')->on('menu_categories')
                 ->onUpdate('cascade');
+            $table->unique(['menu_category_id', 'priority'], 'priority_unique');
         });
 
         DB::statement("ALTER TABLE {$this->tableName} COMMENT '{$this->tableComment}'");

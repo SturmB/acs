@@ -23,11 +23,11 @@ class CreateMenuCategoriesTable extends Migration
                 ->default(1)
                 ->comment('Boolean value for whether or not the Menu Category is active (will be shown).');
             $table->tinyInteger('priority')
-                ->default(40)
                 ->comment('Grouping and Priority in one column! This is for the navigation list (usually a navbar), with higher numbers appearing later in the list.');
             $table->timestamps();
 
             $table->primary('id');
+            $table->unique('priority');
         });
 
         DB::statement("ALTER TABLE {$this->tableName} COMMENT '{$this->tableComment}'");

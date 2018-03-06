@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/{includeInactive?}', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {

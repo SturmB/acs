@@ -34,9 +34,12 @@ class CreatePrintMethodsTable extends Migration
             $table->text('long_description')
                 ->nullable()
                 ->comment('A long description of the Print Method; generally one paragraph in length.');
+            $table->tinyInteger('priority')
+                ->comment('The order in which Print Methods should be listed when displayed to the user, from low to high. (Lower numbers appear earlier.)');
             $table->timestamps();
 
             $table->primary('id');
+            $table->unique('priority');
         });
 
         DB::statement("ALTER TABLE {$this->tableName} COMMENT '{$this->tableComment}'");

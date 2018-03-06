@@ -14,4 +14,5 @@ let mix = require('laravel-mix');
 // noinspection JSUnresolvedFunction
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
-    .sourceMaps();
+    .sourceMaps()
+    .browserSync('acs.test');

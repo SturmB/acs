@@ -28,11 +28,15 @@ class CreateProductSubcategoriesTable extends Migration
                 ->comment('The short name of the Product Subcategory.');
             $table->string('long_name', 250)
                 ->comment('The long name of the Product Subcategory.');
+            $table->tinyInteger('priority')
+                ->comment('The order in which Product Subcategories should be listed when displayed to the user, from low to high. (Lower numbers appear earlier.)');
             $table->timestamps();
 
             $table->foreign('product_category_id')
-                ->references('id')->on('product_categories');
-            $table->unique(['product_category_id', 'short_name']);
+                ->references('id')->on('product_categories')
+                ->onUpdate('cascade');
+            $table->unique(['product_category_id', 'short_name'], 'product_subcategories_unique');
+            $table->unique(['product_category_id', 'priority'], 'priority_unique');
         });
 
         DB::statement("ALTER TABLE {$this->tableName} COMMENT '{$this->tableComment}'");

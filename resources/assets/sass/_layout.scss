@@ -1,7 +1,6 @@
 // Header --------------------------------------------------
 header a {
   display: none;
-  margin: 1em auto;
   max-width: 250px;
 
   @include media-breakpoint-up(sm) {
@@ -9,3 +8,35 @@ header a {
   } // media-breakpoint-up(sm)
 
 } // header a
+
+// Navbar --------------------------------------------------
+/*
+.navbar {
+  background-color: $color-menu-stop1 !important;
+  @include gradient-y($color-menu-stop1, $color-menu-stop2);
+} // .navbar
+*/
+
+.navbar {
+  margin-bottom: 2rem;
+}
+
+// Animate the dropdown menus.
+.dropdown .dropdown-menu {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+
+  max-height: 0;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+} // .dropdown .dropdown-menu
+
+.dropdown:hover .dropdown-menu {
+  max-height: 1024px;
+  opacity: 1;
+} // .dropdown:hover .dropdown-menu
+
