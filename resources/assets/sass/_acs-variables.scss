@@ -7,8 +7,15 @@ $color-bg-lightest          : lighten($color-bg-main, 60%);
 $color-text                 : #666666;
 $color-text-shadow1         : lighten($color-text, 10%);
 $color-text-shadow2         : darken($color-text, 60%);
+$color-text-alt             : lighten($color-text, 30%);
 $color-menu-stop1           : #dbdada;
 $color-menu-stop2           : darken($color-menu-stop1, 20%);
+$color-link                 : #2c679b;
+$color-link-hover           : lighten($color-link, 20%);
+$color-link-active          : lighten($color-link, 40%);
+$color-linkalt              : #00ced1;
+$color-linkalt-hover        : lighten($color-linkalt, 10%);
+$color-linkalt-active       : lighten($color-linkalt, 20%);
 
 $color-napkin-stop1         : #f04d3f;
 $color-napkin-stop2         : darken($color-napkin-stop1, 10%);
@@ -28,6 +35,7 @@ $color-tradition            : #fcaf17;
 $color-hispeed              : #74b44d;
 // Gradients --------------------------------------------------
 $grad-menu                  : linear-gradient($color-menu-stop1, $color-menu-stop2);
+$grad-sidebar               : linear-gradient(to bottom, lighten($color-bg-abs, 30%), lighten($color-bg-abs, 10%));
 
 $grad-napkin                : linear-gradient(to bottom, $color-napkin-stop1, $color-napkin-stop2);
 $grad-coaster               : linear-gradient($color-coaster-stop1, $color-coaster-stop2);
@@ -46,9 +54,14 @@ $grad-hispeed-selected      : linear-gradient(to bottom, darken($color-hispeed, 
 
 // Fonts --------------------------------------------------
 $font-script                : "spumante", script;
+$font-headings              : "proxima-nova-extra-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 
 // Images --------------------------------------------------
 $bg-main                    : url("/images/background-planes-2800x1600.jpg");
 $bg-hero                    : url("/images/hero-01.jpg");
 $logo-main                  : url("/images/logo/acs-logo-2017-01.svg");
+
+
+// Sizes --------------------------------------------------
+$size-border                : 3px;

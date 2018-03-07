@@ -10179,10 +10179,6 @@ header a {
   }
 }
 
-.article {
-  margin-top: 1rem;
-}
-
 .article h2 {
   padding-top: 0.25em;
   border-top: 3px solid #212529;
@@ -10195,6 +10191,11 @@ header a {
 
 .was-item img {
   margin-bottom: 1em;
+}
+
+.was-item h4 {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .gallery-wrapper {
@@ -10325,6 +10326,58 @@ header a {
 
 .product-cat#utensils:hover {
   color: #533957;
+}
+
+#sidebar {
+  background: #4d4c4c -webkit-gradient(linear, left top, left bottom, from(#4d4c4c), to(#1a1919));
+  background: #4d4c4c linear-gradient(to bottom, #4d4c4c, #1a1919);
+  color: #b3b2b2;
+}
+
+#sidebar a {
+  color: #00ced1;
+  font-style: italic;
+}
+
+#sidebar a:hover,
+#sidebar a:focus {
+  color: #05fbff;
+  text-decoration: none;
+}
+
+#sidebar a:active {
+  color: #38fcff;
+}
+
+.feature {
+  border: 4px double #b3b2b2;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.feature h2,
+.feature h3,
+.feature h4 {
+  font-family: "proxima-nova-extra-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  border-bottom: 3px solid #b3b2b2;
+  text-shadow: 0 1px 0 #807f7f, 0 -1px 0 black;
+}
+
+.feature p,
+.feature li {
+  font-size: 0.75rem;
+}
+
+#cat-cover {
+  float: left;
+  margin: 0.5em 0.5em 0 0;
+  border: 5px solid #666666;
+  max-width: 50%;
+}
+
+#cat-cover:hover {
+  border-color: #999999;
 }
 
 

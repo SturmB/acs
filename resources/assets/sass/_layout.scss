@@ -78,11 +78,9 @@ header a {
 
 .article {
 
-  margin-top: $spacer;
-
   h2 {
     padding-top: 0.25em;
-    border-top: 3px solid $body-color;
+    border-top: $size-border solid $body-color;
     text-shadow: 0 -1px 0 lighten($color-text-shadow2, 40%), 0 1px 0 lighten($color-text-shadow1, 40%);
   } // h2
 
@@ -94,6 +92,11 @@ header a {
   img {
     margin-bottom: 1em;
   } // img
+
+  h4 {
+    font-style: italic;
+    font-weight: bold;
+  } // h4
 
 } // .was-item
 
@@ -171,3 +174,53 @@ header a {
   } // #utensils
 
 } // .product-cat
+
+
+// Sidebar --------------------------------------------------
+#sidebar {
+  background: lighten($color-bg-abs, 30%) $grad-sidebar;
+  color: $color-text-alt;
+
+  a {
+    color: $color-linkalt;
+    font-style: italic;
+    &:hover, &:focus {
+      color: $color-linkalt-hover;
+      text-decoration: none;
+    } // :hover, :focus
+    &:active {
+      color: $color-linkalt-active;
+    } // :active
+  } // a
+
+} // #sidebar
+
+.feature {
+  border: 4px double $color-text-alt;
+  margin-bottom: $spacer;
+  padding: $spacer * 0.50;
+
+  h2, h3, h4 {
+    font-family: $font-headings;
+    font-weight: bold;
+    border-bottom: $size-border solid $color-text-alt;
+    text-shadow: 0 1px 0 $color-text-shadow1, 0 -1px 0 $color-text-shadow2;
+  } // h2, h3, h4
+
+  p, li {
+    font-size: 0.75rem;
+  } // p, li
+
+} // .feature
+
+#cat-cover {
+  float: left;
+  margin: 0.5em 0.5em 0 0;
+  border: 5px solid $color-text;
+  max-width: 50%;
+
+  &:hover {
+    border-color: lighten($color-text, 20%);
+  } // :hover
+
+} // #cat-cover
