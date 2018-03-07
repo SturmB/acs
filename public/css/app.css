@@ -10112,6 +10112,33 @@ body {
   background: #000000 url("/images/background-planes-2800x1600.jpg") no-repeat top center;
 }
 
+a {
+  color: #2c679b;
+  font-style: italic;
+}
+
+a:hover,
+a:focus {
+  color: #5c9ad1;
+}
+
+a:active {
+  color: #accbe7;
+}
+
+footer {
+  color: #666666;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #8c8c8c;
+}
+
 header a {
   display: none;
   max-width: 250px;
@@ -10132,6 +10159,11 @@ header a {
 
 .navbar {
   margin-bottom: 2rem;
+}
+
+.navbar a {
+  font-style: initial;
+  font-weight: bold;
 }
 
 .dropdown .dropdown-menu {
@@ -10175,7 +10207,7 @@ header a {
 
 @media (max-width: 767.98px) {
   #main-content {
-    visibility: hidden !important;
+    display: none;
   }
 }
 
@@ -10213,8 +10245,9 @@ header a {
   text-align: center;
   display: block;
   font-weight: bold;
+  font-style: initial;
   text-transform: uppercase;
-  font-size: 90%;
+  font-size: 85%;
   /*
   .figure-caption {
     color: unset;
@@ -10355,6 +10388,10 @@ header a {
   padding: 0.5rem;
 }
 
+.feature:last-of-type {
+  margin-bottom: initial;
+}
+
 .feature h2,
 .feature h3,
 .feature h4 {
@@ -10378,6 +10415,10 @@ header a {
 
 #cat-cover:hover {
   border-color: #999999;
+}
+
+footer p {
+  text-align: center;
 }
 
 

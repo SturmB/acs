@@ -2,3 +2,35 @@
 body {
   background: $color-bg-abs $bg-main no-repeat top center;
 } // body
+
+
+// Anchors --------------------------------------------------
+a {
+  color: $color-link;
+  font-style: italic;
+
+  &:hover, &:focus {
+    color: $color-link-hover;
+  } // :hover, :focus
+  &:active {
+    color: $color-link-active;
+  } // :active
+
+} // a
+
+
+// Footer --------------------------------------------------
+footer {
+  color: $color-text;
+
+  a {
+    color: lighten($color-text, 60%);
+    text-decoration: underline;
+
+    &:hover {
+      color: lighten($color-text, 15%);
+    } // :hover
+
+  } // a
+
+} // footer

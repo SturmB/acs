@@ -119,7 +119,7 @@
                 <div class="feature">
                     <h4>Personalization is the Key</h4>
                     <p>
-                        As a professional pilot, you know that galley supplies add that &ldquo;Over the Top&rdquo; touch to your flight operations. Whether owner flown or company plane, your aircraft reflects the image of you and your company. Now it's time to make sure you personalize it, with custom imprinted Cups, Napkins, Plates, &amp; Coasters.<br>
+                        As a professional pilot, you know that galley supplies add that &ldquo;Over the Top&rdquo; touch to your flight operations. Whether it is owner-flown or a company plane, your aircraft reflects the image of you and your company. Now it's time to make sure you personalize it, with custom imprinted Cups, Napkins, Plates, &amp; Coasters.<br>
                         <br>
                         Your personalized Drinkware is as easy as:</p>
                     <ol>
