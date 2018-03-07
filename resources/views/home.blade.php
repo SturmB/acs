@@ -38,46 +38,98 @@
             <div class="col-12 article" id="product-categories">
                 <h2>Product Categories:</h2>
                 <div class="gallery-wrapper row">
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="napkins">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/napkins.png') }}" data-rjs="3" alt="Napkins">
-                        </figure>
-                        Napkins
-                    </a>
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="coasters">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/coasters.png') }}" data-rjs="3" alt="Coasters">
-                        </figure>
-                        Coasters
-                    </a>
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="stirpiks">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/stirpiks.png') }}" data-rjs="3" alt="Drink Stirrers, Food Piks, &amp; Ice Cream Spoons">
-                        </figure>
-                        Stirrers &amp; Piks
-                    </a>
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="plates">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/plates.png') }}" data-rjs="3" alt="Plates">
-                        </figure>
-                        Plates
-                    </a>
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="cups">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/cups.png') }}" data-rjs="3" alt="Cups">
-                        </figure>
-                        Cups
-                    </a>
-                    <a href="#" class="col-xs-12 col-sm-6 col-md-3 product-cat" id="utensils">
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('images/product-categories-assets/utensils.png') }}" data-rjs="3" alt="Lids, Straws, &amp; Utensils">
-                        </figure>
-                        Lids &amp; Utensils
-                    </a>
-                </div>
-            </div>
 
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="napkins">
+                            <figure class="figure">
+                                <img class="img-fluid" src="{{ asset('images/product-categories-assets/napkins.png') }}"
+                                     data-rjs="3" alt="Napkins">
+                            </figure>
+                            Napkins
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="coasters">
+                            <figure class="figure">
+                                <img class="img-fluid"
+                                     src="{{ asset('images/product-categories-assets/coasters.png') }}" data-rjs="3"
+                                     alt="Coasters">
+                            </figure>
+                            Coasters
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="stirpiks">
+                            <figure class="figure">
+                                <img class="img-fluid"
+                                     src="{{ asset('images/product-categories-assets/stirpiks.png') }}" data-rjs="3"
+                                     alt="Drink Stirrers, Food Piks, &amp; Ice Cream Spoons">
+                            </figure>
+                            Stirrers &amp; Piks
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="plates">
+                            <figure class="figure">
+                                <img class="img-fluid" src="{{ asset('images/product-categories-assets/plates.png') }}"
+                                     data-rjs="3" alt="Plates">
+                            </figure>
+                            Plates
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="cups">
+                            <figure class="figure">
+                                <img class="img-fluid" src="{{ asset('images/product-categories-assets/cups.png') }}"
+                                     data-rjs="3" alt="Cups">
+                            </figure>
+                            Cups
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="#" class="product-cat" id="utensils">
+                            <figure class="figure">
+                                <img class="img-fluid"
+                                     src="{{ asset('images/product-categories-assets/utensils.png') }}" data-rjs="3"
+                                     alt="Lids, Straws, &amp; Utensils">
+                            </figure>
+                            Lids &amp; Utensils
+                        </a>
+                    </div>
+
+                </div> {{--gallery-wrapper, row--}}
+            </div> {{--article, product-categories--}}
+
+        </div> {{--main-content--}}
+
+        <div class="col-md-4 rounded" id="sidebar">
+            <div class="feature">
+                <h2>Personalization is the Key</h2>
+                <p>As a professional pilot, you know that galley supplies add that &ldquo;Over the Top&rdquo; touch to your flight operations. Whether owner flown or company plane, your aircraft reflects the image of you and your company. Now it's time to make sure you personalize it, with custom imprinted Cups, Napkins, Plates, &amp; Coasters.<br>
+                    <br>
+                    Your personalized Drinkware is as easy as:</p>
+                <ol>
+                    <li>Pick your aircraft from our vast clipart library.</li>
+                    <li>Provide text and/or &ldquo;N&rdquo; number with chosen font.</li>
+                    <li>Fill out our <a href="orderform.pdf" title="Order Form" target="_blank">order form<i class="fa fa-download" aria-hidden="true"></i></a>.</li>
+                    <li>Approve your proof provided to you within 1 business day.</li>
+                </ol>
+            </div>
+            <div class="feature">
+                <h2>A Pilot's Guide to Custom Imprinted Drinkware</h2>
+                <p>As a professional pilot or business owner, have you ever tried to track down galley supplies for your airplane? You see them everywhere but no one seems to know where to get them, and when you find a source, it is 2&ndash;3 weeks before your product ships. This company represents the classic &ldquo;saw a need and filled it&rdquo; story. <a href="about.html" title="About Us" target="_self">More on our story&hellip;</a></p>
+            </div>
+            <div class="feature">
+                <h2>Downloadable 2017 Catalog</h2>
+                <a href="Default.html" target="_blank"><img src="images/catalog-cover-front.jpg" data-rjs="3" alt="Downloadable Catalog" id="cat-cover"/></a>
+                <p>Why wait for the mail? Get our digital catalog instantly and be eco-friendly. Browse through our many products to see which ones are right for you. If you can’t decide, call customer service and ask for a free spec sample. We will gladly send you the actual item to see if it fits your cup holders as well as to see if you like the product.<br>
+                    <br>
+                    Download the catalog to refer to later on your laptop. 15 pages of top of the line customizable drinkware items waiting for your planes picture and N numbers.<br>
+                    <br>
+                    Created for pilots, by pilots. Happy Flying!</p>
+            </div>
         </div>
-    </div>
+
+    </div> {{--row--}}
 
 @endsection

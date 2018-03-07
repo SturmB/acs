@@ -70,7 +70,7 @@ header a {
 #main-content {
   background: $color-bg-lighter $grad-menu;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(sm) {
     @include invisible(hidden);
   } // media-breakpoint-down(md)
 
@@ -97,21 +97,59 @@ header a {
 
 } // .was-item
 
-.product-cat {
+.gallery-wrapper {
+  margin: 0 -10px;
 
+  &>div {
+    padding: 0 10px;
+  } // &>div
+
+} // .gallery-wrapper
+
+.product-cat {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   margin-bottom: $spacer;
   overflow: hidden;
   text-align: center;
+  display: block;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 90%;
+
+  @include media-breakpoint-down(lg) {
+    font-size: 70%;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 50%;
+  }
+
+  &:hover {
+    text-decoration: none;
+  } // :hover
 
   figure {
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    height: 170px;
+    width: 90%;
+    margin: 0 auto;
+    //padding: 0.5em 0;
 
     img {
-
+      //width: 100%;
     } // img
 
   } // figure
+
+  /*
+  .figure-caption {
+    color: unset;
+  } // .figure-caption
+  */
 
   &#napkins {
     @include category-button($grad-napkin, $color-napkin-stop1, $color-napkin-stop2);

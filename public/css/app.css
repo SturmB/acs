@@ -10173,7 +10173,7 @@ header a {
   background: #807f7f linear-gradient(#dbdada, #a9a6a6);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 767.98px) {
   #main-content {
     visibility: hidden !important;
   }
@@ -10197,12 +10197,56 @@ header a {
   margin-bottom: 1em;
 }
 
+.gallery-wrapper {
+  margin: 0 -10px;
+}
+
+.gallery-wrapper > div {
+  padding: 0 10px;
+}
+
 .product-cat {
+  border-radius: 5px;
   margin-bottom: 1rem;
   overflow: hidden;
   text-align: center;
+  display: block;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 90%;
+  /*
+  .figure-caption {
+    color: unset;
+  } // .figure-caption
+  */
+}
+
+@media (max-width: 1199.98px) {
+  .product-cat {
+    font-size: 70%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .product-cat {
+    font-size: 50%;
+  }
+}
+
+.product-cat:hover {
+  text-decoration: none;
+}
+
+.product-cat figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 170px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .product-cat#napkins {
@@ -10210,8 +10254,8 @@ header a {
   background: #f04d3f linear-gradient(to bottom, #f04d3f, #ea2312);
   color: #5c0e07;
   text-shadow: 0 -1px 0 black, 0 1px 0 #f04d3f;
-  -webkit-box-shadow: 0 2px 0 #8b150b;
-          box-shadow: 0 2px 0 #8b150b;
+  -webkit-box-shadow: 0 2px 0 #8b150b, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 #8b150b, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#napkins:hover {
@@ -10223,8 +10267,8 @@ header a {
   background: #f5821f linear-gradient(#f5821f, #f0750b);
   color: #5d2d04;
   text-shadow: 0 -1px 0 black, 0 1px 0 #f69037;
-  -webkit-box-shadow: 0 2px 0 #763905;
-          box-shadow: 0 2px 0 #763905;
+  -webkit-box-shadow: 0 2px 0 #763905, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 #763905, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#coasters:hover {
@@ -10236,8 +10280,8 @@ header a {
   background: #ffd64f linear-gradient(#ffd64f, #ffd036);
   color: #9c7700;
   text-shadow: 0 -1px 0 #362900, 0 1px 0 #ffdc69;
-  -webkit-box-shadow: 0 2px 0 #b58b00;
-          box-shadow: 0 2px 0 #b58b00;
+  -webkit-box-shadow: 0 2px 0 #b58b00, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 #b58b00, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#stirpiks:hover {
@@ -10249,8 +10293,8 @@ header a {
   background: #5ba5a6 linear-gradient(#5ba5a6, #519596);
   color: #1c3333;
   text-shadow: 0 -1px 0 black, 0 1px 0 #6caeaf;
-  -webkit-box-shadow: 0 2px 0 #254343;
-          box-shadow: 0 2px 0 #254343;
+  -webkit-box-shadow: 0 2px 0 #254343, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 #254343, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#plates:hover {
@@ -10262,8 +10306,8 @@ header a {
   background: #135d83 linear-gradient(#135d83, #104d6d);
   color: black;
   text-shadow: 0 -1px 0 black, 0 1px 0 #166d99;
-  -webkit-box-shadow: 0 2px 0 black;
-          box-shadow: 0 2px 0 black;
+  -webkit-box-shadow: 0 2px 0 black, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 black, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#cups:hover {
@@ -10275,8 +10319,8 @@ header a {
   background: #7f5785 linear-gradient(#7f5785, #704d76);
   color: #181019;
   text-shadow: 0 -1px 0 black, 0 1px 0 #8e6194;
-  -webkit-box-shadow: 0 2px 0 #271a29;
-          box-shadow: 0 2px 0 #271a29;
+  -webkit-box-shadow: 0 2px 0 #271a29, 0 0 5px rgba(51, 51, 51, 0.25);
+          box-shadow: 0 2px 0 #271a29, 0 0 5px rgba(51, 51, 51, 0.25);
 }
 
 .product-cat#utensils:hover {
