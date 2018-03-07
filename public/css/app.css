@@ -10168,3 +10168,120 @@ header a {
   }
 }
 
+#main-content {
+  background: #807f7f -webkit-gradient(linear, left top, left bottom, from(#dbdada), to(#a9a6a6));
+  background: #807f7f linear-gradient(#dbdada, #a9a6a6);
+}
+
+@media (max-width: 991.98px) {
+  #main-content {
+    visibility: hidden !important;
+  }
+}
+
+.article {
+  margin-top: 1rem;
+}
+
+.article h2 {
+  padding-top: 0.25em;
+  border-top: 3px solid #212529;
+  text-shadow: 0 -1px 0 #666666, 0 1px 0 #e6e5e5;
+}
+
+.was-item {
+  text-align: center;
+}
+
+.was-item img {
+  margin-bottom: 1em;
+}
+
+.product-cat {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.product-cat#napkins {
+  background: #f04d3f -webkit-gradient(linear, left top, left bottom, from(#f04d3f), to(#ea2312));
+  background: #f04d3f linear-gradient(to bottom, #f04d3f, #ea2312);
+  color: #5c0e07;
+  text-shadow: 0 -1px 0 black, 0 1px 0 #f04d3f;
+  -webkit-box-shadow: 0 2px 0 #8b150b;
+          box-shadow: 0 2px 0 #8b150b;
+}
+
+.product-cat#napkins:hover {
+  color: #ba1c0f;
+}
+
+.product-cat#coasters {
+  background: #f5821f -webkit-gradient(linear, left top, left bottom, from(#f5821f), to(#f0750b));
+  background: #f5821f linear-gradient(#f5821f, #f0750b);
+  color: #5d2d04;
+  text-shadow: 0 -1px 0 black, 0 1px 0 #f69037;
+  -webkit-box-shadow: 0 2px 0 #763905;
+          box-shadow: 0 2px 0 #763905;
+}
+
+.product-cat#coasters:hover {
+  color: #bf5d09;
+}
+
+.product-cat#stirpiks {
+  background: #ffd64f -webkit-gradient(linear, left top, left bottom, from(#ffd64f), to(#ffd036));
+  background: #ffd64f linear-gradient(#ffd64f, #ffd036);
+  color: #9c7700;
+  text-shadow: 0 -1px 0 #362900, 0 1px 0 #ffdc69;
+  -webkit-box-shadow: 0 2px 0 #b58b00;
+          box-shadow: 0 2px 0 #b58b00;
+}
+
+.product-cat#stirpiks:hover {
+  color: #ffc403;
+}
+
+.product-cat#plates {
+  background: #5ba5a6 -webkit-gradient(linear, left top, left bottom, from(#5ba5a6), to(#519596));
+  background: #5ba5a6 linear-gradient(#5ba5a6, #519596);
+  color: #1c3333;
+  text-shadow: 0 -1px 0 black, 0 1px 0 #6caeaf;
+  -webkit-box-shadow: 0 2px 0 #254343;
+          box-shadow: 0 2px 0 #254343;
+}
+
+.product-cat#plates:hover {
+  color: #3f7475;
+}
+
+.product-cat#cups {
+  background: #135d83 -webkit-gradient(linear, left top, left bottom, from(#135d83), to(#104d6d));
+  background: #135d83 linear-gradient(#135d83, #104d6d);
+  color: black;
+  text-shadow: 0 -1px 0 black, 0 1px 0 #166d99;
+  -webkit-box-shadow: 0 2px 0 black;
+          box-shadow: 0 2px 0 black;
+}
+
+.product-cat#cups:hover {
+  color: #092e40;
+}
+
+.product-cat#utensils {
+  background: #7f5785 -webkit-gradient(linear, left top, left bottom, from(#7f5785), to(#704d76));
+  background: #7f5785 linear-gradient(#7f5785, #704d76);
+  color: #181019;
+  text-shadow: 0 -1px 0 black, 0 1px 0 #8e6194;
+  -webkit-box-shadow: 0 2px 0 #271a29;
+          box-shadow: 0 2px 0 #271a29;
+}
+
+.product-cat#utensils:hover {
+  color: #533957;
+}
+
+
+/*# sourceMappingURL=app.css.map*/

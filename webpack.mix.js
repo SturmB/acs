@@ -11,8 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-// noinspection JSUnresolvedFunction
+mix.autoload({
+    retinajs: 'retinajs',
+});
+
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
-    .sourceMaps()
     .browserSync('acs.test');
+
+if (!mix.inProduction()) {
+    mix.webpackConfig({
+        devtool: 'source-map'
+    })
+        .sourceMaps()
+}

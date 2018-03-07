@@ -20,5 +20,8 @@
         "lodash": "^4.17.4",
         "popper.js": "^1.13.0",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "retinajs": "^2.1.3"
     }
 }

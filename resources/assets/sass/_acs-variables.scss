@@ -1,6 +1,47 @@
+// Colors --------------------------------------------------
 $color-bg-abs               : #000000;
+$color-bg-abs-lighter       : lighten($color-bg-abs, 20%);
+$color-bg-main              : #333333;
+$color-bg-lighter           : lighten($color-bg-main, 30%);
+$color-bg-lightest          : lighten($color-bg-main, 60%);
+$color-text                 : #666666;
+$color-text-shadow1         : lighten($color-text, 10%);
+$color-text-shadow2         : darken($color-text, 60%);
 $color-menu-stop1           : #dbdada;
 $color-menu-stop2           : darken($color-menu-stop1, 20%);
+
+$color-napkin-stop1         : #f04d3f;
+$color-napkin-stop2         : darken($color-napkin-stop1, 10%);
+$color-coaster-stop1        : #f5821f;
+$color-coaster-stop2        : darken($color-coaster-stop1, 5%);
+$color-stirpik-stop1        : #ffd64f;
+$color-stirpik-stop2        : darken($color-stirpik-stop1, 5%);
+$color-plate-stop1          : #5ba5a6;
+$color-plate-stop2          : darken($color-plate-stop1, 5%);
+$color-cup-stop1            : #135d83;
+$color-cup-stop2            : darken($color-cup-stop1, 5%);
+$color-utensil-stop1        : #7f5785;
+$color-utensil-stop2        : darken($color-utensil-stop1, 5%);
+
+$color-digital              : #7e37d6;
+$color-tradition            : #fcaf17;
+$color-hispeed              : #74b44d;
+// Gradients --------------------------------------------------
+$grad-menu                  : linear-gradient($color-menu-stop1, $color-menu-stop2);
+
+$grad-napkin                : linear-gradient(to bottom, $color-napkin-stop1, $color-napkin-stop2);
+$grad-coaster               : linear-gradient($color-coaster-stop1, $color-coaster-stop2);
+$grad-stirpik               : linear-gradient($color-stirpik-stop1, $color-stirpik-stop2);
+$grad-plate                 : linear-gradient($color-plate-stop1, $color-plate-stop2);
+$grad-cup                   : linear-gradient($color-cup-stop1, $color-cup-stop2);
+$grad-utensil               : linear-gradient($color-utensil-stop1, $color-utensil-stop2);
+
+$grad-digital               : linear-gradient(to bottom, darken($color-digital, 20%), darken($color-digital, 30%));
+$grad-tradition             : linear-gradient(to bottom, darken($color-tradition, 20%), darken($color-tradition, 30%));
+$grad-hispeed               : linear-gradient(to bottom, darken($color-hispeed, 20%), darken($color-hispeed, 30%));
+$grad-digital-selected      : linear-gradient(to bottom, darken($color-digital, 10%), darken($color-digital, 20%));
+$grad-tradition-selected    : linear-gradient(to bottom, darken($color-tradition, 10%), darken($color-tradition, 20%));
+$grad-hispeed-selected      : linear-gradient(to bottom, darken($color-hispeed, 10%), darken($color-hispeed, 20%));
 
 
 // Fonts --------------------------------------------------

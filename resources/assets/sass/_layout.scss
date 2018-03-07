@@ -9,6 +9,7 @@ header a {
 
 } // header a
 
+
 // Navbar --------------------------------------------------
 /*
 .navbar {
@@ -40,6 +41,7 @@ header a {
   opacity: 1;
 } // .dropdown:hover .dropdown-menu
 
+
 // Jumbotron --------------------------------------------------
 #splash {
 
@@ -62,3 +64,72 @@ header a {
   } // h1
 
 } // #splash
+
+
+// Main Content --------------------------------------------------
+#main-content {
+  background: $color-bg-lighter $grad-menu;
+
+  @include media-breakpoint-down(md) {
+    @include invisible(hidden);
+  } // media-breakpoint-down(md)
+
+} // #main-content
+
+.article {
+
+  margin-top: $spacer;
+
+  h2 {
+    padding-top: 0.25em;
+    border-top: 3px solid $body-color;
+    text-shadow: 0 -1px 0 lighten($color-text-shadow2, 40%), 0 1px 0 lighten($color-text-shadow1, 40%);
+  } // h2
+
+} // .article
+
+.was-item {
+  text-align: center;
+
+  img {
+    margin-bottom: 1em;
+  } // img
+
+} // .was-item
+
+.product-cat {
+
+  margin-bottom: $spacer;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  figure {
+
+    img {
+
+    } // img
+
+  } // figure
+
+  &#napkins {
+    @include category-button($grad-napkin, $color-napkin-stop1, $color-napkin-stop2);
+  } // #napkins
+  &#coasters {
+    @include category-button($grad-coaster, $color-coaster-stop1, $color-coaster-stop2);
+  } // #coasters
+  &#stirpiks {
+    @include category-button($grad-stirpik, $color-stirpik-stop1, $color-stirpik-stop2);
+  } // #stirpiks
+  &#plates {
+    @include category-button($grad-plate, $color-plate-stop1, $color-plate-stop2);
+  } // #plates
+  &#cups {
+    @include category-button($grad-cup, $color-cup-stop1, $color-cup-stop2);
+  } // #cups
+  &#utensils {
+    @include category-button($grad-utensil, $color-utensil-stop1, $color-utensil-stop2);
+  } // #utensils
+
+} // .product-cat
