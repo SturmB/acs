@@ -142,7 +142,7 @@ class NavigationComposer
             $html .= "    </a>" . PHP_EOL;
             $html .= "    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>" . PHP_EOL;
             foreach ($mainMenuGroup as $menuItem) {
-                $html .= "        <a class='dropdown-item' href='products/";
+                $html .= "        <a class='dropdown-item' href='/products/";
                 $html .= $menuItem->productSubcategory->product_category_id . "/";
                 $html .= $menuItem->productSubcategory->short_name;
                 $html .= "'>" . PHP_EOL;

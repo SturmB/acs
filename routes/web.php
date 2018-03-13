@@ -15,8 +15,6 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('products/{category}/{subcategory}', function () {
-    return view('home');
-});
+Route::get('products/{category}/{subcategory}/{includeInactive?}', 'ProductController@index');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');

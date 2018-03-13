@@ -10417,6 +10417,20 @@ header a {
   border-color: #999999;
 }
 
+#product-content {
+  background: #000000;
+  color: #b3b2b2;
+  border: 2px solid #333333;
+}
+
+#product-content #title {
+  text-align: center;
+}
+
+.accented {
+  color: #c61d23;
+}
+
 footer p {
   text-align: center;
 }

@@ -237,6 +237,23 @@ header a {
 } // #cat-cover
 
 
+// Product Page --------------------------------------------------
+#product-content {
+  background: $color-bg-abs;
+  color: $color-text-alt;
+  border: 2px solid $color-bg-main;
+
+// At the Top --------------------------------------------------
+  #title {
+    text-align: center;
+  } // #title
+
+} // #product-content
+
+.accented {
+  color: $color-accent;
+}
+
 // Footer --------------------------------------------------
 footer {
 

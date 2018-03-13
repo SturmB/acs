@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -11,7 +10,6 @@ class HomeController extends Controller
     /**
      * Show the home page.
      *
-     * @param string $includeInactive
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
