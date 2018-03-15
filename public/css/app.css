@@ -10427,6 +10427,133 @@ header a {
   text-align: center;
 }
 
+#product-content #title .method-button {
+  display: inline-block;
+  background: #41090b -webkit-gradient(linear, left top, left bottom, from(#6d1013), to(#41090b));
+  background: #41090b linear-gradient(to bottom, #6d1013, #41090b);
+  border-radius: 1em;
+  max-width: 500px;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 0.5rem;
+}
+
+#product-content #title .method-button:hover {
+  text-decoration: none;
+}
+
+#product-content #title .method-button.selected {
+  position: relative;
+  top: 2px;
+}
+
+#product-content #title .method-button#link-digital {
+  background: #361460 -webkit-gradient(linear, left top, left bottom, from(#4e1c8b), to(#361460));
+  background: #361460 linear-gradient(to bottom, #4e1c8b, #361460);
+  border: 2px solid #6525b5;
+  -webkit-box-shadow: 0 5px 0 #361460;
+          box-shadow: 0 5px 0 #361460;
+  color: #1e0b36;
+  text-shadow: 0 1px 0 #07020c, 0 -1px 0 #361460;
+}
+
+#product-content #title .method-button#link-digital:hover,
+#product-content #title .method-button#link-digital.selected {
+  background: #6525b5 -webkit-gradient(linear, left top, left bottom, from(#4e1c8b), to(#361460));
+  background: #6525b5 linear-gradient(to bottom, #4e1c8b, #361460);
+  border: 2px solid #9961df;
+  color: #8c4cda;
+  text-shadow: 0 1px 0 #6525b5, 0 -1px 0 #4e1c8b;
+  -webkit-box-shadow: 0 5px 0 #4e1c8b;
+          box-shadow: 0 5px 0 #4e1c8b;
+}
+
+#product-content #title .method-button#link-digital.selected {
+  background: #6525b5 -webkit-gradient(linear, left top, left bottom, from(#4e1c8b), to(#361460));
+  background: #6525b5 linear-gradient(to bottom, #4e1c8b, #361460);
+  border: 2px solid #9961df;
+  color: #8c4cda;
+  text-shadow: 0 1px 0 #6525b5, 0 -1px 0 #4e1c8b;
+  -webkit-box-shadow: 0 3px 0 #4e1c8b;
+          box-shadow: 0 3px 0 #4e1c8b;
+}
+
+#product-content #title .method-button#link-tradition {
+  background: #785002 -webkit-gradient(linear, left top, left bottom, from(#ab7202), to(#785002));
+  background: #785002 linear-gradient(to bottom, #ab7202, #785002);
+  border: 2px solid #dd9403;
+  -webkit-box-shadow: 0 5px 0 #785002;
+          box-shadow: 0 5px 0 #785002;
+  color: #462f01;
+  text-shadow: 0 1px 0 #140d00, 0 -1px 0 #785002;
+}
+
+#product-content #title .method-button#link-tradition:hover,
+#product-content #title .method-button#link-tradition.selected {
+  background: #dd9403 -webkit-gradient(linear, left top, left bottom, from(#ab7202), to(#785002));
+  background: #dd9403 linear-gradient(to bottom, #ab7202, #785002);
+  border: 2px solid #fdc049;
+  color: #fcb830;
+  text-shadow: 0 1px 0 #dd9403, 0 -1px 0 #ab7202;
+  -webkit-box-shadow: 0 5px 0 #ab7202;
+          box-shadow: 0 5px 0 #ab7202;
+}
+
+#product-content #title .method-button#link-tradition.selected {
+  background: #dd9403 -webkit-gradient(linear, left top, left bottom, from(#ab7202), to(#785002));
+  background: #dd9403 linear-gradient(to bottom, #ab7202, #785002);
+  border: 2px solid #fdc049;
+  color: #fcb830;
+  text-shadow: 0 1px 0 #dd9403, 0 -1px 0 #ab7202;
+  -webkit-box-shadow: 0 3px 0 #ab7202;
+          box-shadow: 0 3px 0 #ab7202;
+}
+
+#product-content #title .method-button#link-hispeed {
+  background: #2f491f -webkit-gradient(linear, left top, left bottom, from(#466d2e), to(#2f491f));
+  background: #2f491f linear-gradient(to bottom, #466d2e, #2f491f);
+  border: 2px solid #5d913d;
+  -webkit-box-shadow: 0 5px 0 #2f491f;
+          box-shadow: 0 5px 0 #2f491f;
+  color: #182510;
+  text-shadow: 0 1px 0 #010101, 0 -1px 0 #2f491f;
+}
+
+#product-content #title .method-button#link-hispeed:hover,
+#product-content #title .method-button#link-hispeed.selected {
+  background: #5d913d -webkit-gradient(linear, left top, left bottom, from(#466d2e), to(#2f491f));
+  background: #5d913d linear-gradient(to bottom, #466d2e, #2f491f);
+  border: 2px solid #90c371;
+  color: #82bc5f;
+  text-shadow: 0 1px 0 #5d913d, 0 -1px 0 #466d2e;
+  -webkit-box-shadow: 0 5px 0 #466d2e;
+          box-shadow: 0 5px 0 #466d2e;
+}
+
+#product-content #title .method-button#link-hispeed.selected {
+  background: #5d913d -webkit-gradient(linear, left top, left bottom, from(#466d2e), to(#2f491f));
+  background: #5d913d linear-gradient(to bottom, #466d2e, #2f491f);
+  border: 2px solid #90c371;
+  color: #82bc5f;
+  text-shadow: 0 1px 0 #5d913d, 0 -1px 0 #466d2e;
+  -webkit-box-shadow: 0 3px 0 #466d2e;
+          box-shadow: 0 3px 0 #466d2e;
+}
+
+#product-content #title .method-button h1,
+#product-content #title .method-button h5 {
+  font-weight: bold;
+}
+
+#product-content #title .method-button h1 {
+  font-size: 1.8rem;
+}
+
+#product-content #title .method-button h5 {
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
 .accented {
   color: #c61d23;
 }

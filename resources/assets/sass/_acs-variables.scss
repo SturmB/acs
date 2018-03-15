@@ -37,6 +37,8 @@ $color-hispeed              : #74b44d;
 // Gradients --------------------------------------------------
 $grad-menu                  : linear-gradient($color-menu-stop1, $color-menu-stop2);
 $grad-sidebar               : linear-gradient(to bottom, lighten($color-bg-abs, 30%), lighten($color-bg-abs, 10%));
+$grad-accent-selected       : linear-gradient(to bottom, darken($color-accent, 10%), darken($color-accent, 20%));
+$grad-accent                : linear-gradient(to bottom, darken($color-accent, 20%), darken($color-accent, 30%));
 
 $grad-napkin                : linear-gradient(to bottom, $color-napkin-stop1, $color-napkin-stop2);
 $grad-coaster               : linear-gradient($color-coaster-stop1, $color-coaster-stop2);

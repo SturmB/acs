@@ -246,6 +246,81 @@ header a {
 // At the Top --------------------------------------------------
   #title {
     text-align: center;
+
+    .method-button {
+      display: inline-block;
+      background: darken($color-accent, 30%) $grad-accent;
+      -webkit-border-radius: 1em;
+      -moz-border-radius: 1em;
+      border-radius: 1em;
+      max-width: 500px;
+      margin: 0.5em;
+      padding: 0.5em 1em;
+      font-size: 0.5rem;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.selected {
+        position: relative;
+        top: 2px;
+      } // .selected
+
+      &#link-digital {
+        @include method-button($color-digital, $grad-digital);
+
+        &:hover, &.selected {
+          @include method-button-selected($color-digital, $grad-digital, 5px);
+        } // :hover, .selected
+
+        &.selected {
+          @include method-button-selected($color-digital, $grad-digital, 3px);
+        } // .selected
+
+      } // #link-digital
+
+      &#link-tradition {
+        @include method-button($color-tradition, $grad-tradition);
+
+        &:hover, &.selected {
+          @include method-button-selected($color-tradition, $grad-tradition, 5px);
+        } // :hover, .selected
+
+        &.selected {
+          @include method-button-selected($color-tradition, $grad-tradition, 3px);
+        } // .selected
+
+      } // #link-tradition
+
+      &#link-hispeed {
+        @include method-button($color-hispeed, $grad-hispeed);
+
+        &:hover, &.selected {
+          @include method-button-selected($color-hispeed, $grad-hispeed, 5px);
+        } // :hover, .selected
+
+        &.selected {
+          @include method-button-selected($color-hispeed, $grad-hispeed, 3px);
+        } // .selected
+
+      } // #link-hispeed
+
+      h1, h5 {
+        font-weight: bold;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      } // h1
+
+      h5 {
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
+      } // h5
+
+    } // .method-button
+
   } // #title
 
 } // #product-content

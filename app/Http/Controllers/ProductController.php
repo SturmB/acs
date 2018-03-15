@@ -36,23 +36,25 @@ class ProductController extends Controller
 
         $minPriority = $productLines->min('printMethod.priority');
 
+/*
         $buttonsHtml = "";
         if ($productLines->first()->print_method_id !== 'unprinted') {
             $buttonsHtml .= "<h4 class='accented'>printed with:</h4>" . PHP_EOL;
             foreach ($productLines as $productLine) {
-                $selected = $productLine->printMethod->priority !== $minPriority ?: " " . $productLine->print_method_id;
+                $selected = $productLine->printMethod->priority !== $minPriority ? "" : " selected";
                 $buttonsHtml .= "<a href='#' id='link-{$productLine->print_method_id}' class='method-button{$selected}' data-method='{$productLine->print_method_id}'>" . PHP_EOL;
-                $buttonsHtml .= "   <h1>" . PHP_EOL;
+                $buttonsHtml .= "   <h1>";
                 $buttonsHtml .= $productLine->printMethod->long_name;
                 $buttonsHtml .= "   </h1>" . PHP_EOL;
-                $buttonsHtml .= "   <h5>" . PHP_EOL;
+                $buttonsHtml .= "   <h5>";
                 $buttonsHtml .= $productLine->printMethod->short_description;
                 $buttonsHtml .= "   </h5>" . PHP_EOL;
                 $buttonsHtml .= "</a>" . PHP_EOL;
             }
         }
+*/
 
 
-        return view('product', compact('productLines', 'buttonsHtml'));
+        return view('product', compact('productLines', 'minPriority'));
     }
 }
