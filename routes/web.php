@@ -16,5 +16,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('products/{category}/{subcategory}/{includeInactive?}', 'ProductController@index');
+Route::get('features/{productLineId}/{includeInactive?}', 'ProductController@getFeatures');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');

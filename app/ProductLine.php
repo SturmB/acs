@@ -35,4 +35,14 @@ class ProductLine extends Model
     {
         return $this->belongsTo(CouponCode::class);
     }
+
+    /**
+     * ProductFeature relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function productFeatures()
+    {
+        return $this->belongsToMany(ProductFeature::class)->withTimestamps();
+    }
 }

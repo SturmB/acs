@@ -10558,6 +10558,23 @@ header a {
   color: #c61d23;
 }
 
+#fo-column {
+  padding: 1em;
+}
+
+#fo-column #features-options {
+  padding: 1em;
+  border: 2px solid #b3b2b2;
+}
+
+#fo-column #features-options h2 {
+  color: #c61d23;
+  font-family: "proxima-nova-extra-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
 footer p {
   text-align: center;
 }

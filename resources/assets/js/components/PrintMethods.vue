@@ -15,15 +15,26 @@
         data() {
             return {
                 methodButtons: [],
+                shared: store,
             };
         },
         created() {
             this.methodButtons = this.$children;
         },
+        mounted() {
+            this.methodButtons.forEach(methodButton => {
+                if (methodButton.isSelected) {
+                    this.shared.setProductLine(methodButton.productLine);
+                }
+            });
+        },
         methods: {
             selectButton (button) {
                 this.methodButtons.forEach(methodButton => {
                     methodButton.isSelected = (methodButton.productLine.print_method_id === button.productLine.print_method_id);
+                    if (methodButton.isSelected) {
+                        this.shared.setProductLine(methodButton.productLine);
+                    }
                 });
             }
         }

@@ -137,16 +137,15 @@ class NavigationComposer
         $previousCategory = null;
         foreach ($menuItems as $mainMenuGroup) {
             $html .= "<li class='nav-item dropdown'>" . PHP_EOL;
-            $html .= "    <a class='nav-link dropdown-toggle' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" . PHP_EOL;
-            $html .= $mainMenuGroup->first()->productSubcategory->productCategory->menu_category_id . PHP_EOL;
+            $html .= "    <a class='nav-link dropdown-toggle' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+            $html .= $mainMenuGroup->first()->productSubcategory->productCategory->menu_category_id;
             $html .= "    </a>" . PHP_EOL;
             $html .= "    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>" . PHP_EOL;
             foreach ($mainMenuGroup as $menuItem) {
-                $html .= "        <a class='dropdown-item' href='/products/";
-                $html .= $menuItem->productSubcategory->product_category_id . "/";
-                $html .= $menuItem->productSubcategory->short_name;
-                $html .= "'>" . PHP_EOL;
-                $html .= $menuItem->productSubcategory->long_name . PHP_EOL;
+                $product_category_id = $menuItem->productSubcategory->product_category_id;
+                $short_name = $menuItem->productSubcategory->short_name;
+                $html .= "        <a class='dropdown-item' href='/products/{$product_category_id}/{$short_name}'>";
+                $html .= $menuItem->productSubcategory->long_name;
                 $html .= "        </a>" . PHP_EOL;
             }
             $html .= "    </div>" . PHP_EOL;
@@ -172,20 +171,17 @@ class NavigationComposer
 
         if (count($subfolders) > 0) {
             $html .= "<li class='nav-item dropdown'>" . PHP_EOL;
-            $html .= "   <a class='nav-link dropdown-toggle' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" . PHP_EOL;
-            $html .= "Clip-Art" . PHP_EOL;
+            $html .= "   <a class='nav-link dropdown-toggle' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+            $html .= "Clip-Art";
             $html .= "   </a>" . PHP_EOL;
             $html .= "   <div class='dropdown-menu' aria-labelledby='navbarDropdown'>" . PHP_EOL;
             foreach ($subfolders as $dirty_name) {
                 $exploded_name = explode('/', $dirty_name);
                 $folder_name = array_pop($exploded_name);
                 $capped_name = ucwords($folder_name);
-                $html .= "        <a class='dropdown-item'";
-                $html .= " href='clipart/{$folder_name}'";
-                $html .= " target='_self'";
-                $html .= " title='{$capped_name}'>" . PHP_EOL;
-                $html .= $capped_name . "\n";
-                $html .= "            </a>" . PHP_EOL;
+                $html .= "        <a class='dropdown-item' href='clipart/{$folder_name}' target='_self' title='{$capped_name}'>";
+                $html .= $capped_name;
+                $html .= "        </a>" . PHP_EOL;
             }
             $html .= "   </div>" . PHP_EOL;
             $html .= "</li>" . PHP_EOL;

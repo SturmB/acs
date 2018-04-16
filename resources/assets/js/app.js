@@ -17,9 +17,11 @@ window.addEventListener('load', retinajs);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('print-methods', require('./components/PrintMethods.vue'));
 Vue.component('method-button', require('./components/MethodButton.vue'));
+
+Vue.component('feature-list', require('./components/FeatureList.vue'));
 
 const app = new Vue({
     el: '#app'

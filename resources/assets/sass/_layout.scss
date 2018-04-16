@@ -329,6 +329,28 @@ header a {
   color: $color-accent;
 }
 
+// Features & Options Column --------------------------------------------------
+#fo-column {
+  padding: 1em;
+
+  #features-options {
+    padding: 1em;
+    border: 2px solid $color-text-alt;
+
+    h2 {
+      color: $color-accent;
+      font-family: $font-headings;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      font-weight: 900;
+      //margin-bottom: 0.75em;
+    } // h2
+
+  } // #features-options
+
+} // #fo-column
+
+
 // Footer --------------------------------------------------
 footer {
 
