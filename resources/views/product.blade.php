@@ -27,7 +27,6 @@
 
 @endsection
 
-{{--
 @push('scripts')
     <script>
         let store = {
@@ -47,4 +46,3 @@
         };
     </script>
 @endpush
---}}

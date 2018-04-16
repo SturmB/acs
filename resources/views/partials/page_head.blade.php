@@ -29,7 +29,14 @@
 <meta name="msapplication-config" content="{{ asset('favicons/ieconfig.xml') }}">
 <!-- End Favicons -->
 
-<link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
+<!-- TypeKit -->
 <link rel="stylesheet" href="https://use.typekit.net/iky4qsm.css">
+
+<!-- FlexiNav -->
+<link rel="stylesheet" href="{{ asset('vendor/flexinav/css/flexinav.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/flexinav/css/scrollbars.css') }}">
+
+<!-- Main Styles -->
+<link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
 
 @stack('styles')
