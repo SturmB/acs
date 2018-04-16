@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\ProductFeature;
@@ -25,16 +24,24 @@ class ProductController extends Controller
         // Set whether or not to include inactive items in the navbar.
         $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
 
-        $allProductLines = ProductLine::with(['productSubcategory', 'printMethod'])
+        $allProductLines = ProductLine
+            ::with(['productSubcategory', 'printMethod'])
             ->get();
 
         $productLines = $allProductLines
             ->filter(function ($productLine) use ($category, $subcategory) {
-                return $productLine->productSubcategory->short_name === $subcategory
-                    && $productLine->productSubcategory->product_category_id === $category;
+                return (
+                    $productLine->productSubcategory->short_name ===
+                    $subcategory &&
+                    $productLine->productSubcategory->product_category_id ===
+                    $category
+                );
             })
             ->filter(function ($productLine) use ($activeArray) {
-                return in_array($productLine->printMethod->active, $activeArray);
+                return in_array(
+                    $productLine->printMethod->active,
+                    $activeArray
+                );
             });
 
         $minPriority = $productLines->min('printMethod.priority');
@@ -55,16 +62,19 @@ class ProductController extends Controller
         $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
 
         // Get the Product Features associated with the given Product Line ID.
-        $allProductFeatures = ProductFeature::with(['productFeaturesPivot', 'productLines'])
+        $allProductFeatures = ProductFeature
+            ::with(['productFeaturesPivot', 'productLines'])
             ->orderBy('id', 'desc')
             ->get();
 
         // Narrow the results to only the Product Features we want for the given Product Line ID.
         $narrowedProductFeatures = $allProductFeatures
             ->reject(function ($productFeature) use ($productLineId) {
-                $productLines = $productFeature->productLines->filter(function ($productLine) use ($productLineId) {
-                    return $productLine->id == $productLineId;
-                });
+                $productLines = $productFeature->productLines->filter(
+                    function ($productLine) use ($productLineId) {
+                        return $productLine->id == $productLineId;
+                    }
+                );
                 return empty(sizeof($productLines));
             })
             ->filter(function ($productFeature) use ($activeArray) {
@@ -73,8 +83,7 @@ class ProductController extends Controller
 
         Log::info($narrowedProductFeatures);
 
-
-/*
+        /*
         function printFeatures(array $items, $parentId, $result) {
             foreach ($items as $item) {
                 if ($item["parent_id"] == $parentId) {
@@ -89,31 +98,49 @@ class ProductController extends Controller
         }
 */
 
-
         // Convert the model collection to a nested set of just the data we need,
         // before converting it to a JSON and sending it back.
         $productFeatures = Collection::make();
         $childIds = Collection::make();
-        $narrowedProductFeatures->each(function ($featureItem, $key) use (&$narrowedProductFeatures, $productFeatures, &$childIds) {
-            $tempFeature = collect($featureItem->only(['id', 'active', 'feature']));
+        $narrowedProductFeatures->each(function ($featureItem, $key) use (
+            &$narrowedProductFeatures,
+            $productFeatures,
+            &$childIds
+        ) {
+            $tempFeature = collect(
+                $featureItem->only(['id', 'active', 'feature'])
+            );
 
-            if (!$childIds->contains($tempFeature['id'])) { // If this `$featureItem` has _not_ been used in a previous iteration as a child.
-
-                $childFeatures = $narrowedProductFeatures->filter(function ($feature) use ($tempFeature) {
-                    if ($feature->productFeaturesPivot->isNotEmpty()) {
-                        $match = $feature->productFeaturesPivot->firstWhere('parent_id', $tempFeature['id']);
-                        Log::info($match);
-                        return !is_null($match);
+            if (!$childIds->contains($tempFeature['id'])) {
+                // If this `$featureItem` has _not_ been used in a previous iteration as a child.
+                $childFeatures = $narrowedProductFeatures->filter(
+                    function ($feature) use ($tempFeature) {
+                        if ($feature->productFeaturesPivot->isNotEmpty()) {
+                            $match = $feature->productFeaturesPivot->firstWhere(
+                                'parent_id',
+                                $tempFeature['id']
+                            );
+                            Log::info($match);
+                            return !is_null($match);
+                        }
+                        return false;
                     }
-                    return false;
-                });
+                );
                 Log::info('$childFeatures:');
                 Log::info($childFeatures);
 
-                $filteredChildren = $childFeatures->map(function ($childFeature) {
-                    Log::info(collect($childFeature->only(['id', 'active', 'feature'])));
-                    return collect($childFeature->only(['id', 'active', 'feature']));
-                });
+                $filteredChildren = $childFeatures->map(
+                    function ($childFeature) {
+                        Log::info(
+                            collect(
+                                $childFeature->only(['id', 'active', 'feature'])
+                            )
+                        );
+                        return collect(
+                            $childFeature->only(['id', 'active', 'feature'])
+                        );
+                    }
+                );
 
                 Log::info('$filteredChildren (outside):');
                 Log::info($filteredChildren);
@@ -128,7 +155,6 @@ class ProductController extends Controller
 
                 $productFeatures->push($tempFeature);
             }
-
         });
 
         Log::info('FINAL $productFeatures:');
@@ -136,15 +162,10 @@ class ProductController extends Controller
 
         return response()->json($productFeatures);
 
-
         /* Likely change all of the above to return a pre-made HTML string of all of the Features & Options
          * instead of fucking with Vue to make it work.
          *
          * Also do the same for everything else that is data-driven (that used to use an AJAX request in `acs-susy`.
-         *
-         * While working in here, go ahead and install/use `Prettier`.
-         *
-         * Also use a generated `.gitignore` as we did in `acs-susy` and `sky-schedule`.
          */
     }
 }
