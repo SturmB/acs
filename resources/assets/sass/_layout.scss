@@ -440,6 +440,17 @@ header a {
       //margin-bottom: 0.75em;
     } // h2
 
+    ul {
+      font-size: 0.65rem;
+      padding-left: 1.2em;
+      line-height: 0.8rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      } // li
+
+    } // ul
+
   } // #features-options
 
 } // #fo-column

@@ -28,8 +28,8 @@ class ProductController extends Controller
             ::with(['productSubcategory', 'printMethod'])
             ->get();
 
+        // Filter to only the _single_ Product Line we want.
         $productLine = $allProductLines
-            // Filter to only the _single_ Product Line we want.
             ->filter(function ($productLine) use ($category, $subcategory, $printMethod) {
                 return (
                     $productLine->productSubcategory->short_name ===
@@ -40,28 +40,22 @@ class ProductController extends Controller
                     $printMethod
                 );
             })->first();
-            // Include "inactive" Product Lines if that was specified.
-            // Commented-out because we're now getting a _specific_, _single_ Product Line.
-/*            ->filter(function ($productLine) use ($activeArray) {
-                return in_array(
-                    $productLine->printMethod->active,
-                    $activeArray
-                );
-            });*/
 
-//        $minPriority = $productLine->min('printMethod.priority');
+        // Get and construct the Features & Options list for this Product Line.
+        $features = $this->getFeatures($productLine->id, $includeInactive);
+        $featuresHtml = $this->formatFeatures($features);
 
-        return view('product', compact('productLine'));
+        return view('product', compact('productLine', 'featuresHtml'));
     }
 
     /**
-     * AJAX call to get all of the Features & Options for a given Product Line.
+     * Get all of the Features & Options for a given Product Line.
      *
      * @param $productLineId
      * @param string $includeInactive
-     * @return \Illuminate\Http\JsonResponse
+     * @return Collection
      */
-    public function getFeatures($productLineId, $includeInactive = '')
+    private function getFeatures($productLineId, $includeInactive = '')
     {
         // Set whether or not to include inactive items in the navbar.
         $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
@@ -86,22 +80,8 @@ class ProductController extends Controller
                 return in_array($productFeature->active, $activeArray);
             });
 
-        Log::info($narrowedProductFeatures);
+//        Log::info($narrowedProductFeatures);
 
-        /*
-        function printFeatures(array $items, $parentId, $result) {
-            foreach ($items as $item) {
-                if ($item["parent_id"] == $parentId) {
-                    $result .= "<li>";
-                    $result .= $item["feature"];
-                    $result .= "<ul>";
-                    $result = printFeatures($items, $item["id"], $result);
-                    $result .= "</ul></li>";
-                }
-            }
-            return $result;
-        }
-*/
 
         // Convert the model collection to a nested set of just the data we need,
         // before converting it to a JSON and sending it back.
@@ -125,52 +105,85 @@ class ProductController extends Controller
                                 'parent_id',
                                 $tempFeature['id']
                             );
-                            Log::info($match);
+//                            Log::info($match);
                             return !is_null($match);
                         }
                         return false;
                     }
                 );
-                Log::info('$childFeatures:');
-                Log::info($childFeatures);
+//                Log::info('$childFeatures:');
+//                Log::info($childFeatures);
 
                 $filteredChildren = $childFeatures->map(
                     function ($childFeature) {
-                        Log::info(
-                            collect(
-                                $childFeature->only(['id', 'active', 'feature'])
-                            )
-                        );
+//                        Log::info(
+//                            collect(
+//                                $childFeature->only(['id', 'active', 'feature'])
+//                            )
+//                        );
                         return collect(
                             $childFeature->only(['id', 'active', 'feature'])
                         );
                     }
                 );
 
-                Log::info('$filteredChildren (outside):');
-                Log::info($filteredChildren);
+//                Log::info('$filteredChildren (outside):');
+//                Log::info($filteredChildren);
                 if ($filteredChildren->isNotEmpty()) {
-                    Log::info('$filteredChildren (inside):');
-                    Log::info($filteredChildren);
+//                    Log::info('$filteredChildren (inside):');
+//                    Log::info($filteredChildren);
                     $childIds = $filteredChildren->pluck('id');
-                    $tempFeature['children'] = array($filteredChildren);
+                    $tempFeature['children'] = collect($filteredChildren);
                 }
-                Log::info('$tempFeature this iteration:');
-                Log::info($tempFeature);
+//                Log::info('$tempFeature this iteration:');
+//                Log::info($tempFeature);
 
                 $productFeatures->push($tempFeature);
             }
         });
 
-        Log::info('FINAL $productFeatures:');
-        Log::info($productFeatures);
+//        Log::info('FINAL $productFeatures:');
+//        Log::info($productFeatures);
+//        Log::info($productFeatures->toArray());
 
-        return response()->json($productFeatures);
+        return $productFeatures;
 
-        /* Likely change all of the above to return a pre-made HTML string of all of the Features & Options
-         * instead of fucking with Vue to make it work.
-         *
-         * Also do the same for everything else that is data-driven (that used to use an AJAX request in `acs-susy`.
-         */
     }
+
+    /**
+     * Format the Features & Options into an HTML string
+     * with <ul> structure.
+     *
+     * @param $features
+     * @return string
+     */
+    private function formatFeatures($features)
+    {
+        $html = "";
+
+//        if (gettype($features) === 'object')
+
+//        Log::info('Feature count');
+//        Log::info($features->count());
+//        Log::info(gettype($features));
+//        Log::info($features[0]['id']);
+//        Log::info($features[0]->has('children'));
+        if ($features->count() > 0) {
+            $html .= "<ul>" . PHP_EOL;
+            foreach ($features as $feature) {
+                $html .= "<li>{$feature['feature']}</li>" . PHP_EOL;
+                if ($feature->has('children')) {
+//                    Log::info($feature['children']->count());
+                    $html .= $this->formatFeatures($feature['children']);
+                }
+            }
+            $html .= "</ul>" . PHP_EOL;
+        }
+
+//        Log::info('Final HTML:');
+//        Log::info($html);
+
+        return $html;
+    }
+
 }

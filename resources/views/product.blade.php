@@ -18,6 +18,7 @@
                 <div id="fo-column">
                     <div id="features-options">
                         <h2>Features &amp; Options</h2>
+                        {!! $featuresHtml !!}
                     </div>
                 </div>
             </div>
