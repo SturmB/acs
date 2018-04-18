@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col">
                 <div id="title">
-                    <h1 class="accented">{{ $productLines->first()->productSubcategory->long_name }}</h1>
+                    <h1 class="accented">{{ $productLine->productSubcategory->long_name }}</h1>
                 </div>
             </div>
         </div>
@@ -27,6 +27,7 @@
 
 @endsection
 
+{{--
 @push('scripts')
     <script>
         let store = {
@@ -46,3 +47,4 @@
         };
     </script>
 @endpush
+--}}

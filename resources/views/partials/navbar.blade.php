@@ -26,7 +26,7 @@
                                     <li><a href="typefaces.php" target="_self" title="Fonts">Typefaces</a></li>
                                     <li><a href="general_information.php" target="_self" title="General Information">General Info</a></li>
                                     <li><a href="about.php" target="_self" title="About Us">About Us</a></li>
-                                    <li class="last"><a href="contact.php" target="_self" title="Contact Information">Contact Info</a></li>
+                                    <li><a href="contact.php" target="_self" title="Contact Information">Contact Info</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -53,6 +53,10 @@
                 flexinav_scrollbars_height: 500,
                 flexinav_responsive: true,
             });
+
+            // Add the 'last' class to the last Subcategory of each Menu Category.
+            // This adds a bit of space to the bottom of the Menu Category's flyout.
+            $('.dropdown_flyout').children('li:last-child').addClass('last');
         })
     </script>
 @endpush

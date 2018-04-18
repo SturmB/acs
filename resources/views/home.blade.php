@@ -8,7 +8,7 @@
             <div class="jumbotron p-0" id="splash">
                 <h1>Your Plane<br>
                     Our Product</h1>
-                <img src="{{ asset('images/hero-01.jpg') }}" data-rjs="3" alt="Airplane soaring" class="w-100">
+                <img src="{{ asset('images/hero-02.jpg') }}" data-rjs="3" alt="Airplane soaring" class="w-100">
             </div>
         </div> {{--col--}}
     </div> {{--row--}}
@@ -16,32 +16,32 @@
     <div class="row">
 
         <div class="col-md-8">
-            <div class="rounded p-3" id="main-content">
+            <div class="rounded p-3 mb-4" id="main-content">
 
-                <div class="col-12 article">
-                    <h2>Welcome Aboard Special</h2>
-                    <p>A great way to sample our products at a savings! 250 pieces of each of our 3 most popular
-                        products.</p>
-                    <h4>Here is what you get:</h4>
-                    <p>250 each of our 8oz Foam Cups, our White Beverage Napkins, and our shatter resistant 10oz
-                        FrostFlex Tumblers. Order Another Welcome Aboard Special at the same time for your Office, Boat,
-                        Farm, Ranch, or Vacation Home and get 10% off the additional order!</p>
+                <div id="welcome-aboard-special" class="col-12 article">
+                    <h2>Welcome Aboard Special - $445*</h2>
+                    <img src="{{ asset('images/welcome-aboard-special-photo_01.jpg') }}" class="img-fluid promo-photo" data-rjs="3" alt="Welcome Aboard Special">
+                    <p>A great way to sample our products at a savings!</p>
+                    <h4>Here's what you'll get:</h4>
+                    <p>100 each of our 8oz Foam Cups, our shatter resistant 10oz FrostFlex Tumblers, and 250 of our White Beverage Napkins. Order Another Welcome Aboard Special at the same time for your Office, Boat, Farm, Ranch, or Vacation Home and get <span class="font-weight-bold">10% off</span> the additional order!</p>
                     <div class="row">
-                        <div class="col was-item"><img src="{{ asset('images/WAS-S8.png') }}" alt="Foam Cup">
-                            <h4>250</h4>
+                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/S8.png') }}" data-rjs="3" alt="Foam Cup">
+                            <h4>100</h4>
                             <p>8oz Foam Cups</p>
                         </div>
-                        <div class="col was-item"><img src="{{ asset('images/WAS-N10.png') }}" alt="Beverage Napkin">
+                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/N10.png') }}" data-rjs="3" alt="Beverage Napkin">
                             <h4>250</h4>
                             <p>White Beverage Napkins</p>
                         </div>
-                        <div class="col was-item"><img src="{{ asset('images/WAS-P10.png') }}" alt="Frost-Flex Cup">
-                            <h4>250</h4>
+                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/P10.png') }}" data-rjs="3" alt="Frost-Flex Cup">
+                            <h4>100</h4>
                             <p>10 oz Frost-Flex Tumblers</p>
                         </div>
                     </div>
+                    <p class="aside">*One special per logo please. Price includes one flat price, unlimited colors, digitally printed.</p>
                 </div>
 
+{{--
                 <div class="col-12 article" id="product-categories">
                     <h2>Product Categories:</h2>
                     <div class="gallery-wrapper row">
@@ -107,8 +107,9 @@
                             </a>
                         </div>
 
-                    </div> {{--.gallery-wrapper, .row--}}
-                </div> {{--.article, #product-categories--}}
+                    </div> <!-- .gallery-wrapper, .row -->
+                </div> <!-- .article, #product-categories -->
+--}}
 
             </div> {{--#main-content--}}
         </div> {{--col--}}

@@ -1,7 +1,24 @@
 // Overall --------------------------------------------------
 body {
   background: $color-bg-abs $bg-main no-repeat top center;
+  font-family: $font-paragraph;
+  color: $color-text;
 } // body
+
+h1, h2, h3, h4, h5 {
+  font-weight: 900;
+}
+
+// Color certain texts. (Mostly meant for use with `<span>`.)
+.accented {
+  color: $color-accent;
+}
+
+
+// FontAwesome --------------------------------------------------
+.svg-inline--fa {
+  margin: 0 0.25em;
+} // .svg-inline--fa
 
 
 // Anchors --------------------------------------------------
@@ -9,13 +26,13 @@ a {
   color: $color-link;
   font-style: italic;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $color-link-hover;
   } // :hover, :focus
   &:active {
     color: $color-link-active;
   } // :active
-
 } // a
 
 
@@ -30,7 +47,21 @@ footer {
     &:hover {
       color: lighten($color-text, 15%);
     } // :hover
-
   } // a
-
 } // footer
+
+
+// FlexiNav overrides --------------------------------------------------
+.container {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+// Base text styling --------------------------------------------------
+.aside {
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: normal;
+} // .aside

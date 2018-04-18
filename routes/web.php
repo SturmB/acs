@@ -15,7 +15,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('products/{category}/{subcategory}/{includeInactive?}', 'ProductController@index');
+Route::get('products/{category}/{subcategory}/{method}/{includeInactive?}', 'ProductController@index');
 Route::get('features/{productLineId}/{includeInactive?}', 'ProductController@getFeatures');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');

@@ -19,34 +19,39 @@ class ProductController extends Controller
      * @param string $includeInactive
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($category, $subcategory, $includeInactive = '')
+    public function index($category, $subcategory, $printMethod, $includeInactive = '')
     {
         // Set whether or not to include inactive items in the navbar.
-        $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
+//        $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
 
         $allProductLines = ProductLine
             ::with(['productSubcategory', 'printMethod'])
             ->get();
 
-        $productLines = $allProductLines
-            ->filter(function ($productLine) use ($category, $subcategory) {
+        $productLine = $allProductLines
+            // Filter to only the _single_ Product Line we want.
+            ->filter(function ($productLine) use ($category, $subcategory, $printMethod) {
                 return (
                     $productLine->productSubcategory->short_name ===
                     $subcategory &&
                     $productLine->productSubcategory->product_category_id ===
-                    $category
+                    $category &&
+                    $productLine->print_method_id ===
+                    $printMethod
                 );
-            })
-            ->filter(function ($productLine) use ($activeArray) {
+            })->first();
+            // Include "inactive" Product Lines if that was specified.
+            // Commented-out because we're now getting a _specific_, _single_ Product Line.
+/*            ->filter(function ($productLine) use ($activeArray) {
                 return in_array(
                     $productLine->printMethod->active,
                     $activeArray
                 );
-            });
+            });*/
 
-        $minPriority = $productLines->min('printMethod.priority');
+//        $minPriority = $productLine->min('printMethod.priority');
 
-        return view('product', compact('productLines', 'minPriority'));
+        return view('product', compact('productLine'));
     }
 
     /**

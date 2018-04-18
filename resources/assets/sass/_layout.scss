@@ -48,11 +48,91 @@ header a {
 } // .dropdown:hover .dropdown-menu
 
 
+/* FlexiNav */
+.flexinav,
+.flexinav_collapse {
+  border: 1px solid $color-accent;
+  @include border-radius(6px);
+} // .flexinav, .flexinav_collapse
+
+/* ACS Light Red */
+.flexinav_acslightred,
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li,
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.noactive,
+.flexinav_acslightred +  .flexinav_btn {
+  //background: #5f0609;
+  background: $color-accent ;
+}
+.flexinav_acslightred .flexinav_ddown a,
+.flexinav_acslightred .dropdown_flyout li span {
+  //color: #7f080c;
+  color: lighten($color-accent, 10%);
+}
+.flexinav_acslightred .flexinav_ddown a:hover,
+.flexinav_acslightred .dropdown_flyout li span:hover {
+  //color: #af0b11;
+  color: lighten($color-accent, 30%);
+}
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active,
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+  //background: #3f0406;
+  background: darken($color-accent, 10%);
+}
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive,
+.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+  //background: #5f0609;
+  background: $color-accent;
+}
+
+// Fix a few things with FlexiNav, including addressing the new FontAwesome 5.
+.flexinav {
+
+  .dropdown_parent span:after,
+  .dropdown_parent_left span:after {
+    content: '\f105';
+    font-family: "Font Awesome 5 Pro", sans-serif;
+    float: right;
+    padding-top: 1px;
+  } // .dropdown_parent span:after, .dropdown_parent_left span:after
+
+  .dropdown_parent > a > span,
+  .dropdown_parent_left > a > span {
+    padding-left: 0;
+  } // .dropdown_parent > a > span, .dropdown_parent_left > a > span
+
+} // .flexinav
+
+// Slightly increase the font size of the main Menu Categories.
+.flexinav .flexinav_wrapper .flexinav_menu > li > a,
+.flexinav .flexinav_wrapper .flexinav_menu > li > span,
+.flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
+
+  @include media-breakpoint-up(xl) {
+    font-size: 13px;
+  } // media-breakpoint-up(xl)
+
+} // li > a, li > span, li > span > a
+
+// Scale up the "Navigation" text on small screen sizes.
+.flexinav .flexinav_menu > li.flexinav_collapse span {
+  font-size: 1.5em;
+} // .flexinav .flexinav_menu > li.flexinav_collapse span
+
+// Remove the extra spacing above & below a flyout menu that is also a link.
+.flexinav .dropdown_flyout li a span {
+  padding: 0;
+}
+
+
 // Jumbotron --------------------------------------------------
 #splash {
 
   //background-image: url('/storage/images/hero-01.jpg');
   overflow: hidden;
+
+  img {
+    height: auto;
+  } // img
 
   h1 {
     position: absolute;
@@ -76,18 +156,34 @@ header a {
 #main-content {
   background: $color-bg-lighter $grad-menu;
 
+  /*
   @include media-breakpoint-down(sm) {
     display: none;
-  } // media-breakpoint-down(md)
+  } // media-breakpoint-down(sm)
+  */
 
 } // #main-content
+
+#welcome-aboard-special {
+
+  .promo-photo {
+    border: 1px solid $color-text;
+    //@include box-shadow(0 5px 10px rgba($color-bg-abs, 0.15)); // Doesn't seem to work!
+    -webkit-box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
+    -moz-box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
+    box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
+    @include border-radius(5px);
+    margin-bottom: 0.5em;
+  } // .promo-photo
+
+} // #welcome-aboard-special
 
 .article {
 
   h2 {
     padding-top: 0.25em;
-    border-top: $size-border solid $body-color;
-    text-shadow: 0 -1px 0 lighten($color-text-shadow2, 40%), 0 1px 0 lighten($color-text-shadow1, 40%);
+    border-top: $size-border solid $color-text;
+    text-shadow: 0 -1px 0 $color-text-shadow2, 0 1px 0 $color-text-shadow1;
   } // h2
 
 } // .article
@@ -246,6 +342,7 @@ header a {
 // At the Top --------------------------------------------------
   #title {
     text-align: center;
+    margin: 1em 0;
 
     .method-button {
       display: inline-block;
@@ -325,9 +422,6 @@ header a {
 
 } // #product-content
 
-.accented {
-  color: $color-accent;
-}
 
 // Features & Options Column --------------------------------------------------
 #fo-column {

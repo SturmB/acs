@@ -121,21 +121,20 @@ class NavigationComposer
      */
     private function sortAndGroup($menuItems)
     {
-        Log::info('filtered:');
-        Log::info($menuItems);
+//        Log::info('filtered:');
+//        Log::info($menuItems);
         // Sort and group the items, ready for building the HTML navbar.
         return $menuItems->sortBy(function ($item) { // Sort the items by all three criteria.
             $sortNum = $item->productSubcategory->productCategory->menuCategory->priority * 100;
             $sortNum += $item->productSubcategory->productCategory->priority * 10;
             $sortNum += $item->productSubcategory->priority;
             return $sortNum;
-        })->groupBy('productSubcategory.productCategory.menu_category_id');
+        })->groupBy(['productSubcategory.productCategory.menu_category_id', 'product_subcategory_id']);
     }
 
     /**
      * Take a grouped list of MenuCategories and all of the ProductCategories
-     * and ProductSubcategories they contain and build up
-     * Bootstrap 4-compatible navbar entries from them.
+     * and ProductSubcategories they contain and build up navbar entries from them.
      *
      * @param $menuItems
      * @return string
@@ -146,21 +145,54 @@ class NavigationComposer
         $html = '';
         $previousCategory = null;
         foreach ($menuItems as $mainMenuGroup) {
+//            Log::info($mainMenuGroup);
             $html .= "<li><span>";
-            $html .= $mainMenuGroup->first()->productSubcategory->productCategory->menu_category_id;
+            // Two "first()"s here: The first one is for Subcategory, the second is for Print Method.
+            // It's okay because we're just trying to get the Menu Category anyway.
+            $html .= $mainMenuGroup->first()->first()->productSubcategory->productCategory->menu_category_id;
             $html .= "</span>" . PHP_EOL;
             $html .= "    <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" . PHP_EOL;
             $html .= "        <ul class='dropdown_flyout'>" . PHP_EOL;
-            foreach ($mainMenuGroup as $menuItem) {
-                $product_category_id = $menuItem->productSubcategory->product_category_id;
-                $short_name = $menuItem->productSubcategory->short_name;
-                $html .= "            <li><a class='dropdown-item' href='/products/{$product_category_id}/{$short_name}' target='_self'>";
-                $html .= $menuItem->productSubcategory->long_name;
-                $html .= "            </a></li>" . PHP_EOL;
+            foreach ($mainMenuGroup as $productLines) {
+                // Just need the "first()" one, because all we need here is the Product Category for constructing the link URL.
+                $productCategoryId = $productLines->first()->productSubcategory->product_category_id;
+                // Likewise, just need the Subcategory's "short_name" for constructing the link URL.
+                $short_name = $productLines->first()->productSubcategory->short_name;
+                // Finally, just getting the Print Method ID for the link URL.
+                $printMethodId = $productLines->first()->print_method_id;
+                // If the first Product Line is "unprinted", then don't make a dropdown for it.
+                $unprinted = $productLines->first()->print_method_id === 'unprinted';
+                $parentClass = $unprinted ? '' : 'dropdown_parent';
+                $html .= "            <li class='{$parentClass}'>";
+                $html .= "            <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}'>";
+                $html .= "            <span>{$productLines->first()->productSubcategory->long_name}</span>";
+                $html .= "            </a>" . PHP_EOL;
+                if (! $unprinted) {
+                    $html .= "            <ul class='dropdown_flyout_level'>" . PHP_EOL;
+                    foreach ($productLines as $productLine) {
+                        $printMethodId = $productLine->print_method_id;
+                        $printMethodLongName = $productLine->printMethod->long_name;
+                        $html .= "                <li class='dropdown_parent'>";
+                        $html .= "                <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}' target='_self'>";
+                        $html .= "                <span>{$printMethodLongName}</span>" . PHP_EOL;
+                        $html .= "                </a>";
+
+                        // For the Print Method's long_description.
+                        $html .= "                <ul class='dropdown_flyout_level'>" . PHP_EOL;
+                        $html .= "                    <li>";
+                        $html .= $productLine->printMethod->long_description;
+                        $html .= "                    </li>";
+                        $html .= "                </ul>" . PHP_EOL; // Ends the Print Method's long_description.
+
+                        $html .= "                </li>" . PHP_EOL; // Ends Print Method.
+                    }
+                    $html .= "            </ul>" . PHP_EOL; // Ends Print Method list.
+                } // Ends the list for Print Methods (only runs if the first Print Method is "unprinted".
+                $html .= "            </li>" . PHP_EOL; // Ends Product Subcategory.
             }
-            $html .= "        </ul>" . PHP_EOL;
-            $html .= "    </div>" . PHP_EOL;
-            $html .= "</li>" . PHP_EOL;
+            $html .= "        </ul>" . PHP_EOL; // Ends Product Subcategory list.
+            $html .= "    </div>" . PHP_EOL; // Ends dropdown for Menu Category.
+            $html .= "</li>" . PHP_EOL; // Ends Menu Category.
         }
 
         return $html;

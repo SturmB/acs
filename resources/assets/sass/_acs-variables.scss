@@ -4,8 +4,8 @@ $color-bg-abs-lighter       : lighten($color-bg-abs, 20%);
 $color-bg-main              : #333333;
 $color-bg-lighter           : lighten($color-bg-main, 30%);
 $color-bg-lightest          : lighten($color-bg-main, 60%);
-$color-text                 : #666666;
-$color-text-shadow1         : lighten($color-text, 10%);
+$color-text                 : #444444;
+$color-text-shadow1         : lighten($color-text, 40%);
 $color-text-shadow2         : darken($color-text, 60%);
 $color-text-alt             : lighten($color-text, 30%);
 $color-menu-stop1           : #dbdada;
@@ -57,6 +57,7 @@ $grad-hispeed-selected      : linear-gradient(to bottom, darken($color-hispeed, 
 
 // Fonts --------------------------------------------------
 $font-script                : "spumante", script;
+$font-paragraph             : "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-headings              : "proxima-nova-extra-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 

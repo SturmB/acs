@@ -37,6 +37,6 @@
 <link rel="stylesheet" href="{{ asset('vendor/flexinav/css/scrollbars.css') }}">
 
 <!-- Main Styles -->
-<link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
 @stack('styles')
