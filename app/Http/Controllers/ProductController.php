@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 use App\ProductFeature;
 use App\ProductLine;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use function Sodium\add;
 
 class ProductController extends Controller
 {
@@ -16,6 +14,7 @@ class ProductController extends Controller
      *
      * @param $category
      * @param $subcategory
+     * @param $printMethod
      * @param string $includeInactive
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -41,9 +40,9 @@ class ProductController extends Controller
             ) {
                 return (
                     $productLine->productSubcategory->short_name ===
-                    $subcategory &&
+                        $subcategory &&
                     $productLine->productSubcategory->product_category_id ===
-                    $category &&
+                        $category &&
                     $productLine->print_method_id === $printMethod
                 );
             })
@@ -55,7 +54,7 @@ class ProductController extends Controller
         $featuresHtml = $this->formatFeatures($features);
 
         // Get and construct other notes for this Product Line.
-        $this->formatTextNotes($productLine, $activeArray);
+        $this->formatTextNotes($productLine /*, $activeArray*/);
 
         return view(
             'product',
@@ -81,79 +80,58 @@ class ProductController extends Controller
         // Narrow the results to only the Product Features we want for the given Product Line ID.
         $narrowedProductFeatures = $allProductFeatures
             ->reject(function ($productFeature) use ($productLineId) {
-                $productLines = $productFeature->productLines->filter(
-                    function ($productLine) use ($productLineId) {
-                        return $productLine->id == $productLineId;
-                    }
-                );
+                $productLines = $productFeature->productLines->filter(function (
+                    $productLine
+                ) use ($productLineId) {
+                    return $productLine->id == $productLineId;
+                });
                 return empty(sizeof($productLines));
             })
             ->filter(function ($productFeature) use ($activeArray) {
                 return in_array($productFeature->active, $activeArray);
             });
 
-//        Log::info($narrowedProductFeatures);
-
         // Convert the model collection to a nested set of just the data we need,
         // before converting it to a JSON and sending it back.
         $productFeatures = Collection::make();
         $childIds = Collection::make();
-        $narrowedProductFeatures->each(function ($featureItem, $key) use (
-            &$narrowedProductFeatures,
-            $productFeatures,
-            &$childIds
-        ) {
+        $narrowedProductFeatures->each(function (
+            ProductFeature $featureItem
+        ) use (&$narrowedProductFeatures, $productFeatures, &$childIds) {
             $tempFeature = collect(
                 $featureItem->only(['id', 'active', 'feature'])
             );
 
             if (!$childIds->contains($tempFeature['id'])) {
                 // If this `$featureItem` has _not_ been used in a previous iteration as a child.
-                $childFeatures = $narrowedProductFeatures->filter(
-                    function ($feature) use ($tempFeature) {
-                        if ($feature->productFeaturesPivot->isNotEmpty()) {
-                            $match = $feature->productFeaturesPivot->firstWhere(
-                                'parent_id',
-                                $tempFeature['id']
-                            );
-//                            Log::info($match);
-                            return !is_null($match);
-                        }
-                        return false;
-                    }
-                );
-//                Log::info('$childFeatures:');
-//                Log::info($childFeatures);
-                $filteredChildren = $childFeatures->map(
-                    function ($childFeature) {
-//                        Log::info(
-//                            collect(
-//                                $childFeature->only(['id', 'active', 'feature'])
-//                            )
-//                        );
-                        return collect(
-                            $childFeature->only(['id', 'active', 'feature'])
+                $childFeatures = $narrowedProductFeatures->filter(function (
+                    $feature
+                ) use ($tempFeature) {
+                    if ($feature->productFeaturesPivot->isNotEmpty()) {
+                        $match = $feature->productFeaturesPivot->firstWhere(
+                            'parent_id',
+                            $tempFeature['id']
                         );
+                        return !is_null($match);
                     }
-                );
+                    return false;
+                });
+                $filteredChildren = $childFeatures->map(function (
+                    ProductFeature $childFeature
+                ) {
+                    return collect(
+                        $childFeature->only(['id', 'active', 'feature'])
+                    );
+                });
 
-//                Log::info('$filteredChildren (outside):');
-//                Log::info($filteredChildren);
                 if ($filteredChildren->isNotEmpty()) {
-//                    Log::info('$filteredChildren (inside):');
-//                    Log::info($filteredChildren);
                     $childIds = $filteredChildren->pluck('id');
                     $tempFeature['children'] = collect($filteredChildren);
                 }
-//                Log::info('$tempFeature this iteration:');
-//                Log::info($tempFeature);
                 $productFeatures->push($tempFeature);
             }
         });
 
-//        Log::info('FINAL $productFeatures:');
-//        Log::info($productFeatures);
-//        Log::info($productFeatures->toArray());
         return $productFeatures;
     }
 
@@ -161,7 +139,7 @@ class ProductController extends Controller
      * Format the Features & Options into an HTML string
      * with <ul> structure.
      *
-     * @param $features
+     * @param $features Collection
      * @return string
      */
     private function formatFeatures($features)
@@ -169,29 +147,21 @@ class ProductController extends Controller
         $html = "";
 
 //        if (gettype($features) === 'object')
-//        Log::info('Feature count');
-//        Log::info($features->count());
-//        Log::info(gettype($features));
-//        Log::info($features[0]['id']);
-//        Log::info($features[0]->has('children'));
         if ($features->count() > 0) {
             $html .= "<ul>" . PHP_EOL;
             foreach ($features as $feature) {
                 $html .= "<li>{$feature['feature']}</li>" . PHP_EOL;
                 if ($feature->has('children')) {
-//                    Log::info($feature['children']->count());
                     $html .= $this->formatFeatures($feature['children']);
                 }
             }
             $html .= "</ul>" . PHP_EOL;
         }
 
-//        Log::info('Final HTML:');
-//        Log::info($html);
         return $html;
     }
 
-    private function formatTextNotes($productLine, $activeArray)
+    private function formatTextNotes($productLine)
     {
         $html = "";
 
@@ -236,8 +206,8 @@ class ProductController extends Controller
 
         Log::info(
             $productLine->productSubcategory->short_name .
-            ', ' .
-            $productLine->productSubcategory->product_category_id
+                ', ' .
+                $productLine->productSubcategory->product_category_id
         );
 
         return $html;

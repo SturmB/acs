@@ -8,9 +8,8 @@
 
 namespace App\Http\ViewComposers;
 
-
 use App\ProductLine;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 class NavigationComposer
@@ -36,7 +35,6 @@ class NavigationComposer
      */
     protected $menuItems;
 
-
     /**
      * NavigationComposer constructor.
      * Create a new navigation composer.
@@ -46,11 +44,19 @@ class NavigationComposer
     public function __construct()
     {
         // Set whether or not to include inactive items in the navbar.
-        $this->includeInactive = request()->route()->parameter('includeInactive') === 'include_inactive';
+        $this->includeInactive =
+            request()
+                ->route()
+                ->parameter('includeInactive') === 'include_inactive';
         $this->activeArray = [$this->includeInactive ? 0 : 1, 1];
 
         // Get the menu items from the database.
-        $this->menuItems = ProductLine::with(['productSubcategory.productCategory.menuCategory', 'printMethod'])->get();
+        $this->menuItems = ProductLine
+            ::with([
+                'productSubcategory.productCategory.menuCategory',
+                'printMethod'
+            ])
+            ->get();
     }
 
     /**
@@ -79,35 +85,61 @@ class NavigationComposer
      */
     private function filterResults($activeArray)
     {
-//        Log::info('original:');
-//        Log::info(json_encode($this->menuItems));
         // Only keep "active" items if variable is set to do so (by default, it is).
         // Also only keep items with the
-        return $this->menuItems->groupBy('product_subcategory_id')
-            ->map(function ($productLineGroup) use ($activeArray) {
+        return
+        $this->menuItems
+            ->groupBy('product_subcategory_id')
+            ->map(function (Collection $productLineGroup) use ($activeArray) {
+
                 // Filter to only the Print Methods that are active.
-                $printMethodActive = $productLineGroup->filter(function ($productLine) use ($activeArray) {
-                    return in_array($productLine->printMethod->active, $activeArray);
+                $printMethodActive = $productLineGroup->filter(function (
+                    $productLine
+                ) use ($activeArray) {
+                    return in_array(
+                        $productLine->printMethod->active,
+                        $activeArray
+                    );
                 });
+
                 // Filter to only the Menu Categories that are active.
-                $menuActive = $printMethodActive->filter(function ($productLine) use ($activeArray) {
-                    return in_array($productLine->productSubcategory->productCategory->menuCategory->active, $activeArray);
+                $menuActive = $printMethodActive->filter(function (
+                    $productLine
+                ) use ($activeArray) {
+                    return in_array(
+                        $productLine->productSubcategory->productCategory->menuCategory->active,
+                        $activeArray
+                    );
                 });
+
                 // Filter to only the Categories that are active.
-                $catActive = $menuActive->filter(function ($productLine) use ($activeArray) {
-                    return in_array($productLine->productSubcategory->productCategory->active, $activeArray);
+                $catActive = $menuActive->filter(function ($productLine) use (
+                    $activeArray
+                ) {
+                    return in_array(
+                        $productLine->productSubcategory->productCategory->active,
+                        $activeArray
+                    );
                 });
+
                 // Filter to only the Subcategories that are active.
-                $subcatActive = $catActive->filter(function ($productLine) use ($activeArray) {
-                    return in_array($productLine->productSubcategory->active, $activeArray);
+                $subcatActive = $catActive->filter(function ($productLine) use (
+                    $activeArray
+                ) {
+                    return in_array(
+                        $productLine->productSubcategory->active,
+                        $activeArray
+                    );
                 });
-                return $subcatActive;
+
                 // Filter to only the highest-priority Print Method per item.
 /*                $min = $subcatActive->min('printMethod.priority');
                 $prioritized = $subcatActive->filter(function ($productLine) use ($min) {
                     return $productLine->printMethod->priority === $min;
                 });
                 return $prioritized;*/
+
+                return $subcatActive;
             })
             ->flatten(1);
     }
@@ -116,20 +148,28 @@ class NavigationComposer
      * Sort the remaining items by their various priorities (MenuCategory,
      * ProductCategory, and ProductSubcategory), then group them by MenuCategory.
      *
-     * @param $menuItems
+     * @param $menuItems Collection
      * @return mixed
      */
     private function sortAndGroup($menuItems)
     {
-//        Log::info('filtered:');
-//        Log::info($menuItems);
         // Sort and group the items, ready for building the HTML navbar.
-        return $menuItems->sortBy(function ($item) { // Sort the items by all three criteria.
-            $sortNum = $item->productSubcategory->productCategory->menuCategory->priority * 100;
-            $sortNum += $item->productSubcategory->productCategory->priority * 10;
-            $sortNum += $item->productSubcategory->priority;
-            return $sortNum;
-        })->groupBy(['productSubcategory.productCategory.menu_category_id', 'product_subcategory_id']);
+        return
+        $menuItems
+            ->sortBy(function ($item) {
+                // Sort the items by all three criteria.
+                $sortNum =
+                    $item->productSubcategory->productCategory->menuCategory->priority *
+                    100;
+                $sortNum +=
+                    $item->productSubcategory->productCategory->priority * 10;
+                $sortNum += $item->productSubcategory->priority;
+                return $sortNum;
+            })
+            ->groupBy([
+                'productSubcategory.productCategory.menu_category_id',
+                'product_subcategory_id'
+            ]);
     }
 
     /**
@@ -144,14 +184,18 @@ class NavigationComposer
         // Prepare the HTML navbar.
         $html = '';
         $previousCategory = null;
+        /** @var Collection $mainMenuGroup */
         foreach ($menuItems as $mainMenuGroup) {
-//            Log::info($mainMenuGroup);
             $html .= "<li><span>";
             // Two "first()"s here: The first one is for Subcategory, the second is for Print Method.
             // It's okay because we're just trying to get the Menu Category anyway.
-            $html .= $mainMenuGroup->first()->first()->productSubcategory->productCategory->menu_category_id;
+            $html .= $mainMenuGroup
+                ->first()
+                ->first()->productSubcategory->productCategory->menu_category_id;
             $html .= "</span>" . PHP_EOL;
-            $html .= "    <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" . PHP_EOL;
+            $html .=
+                "    <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" .
+                PHP_EOL;
             $html .= "        <ul class='dropdown_flyout'>" . PHP_EOL;
             foreach ($mainMenuGroup as $productLines) {
                 // Just need the "first()" one, because all we need here is the Product Category for constructing the link URL.
@@ -161,24 +205,32 @@ class NavigationComposer
                 // Finally, just getting the Print Method ID for the link URL.
                 $printMethodId = $productLines->first()->print_method_id;
                 // If the first Product Line is "unprinted", then don't make a dropdown for it.
-                $unprinted = $productLines->first()->print_method_id === 'unprinted';
+                $unprinted =
+                    $productLines->first()->print_method_id === 'unprinted';
                 $parentClass = $unprinted ? '' : 'dropdown_parent';
                 $html .= "            <li class='{$parentClass}'>";
                 $html .= "            <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}'>";
                 $html .= "            <span>{$productLines->first()->productSubcategory->long_name}</span>";
                 $html .= "            </a>" . PHP_EOL;
-                if (! $unprinted) {
-                    $html .= "            <ul class='dropdown_flyout_level'>" . PHP_EOL;
+                if (!$unprinted) {
+                    $html .=
+                        "            <ul class='dropdown_flyout_level'>" .
+                        PHP_EOL;
                     foreach ($productLines as $productLine) {
                         $printMethodId = $productLine->print_method_id;
-                        $printMethodLongName = $productLine->printMethod->long_name;
+                        $printMethodLongName =
+                            $productLine->printMethod->long_name;
                         $html .= "                <li class='dropdown_parent'>";
                         $html .= "                <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}' target='_self'>";
-                        $html .= "                <span>{$printMethodLongName}</span>" . PHP_EOL;
+                        $html .=
+                            "                <span>{$printMethodLongName}</span>" .
+                            PHP_EOL;
                         $html .= "                </a>";
 
                         // For the Print Method's long_description.
-                        $html .= "                <ul class='dropdown_flyout_level'>" . PHP_EOL;
+                        $html .=
+                            "                <ul class='dropdown_flyout_level'>" .
+                            PHP_EOL;
                         $html .= "                    <li>";
                         $html .= $productLine->printMethod->long_description;
                         $html .= "                    </li>";
@@ -214,7 +266,9 @@ class NavigationComposer
 
         if (count($subfolders) > 0) {
             $html .= "<li><span>Clip-Art</span>" . PHP_EOL;
-            $html .= "   <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" . PHP_EOL;
+            $html .=
+                "   <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" .
+                PHP_EOL;
             $html .= "      <ul class='dropdown_flyout'>" . PHP_EOL;
             foreach ($subfolders as $dirty_name) {
                 $exploded_name = explode('/', $dirty_name);
