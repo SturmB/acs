@@ -41,6 +41,15 @@ class CreateProductLinesTable extends Migration
             $table->tinyInteger('multicolor')
                 ->default(1)
                 ->comment('Boolean value for whether or not the Product Line (Subcategory/Method combo) can be printed with more than one color. (Digital method irrelevant for determining the “per color” tag.)');
+            $table->tinyInteger('process')
+                ->default(1)
+                ->comment('Boolean value for whether or not the Product Line (Subcategory/Method combo) can be printed with 4 Color Process. Typically only for Tradition Print Methods.');
+            $table->tinyInteger('white_ink')
+                ->default(1)
+                ->comment('Boolean value for whether or not the Product Line (Subcategory/Method combo) has a White Ink surcharge. Typically only for Digitally-printed Coasters and Beverage Wraps.');
+            $table->tinyInteger('hotstamp')
+                ->default(1)
+                ->comment('Boolean value for whether or not the Product Line (Subcategory/Method combo) has a Hotstamp imprint surcharge. Typically only for Coasters and Beverage Wraps.');
             $table->tinyInteger('per_thousand')
                 ->default(0)
                 ->comment('True/False. True if the prices for this Product Line (Subcategory/Method combo) are measured per thousand.');

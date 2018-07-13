@@ -13,12 +13,12 @@
                         </li>
 
                         <!-- Products Menu -->
-                    {!! $productsHtml !!}
+                        {!! $productsHtml !!}
 
-                    <!-- Clipart Menu -->
-                    {!! $clipartHtml !!}
+                        <!-- Clipart Menu -->
+                        {!! $clipartHtml !!}
 
-                    <!-- Information Menu -->
+                        <!-- Information Menu -->
                         <li><span>Information</span>
                             <div class="flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240">
                                 <ul class="dropdown_flyout">

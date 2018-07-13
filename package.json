@@ -10,17 +10,17 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@prettier/plugin-php": "github:prettier/plugin-php",
+        "@prettier/plugin-php": "^0.3.0",
         "axios": "^0.18",
-        "bootstrap": "^4.1.1",
-        "browser-sync": "^2.24.4",
+        "bootstrap": "^4.1",
+        "browser-sync": "^2.24.5",
         "browser-sync-webpack-plugin": "^2.2.2",
         "cross-env": "^5.2",
         "jquery": "^3.2",
         "laravel-mix": "^2.1.11",
         "lodash": "^4.17.10",
         "popper.js": "^1.14.3",
-        "prettier": "github:prettier/prettier",
+        "prettier": "^1.13.7",
         "vue": "^2.5.16",
         "vue-template-compiler": "^2.5.16"
     },

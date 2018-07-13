@@ -15,11 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="MAMP@skyfs" uuid="bfa98da1-60d4-4d89-9c72-28d578b0f03a">
+    <data-source source="LOCAL" name="MySQL@SkyUbuntu" uuid="f97b08fc-1362-45a8-9766-1ed039981019">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.0.248:3306/acs2017</jdbc-url>
+      <jdbc-url>jdbc:mysql://192.168.1.71:3306/acs2017</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

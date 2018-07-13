@@ -22,6 +22,9 @@ class CreatePrintMethodsTable extends Migration
             $table->tinyInteger('active')
                 ->default(1)
                 ->comment('Boolean value for whether or not the Print Method is active.');
+            $table->string('hex', 6)
+                ->nullable()
+                ->comment('Hexadecimal representing the color associated with the Print Method.');
             $table->string('long_name', 250)
                 ->nullable()
                 ->comment('The long name of the Print Method. i.e., “American Traditions”.');
