@@ -217,7 +217,7 @@ composer.phar
 
 
 ### Paid vendor files
-public/js/fontawesome5/
+public/vendor/fontawesome-pro*/
 
 
 ### Typically large master files (including Adobe formats)
