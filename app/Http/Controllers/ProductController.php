@@ -27,9 +27,10 @@ class ProductController extends Controller
         // Set whether or not to include inactive items.
         $activeArray = [$includeInactive === 'include_inactive' ? 0 : 1, 1];
 
-        $allProductLines = ProductLine
-            ::with(['productSubcategory', 'printMethod'])
-            ->get();
+        $allProductLines = ProductLine::with([
+            'productSubcategory',
+            'printMethod'
+        ])->get();
 
         // Filter to only the _single_ Product Line we want.
         $productLine = $allProductLines
@@ -72,8 +73,10 @@ class ProductController extends Controller
     private function getFeatures($productLineId, $activeArray)
     {
         // Get the Product Features associated with the given Product Line ID.
-        $allProductFeatures = ProductFeature
-            ::with(['productFeaturesPivot', 'productLines'])
+        $allProductFeatures = ProductFeature::with([
+            'productFeaturesPivot',
+            'productLines'
+        ])
             ->orderBy('id', 'desc')
             ->get();
 
@@ -146,7 +149,7 @@ class ProductController extends Controller
     {
         $html = "";
 
-//        if (gettype($features) === 'object')
+        //        if (gettype($features) === 'object')
         if ($features->count() > 0) {
             $html .= "<ul>" . PHP_EOL;
             foreach ($features as $feature) {
@@ -187,22 +190,22 @@ class ProductController extends Controller
             $html .= "Imprint method, ";
         }
         $html .=
-            "Imprint placement, Standard ink color below, or provide us with your Pantone&reg; ink number.";
+            "Imprint placement, and ink color (chosen from the Standard Ink Color list below or provided as a Pantone&reg; ink number).";
         $html .= "</p>";
 
         // Then the list of items.
-//        if ($stamping_result) {
-//            $html .= "<dl>";
-//            while ($stamp = mysqli_fetch_assoc($stamping_result)) {
-//                $html .= "<dt>";
-//                $html .= htmlentities($stamp["long_name"]) . " - ";
-//                $html .= "</dt>";
-//                $html .= "<dd>";
-//                $html .= $stamp["pricing_text"];
-//                $html .= "</dd>";
-//            }
-//            $html .= "</dl>";
-//        }
+        //        if ($stamping_result) {
+        //            $html .= "<dl>";
+        //            while ($stamp = mysqli_fetch_assoc($stamping_result)) {
+        //                $html .= "<dt>";
+        //                $html .= htmlentities($stamp["long_name"]) . " - ";
+        //                $html .= "</dt>";
+        //                $html .= "<dd>";
+        //                $html .= $stamp["pricing_text"];
+        //                $html .= "</dd>";
+        //            }
+        //            $html .= "</dl>";
+        //        }
 
         Log::info(
             $productLine->productSubcategory->short_name .

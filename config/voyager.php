@@ -155,9 +155,9 @@ return [
         ],
 
         'widgets' => [
-            'TCG\\Voyager\\Widgets\\UserDimmer',
-            'TCG\\Voyager\\Widgets\\PostDimmer',
-            'TCG\\Voyager\\Widgets\\PageDimmer',
+//            'TCG\\Voyager\\Widgets\\UserDimmer',
+//            'TCG\\Voyager\\Widgets\\PostDimmer',
+//            'TCG\\Voyager\\Widgets\\PageDimmer',
         ],
 
     ],
@@ -197,7 +197,7 @@ return [
 
     'additional_js' => [
         //'js/custom.js',
-        'vendor/fontawesome-pro-5.0.6/svg-with-js/js/fontawesome-all.min.js',
+        'vendor/fontawesome-pro-5.1.0-web/js/all.js',
     ],
 
     'googlemaps' => [

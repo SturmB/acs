@@ -10,6 +10,7 @@ namespace App\Http\ViewComposers;
 
 use App\ProductLine;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class NavigationComposer
@@ -191,7 +192,7 @@ class NavigationComposer
             // It's okay because we're just trying to get the Menu Category anyway.
             $html .= $mainMenuGroup
                 ->first()
-                ->first()->productSubcategory->productCategory->menu_category_id;
+                ->first()->productSubcategory->productCategory->menuCategory->long_name;
             $html .= "</span>" . PHP_EOL;
             $html .=
                 "    <div class='flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240'>" .
@@ -201,7 +202,7 @@ class NavigationComposer
                 // Just need the "first()" one, because all we need here is the Product Category for constructing the link URL.
                 $productCategoryId = $productLines->first()->productSubcategory->product_category_id;
                 // Likewise, just need the Subcategory's "short_name" for constructing the link URL.
-                $short_name = $productLines->first()->productSubcategory->short_name;
+                $productSubcategoryShortName = $productLines->first()->productSubcategory->short_name;
                 // Finally, just getting the Print Method ID for the link URL.
                 $printMethodId = $productLines->first()->print_method_id;
                 // If the first Product Line is "unprinted", then don't make a dropdown for it.
@@ -209,7 +210,7 @@ class NavigationComposer
                     $productLines->first()->print_method_id === 'unprinted';
                 $parentClass = $unprinted ? '' : 'dropdown_parent';
                 $html .= "            <li class='{$parentClass}'>";
-                $html .= "            <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}'>";
+                $html .= "            <a href='/products/{$productCategoryId}/{$productSubcategoryShortName}/{$printMethodId}'>";
                 $html .= "            <span>{$productLines->first()->productSubcategory->long_name}</span>";
                 $html .= "            </a>" . PHP_EOL;
                 if (!$unprinted) {
@@ -221,7 +222,7 @@ class NavigationComposer
                         $printMethodLongName =
                             $productLine->printMethod->long_name;
                         $html .= "                <li class='dropdown_parent'>";
-                        $html .= "                <a href='/products/{$productCategoryId}/{$short_name}/{$printMethodId}' target='_self'>";
+                        $html .= "                <a href='/products/{$productCategoryId}/{$productSubcategoryShortName}/{$printMethodId}' target='_self'>";
                         $html .=
                             "                <span>{$printMethodLongName}</span>" .
                             PHP_EOL;
