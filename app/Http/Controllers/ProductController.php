@@ -57,11 +57,12 @@ class ProductController extends Controller
 
         // Get and construct other notes for this Product Line.
         $notes = $this->getTextNotes($productLine->id, $activeArray);
+        $hasNotes = $notes->count() > 0;
         $notesHtml = $this->formatTextNotes($productLine, $notes);
 
         return view(
             'product',
-            compact('productLine', 'hasFeatures', 'featuresHtml', 'notesHtml')
+            compact('productLine', 'hasFeatures', 'featuresHtml', 'hasNotes','notesHtml')
         );
     }
 
@@ -176,9 +177,7 @@ class ProductController extends Controller
     private function getTextNotes($productLineId, $activeArray)
     {
         // Get the Notes associated with the given Product Line ID.
-        $allProductNotes = ProductNote::with([
-            'productLines'
-        ])
+        $allProductNotes = ProductNote::with(['productLines'])
             ->orderBy('priority', 'asc')
             ->get();
 
@@ -204,6 +203,7 @@ class ProductController extends Controller
      * with a <p> at the top, then a <dl> structure below.
      *
      * @param $productLine
+     * @param $notes
      * @return string
      */
     private function formatTextNotes($productLine, $notes)
@@ -240,13 +240,12 @@ class ProductController extends Controller
             "Imprint placement, and ink color (chosen from the Standard Ink Color list below or provided as a Pantone&reg; ink number).";
         $html .= "</p>" . PHP_EOL;
 
-
         // Now add the notes we retrieved earlier.
         $html .= "<dl>" . PHP_EOL;
         foreach ($notes as $note) {
             Log::info($note->body);
             $title = "";
-            if (! empty($note->title)) {
+            if (!empty($note->title)) {
                 $title = "<dt>{$note->title}</dt>" . PHP_EOL;
             }
             $html .= $title;

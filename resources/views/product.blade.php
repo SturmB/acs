@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <?php $showFeatures = $showNotes = $hasFeatures; ?>
+    <?php $showSidebar = $hasFeatures || $hasNotes; ?>
 
     <div id="product-content">
 
@@ -16,16 +16,20 @@
         </div>
 
         <div class="row">
-            @if($showFeatures)
+            @if($showSidebar)
             <div class="col-md-4 col-lg-3">
                 <div id="fo-column">
+                    @if($hasFeatures)
                     <div id="features-options">
                         <h2>Features &amp; Options</h2>
                         {!! $featuresHtml !!}
                     </div>
+                    @endif
+                    @if($hasNotes)
                     <div id="text-notes">
                         {!! $notesHtml !!}
                     </div>
+                    @endif
                 </div>
             </div>
             @endif
