@@ -45,4 +45,14 @@ class ProductLine extends Model
     {
         return $this->belongsToMany(ProductFeature::class)->withTimestamps();
     }
+
+    /**
+     * ProductNote relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function productNotes()
+    {
+        return $this->belongsToMany(ProductNote::class)->withTimestamps();
+    }
 }

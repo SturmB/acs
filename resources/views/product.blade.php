@@ -23,6 +23,9 @@
                         <h2>Features &amp; Options</h2>
                         {!! $featuresHtml !!}
                     </div>
+                    <div id="text-notes">
+                        {!! $notesHtml !!}
+                    </div>
                 </div>
             </div>
             @endif

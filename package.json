@@ -20,7 +20,7 @@
         "laravel-mix": "^2.1.11",
         "lodash": "^4.17.10",
         "popper.js": "^1.14.3",
-        "prettier": "^1.13.7",
+        "prettier": "^1.14",
         "vue": "^2.5.16",
         "vue-template-compiler": "^2.5.16"
     },

@@ -23,6 +23,11 @@ class ProductFeature extends Model
         return $this->belongsToMany(ProductLine::class)->withTimestamps();
     }
 
+    /**
+     * ProductFeaturePivot relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function productFeaturesPivot()
     {
         return $this->hasMany(ProductFeaturePivot::class, 'feature_id', 'id');

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\ProductFeature;
 use App\ProductLine;
+use App\ProductNote;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
 
@@ -55,11 +56,12 @@ class ProductController extends Controller
         $featuresHtml = $this->formatFeatures($features);
 
         // Get and construct other notes for this Product Line.
-        $this->formatTextNotes($productLine /*, $activeArray*/);
+        $notes = $this->getTextNotes($productLine->id, $activeArray);
+        $notesHtml = $this->formatTextNotes($productLine, $notes);
 
         return view(
             'product',
-            compact('productLine', 'hasFeatures', 'featuresHtml')
+            compact('productLine', 'hasFeatures', 'featuresHtml', 'notesHtml')
         );
     }
 
@@ -164,7 +166,47 @@ class ProductController extends Controller
         return $html;
     }
 
-    private function formatTextNotes($productLine)
+    /**
+     * Get all of the Text Notes for a given Product Line.
+     *
+     * @param $productLineId
+     * @param $activeArray
+     * @return ProductNote[]|\Illuminate\Database\Eloquent\Builder[]|Collection
+     */
+    private function getTextNotes($productLineId, $activeArray)
+    {
+        // Get the Notes associated with the given Product Line ID.
+        $allProductNotes = ProductNote::with([
+            'productLines'
+        ])
+            ->orderBy('priority', 'asc')
+            ->get();
+
+        // Narrow the results to only the Product Notes we want for the given Product Line ID.
+        $narrowedProductNotes = $allProductNotes
+            ->reject(function ($productNote) use ($productLineId) {
+                $productLines = $productNote->productLines->filter(function (
+                    $productLine
+                ) use ($productLineId) {
+                    return $productLine->id == $productLineId;
+                });
+                return empty(sizeof($productLines));
+            })
+            ->filter(function ($productNote) use ($activeArray) {
+                return in_array($productNote->active, $activeArray);
+            });
+
+        return $narrowedProductNotes;
+    }
+
+    /**
+     * Format the text notes into an HTML string
+     * with a <p> at the top, then a <dl> structure below.
+     *
+     * @param $productLine
+     * @return string
+     */
+    private function formatTextNotes($productLine, $notes)
     {
         $html = "";
 
@@ -179,39 +221,38 @@ class ProductController extends Controller
 
         // Begin building the string that will be returned.
         // This first section is for the paragraph text.
-        $html .= "<p>";
-        $html .= "<span class='accented'>Be sure to specify:</span> ";
+        $productColor = "";
+        $imprintMethod = "";
         if ($color_item) {
-            $html .=
+            $productColor =
                 ucfirst($productLine->productSubcategory->product_category_id) .
                 " color, ";
         }
         if ($napkin_item && $productLine->print_method_id === "tradition") {
-            $html .= "Imprint method, ";
+            $imprintMethod = "Imprint method, ";
         }
+
+        $html .= "<p>";
+        $html .= "<span class='accented'>Be sure to specify:</span> ";
+        $html .= $productColor;
+        $html .= $imprintMethod;
         $html .=
             "Imprint placement, and ink color (chosen from the Standard Ink Color list below or provided as a Pantone&reg; ink number).";
-        $html .= "</p>";
+        $html .= "</p>" . PHP_EOL;
 
-        // Then the list of items.
-        //        if ($stamping_result) {
-        //            $html .= "<dl>";
-        //            while ($stamp = mysqli_fetch_assoc($stamping_result)) {
-        //                $html .= "<dt>";
-        //                $html .= htmlentities($stamp["long_name"]) . " - ";
-        //                $html .= "</dt>";
-        //                $html .= "<dd>";
-        //                $html .= $stamp["pricing_text"];
-        //                $html .= "</dd>";
-        //            }
-        //            $html .= "</dl>";
-        //        }
 
-        Log::info(
-            $productLine->productSubcategory->short_name .
-                ', ' .
-                $productLine->productSubcategory->product_category_id
-        );
+        // Now add the notes we retrieved earlier.
+        $html .= "<dl>" . PHP_EOL;
+        foreach ($notes as $note) {
+            Log::info($note->body);
+            $title = "";
+            if (! empty($note->title)) {
+                $title = "<dt>{$note->title}</dt>" . PHP_EOL;
+            }
+            $html .= $title;
+            $html .= "<dd>{$note->body}</dd>" . PHP_EOL;
+        }
+        $html .= "</dl>" . PHP_EOL;
 
         return $html;
     }
