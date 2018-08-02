@@ -3,7 +3,15 @@
 
 @section('content')
 
-    <?php $showSidebar = $hasFeatures || $hasNotes; ?>
+    <?php
+        $showSidebar = $hasFeatures || $hasNotes;
+        $imageContentClasses = 'col-12';
+        $splashImageClass = 'px-3';
+        if ($showSidebar) {
+            $imageContentClasses = 'col-md-8 col-lg-9';
+            $splashImageClass .= ' pl-md-0 pr-md-3';
+        }
+    ?>
 
     <div id="product-content">
 
@@ -15,10 +23,11 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row no-gutters">
+
             @if($showSidebar)
             <div class="col-md-4 col-lg-3">
-                <div id="fo-column">
+                <div id="fo-column" class="p-3">
                     @if($hasFeatures)
                     <div id="features-options">
                         <h2>Features &amp; Options</h2>
@@ -33,6 +42,15 @@
                 </div>
             </div>
             @endif
+
+            <div class="{{ $imageContentClasses }}">
+                <div id="images-content">
+                    <div id="splash-image" class="pt-3 {{ $splashImageClass }}">
+                        <img src='{{ asset("images/product-subcategories-assets/{$productLineText}.png") }}'
+                             alt="{{ $productLineText }}" class="img-fluid mx-auto d-block" data-rjs="3">
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

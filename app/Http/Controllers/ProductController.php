@@ -60,9 +60,12 @@ class ProductController extends Controller
         $hasNotes = $notes->count() > 0;
         $notesHtml = $this->formatTextNotes($productLine, $notes);
 
+        // Get the splash image.
+        $productLineText = "{$category}-{$subcategory}-{$printMethod}";
+
         return view(
             'product',
-            compact('productLine', 'hasFeatures', 'featuresHtml', 'hasNotes','notesHtml')
+            compact('productLine', 'hasFeatures', 'featuresHtml', 'hasNotes', 'notesHtml', 'productLineText')
         );
     }
 
@@ -243,7 +246,6 @@ class ProductController extends Controller
         // Now add the notes we retrieved earlier.
         $html .= "<dl>" . PHP_EOL;
         foreach ($notes as $note) {
-            Log::info($note->body);
             $title = "";
             if (!empty($note->title)) {
                 $title = "<dt>{$note->title}</dt>" . PHP_EOL;
