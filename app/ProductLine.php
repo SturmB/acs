@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductLine extends Model
 {
+    public $additional_attributes=['name'];
+
+    /**
+     * Create an accessor to substitute in for the `id`.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return "{$this->productSubcategory->product_category_id}-{$this->productSubcategory->short_name}-{$this->print_method_id}";
+    }
+
     /**
      * ProductSubcategory relationship setup.
      *

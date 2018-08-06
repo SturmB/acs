@@ -25,4 +25,14 @@ class ProductSubcategory extends Model
     {
         return $this->hasMany(ProductLine::class);
     }
+
+    /**
+     * Product relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

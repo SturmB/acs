@@ -60,8 +60,11 @@ class ProductController extends Controller
         $hasNotes = $notes->count() > 0;
         $notesHtml = $this->formatTextNotes($productLine, $notes);
 
-        // Get the splash image.
+        // Get the splash image for this Product Line.
         $productLineText = "{$category}-{$subcategory}-{$printMethod}";
+
+        // Get and construct the product cards for this Product Line.
+        $products = $this->getProducts($productLine->id, $activeArray);
 
         return view(
             'product',
@@ -256,5 +259,20 @@ class ProductController extends Controller
         $html .= "</dl>" . PHP_EOL;
 
         return $html;
+    }
+
+    /**
+     * Get all of the Products for a given Product Line.
+     *
+     * @param $id
+     * @param array $activeArray
+     * @return ProductLine[]|\Illuminate\Database\Eloquent\Builder[]|Collection
+     */
+    private function getProducts($id, array $activeArray)
+    {
+        // Get the Products associated with the given Product Line ID.
+        $allProducts = ProductLine::with(['printMethod'])->get();
+
+        return $allProducts;
     }
 }

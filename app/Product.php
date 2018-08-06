@@ -3,7 +3,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PrintMethod extends Model
+class Product extends Model
 {
     /**
      * Indicates if the primary key is an auto-incrementing integer.
@@ -20,23 +20,23 @@ class PrintMethod extends Model
     protected $keyType = 'string';
 
     /**
-     * ProductLine relationship setup.
+     * Product Subcategory relationship setup.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function productLines()
+    public function productSubcategory()
     {
-        return $this->hasMany(ProductLine::class);
+        return $this->belongsTo(ProductSubcategory::class);
     }
 
     /**
-     * Product relationship setup.
+     * Print Method relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function products()
+    public function printMethods()
     {
-        return $this->belongsToMany(Product::class)
+        return $this->belongsToMany(PrintMethod::class)
             ->withPivot(
                 'imprint_width',
                 'imprint_height',
