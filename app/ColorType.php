@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -19,4 +18,14 @@ class ColorType extends Model
      * @var string
      */
     protected $keyType = 'string';
+
+    /**
+     * Color relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function colors()
+    {
+        return $this->hasMany(Color::class);
+    }
 }

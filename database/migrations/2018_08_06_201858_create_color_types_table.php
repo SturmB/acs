@@ -20,6 +20,7 @@ class CreateColorTypesTable extends Migration
             $table->string('id', 45)
                 ->comment('PK. The snake_case name of the Color Type.');
             $table->tinyInteger('active')
+                ->default(1)
                 ->comment('Boolean value for whether or not the Color Type is active.');
             $table->string('long_name', 250)
                 ->comment('The long name of the Color Type. Mostly used for outputting as text to web page.');

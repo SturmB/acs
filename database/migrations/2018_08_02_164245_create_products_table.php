@@ -39,7 +39,7 @@ class CreateProductsTable extends Migration
             $table
                 ->string('description', 250)
                 ->comment(
-                    'Description of the product as shown in the catalog.'
+                    'Description of the Product as shown in the catalog.'
                 );
             $table
                 ->integer('case_quantity')

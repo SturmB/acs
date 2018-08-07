@@ -36,28 +36,28 @@ class CreatePivotPrintMethodProduct extends Migration
                     'Number of Products in a package (usually shrink-wrapped). *1 indicates "individual"*. *0 indicates "bulk"*'
                 );
             $table
-                ->float('imprint_width')
+                ->float('imprint_width', 8, 5)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The width of the imprint area. NULL typically means it is an unprinted item, such as a lid or straw. If there is a value in this column while the imprint_height column is NULL, then it is likely that this number is a diameter. *A value of 0 means "See Template."*'
                 );
             $table
-                ->float('imprint_height')
+                ->float('imprint_height', 8, 5)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The height of the imprint area. NULL typically means it is an unprinted item, such as a lid or straw. If this is NULL while there is a value in the imprint_width column, then it is likely that number is a diameter.'
                 );
             $table
-                ->float('imprint_bleed_wrap_width')
+                ->float('imprint_bleed_wrap_width', 8, 5)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The width of the "bleed" imprint area on a flat item or "wrap" imprint area of a cup. NULL typically means that the product does not have a bleed or wrap imprint area possible. *A value of 0 means "See Template."*'
                 );
             $table
-                ->float('imprint_bleed_wrap_height')
+                ->float('imprint_bleed_wrap_height', 8, 5)
                 ->unsigned()
                 ->nullable()
                 ->comment(
