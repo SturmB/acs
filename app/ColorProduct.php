@@ -3,23 +3,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PrintMethodProduct extends Model
+class ColorProduct extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'print_method_product';
+    protected $table = 'color_product';
 
     /**
-     * PrintMethod relationship setup.
+     * Color relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function printMethod()
+    public function color()
     {
-        return $this->belongsTo(PrintMethod::class);
+        return $this->belongsTo(Color::class);
     }
 
     /**

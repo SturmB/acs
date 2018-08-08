@@ -45,4 +45,16 @@ class Product extends Model
             )
             ->withTimestamps();
     }
+
+    /**
+     * Color relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class)
+            ->withPivot('priority')
+            ->withTimestamps();
+    }
 }
