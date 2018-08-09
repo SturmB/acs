@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col">
                 <div id="prices-content">
-
+                    {!! $productCards !!}
                 </div>
             </div>
         </div> {{--Prices--}}

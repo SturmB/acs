@@ -67,4 +67,23 @@ class ProductLine extends Model
     {
         return $this->belongsToMany(ProductNote::class)->withTimestamps();
     }
+
+    /**
+     * QuantityBreak relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function quantityBreaks()
+    {
+        return $this->belongsToMany(QuantityBreak::class)
+            ->withPivot(
+                'additional_color_charge',
+                'second_side_charge',
+                'process_charge',
+                'bleed_charge',
+                'white_ink_charge',
+                'hotstamp_charge'
+            )
+            ->withTimestamps();
+    }
 }

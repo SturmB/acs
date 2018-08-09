@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\ProductFeature;
 use App\ProductLine;
 use App\ProductNote;
@@ -64,11 +65,19 @@ class ProductController extends Controller
         $productLineText = "{$category}-{$subcategory}-{$printMethod}";
 
         // Get and construct the product cards for this Product Line.
-        $products = $this->getProducts($productLine->id, $activeArray);
+        $productCards = $this->getProducts($productLine, $activeArray);
 
         return view(
             'product',
-            compact('productLine', 'hasFeatures', 'featuresHtml', 'hasNotes', 'notesHtml', 'productLineText')
+            compact(
+                'productLine',
+                'hasFeatures',
+                'featuresHtml',
+                'hasNotes',
+                'notesHtml',
+                'productLineText',
+                'productCards'
+            )
         );
     }
 
@@ -262,17 +271,120 @@ class ProductController extends Controller
     }
 
     /**
+     * Prepare the HTML for the thumbnail images for each Product.
+     *
+     * @param $productLine
+     * @param $product
+     * @param $decodedProductName
+     * @return string
+     */
+    private function getThumbnails($productLine, $product, $decodedProductName)
+    {
+        // Preface the main thumbnail with the "Sample" ribbon.
+        $result = "<div class='ribbon-wrapper'><div class='ribbon'>Sample</div></div>" . PHP_EOL;
+
+        $folder = "images/products-assets/{$productLine->productSubcategory->productCategory->id}/{$productLine->productSubcategory->short_name}/";
+//        $html_folder = substr($folder, 3);
+        $productList = [$decodedProductName];
+
+        // If this Product is one that has multiple colors, populate $productList with all of the Product Names, but have "(COLOR)" replaced with the actual Color name, formatted properly.
+        if (stripos($decodedProductName, "(COLOR)") !== false) {
+            // Get all the colors available for this single Product.
+            $productList = [];
+            $productColors = $product->colors->all();
+            foreach ($productColors as $productColor) {
+                // Iterate through them, format them the same as the thumbnail filenames, then put them in place of the "(COLOR)" text.
+                // This is all to prepare for the thumbnail filenames.
+                $condensedColorName = str_replace(['/', ' '], ['', ''], $productColor->short_name);
+                $upperCaseColorName = strtoupper($condensedColorName);
+                $imageName = str_replace('(COLOR)', $upperCaseColorName, $decodedProductName);
+                $productList[] = $imageName;
+            }
+        }
+
+        // Prepare the class and style for multi-colored Products.
+        $rotatingImagesClass = "";
+        $rotatingImagesStyle = "";
+        if (count($productList) > 1) {
+            $rotatingImagesClass = "rotating-item";
+            $rotatingImagesStyle = "style='display: none;'";
+        }
+
+        // Set the correct class for Products that have a Print Method.
+        $sampleExists = preg_match("/^[DTH]-/", $decodedProductName) > 0 ? true : false;
+        $blankClass = '';
+        if ($sampleExists) {
+            $blankClass = 'thumbnail-blank';
+        }
+
+
+        // Build up the HTML.
+        foreach ($productList as $image) {
+            // Prepare the blank and sample thumbnails.
+            $blankImage = asset($folder . $image . '-blank_thumb.png');
+            $sampleImage = asset($folder . $image . '-sample_thumb.png');
+
+            $result .= "<div class='{$rotatingImagesClass}' {$rotatingImagesStyle}>" . PHP_EOL;
+            $result .= "<img src='{$blankImage}' class='thumbnail-image {$blankClass}' data-rjs='3' alt='{$image}'>" . PHP_EOL;
+            if ($sampleExists) {
+                $result .= "<img src='{$sampleImage}' class='thumbnail-image thumbnail-sample' data-rjs='3' style='display: none;' alt='{$image}'>" . PHP_EOL;
+            }
+            $result .= "</div>" . PHP_EOL;
+        }
+
+        return $result;
+    }
+
+    /**
      * Get all of the Products for a given Product Line.
      *
-     * @param $id
+     * @param $productLine
      * @param array $activeArray
-     * @return ProductLine[]|\Illuminate\Database\Eloquent\Builder[]|Collection
+     * @return string
      */
-    private function getProducts($id, array $activeArray)
+    private function getProducts($productLine, array $activeArray)
     {
         // Get the Products associated with the given Product Line ID.
-        $allProducts = ProductLine::with(['printMethod'])->get();
+        $products = Product::where(
+            'product_subcategory_id',
+            $productLine->productSubcategory->id
+        )->get();
 
-        return $allProducts;
+        $output = "";
+        foreach ($products as $product) {
+            $productName = $productLine->printMethod->prefix . $product->name;
+            $decodedProductName = str_replace("/", "-", $productName);
+            $decodedProductName = str_replace(' ', '', $decodedProductName);
+            $singletonClass = $products->count() === 1 ? 'singleton' : '';
+            $rotatorClass =
+                stripos($decodedProductName, "(COLOR)") !== false
+                    ? 'rotating-item-wrapper'
+                    : '';
+
+            // Outer div for the entire card.
+            $output .= "<div class='item-info {$singletonClass}'>" . PHP_EOL;
+
+            // Div for the Product number (with Print Method), thumbnail, and description.
+            // Usually on the left side of the card.
+            $output .= "<div class='itd'>" . PHP_EOL;
+
+            // Product number with Print Method
+            $output .= "<h4 class='item-number'>{$productName}</h4>" . PHP_EOL;
+
+            // Thumbnail
+            $output .= "<div class='item-thumb'>" . PHP_EOL;
+            $output .= "<div class='item-thumb-overlay overlay-rollover {$rotatorClass}'>" . PHP_EOL;
+            $output .= $this->getThumbnails($productLine, $product, $decodedProductName);
+            $output .= "</div>" . PHP_EOL; // div.item-thumb-overlay.overlay-rollover
+            $output .= "</div>" . PHP_EOL; // div.item-thumb
+
+            // Item Description
+            $output .= "<h6 class='item-description'>{$product->description}</h6>" . PHP_EOL;
+
+            $output .= "</div>"; // div.itd
+            $output .= "</div>"; // div.item-info
+        }
+
+        return $output;
     }
 }
