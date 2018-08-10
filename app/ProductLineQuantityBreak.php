@@ -5,6 +5,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductLineQuantityBreak extends Model
 {
+    public $additional_attributes = ['product_line_quantity'];
+
+    /**
+     * Get the combination of ProductLine and QuantityBreak as a string.
+     *
+     * @return string
+     */
+    public function getProductLineQuantityAttribute()
+    {
+        return "{$this->productLine->name} @ {$this->quantityBreak->id}";
+    }
+
     /**
      * The table associated with the model.
      *
@@ -30,5 +42,17 @@ class ProductLineQuantityBreak extends Model
     public function quantityBreak()
     {
         return $this->belongsTo(QuantityBreak::class);
+    }
+
+    /**
+     * Product relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'acs_prices')
+            ->withPivot('price')
+            ->withTimestamps();
     }
 }

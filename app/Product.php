@@ -57,4 +57,19 @@ class Product extends Model
             ->withPivot('priority')
             ->withTimestamps();
     }
+
+    /**
+     * ProductLineQuantityBreak relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function productLineQuantityBreaks()
+    {
+        return $this->belongsToMany(
+            ProductLineQuantityBreak::class,
+            'acs_prices'
+        )
+            ->withPivot('price')
+            ->withTimestamps();
+    }
 }

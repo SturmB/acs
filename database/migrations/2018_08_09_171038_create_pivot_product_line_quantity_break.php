@@ -39,35 +39,35 @@ class CreatePivotProductLineQuantityBreak extends Migration
                     'The price for an additional color for the Quantity Break, or NULL if there are no additional color charges for the Product Line.'
                 );
             $table
-                ->float('second_side_charge', 19, 4)
+                ->decimal('second_side_charge', 19, 4)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The price to imprint the second side of the item, or NULL if the item cannot be printed on a second side.'
                 );
             $table
-                ->float('process_charge', 19, 4)
+                ->decimal('process_charge', 19, 4)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The price for printing using a 4-color process method, or NULL if this Product Line does not charge for 4-color process printing.'
                 );
             $table
-                ->float('bleed_charge', 19, 4)
+                ->decimal('bleed_charge', 19, 4)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The price for printing full bleed, or NULL if this Product Line does not allow for full bleed printing.'
                 );
             $table
-                ->float('white_ink_charge', 19, 4)
+                ->decimal('white_ink_charge', 19, 4)
                 ->unsigned()
                 ->nullable()
                 ->comment(
                     'The price for printing white ink, or NULL if this Product Line does not allow for white ink printing. Typically only used for Coasters and Beverage Wraps.'
                 );
             $table
-                ->float('hotstamp_charge', 19, 4)
+                ->decimal('hotstamp_charge', 19, 4)
                 ->unsigned()
                 ->nullable()
                 ->comment(
