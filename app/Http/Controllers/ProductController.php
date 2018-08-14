@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\AcsPrice;
 use App\Product;
 use App\ProductFeature;
 use App\ProductLine;
+use App\ProductLineQuantityBreak;
 use App\ProductNote;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
@@ -281,10 +283,14 @@ class ProductController extends Controller
     private function getThumbnails($productLine, $product, $decodedProductName)
     {
         // Preface the main thumbnail with the "Sample" ribbon.
-        $result = "<div class='ribbon-wrapper'><div class='ribbon'>Sample</div></div>" . PHP_EOL;
+        $result =
+            "<div class='ribbon-wrapper'><div class='ribbon'>Sample</div></div>" .
+            PHP_EOL;
 
-        $folder = "images/products-assets/{$productLine->productSubcategory->productCategory->id}/{$productLine->productSubcategory->short_name}/";
-//        $html_folder = substr($folder, 3);
+        $folder = "images/products-assets/{$productLine->productSubcategory
+            ->productCategory->id}/{$productLine->productSubcategory
+            ->short_name}/";
+        //        $html_folder = substr($folder, 3);
         $productList = [$decodedProductName];
 
         // If this Product is one that has multiple colors, populate $productList with all of the Product Names, but have "(COLOR)" replaced with the actual Color name, formatted properly.
@@ -295,9 +301,17 @@ class ProductController extends Controller
             foreach ($productColors as $productColor) {
                 // Iterate through them, format them the same as the thumbnail filenames, then put them in place of the "(COLOR)" text.
                 // This is all to prepare for the thumbnail filenames.
-                $condensedColorName = str_replace(['/', ' '], ['', ''], $productColor->short_name);
+                $condensedColorName = str_replace(
+                    ['/', ' '],
+                    ['', ''],
+                    $productColor->short_name
+                );
                 $upperCaseColorName = strtoupper($condensedColorName);
-                $imageName = str_replace('(COLOR)', $upperCaseColorName, $decodedProductName);
+                $imageName = str_replace(
+                    '(COLOR)',
+                    $upperCaseColorName,
+                    $decodedProductName
+                );
                 $productList[] = $imageName;
             }
         }
@@ -311,12 +325,12 @@ class ProductController extends Controller
         }
 
         // Set the correct class for Products that have a Print Method.
-        $sampleExists = preg_match("/^[DTH]-/", $decodedProductName) > 0 ? true : false;
+        $sampleExists =
+            preg_match("/^[DTH]-/", $decodedProductName) > 0 ? true : false;
         $blankClass = '';
         if ($sampleExists) {
             $blankClass = 'thumbnail-blank';
         }
-
 
         // Build up the HTML.
         foreach ($productList as $image) {
@@ -324,10 +338,16 @@ class ProductController extends Controller
             $blankImage = asset($folder . $image . '-blank_thumb.png');
             $sampleImage = asset($folder . $image . '-sample_thumb.png');
 
-            $result .= "<div class='{$rotatingImagesClass}' {$rotatingImagesStyle}>" . PHP_EOL;
-            $result .= "<img src='{$blankImage}' class='thumbnail-image {$blankClass}' data-rjs='3' alt='{$image}'>" . PHP_EOL;
+            $result .=
+                "<div class='{$rotatingImagesClass}' {$rotatingImagesStyle}>" .
+                PHP_EOL;
+            $result .=
+                "<img src='{$blankImage}' class='thumbnail-image {$blankClass}' data-rjs='3' alt='{$image}'>" .
+                PHP_EOL;
             if ($sampleExists) {
-                $result .= "<img src='{$sampleImage}' class='thumbnail-image thumbnail-sample' data-rjs='3' style='display: none;' alt='{$image}'>" . PHP_EOL;
+                $result .=
+                    "<img src='{$sampleImage}' class='thumbnail-image thumbnail-sample' data-rjs='3' style='display: none;' alt='{$image}'>" .
+                    PHP_EOL;
             }
             $result .= "</div>" . PHP_EOL;
         }
@@ -350,6 +370,49 @@ class ProductController extends Controller
             $productLine->productSubcategory->id
         )->get();
 
+        // Get all of the Prices along with their associated ProductLineQuantityBreaks, ProductLines, QuantityBreaks, and Products.
+        $allPrices = AcsPrice::with([
+            'productLineQuantityBreak.productLine',
+            'productLineQuantityBreak.quantityBreak',
+            'productLineQuantityBreak.acsCharges.chargeType',
+            'productLineQuantityBreak.acsPrices',
+            'product'
+        ])->get();
+        // Filter that massive list down to only Prices whose ProductLineQuantityBreaks are active.
+        $filteredPLQBs = $allPrices->filter(function ($value) use (
+            $activeArray
+        ) {
+            return in_array(
+                $value->productLineQuantityBreak->active,
+                $activeArray
+            );
+        });
+        // Then filter that result down to only Prices whose QuantityBreaks are active.
+        $filteredQuantityBreaks = $filteredPLQBs->filter(function ($value) use (
+            $activeArray
+        ) {
+            return in_array(
+                $value->productLineQuantityBreak->quantityBreak->active,
+                $activeArray
+            );
+        });
+        // Then filter that result down to only Prices whose ProductLines are active.
+        $filteredProductLines = $filteredQuantityBreaks->filter(function (
+            $value
+        ) use ($activeArray) {
+            return in_array(
+                $value->productLineQuantityBreak->productLine->active,
+                $activeArray
+            );
+        });
+        // Finally, filter that result down to only Prices whose Products are active.
+        $filteredPrices = $filteredProductLines->filter(function ($value) use (
+            $activeArray
+        ) {
+            return in_array($value->product->active, $activeArray);
+        });
+
+        // Begin laying out the HTML.
         $output = "";
         foreach ($products as $product) {
             $productName = $productLine->printMethod->prefix . $product->name;
@@ -373,16 +436,120 @@ class ProductController extends Controller
 
             // Thumbnail
             $output .= "<div class='item-thumb'>" . PHP_EOL;
-            $output .= "<div class='item-thumb-overlay overlay-rollover {$rotatorClass}'>" . PHP_EOL;
-            $output .= $this->getThumbnails($productLine, $product, $decodedProductName);
+            $output .=
+                "<div class='item-thumb-overlay overlay-rollover {$rotatorClass}'>" .
+                PHP_EOL;
+            $output .= $this->getThumbnails(
+                $productLine,
+                $product,
+                $decodedProductName
+            );
             $output .= "</div>" . PHP_EOL; // div.item-thumb-overlay.overlay-rollover
             $output .= "</div>" . PHP_EOL; // div.item-thumb
 
             // Item Description
-            $output .= "<h6 class='item-description'>{$product->description}</h6>" . PHP_EOL;
+            $output .=
+                "<h6 class='item-description'>{$product->description}</h6>" .
+                PHP_EOL;
 
-            $output .= "</div>"; // div.itd
-            $output .= "</div>"; // div.item-info
+            $output .= "</div>" . PHP_EOL; // div.itd
+
+            // Get the Quantity Breaks and Prices.
+            $quantityBreaks = $filteredPrices->filter(function ($value) use (
+                $product
+            ) {
+                return $value->product_id == $product->id;
+            });
+
+            $output .= "<div class='item-pricing'>" . PHP_EOL;
+            $output .= "<table>" . PHP_EOL;
+            $output .= "<thead>" . PHP_EOL;
+            $output .= "<tr>" . PHP_EOL;
+
+            // Set up only those columns that have at least one bit of data for them.
+            // Build up the first row, which are header cells (<th>).
+            $chargeNames = []; // Hold the list of charges that have actual amounts.
+            foreach (
+                $productLine->productLineQuantityBreaks
+                as $quantityBreak
+            ) {
+                foreach ($quantityBreak->acsCharges as $charge) {
+                    if (!empty($charge->amount)) {
+                        $chargeNames[] = $charge->charge_type_id;
+                    }
+                }
+            }
+            $chargeNames = array_unique($chargeNames);
+            $numColumns = 2 + count($chargeNames);
+
+
+            // Insert the first two columns, Quantity and Price.
+            $output .=
+                "<th class='main-column columns{$numColumns}'>Quantity</th>" .
+                PHP_EOL;
+            $output .=
+                "<th class='main-column columns{$numColumns}'>Price</th>" .
+                PHP_EOL;
+
+            // Insert the rest of the columns (the additional Charges).
+            // During the process, prepare the legend for the Charge symbols.
+            $symbolLegend = "";
+            foreach ($chargeNames as $chargeName) {
+                // Convert the _name_ of the charge into a Charge object.
+                $charge = $productLine->productLineQuantityBreaks->first()
+                    ->acsCharges->where('charge_type_id', $chargeName)
+                    ->first();
+                $iconBaseName = "charge-{$charge->charge_type_id}";
+                $chargeLongName = $charge->chargeType->long_name;
+                $iconHeader = asset("images/charges-icons/{$iconBaseName}-th.svg");
+                $iconPrint = asset("images/charges-icons/{$iconBaseName}-print.svg");
+                $iconLegend = asset("images/charges-icons/{$iconBaseName}-legend.svg");
+
+                $symbolLegend .= "<li>" . PHP_EOL;
+                $symbolLegend .= "<div class='icon baseline'>" . PHP_EOL;
+                $symbolLegend .= "<img src='{$iconLegend}' class='svg icon-screen'>";
+                $symbolLegend .= "<img src='{$iconPrint}' class='svg icon-print'>";
+                $symbolLegend .= " = {$chargeLongName}" . PHP_EOL;
+                $symbolLegend .= "</div>" . PHP_EOL;
+                $symbolLegend .= "</li>" . PHP_EOL;
+
+                $output .= "<th class='columns{$numColumns}'>" . PHP_EOL;
+                $output .= "<div class='icon baseline'>" . PHP_EOL;
+                $output .= "<img src='{$iconHeader}' class='svg icon-screen'>" . PHP_EOL;
+                $output .= "<img src='{$iconPrint}' class='svg icon-print'>" . PHP_EOL;
+                $output .= "</div>" . PHP_EOL;
+                $output .= "</th>" . PHP_EOL;
+            }
+
+            $output .= "</tr>" . PHP_EOL;
+            $output .= "</thead>" . PHP_EOL;
+            $output .= "<tbody>" . PHP_EOL;
+
+            // Display Quantity, Price, and any other charges for each quantity break.
+            foreach ($quantityBreaks as $index => $break) {
+                $charges = $break->productLineQuantityBreak->acsCharges;
+                $charges = $charges->reject(function ($charge) {
+                    return empty($charge->amount);
+                });
+
+                $output .= "<tr>" . PHP_EOL;
+
+                // Quantity cell
+                $output .= "<td class='numeric'>{$break->productLineQuantityBreak->quantity_break_id}</td>" . PHP_EOL;
+
+                // Price cell
+                $output .= "<td class='numeric'>{$break->price}</td>" . PHP_EOL;
+
+                // Charges cells
+
+                $output .= "</tr>" . PHP_EOL;
+            }
+
+            $output .= "</tbody>" . PHP_EOL;
+            $output .= "</table>" . PHP_EOL;
+            $output .= "</div>" . PHP_EOL; // div.item-pricing
+
+            $output .= "</div>" . PHP_EOL; // div.item-info
         }
 
         return $output;

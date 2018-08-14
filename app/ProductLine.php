@@ -86,4 +86,24 @@ class ProductLine extends Model
             )
             ->withTimestamps();
     }
+
+    /**
+     * ACS Prices relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function acsPrices()
+    {
+        return $this->hasManyThrough(AcsPrice::class, ProductLineQuantityBreak::class);
+    }
+
+    /**
+     * ProductLineQuantityBreak relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productLineQuantityBreaks()
+    {
+        return $this->hasMany(ProductLineQuantityBreak::class);
+    }
 }

@@ -72,4 +72,14 @@ class Product extends Model
             ->withPivot('price')
             ->withTimestamps();
     }
+
+    /**
+     * AcsPrice relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function acsPrices()
+    {
+        return $this->hasMany(AcsPrice::class);
+    }
 }

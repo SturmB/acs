@@ -55,4 +55,24 @@ class ProductLineQuantityBreak extends Model
             ->withPivot('price')
             ->withTimestamps();
     }
+
+    /**
+     * AcsCharge relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function acsCharges()
+    {
+        return $this->hasMany(AcsCharge::class);
+    }
+
+    /**
+     * AcsPrice relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function acsPrices()
+    {
+        return $this->hasMany(AcsPrice::class);
+    }
 }
