@@ -526,11 +526,19 @@ class ProductController extends Controller
             $output .= "<tbody>" . PHP_EOL;
 
             // Display Quantity, Price, and any other charges for each quantity break.
+            $everyThousand = false;
             foreach ($quantityBreaks as $index => $break) {
+                // Keep only those charges that have amounts for them.
                 $charges = $break->productLineQuantityBreak->acsCharges;
                 $charges = $charges->reject(function ($charge) {
                     return empty($charge->amount);
                 });
+
+                // If there is a quantity break at 1,000 or above, enable the printing of the "Every Thousand" note.
+                $quantity = $break->productLineQuantityBreak->quantity_break_id;
+                if ($quantity >= 1000) {
+                    $everyThousand = true;
+                }
 
                 $output .= "<tr>" . PHP_EOL;
 
@@ -541,12 +549,34 @@ class ProductController extends Controller
                 $output .= "<td class='numeric'>{$break->price}</td>" . PHP_EOL;
 
                 // Charges cells
+                foreach ($charges as $charge) {
+                    $output .= "<td class='numeric'>{$charge->amount}</td>" . PHP_EOL;
+                }
 
                 $output .= "</tr>" . PHP_EOL;
             }
 
             $output .= "</tbody>" . PHP_EOL;
             $output .= "</table>" . PHP_EOL;
+
+
+            $output .= "<div class='product-notes'>" . PHP_EOL;
+
+            // Print the "Every Thousand" note.
+            if ($everyThousand) {
+                $output .=
+                    "<p>Quantities 1,000 and above are priced per thousand.</p>" .
+                    PHP_EOL;
+            }
+
+            if ($numColumns > 2) {
+                $output .= "<ul>" . PHP_EOL;
+                $output .= $symbolLegend;
+                $output .= "</ul>" . PHP_EOL;
+            }
+
+            $output .= "</div>" . PHP_EOL; // div.product-notes
+
             $output .= "</div>" . PHP_EOL; // div.item-pricing
 
             $output .= "</div>" . PHP_EOL; // div.item-info
