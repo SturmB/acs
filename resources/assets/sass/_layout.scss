@@ -11,13 +11,6 @@ header a {
 
 
 // Navbar --------------------------------------------------
-/*
-.navbar {
-  background-color: $color-menu-stop1 !important;
-  @include gradient-y($color-menu-stop1, $color-menu-stop2);
-} // .navbar
-*/
-
 .navbar {
   margin-bottom: 2rem;
 
@@ -51,7 +44,7 @@ header a {
 /* FlexiNav */
 .flexinav,
 .flexinav_collapse {
-  border: 1px solid $color-accent;
+  border: 1px solid color(accent);
   @include border-radius(6px);
 } // .flexinav, .flexinav_collapse
 
@@ -61,27 +54,27 @@ header a {
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.noactive,
 .flexinav_acslightred +  .flexinav_btn {
   //background: #5f0609;
-  background: $color-accent ;
+  background: color(accent);
 }
 .flexinav_acslightred .flexinav_ddown a,
 .flexinav_acslightred .dropdown_flyout li span {
   //color: #7f080c;
-  color: lighten($color-accent, 10%);
+  color: lighten(color(accent), 10%);
 }
 .flexinav_acslightred .flexinav_ddown a:hover,
 .flexinav_acslightred .dropdown_flyout li span:hover {
   //color: #af0b11;
-  color: lighten($color-accent, 30%);
+  color: lighten(color(accent), 30%);
 }
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active,
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
   //background: #3f0406;
-  background: darken($color-accent, 10%);
+  background: darken(color(accent), 10%);
 }
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive,
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
   //background: #5f0609;
-  background: $color-accent;
+  background: color(accent);
 }
 
 // Fix a few things with FlexiNav, including addressing the new FontAwesome 5.
@@ -134,17 +127,18 @@ header a {
     height: auto;
   } // img
 
+  //noinspection CssNoGenericFontName
   h1 {
     position: absolute;
     left: 50%;
     top: 10%;
-    font-family: $font-script;
+    font-family: font(script);
     color: #FFFFFF;
     text-indent: 1em;
 
     @include media-breakpoint-up(xl) {
       font-size: 3.5em;
-      text-shadow: 2px 2px 14px rgba($color-bg-abs, 0.50);
+      text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.50);
     } // media-breakpoint-up(xl)
 
   } // h1
@@ -154,7 +148,7 @@ header a {
 
 // Main Content --------------------------------------------------
 #main-content {
-  background: $color-bg-lighter $grad-menu;
+  background: color(bg-lighter) grad(menu);
 
   /*
   @include media-breakpoint-down(sm) {
@@ -167,11 +161,11 @@ header a {
 #welcome-aboard-special {
 
   .promo-photo {
-    border: 1px solid $color-text;
-    //@include box-shadow(0 5px 10px rgba($color-bg-abs, 0.15)); // Doesn't seem to work!
-    -webkit-box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
-    -moz-box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
-    box-shadow: 0 5px 10px rgba($color-bg-abs, 0.15);
+    border: 1px solid color(text);
+    //@include box-shadow(0 5px 10px rgba(color(bg-abs), 0.15)); // Doesn't seem to work!
+    -webkit-box-shadow: 0 5px 10px rgba(color(bg-abs), 0.15);
+    -moz-box-shadow: 0 5px 10px rgba(color(bg-abs), 0.15);
+    box-shadow: 0 5px 10px rgba(color(bg-abs), 0.15);
     @include border-radius(5px);
     margin-bottom: 0.5em;
   } // .promo-photo
@@ -182,8 +176,8 @@ header a {
 
   h2 {
     padding-top: 0.25em;
-    border-top: $size-border solid $color-text;
-    text-shadow: 0 -1px 0 $color-text-shadow2, 0 1px 0 $color-text-shadow1;
+    border-top: $size-border solid color(text);
+    text-shadow: 0 -1px 0 color(text-shadow2), 0 1px 0 color(text-shadow1);
   } // h2
 
 } // .article
@@ -258,22 +252,22 @@ header a {
   */
 
   &#napkins {
-    @include category-button($grad-napkin, $color-napkin-stop1, $color-napkin-stop2);
+    @include category-button(grad(napkin), color(napkin-stop1), color(napkin-stop2));
   } // #napkins
   &#coasters {
-    @include category-button($grad-coaster, $color-coaster-stop1, $color-coaster-stop2);
+    @include category-button(grad(coaster), color(coaster-stop1), color(coaster-stop2));
   } // #coasters
   &#stirpiks {
-    @include category-button($grad-stirpik, $color-stirpik-stop1, $color-stirpik-stop2);
+    @include category-button(grad(stirpik), color(stirpik-stop1), color(stirpik-stop2));
   } // #stirpiks
   &#plates {
-    @include category-button($grad-plate, $color-plate-stop1, $color-plate-stop2);
+    @include category-button(grad(plate), color(plate-stop1), color(plate-stop2));
   } // #plates
   &#cups {
-    @include category-button($grad-cup, $color-cup-stop1, $color-cup-stop2);
+    @include category-button(grad(cup), color(cup-stop1), color(cup-stop2));
   } // #cups
   &#utensils {
-    @include category-button($grad-utensil, $color-utensil-stop1, $color-utensil-stop2);
+    @include category-button(grad(utensil), color(utensil-stop1), color(utensil-stop2));
   } // #utensils
 
 } // .product-cat
@@ -281,25 +275,25 @@ header a {
 
 // Sidebar --------------------------------------------------
 #sidebar {
-  background: lighten($color-bg-abs, 30%) $grad-sidebar;
-  color: $color-text-alt;
+  background: lighten(color(bg-abs), 30%) grad(sidebar);
+  color: color(text-alt);
 
   a {
-    color: $color-linkalt;
+    color: color(linkalt);
     font-style: italic;
     &:hover, &:focus {
-      color: $color-linkalt-hover;
+      color: color(linkalt-hover);
       text-decoration: none;
     } // :hover, :focus
     &:active {
-      color: $color-linkalt-active;
+      color: color(linkalt-active);
     } // :active
   } // a
 
 } // #sidebar
 
 .feature {
-  border: 4px double $color-text-alt;
+  border: 4px double color(text-alt);
   margin-bottom: $spacer;
   padding: $spacer * 0.50;
 
@@ -308,10 +302,10 @@ header a {
   } // :last-of-type
 
   h2, h3, h4 {
-    font-family: $font-headings;
+    font-family: font(headings);
     font-weight: bold;
-    border-bottom: $size-border solid $color-text-alt;
-    text-shadow: 0 1px 0 $color-text-shadow1, 0 -1px 0 $color-text-shadow2;
+    border-bottom: $size-border solid color(text-alt);
+    text-shadow: 0 1px 0 color(text-shadow1), 0 -1px 0 color(text-shadow2);
   } // h2, h3, h4
 
   p, li {
@@ -323,11 +317,11 @@ header a {
 #cat-cover {
   float: left;
   margin: 0.5em 0.5em 0 0;
-  border: 5px solid $color-text;
+  border: 5px solid color(text);
   max-width: 50%;
 
   &:hover {
-    border-color: lighten($color-text, 20%);
+    border-color: lighten(color(text), 20%);
   } // :hover
 
 } // #cat-cover
@@ -335,18 +329,18 @@ header a {
 
 // Product Page --------------------------------------------------
 #product-content {
-  background: $color-bg-abs;
-  color: $color-text-alt;
-  border: 2px solid $color-bg-main;
+  background: color(bg-abs);
+  color: color(text-alt);
+  border: 2px solid color(bg-main);
 
 // At the Top --------------------------------------------------
   #title {
-    text-align: center;
-    margin: 1em 0;
+    //text-align: center;
+    //margin: 1em 0;
 
     .method-button {
       display: inline-block;
-      background: darken($color-accent, 30%) $grad-accent;
+      background: darken(color(accent), 30%) grad(accent);
       -webkit-border-radius: 1em;
       -moz-border-radius: 1em;
       border-radius: 1em;
@@ -365,40 +359,40 @@ header a {
       } // .selected
 
       &#link-digital {
-        @include method-button($color-digital, $grad-digital);
+        @include method-button(color(digital), grad(digital));
 
         &:hover, &.selected {
-          @include method-button-selected($color-digital, $grad-digital, 5px);
+          @include method-button-selected(color(digital), grad(digital), 5px);
         } // :hover, .selected
 
         &.selected {
-          @include method-button-selected($color-digital, $grad-digital, 3px);
+          @include method-button-selected(color(digital), grad(digital), 3px);
         } // .selected
 
       } // #link-digital
 
       &#link-tradition {
-        @include method-button($color-tradition, $grad-tradition);
+        @include method-button(color(tradition), grad(tradition));
 
         &:hover, &.selected {
-          @include method-button-selected($color-tradition, $grad-tradition, 5px);
+          @include method-button-selected(color(tradition), grad(tradition), 5px);
         } // :hover, .selected
 
         &.selected {
-          @include method-button-selected($color-tradition, $grad-tradition, 3px);
+          @include method-button-selected(color(tradition), grad(tradition), 3px);
         } // .selected
 
       } // #link-tradition
 
       &#link-hispeed {
-        @include method-button($color-hispeed, $grad-hispeed);
+        @include method-button(color(hispeed), grad(hispeed));
 
         &:hover, &.selected {
-          @include method-button-selected($color-hispeed, $grad-hispeed, 5px);
+          @include method-button-selected(color(hispeed), grad(hispeed), 5px);
         } // :hover, .selected
 
         &.selected {
-          @include method-button-selected($color-hispeed, $grad-hispeed, 3px);
+          @include method-button-selected(color(hispeed), grad(hispeed), 3px);
         } // .selected
 
       } // #link-hispeed
@@ -429,11 +423,11 @@ header a {
 
   #features-options {
     padding: 1em;
-    border: 2px solid $color-text-alt;
+    border: 2px solid color(text-alt);
 
     h2 {
-      color: $color-accent;
-      font-family: $font-headings;
+      color: color(accent);
+      font-family: font(headings);
       text-transform: uppercase;
       font-size: 1.5em;
       font-weight: 900;
@@ -464,7 +458,7 @@ header a {
 
   dt {
     float: left;
-    color: $color-accent;
+    color: color(accent);
     margin-right: 0.5em;
   } // dt
 
@@ -487,6 +481,28 @@ header a {
   } // .aside
 
 } // #text-notes
+
+
+// Product Cards --------------------------------------------------
+.item-info {
+  background: color(accent) grad(accent);
+  -webkit-box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.3);
+} // .item-info
+
+//noinspection CssNoGenericFontName
+%item-info__shared {
+  font-family: font(headings);
+} // %item-info__shared
+
+.item-info__number {
+  @extend %item-info__shared;
+} // .item-info__number
+
+.item-info__description {
+  @extend %item-info__shared;
+} // .item-info__description
 
 
 // Footer --------------------------------------------------

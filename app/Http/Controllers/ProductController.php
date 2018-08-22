@@ -250,7 +250,7 @@ class ProductController extends Controller
         }
 
         $html .= "<p>";
-        $html .= "<span class='accented'>Be sure to specify:</span> ";
+        $html .= "<span class='is-accented'>Be sure to specify:</span> ";
         $html .= $productColor;
         $html .= $imprintMethod;
         $html .=
@@ -425,14 +425,17 @@ class ProductController extends Controller
                     : '';
 
             // Outer div for the entire card.
-            $output .= "<div class='item-info {$singletonClass}'>" . PHP_EOL;
+            $output .= "<div class='col-12 col-sm-6 py-2'>" . PHP_EOL;
+            $output .= "<div class='{$singletonClass} item-info card text-center'>" . PHP_EOL;
+            $output .= "<div class='row'>" . PHP_EOL;
 
             // Div for the Product number (with Print Method), thumbnail, and description.
             // Usually on the left side of the card.
-            $output .= "<div class='itd'>" . PHP_EOL;
+            $output .= "<div class='col-12 col-md-5'>" . PHP_EOL;
+            $output .= "<div class='itd card-header'>" . PHP_EOL;
 
             // Product number with Print Method
-            $output .= "<h4 class='item-number'>{$productName}</h4>" . PHP_EOL;
+            $output .= "<h4 class='item-info__number'>{$productName}</h4>" . PHP_EOL;
 
             // Thumbnail
             $output .= "<div class='item-thumb'>" . PHP_EOL;
@@ -449,10 +452,11 @@ class ProductController extends Controller
 
             // Item Description
             $output .=
-                "<h6 class='item-description'>{$product->description}</h6>" .
+                "<h6 class='item-info__description'>{$product->description}</h6>" .
                 PHP_EOL;
 
-            $output .= "</div>" . PHP_EOL; // div.itd
+            $output .= "</div>" . PHP_EOL; // div.itd.card-header
+            $output .= "</div>" . PHP_EOL; // div.col-12.col-md-5
 
             // Get the Quantity Breaks and Prices.
             $quantityBreaks = $filteredPrices->filter(function ($value) use (
@@ -461,7 +465,8 @@ class ProductController extends Controller
                 return $value->product_id == $product->id;
             });
 
-            $output .= "<div class='item-pricing'>" . PHP_EOL;
+            $output .= "<div class='col-12 col-md-7'>" . PHP_EOL;
+            $output .= "<div class='item-pricing card-body'>" . PHP_EOL;
             $output .= "<table>" . PHP_EOL;
             $output .= "<thead>" . PHP_EOL;
             $output .= "<tr>" . PHP_EOL;
@@ -577,9 +582,14 @@ class ProductController extends Controller
 
             $output .= "</div>" . PHP_EOL; // div.product-notes
 
-            $output .= "</div>" . PHP_EOL; // div.item-pricing
+            $output .= "</div>" . PHP_EOL; // div.item-pricing.card-body
+            $output .= "</div>" . PHP_EOL; // div.col-12.col-md-7
+
+            $output .= "</div>" . PHP_EOL; // div.row
 
             $output .= "</div>" . PHP_EOL; // div.item-info
+
+            $output .= "</div>" . PHP_EOL; // div.col-12.col-sm-6
         }
 
         return $output;

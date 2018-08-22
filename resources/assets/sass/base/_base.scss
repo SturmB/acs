@@ -1,63 +1,63 @@
 // Overall --------------------------------------------------
+//noinspection CssNoGenericFontName
 body {
-  background: $color-bg-abs $bg-main no-repeat top center;
-  font-family: $font-paragraph;
-  color: $color-text;
+  background: color(bg-abs) image(bg-main) no-repeat top center;
+  font-family: font(paragraph);
+  color: color(text);
 } // body
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 900;
-}
+} // h1, h2, h3, h4, h5
 
 // Color certain texts. (Mostly meant for use with `<span>`.)
-.accented {
-  color: $color-accent;
-}
-
+.is-accented {
+  color: color(accent);
+} // .is-accented
 
 // FontAwesome --------------------------------------------------
 .svg-inline--fa {
   margin: 0 0.25em;
 } // .svg-inline--fa
 
-
 // Anchors --------------------------------------------------
 a {
-  color: $color-link;
+  color: color(link);
   font-style: italic;
 
   &:hover,
   &:focus {
-    color: $color-link-hover;
+    color: color(link-hover);
   } // :hover, :focus
   &:active {
-    color: $color-link-active;
+    color: color(link-active);
   } // :active
 } // a
 
-
 // Footer --------------------------------------------------
 footer {
-  color: $color-text;
+  color: color(text);
 
   a {
-    color: lighten($color-text, 60%);
+    color: lighten(color(text), 60%);
     text-decoration: underline;
 
     &:hover {
-      color: lighten($color-text, 15%);
+      color: lighten(color(text), 15%);
     } // :hover
   } // a
 } // footer
-
 
 // FlexiNav overrides --------------------------------------------------
 .container {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-}
-
+} // .container
 
 // Base text styling --------------------------------------------------
 .aside {
