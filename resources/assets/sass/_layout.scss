@@ -504,6 +504,35 @@ header a {
   @extend %item-info__shared;
 } // .item-info__description
 
+.item-info__thumbnail {
+  border: $size-border solid color(bg-abs);
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+
+  @include media-breakpoint-up(lg) {
+    width: 160px;
+    height: 160px;
+  } // media-breakpoint-up(lg)
+
+} // .item-info__thumbnail
+
+.thumbnail__image {
+  position: absolute;
+  border: none;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+
+  @include media-breakpoint-up(lg) {
+    width: 160px - ($size-border * 2);
+    height: 160px - ($size-border * 2);
+  } // media-breakpoint-up(lg)
+
+} // .thumbnail__image
+
 
 // Footer --------------------------------------------------
 footer {

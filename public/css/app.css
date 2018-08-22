@@ -11192,6 +11192,37 @@ header a {
   font-family: proxima-nova-extra-condensed, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.item-info__thumbnail {
+  border: 3px solid #000000;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+}
+
+@media (min-width: 992px) {
+  .item-info__thumbnail {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.thumbnail__image {
+  position: absolute;
+  border: none;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 992px) {
+  .thumbnail__image {
+    width: 154px;
+    height: 154px;
+  }
+}
+
 footer p {
   text-align: center;
 }

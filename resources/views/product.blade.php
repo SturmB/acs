@@ -63,3 +63,7 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('vendor/jquery-infinite-rotator/js/infinite-rotator.js') }}"></script>
+@endpush

@@ -284,7 +284,7 @@ class ProductController extends Controller
     {
         // Preface the main thumbnail with the "Sample" ribbon.
         $result =
-            "<div class='ribbon-wrapper'><div class='ribbon'>Sample</div></div>" .
+            "<div class='ribbon-wrapper'><div class='thumbnail__ribbon'>Sample</div></div>" .
             PHP_EOL;
 
         $folder = "images/products-assets/{$productLine->productSubcategory
@@ -329,7 +329,7 @@ class ProductController extends Controller
             preg_match("/^[DTH]-/", $decodedProductName) > 0 ? true : false;
         $blankClass = '';
         if ($sampleExists) {
-            $blankClass = 'thumbnail-blank';
+            $blankClass = 'thumbnail__image--blank';
         }
 
         // Build up the HTML.
@@ -342,11 +342,11 @@ class ProductController extends Controller
                 "<div class='{$rotatingImagesClass}' {$rotatingImagesStyle}>" .
                 PHP_EOL;
             $result .=
-                "<img src='{$blankImage}' class='thumbnail-image {$blankClass}' data-rjs='3' alt='{$image}'>" .
+                "<img src='{$blankImage}' class='rounded thumbnail__image {$blankClass}' data-rjs='3' alt='{$image}'>" .
                 PHP_EOL;
             if ($sampleExists) {
                 $result .=
-                    "<img src='{$sampleImage}' class='thumbnail-image thumbnail-sample' data-rjs='3' style='display: none;' alt='{$image}'>" .
+                    "<img src='{$sampleImage}' class='rounded thumbnail__image thumbnail__image--sample' data-rjs='3' style='display: none;' alt='{$image}'>" .
                     PHP_EOL;
             }
             $result .= "</div>" . PHP_EOL;
@@ -421,12 +421,14 @@ class ProductController extends Controller
             $singletonClass = $products->count() === 1 ? 'singleton' : '';
             $rotatorClass =
                 stripos($decodedProductName, "(COLOR)") !== false
-                    ? 'rotating-item-wrapper'
+                    ? 'rotating-item-group'
                     : '';
 
             // Outer div for the entire card.
             $output .= "<div class='col-12 col-sm-6 py-2'>" . PHP_EOL;
-            $output .= "<div class='{$singletonClass} item-info card text-center'>" . PHP_EOL;
+            $output .=
+                "<div class='{$singletonClass} item-info card text-center'>" .
+                PHP_EOL;
             $output .= "<div class='row'>" . PHP_EOL;
 
             // Div for the Product number (with Print Method), thumbnail, and description.
@@ -435,12 +437,13 @@ class ProductController extends Controller
             $output .= "<div class='itd card-header'>" . PHP_EOL;
 
             // Product number with Print Method
-            $output .= "<h4 class='item-info__number'>{$productName}</h4>" . PHP_EOL;
+            $output .=
+                "<h4 class='item-info__number'>{$productName}</h4>" . PHP_EOL;
 
             // Thumbnail
-            $output .= "<div class='item-thumb'>" . PHP_EOL;
+            $output .= "<div class='item-info__thumbnail rounded'>" . PHP_EOL;
             $output .=
-                "<div class='item-thumb-overlay overlay-rollover {$rotatorClass}'>" .
+                "<div class='thumbnail__overlay thumbnail__overlay--rollover {$rotatorClass}'>" .
                 PHP_EOL;
             $output .= $this->getThumbnails(
                 $productLine,
@@ -487,7 +490,6 @@ class ProductController extends Controller
             $chargeNames = array_unique($chargeNames);
             $numColumns = 2 + count($chargeNames);
 
-
             // Insert the first two columns, Quantity and Price.
             $output .=
                 "<th class='main-column columns{$numColumns}'>Quantity</th>" .
@@ -506,9 +508,15 @@ class ProductController extends Controller
                     ->first();
                 $iconBaseName = "charge-{$charge->charge_type_id}";
                 $chargeLongName = $charge->chargeType->long_name;
-                $iconHeader = asset("images/charges-icons/{$iconBaseName}-th.svg");
-                $iconPrint = asset("images/charges-icons/{$iconBaseName}-print.svg");
-                $iconLegend = asset("images/charges-icons/{$iconBaseName}-legend.svg");
+                $iconHeader = asset(
+                    "images/charges-icons/{$iconBaseName}-th.svg"
+                );
+                $iconPrint = asset(
+                    "images/charges-icons/{$iconBaseName}-print.svg"
+                );
+                $iconLegend = asset(
+                    "images/charges-icons/{$iconBaseName}-legend.svg"
+                );
 
                 $symbolLegend .= "<li>" . PHP_EOL;
                 $symbolLegend .= "<div class='icon baseline'>" . PHP_EOL;
@@ -520,8 +528,11 @@ class ProductController extends Controller
 
                 $output .= "<th class='columns{$numColumns}'>" . PHP_EOL;
                 $output .= "<div class='icon baseline'>" . PHP_EOL;
-                $output .= "<img src='{$iconHeader}' class='svg icon-screen'>" . PHP_EOL;
-                $output .= "<img src='{$iconPrint}' class='svg icon-print'>" . PHP_EOL;
+                $output .=
+                    "<img src='{$iconHeader}' class='svg icon-screen'>" .
+                    PHP_EOL;
+                $output .=
+                    "<img src='{$iconPrint}' class='svg icon-print'>" . PHP_EOL;
                 $output .= "</div>" . PHP_EOL;
                 $output .= "</th>" . PHP_EOL;
             }
@@ -548,14 +559,17 @@ class ProductController extends Controller
                 $output .= "<tr>" . PHP_EOL;
 
                 // Quantity cell
-                $output .= "<td class='numeric'>{$break->productLineQuantityBreak->quantity_break_id}</td>" . PHP_EOL;
+                $output .=
+                    "<td class='numeric'>{$break->productLineQuantityBreak
+                        ->quantity_break_id}</td>" . PHP_EOL;
 
                 // Price cell
                 $output .= "<td class='numeric'>{$break->price}</td>" . PHP_EOL;
 
                 // Charges cells
                 foreach ($charges as $charge) {
-                    $output .= "<td class='numeric'>{$charge->amount}</td>" . PHP_EOL;
+                    $output .=
+                        "<td class='numeric'>{$charge->amount}</td>" . PHP_EOL;
                 }
 
                 $output .= "</tr>" . PHP_EOL;
@@ -563,7 +577,6 @@ class ProductController extends Controller
 
             $output .= "</tbody>" . PHP_EOL;
             $output .= "</table>" . PHP_EOL;
-
 
             $output .= "<div class='product-notes'>" . PHP_EOL;
 
