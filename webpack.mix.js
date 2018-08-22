@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,17 +11,22 @@ let mix = require('laravel-mix');
  |
  */
 
+/*
 mix.autoload({
-    retinajs: 'retinajs',
+  retinajs: "retinajs"
 });
+*/
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .browserSync('acs.test');
+mix
+  .js("resources/assets/js/app.js", "public/js")
+  .extract(["retinajs"])
+  .sass("resources/assets/sass/app.scss", "public/css")
+  .browserSync("acs.test");
 
 if (!mix.inProduction()) {
-    mix.webpackConfig({
-        devtool: 'source-map'
+  mix
+    .webpackConfig({
+      devtool: "source-map"
     })
-        .sourceMaps()
+    .sourceMaps();
 }

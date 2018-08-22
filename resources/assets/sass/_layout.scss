@@ -505,6 +505,7 @@ header a {
 } // .item-info__description
 
 .item-info__thumbnail {
+  @include retina("/images/product-background.jpg", 3, cover, center center no-repeat);
   border: $size-border solid color(bg-abs);
   position: relative;
   display: inline-block;
