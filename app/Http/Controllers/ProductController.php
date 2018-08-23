@@ -284,7 +284,7 @@ class ProductController extends Controller
     {
         // Preface the main thumbnail with the "Sample" ribbon.
         $result =
-            "<div class='ribbon-wrapper'><div class='thumbnail__ribbon'>Sample</div></div>" .
+            "<div class='thumbnail__ribbon-area'><div class='thumbnail__ribbon'>Sample</div></div>" .
             PHP_EOL;
 
         $folder = "images/products-assets/{$productLine->productSubcategory
@@ -425,25 +425,24 @@ class ProductController extends Controller
                     : '';
 
             // Outer div for the entire card.
-            $output .= "<div class='col-12 col-sm-6 py-2'>" . PHP_EOL;
+            $output .= "<div class='col-12 col-xl-6 py-2'>" . PHP_EOL;
             $output .=
                 "<div class='{$singletonClass} item-info card text-center'>" .
                 PHP_EOL;
-            $output .= "<div class='row'>" . PHP_EOL;
+            $output .= "<div class='row m-0'>" . PHP_EOL;
 
             // Div for the Product number (with Print Method), thumbnail, and description.
             // Usually on the left side of the card.
-            $output .= "<div class='col-12 col-md-5'>" . PHP_EOL;
-            $output .= "<div class='itd card-header'>" . PHP_EOL;
+            $output .= "<div class='col-12 col-sm-5 item-info__num-thumb-desc card-header p-2'>" . PHP_EOL;
 
             // Product number with Print Method
             $output .=
-                "<h4 class='item-info__number'>{$productName}</h4>" . PHP_EOL;
+                "<h5 class='item-info__number my-4'>{$productName}</h5>" . PHP_EOL;
 
             // Thumbnail
             $output .= "<div class='item-info__thumbnail rounded'>" . PHP_EOL;
             $output .=
-                "<div class='thumbnail__overlay thumbnail__overlay--rollover {$rotatorClass}'>" .
+                "<div class='thumbnail__overlay {$rotatorClass} rounded'>" .
                 PHP_EOL;
             $output .= $this->getThumbnails(
                 $productLine,
@@ -455,11 +454,10 @@ class ProductController extends Controller
 
             // Item Description
             $output .=
-                "<h6 class='item-info__description'>{$product->description}</h6>" .
+                "<h6 class='item-info__description my-4'>{$product->description}</h6>" .
                 PHP_EOL;
 
-            $output .= "</div>" . PHP_EOL; // div.itd.card-header
-            $output .= "</div>" . PHP_EOL; // div.col-12.col-md-5
+            $output .= "</div>" . PHP_EOL; // div.item-info__num-thumb-desc.card-header
 
             // Get the Quantity Breaks and Prices.
             $quantityBreaks = $filteredPrices->filter(function ($value) use (
@@ -468,9 +466,11 @@ class ProductController extends Controller
                 return $value->product_id == $product->id;
             });
 
-            $output .= "<div class='col-12 col-md-7'>" . PHP_EOL;
-            $output .= "<div class='item-pricing card-body'>" . PHP_EOL;
-            $output .= "<table>" . PHP_EOL;
+            $output .= "<div class='col-12 col-sm-7 item-info__pricing card-body p-2'>" . PHP_EOL;
+
+            $output .=
+                "<table class='item-info__price-table table table-sm table-striped table-bordered bg-light mb-2'>" .
+                PHP_EOL;
             $output .= "<thead>" . PHP_EOL;
             $output .= "<tr>" . PHP_EOL;
 
@@ -492,10 +492,10 @@ class ProductController extends Controller
 
             // Insert the first two columns, Quantity and Price.
             $output .=
-                "<th class='main-column columns{$numColumns}'>Quantity</th>" .
+                "<th class='price-table__th price-table__main-column price-table--columns{$numColumns} bg-accent text-light'>Quantity</th>" .
                 PHP_EOL;
             $output .=
-                "<th class='main-column columns{$numColumns}'>Price</th>" .
+                "<th class='price-table__th price-table__main-column price-table--columns{$numColumns} bg-accent text-light'>Price</th>" .
                 PHP_EOL;
 
             // Insert the rest of the columns (the additional Charges).
@@ -519,15 +519,17 @@ class ProductController extends Controller
                 );
 
                 $symbolLegend .= "<li>" . PHP_EOL;
-                $symbolLegend .= "<div class='icon baseline'>" . PHP_EOL;
-                $symbolLegend .= "<img src='{$iconLegend}' class='svg icon-screen'>";
-                $symbolLegend .= "<img src='{$iconPrint}' class='svg icon-print'>";
-                $symbolLegend .= " = {$chargeLongName}" . PHP_EOL;
+                $symbolLegend .= "<div class='icon'>" . PHP_EOL;
+                $symbolLegend .= "<img src='{$iconLegend}' class='svg icon-screen mx-1'>";
+                $symbolLegend .= "<img src='{$iconPrint}' class='svg icon-print mx-1'>";
+                $symbolLegend .= "{$chargeLongName}" . PHP_EOL;
                 $symbolLegend .= "</div>" . PHP_EOL;
                 $symbolLegend .= "</li>" . PHP_EOL;
 
-                $output .= "<th class='columns{$numColumns}'>" . PHP_EOL;
-                $output .= "<div class='icon baseline'>" . PHP_EOL;
+                $output .=
+                    "<th class='price-table__th price-table--columns{$numColumns} bg-accent text-light'>" .
+                    PHP_EOL;
+                $output .= "<div class='icon'>" . PHP_EOL;
                 $output .=
                     "<img src='{$iconHeader}' class='svg icon-screen'>" .
                     PHP_EOL;
@@ -559,17 +561,26 @@ class ProductController extends Controller
                 $output .= "<tr>" . PHP_EOL;
 
                 // Quantity cell
+                $formattedQuantity = number_format(
+                    $break->productLineQuantityBreak->quantity_break_id,
+                    0
+                );
                 $output .=
-                    "<td class='numeric'>{$break->productLineQuantityBreak
-                        ->quantity_break_id}</td>" . PHP_EOL;
+                    "<td class='price-table__td price-table--quantity bg-accent text-light'>{$formattedQuantity}</td>" .
+                    PHP_EOL;
 
                 // Price cell
-                $output .= "<td class='numeric'>{$break->price}</td>" . PHP_EOL;
+                $formattedPrice = number_format($break->price, 0);
+                $output .=
+                    "<td class='price-table__td text-dark'><span class='sup'>$</span>{$formattedPrice}</td>" .
+                    PHP_EOL;
 
                 // Charges cells
                 foreach ($charges as $charge) {
+                    $formattedCharge = number_format($charge->amount, 0);
                     $output .=
-                        "<td class='numeric'>{$charge->amount}</td>" . PHP_EOL;
+                        "<td class='price-table__td price-table--charge text-dark'><span class='sup'>$</span>{$formattedCharge}</td>" .
+                        PHP_EOL;
                 }
 
                 $output .= "</tr>" . PHP_EOL;
@@ -578,7 +589,7 @@ class ProductController extends Controller
             $output .= "</tbody>" . PHP_EOL;
             $output .= "</table>" . PHP_EOL;
 
-            $output .= "<div class='product-notes'>" . PHP_EOL;
+            $output .= "<div class='item-info__notes text-left'>" . PHP_EOL;
 
             // Print the "Every Thousand" note.
             if ($everyThousand) {
@@ -588,15 +599,14 @@ class ProductController extends Controller
             }
 
             if ($numColumns > 2) {
-                $output .= "<ul>" . PHP_EOL;
+                $output .= "<ul class='list-unstyled'>" . PHP_EOL;
                 $output .= $symbolLegend;
                 $output .= "</ul>" . PHP_EOL;
             }
 
-            $output .= "</div>" . PHP_EOL; // div.product-notes
+            $output .= "</div>" . PHP_EOL; // div.item-info__notes
 
-            $output .= "</div>" . PHP_EOL; // div.item-pricing.card-body
-            $output .= "</div>" . PHP_EOL; // div.col-12.col-md-7
+            $output .= "</div>" . PHP_EOL; // div.item-info__pricing card-body
 
             $output .= "</div>" . PHP_EOL; // div.row
 

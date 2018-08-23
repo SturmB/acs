@@ -1,3 +1,8 @@
+// App --------------------------------------------------
+#app {
+  max-width: 1200px;
+}
+
 // Header --------------------------------------------------
 header a {
   display: none;
@@ -6,9 +11,7 @@ header a {
   @include media-breakpoint-up(sm) {
     display: block;
   } // media-breakpoint-up(sm)
-
 } // header a
-
 
 // Navbar --------------------------------------------------
 .navbar {
@@ -18,7 +21,6 @@ header a {
     font-style: initial;
     font-weight: bold;
   } // a
-
 } // .navbar
 
 // Animate the dropdown menus.
@@ -40,7 +42,6 @@ header a {
   opacity: 1;
 } // .dropdown:hover .dropdown-menu
 
-
 /* FlexiNav */
 .flexinav,
 .flexinav_collapse {
@@ -52,7 +53,7 @@ header a {
 .flexinav_acslightred,
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li,
 .flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.noactive,
-.flexinav_acslightred +  .flexinav_btn {
+.flexinav_acslightred + .flexinav_btn {
   //background: #5f0609;
   background: color(accent);
 }
@@ -66,23 +67,34 @@ header a {
   //color: #af0b11;
   color: lighten(color(accent), 30%);
 }
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active,
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+.flexinav_acslightred
+  .flexinav_wrapper
+  .flexinav_menu
+  > li.flexinav_collapse_active,
+.flexinav_acslightred
+  .flexinav_wrapper
+  .flexinav_menu
+  > li.flexinav_collapse_active:hover {
   //background: #3f0406;
   background: darken(color(accent), 10%);
 }
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive,
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+.flexinav_acslightred
+  .flexinav_wrapper
+  .flexinav_menu
+  > li.flexinav_collapse_noactive,
+.flexinav_acslightred
+  .flexinav_wrapper
+  .flexinav_menu
+  > li.flexinav_collapse_noactive:hover {
   //background: #5f0609;
   background: color(accent);
 }
 
 // Fix a few things with FlexiNav, including addressing the new FontAwesome 5.
 .flexinav {
-
   .dropdown_parent span:after,
   .dropdown_parent_left span:after {
-    content: '\f105';
+    content: "\f105";
     font-family: "Font Awesome 5 Pro", sans-serif;
     float: right;
     padding-top: 1px;
@@ -92,18 +104,15 @@ header a {
   .dropdown_parent_left > a > span {
     padding-left: 0;
   } // .dropdown_parent > a > span, .dropdown_parent_left > a > span
-
 } // .flexinav
 
 // Slightly increase the font size of the main Menu Categories.
 .flexinav .flexinav_wrapper .flexinav_menu > li > a,
 .flexinav .flexinav_wrapper .flexinav_menu > li > span,
 .flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
-
   @include media-breakpoint-up(xl) {
     font-size: 13px;
   } // media-breakpoint-up(xl)
-
 } // li > a, li > span, li > span > a
 
 // Scale up the "Navigation" text on small screen sizes.
@@ -116,10 +125,8 @@ header a {
   padding: 0;
 }
 
-
 // Jumbotron --------------------------------------------------
 #splash {
-
   //background-image: url('/storage/images/hero-01.jpg');
   overflow: hidden;
 
@@ -133,18 +140,15 @@ header a {
     left: 50%;
     top: 10%;
     font-family: font(script);
-    color: #FFFFFF;
+    color: #ffffff;
     text-indent: 1em;
 
     @include media-breakpoint-up(xl) {
       font-size: 3.5em;
-      text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.50);
+      text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.5);
     } // media-breakpoint-up(xl)
-
   } // h1
-
 } // #splash
-
 
 // Main Content --------------------------------------------------
 #main-content {
@@ -155,11 +159,9 @@ header a {
     display: none;
   } // media-breakpoint-down(sm)
   */
-
 } // #main-content
 
 #welcome-aboard-special {
-
   .promo-photo {
     border: 1px solid color(text);
     //@include box-shadow(0 5px 10px rgba(color(bg-abs), 0.15)); // Doesn't seem to work!
@@ -169,17 +171,14 @@ header a {
     @include border-radius(5px);
     margin-bottom: 0.5em;
   } // .promo-photo
-
 } // #welcome-aboard-special
 
 .article {
-
   h2 {
     padding-top: 0.25em;
     border-top: $size-border solid color(text);
     text-shadow: 0 -1px 0 color(text-shadow2), 0 1px 0 color(text-shadow1);
   } // h2
-
 } // .article
 
 .was-item {
@@ -193,16 +192,14 @@ header a {
     font-style: italic;
     font-weight: bold;
   } // h4
-
 } // .was-item
 
 .gallery-wrapper {
   margin: 0 -10px;
 
-  &>div {
+  & > div {
     padding: 0 10px;
   } // &>div
-
 } // .gallery-wrapper
 
 .product-cat {
@@ -242,7 +239,6 @@ header a {
     img {
       //width: 100%;
     } // img
-
   } // figure
 
   /*
@@ -252,26 +248,44 @@ header a {
   */
 
   &#napkins {
-    @include category-button(grad(napkin), color(napkin-stop1), color(napkin-stop2));
+    @include category-button(
+      grad(napkin),
+      color(napkin-stop1),
+      color(napkin-stop2)
+    );
   } // #napkins
   &#coasters {
-    @include category-button(grad(coaster), color(coaster-stop1), color(coaster-stop2));
+    @include category-button(
+      grad(coaster),
+      color(coaster-stop1),
+      color(coaster-stop2)
+    );
   } // #coasters
   &#stirpiks {
-    @include category-button(grad(stirpik), color(stirpik-stop1), color(stirpik-stop2));
+    @include category-button(
+      grad(stirpik),
+      color(stirpik-stop1),
+      color(stirpik-stop2)
+    );
   } // #stirpiks
   &#plates {
-    @include category-button(grad(plate), color(plate-stop1), color(plate-stop2));
+    @include category-button(
+      grad(plate),
+      color(plate-stop1),
+      color(plate-stop2)
+    );
   } // #plates
   &#cups {
     @include category-button(grad(cup), color(cup-stop1), color(cup-stop2));
   } // #cups
   &#utensils {
-    @include category-button(grad(utensil), color(utensil-stop1), color(utensil-stop2));
+    @include category-button(
+      grad(utensil),
+      color(utensil-stop1),
+      color(utensil-stop2)
+    );
   } // #utensils
-
 } // .product-cat
-
 
 // Sidebar --------------------------------------------------
 #sidebar {
@@ -281,7 +295,8 @@ header a {
   a {
     color: color(linkalt);
     font-style: italic;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: color(linkalt-hover);
       text-decoration: none;
     } // :hover, :focus
@@ -289,29 +304,31 @@ header a {
       color: color(linkalt-active);
     } // :active
   } // a
-
 } // #sidebar
 
 .feature {
   border: 4px double color(text-alt);
   margin-bottom: $spacer;
-  padding: $spacer * 0.50;
+  padding: $spacer * 0.5;
 
   &:last-of-type {
     margin-bottom: initial;
   } // :last-of-type
 
-  h2, h3, h4 {
+  //noinspection CssNoGenericFontName
+  h2,
+  h3,
+  h4 {
     font-family: font(headings);
     font-weight: bold;
     border-bottom: $size-border solid color(text-alt);
     text-shadow: 0 1px 0 color(text-shadow1), 0 -1px 0 color(text-shadow2);
   } // h2, h3, h4
 
-  p, li {
+  p,
+  li {
     font-size: 0.75rem;
   } // p, li
-
 } // .feature
 
 #cat-cover {
@@ -323,9 +340,7 @@ header a {
   &:hover {
     border-color: lighten(color(text), 20%);
   } // :hover
-
 } // #cat-cover
-
 
 // Product Page --------------------------------------------------
 #product-content {
@@ -333,7 +348,7 @@ header a {
   color: color(text-alt);
   border: 2px solid color(bg-main);
 
-// At the Top --------------------------------------------------
+  // At the Top --------------------------------------------------
   #title {
     //text-align: center;
     //margin: 1em 0;
@@ -361,43 +376,52 @@ header a {
       &#link-digital {
         @include method-button(color(digital), grad(digital));
 
-        &:hover, &.selected {
+        &:hover,
+        &.selected {
           @include method-button-selected(color(digital), grad(digital), 5px);
         } // :hover, .selected
 
         &.selected {
           @include method-button-selected(color(digital), grad(digital), 3px);
         } // .selected
-
       } // #link-digital
 
       &#link-tradition {
         @include method-button(color(tradition), grad(tradition));
 
-        &:hover, &.selected {
-          @include method-button-selected(color(tradition), grad(tradition), 5px);
+        &:hover,
+        &.selected {
+          @include method-button-selected(
+            color(tradition),
+            grad(tradition),
+            5px
+          );
         } // :hover, .selected
 
         &.selected {
-          @include method-button-selected(color(tradition), grad(tradition), 3px);
+          @include method-button-selected(
+            color(tradition),
+            grad(tradition),
+            3px
+          );
         } // .selected
-
       } // #link-tradition
 
       &#link-hispeed {
         @include method-button(color(hispeed), grad(hispeed));
 
-        &:hover, &.selected {
+        &:hover,
+        &.selected {
           @include method-button-selected(color(hispeed), grad(hispeed), 5px);
         } // :hover, .selected
 
         &.selected {
           @include method-button-selected(color(hispeed), grad(hispeed), 3px);
         } // .selected
-
       } // #link-hispeed
 
-      h1, h5 {
+      h1,
+      h5 {
         font-weight: bold;
       }
 
@@ -409,13 +433,9 @@ header a {
         font-size: 0.8rem;
         margin-bottom: 0.2rem;
       } // h5
-
     } // .method-button
-
   } // #title
-
 } // #product-content
-
 
 // Features & Options Column --------------------------------------------------
 #fo-column {
@@ -425,6 +445,7 @@ header a {
     padding: 1em;
     border: 2px solid color(text-alt);
 
+    //noinspection CssNoGenericFontName
     h2 {
       color: color(accent);
       font-family: font(headings);
@@ -442,13 +463,9 @@ header a {
       li {
         margin-bottom: 0.5rem;
       } // li
-
     } // ul
-
   } // #features-options
-
 } // #fo-column
-
 
 // Text Notes --------------------------------------------------
 #text-notes {
@@ -479,9 +496,7 @@ header a {
     font-style: italic;
     font-weight: normal;
   } // .aside
-
 } // #text-notes
-
 
 // Product Cards --------------------------------------------------
 .item-info {
@@ -491,6 +506,16 @@ header a {
   box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.3);
 } // .item-info
 
+.item-info__num-thumb-desc {
+  border-bottom: 2px groove color(accent-darker);
+
+  @include media-breakpoint-up(sm) {
+    border-bottom: 0;
+    border-right: 2px groove color(accent-darker);
+  } // @include media-breakpoint-up(sm)
+
+} // .item-info__num-thumb-desc
+
 //noinspection CssNoGenericFontName
 %item-info__shared {
   font-family: font(headings);
@@ -498,14 +523,97 @@ header a {
 
 .item-info__number {
   @extend %item-info__shared;
+  font-size: 1.1em;
 } // .item-info__number
 
 .item-info__description {
   @extend %item-info__shared;
+  font-size: 0.9em;
 } // .item-info__description
 
+
+// Corner Ribbon
+.thumbnail__ribbon-area {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+
+  display: none;
+  z-index: 10;
+} // .thumbnail__ribbon-area
+
+.thumbnail__ribbon {
+  font: bold 15px Sans-Serif;
+  color: darken(color(accent), 40%);
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.2) 0px 1px 0px;
+  text-transform: uppercase;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform:    rotate(-45deg);
+  -ms-transform:     rotate(-45deg);
+  -o-transform:      rotate(-45deg);
+  position: relative;
+  padding: 5px 0;
+  right: -8px;
+  top: 20px;
+  width: 120px;
+  background: color(accent) grad(accent-selected);
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0 0 3px rgba(0,0,0,0.3);
+  box-shadow:         0 0 3px rgba(0,0,0,0.3);
+  float: right;
+
+  &:before, &:after {
+    content: "";
+    border-top:   2px solid darken(color(accent), 30%);
+    border-left:  2px solid transparent;
+    border-right: 2px solid transparent;
+    position:absolute;
+    bottom: -2px;
+  } // &:before, &:after
+
+  &:before {
+    left: 0;
+  } // &:before
+
+  &:after {
+    right: 0;
+  } // &:after
+
+} // .thumbnail__ribbon
+
+.thumbnail__overlay--rollover {
+  width: 200px;
+  height: 200px;
+  margin-top: -$size-border;
+  margin-left: -$size-border;
+
+  @include media-breakpoint-up(lg) {
+    width: 160px;
+    height: 160px;
+  } // media-breakpoint-up(lg)
+
+  &:hover {
+    background: rgba(color(bg-abs), 0.35);
+
+    .thumbnail__ribbon-area {
+      display: block;
+    } // .thumbnail__ribbon-area
+
+  } // &:hover
+
+} // .thumbnail__overlay--rollover
+
 .item-info__thumbnail {
-  @include retina("/images/product-background.jpg", 3, cover, center center no-repeat);
+  @include retina(
+    "/images/product-background.jpg",
+    3,
+    cover,
+    center center no-repeat
+  );
   border: $size-border solid color(bg-abs);
   position: relative;
   display: inline-block;
@@ -516,7 +624,6 @@ header a {
     width: 160px;
     height: 160px;
   } // media-breakpoint-up(lg)
-
 } // .item-info__thumbnail
 
 .thumbnail__image {
@@ -531,15 +638,47 @@ header a {
     width: 160px - ($size-border * 2);
     height: 160px - ($size-border * 2);
   } // media-breakpoint-up(lg)
-
 } // .thumbnail__image
 
+.item-info__price-table {
+  border: 2px solid color(accent-dark);
+  table-layout: fixed;
+} // .item-info__price-table
+
+%border-color-shared {
+  border-color: color(accent-dark) !important;
+} // %border-color-shared
+
+//noinspection CssNoGenericFontName
+.price-table__th {
+  @extend %border-color-shared;
+  font-family: font(headings);
+  text-transform: uppercase;
+}
+
+//noinspection CssNoGenericFontName
+.price-table__td {
+  @extend %border-color-shared;
+  font-family: font(mono);
+  font-size: 0.8em;
+} // td, th
+
+.price-table--quantity {
+  border-right-width: 2px !important;
+} // .price-table__quantity
+
+.price-table--charge {
+  font-size: 0.7em;
+} // .price-table--charge
+
+.item-info__notes {
+  font-size: 0.6em;
+  line-height: 1em;
+} // .item-info__notes
 
 // Footer --------------------------------------------------
 footer {
-
   p {
     text-align: center;
   } // p
-
 } // footer

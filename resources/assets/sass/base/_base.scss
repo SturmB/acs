@@ -14,10 +14,15 @@ h5 {
   font-weight: 900;
 } // h1, h2, h3, h4, h5
 
+// Coloring --------------------------------------------------
 // Color certain texts. (Mostly meant for use with `<span>`.)
 .is-accented {
   color: color(accent);
 } // .is-accented
+
+.bg-accent {
+  background-color: color(accent);
+} // .bg-accent
 
 // FontAwesome --------------------------------------------------
 .svg-inline--fa {
@@ -65,3 +70,38 @@ footer {
   font-style: italic;
   font-weight: normal;
 } // .aside
+
+.small, .sub, .sup {
+  //font-size: 0.83em;
+  font-size: 0.50em;
+} // .small, .sub, .sup
+.sub {
+  vertical-align: sub;
+} // .sub
+.sup {
+  //vertical-align: super;
+  position: relative;
+  bottom: 1ex;
+} // .sup
+
+
+// Icons --------------------------------------------------
+.icon {
+  img {
+    width: 1em;
+    height: 1em;
+
+    &.icon-print {
+      display: none;
+    } // &.icon-print
+
+    @media print {
+      &.icon-print {
+        display: inline-block;
+      } // &.icon-print
+      &.icon-screen {
+        display: none;
+      } // &.icon-screen
+    } // @media print
+  } // img
+} // .icon

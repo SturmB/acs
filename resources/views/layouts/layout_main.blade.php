@@ -1,4 +1,4 @@
-<div id="app" class="container">
+<div id="app" class="container-fluid">
 
         @include('partials.header')
 

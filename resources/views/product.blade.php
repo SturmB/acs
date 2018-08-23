@@ -66,4 +66,24 @@
 
 @push('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jquery-infinite-rotator/js/infinite-rotator.js') }}"></script>
+    <script type="text/javascript">
+
+        $(function() {
+
+          // Set a .rollover class for _only_ those individual product images that _have_ a "Sample" version.
+          $(".thumbnail__image--blank").each(function() {
+            $(this)
+              .parents(".thumbnail__overlay")
+              .addClass("thumbnail__overlay--rollover");
+          });
+
+          // Toggle the "Sample" image for the individual product images.
+          $(".thumbnail__overlay").hover(function() {
+            $(this).find(".thumbnail__image.thumbnail__image--blank").toggle();
+            $(this).find(".thumbnail__image.thumbnail__image--sample").toggle();
+          });
+
+        });
+
+    </script>
 @endpush

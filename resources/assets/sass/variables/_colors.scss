@@ -19,6 +19,8 @@ $colors: (
   linkalt-hover       : lighten(#00ced1, 10%),
   linkalt-active      : lighten(#00ced1, 20%),
   accent              : #c61d23,
+  accent-dark         : darken(#c61d23, 10%),
+  accent-darker       : darken(#c61d23, 20%),
 
   napkin-stop1        : #f04d3f,
   napkin-stop2        : darken(#f04d3f, 10%),
