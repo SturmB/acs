@@ -11,6 +11,7 @@
         $imageContentClasses = 'col-md-8 col-lg-9';
         $splashImageClass .= ' pl-md-0 pr-md-3';
     }
+    $methodColor = '#' . $productLine->printMethod->hex;
     ?>
 
     <div id="product-content" class="p-3">
@@ -38,6 +39,7 @@
                 <div id="fo-column">
                     @if($hasFeatures)
                     <div id="features-options">
+                        <h2 style="color: {{ $methodColor }};">{{ $productLine->printMethod->long_name }}</h2>
                         <h2>Features &amp; Options</h2>
                         {!! $featuresHtml !!}
                     </div>
