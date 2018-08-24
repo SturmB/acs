@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col">
-                <div id="title">
+                <div id="title" class="text-center text-md-left">
                     <h1 class="is-accented">{{ $productLine->productSubcategory->long_name }}</h1>
                 </div>
             </div>

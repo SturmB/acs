@@ -10578,6 +10578,28 @@ a.text-dark:focus {
  * @param  {Value}  $extras: null       Any other `background` values to be added.
  */
 
+html {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 1.3rem;
+  }
+}
+
 body {
   background: #000000 url("/images/background-planes-2800x1600.jpg") no-repeat top center;
   font-family: proxima-nova, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -10646,7 +10668,7 @@ footer a:hover {
 .small,
 .sub,
 .sup {
-  font-size: 0.50em;
+  font-size: 0.60em;
 }
 
 .sub {
@@ -10674,28 +10696,6 @@ footer a:hover {
 
   .icon img.icon-screen {
     display: none;
-  }
-}
-
-html {
-  font-size: 0.75rem;
-}
-
-@media (min-width: 576px) {
-  html {
-    font-size: 1.0rem;
-  }
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 992px) {
-  html {
-    font-size: 1.4rem;
   }
 }
 
@@ -10816,14 +10816,27 @@ header a {
   left: 50%;
   top: 10%;
   font-family: spumante, script;
+  font-size: 1.5em;
   color: #ffffff;
   text-indent: 1em;
+  text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 576px) {
+  #splash h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (min-width: 992px) {
+  #splash h1 {
+    font-size: 3.0em;
+  }
 }
 
 @media (min-width: 1200px) {
   #splash h1 {
     font-size: 3.5em;
-    text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -11037,7 +11050,7 @@ header a {
 
 .feature p,
 .feature li {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 #cat-cover {
@@ -11184,6 +11197,11 @@ header a {
   margin-bottom: 0.2rem;
 }
 
+#fo-column {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
 #fo-column #features-options {
   padding: 1em;
   border: 2px solid #c4c3c3;
@@ -11198,9 +11216,7 @@ header a {
 }
 
 #fo-column #features-options ul {
-  font-size: 0.65rem;
   padding-left: 1.2em;
-  line-height: 0.8rem;
 }
 
 #fo-column #features-options ul li {
@@ -11209,7 +11225,7 @@ header a {
 
 #text-notes {
   padding: 2em 1em 1em 1em;
-  font-size: 0.6em;
+  font-size: 0.9em;
   font-weight: bold;
   /*
   dd { // Remove default bottom margin.
@@ -11437,7 +11453,7 @@ header a {
 
 .price-table__td {
   font-family: fira-mono, Monaco, monospace;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .price-table--quantity {
@@ -11445,12 +11461,17 @@ header a {
 }
 
 .price-table--charge {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 
 .item-info__notes {
-  font-size: 0.6em;
+  font-size: 0.7em;
   line-height: 1em;
+}
+
+.svg-bullet {
+  position: relative;
+  bottom: 0.15em;
 }
 
 footer p {

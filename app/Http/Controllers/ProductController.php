@@ -520,8 +520,8 @@ class ProductController extends Controller
 
                 $symbolLegend .= "<li>" . PHP_EOL;
                 $symbolLegend .= "<div class='icon'>" . PHP_EOL;
-                $symbolLegend .= "<img src='{$iconLegend}' class='svg icon-screen mx-1'>";
-                $symbolLegend .= "<img src='{$iconPrint}' class='svg icon-print mx-1'>";
+                $symbolLegend .= "<img src='{$iconLegend}' class='svg-bullet icon-screen mx-1'>";
+                $symbolLegend .= "<img src='{$iconPrint}' class='svg-bullet icon-print mx-1'>";
                 $symbolLegend .= "{$chargeLongName}" . PHP_EOL;
                 $symbolLegend .= "</div>" . PHP_EOL;
                 $symbolLegend .= "</li>" . PHP_EOL;

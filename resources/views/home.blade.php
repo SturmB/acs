@@ -15,7 +15,7 @@
 
     <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-lg-8">
             <div class="rounded p-3 mb-4" id="main-content">
 
                 <div id="welcome-aboard-special" class="col-12 article">
@@ -114,7 +114,7 @@
             </div> {{--#main-content--}}
         </div> {{--col--}}
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="rounded p-3" id="sidebar">
 
                 <div class="feature">

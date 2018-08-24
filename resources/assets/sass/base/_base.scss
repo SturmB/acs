@@ -1,4 +1,21 @@
 // Overall --------------------------------------------------
+html {
+  font-size: 1.25rem;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 1.25rem;
+  } // media-breakpoint-up(sm)
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.3rem;
+  } // media-breakpoint-up(md)
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.3rem;
+  } // media-breakpoint-up(lg)
+
+} // html
+
 //noinspection CssNoGenericFontName
 body {
   background: color(bg-abs) image(bg-main) no-repeat top center;
@@ -72,8 +89,7 @@ footer {
 } // .aside
 
 .small, .sub, .sup {
-  //font-size: 0.83em;
-  font-size: 0.50em;
+  font-size: 0.60em;
 } // .small, .sub, .sup
 .sub {
   vertical-align: sub;
