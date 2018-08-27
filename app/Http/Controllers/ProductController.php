@@ -294,7 +294,10 @@ class ProductController extends Controller
         $productList = [$decodedProductName];
 
         // If this Product is one that has multiple colors, populate $productList with all of the Product Names, but have "(COLOR)" replaced with the actual Color name, formatted properly.
-        if (stripos($decodedProductName, "(COLOR)") !== false) {
+        if (
+            stripos($decodedProductName, "(COLOR)") !== false &&
+            stripos($decodedProductName, "TIP") !== 0 // Exclude 'TIP - (COLOR)' from this algorithm.
+        ) {
             // Get all the colors available for this single Product.
             $productList = [];
             $productColors = $product->colors->all();
@@ -364,11 +367,30 @@ class ProductController extends Controller
      */
     private function getProducts($productLine, array $activeArray)
     {
+        // Set a couple of variables we'll need for Hi-Speed items.
+        $decimals = 0;
+        $perThousand = "";
+        if (
+            $productLine->productSubcategory->product_category_id ===
+                "napkin" &&
+            $productLine->print_method_id === "hispeed"
+        ) {
+            $decimals = 2;
+            $perThousand = "M";
+        }
+
         // Get the Products associated with the given Product Line ID.
-        $products = Product::where(
-            'product_subcategory_id',
-            $productLine->productSubcategory->id
-        )->get();
+        $products = Product::whereHas('printMethods', function ($query) use (
+            $productLine
+        ) {
+            $query->where('print_method_id', $productLine->print_method_id);
+        })
+            ->where(
+                'product_subcategory_id',
+                $productLine->productSubcategory->id
+            )
+            ->whereIn('active', $activeArray)
+            ->get();
 
         // Get all of the Prices along with their associated ProductLineQuantityBreaks, ProductLines, QuantityBreaks, and Products.
         $allPrices = AcsPrice::with([
@@ -433,11 +455,14 @@ class ProductController extends Controller
 
             // Div for the Product number (with Print Method), thumbnail, and description.
             // Usually on the left side of the card.
-            $output .= "<div class='col-12 col-sm-5 item-info__num-thumb-desc card-header p-2'>" . PHP_EOL;
+            $output .=
+                "<div class='col-12 col-sm-5 item-info__num-thumb-desc card-header p-2'>" .
+                PHP_EOL;
 
             // Product number with Print Method
             $output .=
-                "<h5 class='item-info__number my-4'>{$productName}</h5>" . PHP_EOL;
+                "<h5 class='item-info__number my-4'>{$productName}</h5>" .
+                PHP_EOL;
 
             // Thumbnail
             $output .= "<div class='item-info__thumbnail rounded'>" . PHP_EOL;
@@ -459,14 +484,25 @@ class ProductController extends Controller
 
             $output .= "</div>" . PHP_EOL; // div.item-info__num-thumb-desc.card-header
 
-            // Get the Quantity Breaks and Prices.
-            $quantityBreaks = $filteredPrices->filter(function ($value) use (
+            // Get all of the Quantity Breaks and Prices for the given Product.
+            $allQuantityBreaks = $filteredPrices->filter(function ($value) use (
                 $product
             ) {
                 return $value->product_id == $product->id;
             });
+            // Narrow those Breaks down to only those whose PLQB's Product Line's print_method_id is the one we currently need.
+            $quantityBreaks = $allQuantityBreaks
+                ->filter(function ($value) use ($productLine) {
+                    return (
+                        $value->productLineQuantityBreak->productLine
+                            ->print_method_id === $productLine->print_method_id
+                    );
+                })
+                ->sortBy('productLineQuantityBreak.quantity_break_id');
 
-            $output .= "<div class='col-12 col-sm-7 item-info__pricing card-body p-2'>" . PHP_EOL;
+            $output .=
+                "<div class='col-12 col-sm-7 item-info__pricing card-body p-2'>" .
+                PHP_EOL;
 
             $output .=
                 "<table class='item-info__price-table table table-sm table-striped table-bordered bg-light mb-2'>" .
@@ -548,9 +584,9 @@ class ProductController extends Controller
             foreach ($quantityBreaks as $index => $break) {
                 // Keep only those charges that have amounts for them.
                 $charges = $break->productLineQuantityBreak->acsCharges;
-                $charges = $charges->reject(function ($charge) {
-                    return empty($charge->amount);
-                });
+                //                $charges = $charges->reject(function ($charge) {
+                //                    return empty($charge->amount);
+                //                });
 
                 // If there is a quantity break at 1,000 or above, enable the printing of the "Every Thousand" note.
                 $quantity = $break->productLineQuantityBreak->quantity_break_id;
@@ -566,21 +602,33 @@ class ProductController extends Controller
                     0
                 );
                 $output .=
-                    "<td class='price-table__td price-table--quantity bg-accent text-light'>{$formattedQuantity}</td>" .
+                    "<td class='price-table__td price-table--quantity bg-accent text-light align-baseline'>{$formattedQuantity}</td>" .
                     PHP_EOL;
 
                 // Price cell
-                $formattedPrice = number_format($break->price, 0);
+                $formattedPrice =
+                    $break->price === null
+                        ? "N/A"
+                        : "<span class='sup'>$</span>" .
+                            number_format($break->price, $decimals) .
+                            $perThousand;
                 $output .=
-                    "<td class='price-table__td text-dark'><span class='sup'>$</span>{$formattedPrice}</td>" .
+                    "<td class='price-table__td text-dark align-baseline'>{$formattedPrice}</td>" .
                     PHP_EOL;
 
                 // Charges cells
                 foreach ($charges as $charge) {
-                    $formattedCharge = number_format($charge->amount, 0);
-                    $output .=
-                        "<td class='price-table__td price-table--charge text-dark'><span class='sup'>$</span>{$formattedCharge}</td>" .
-                        PHP_EOL;
+                    if (in_array($charge->charge_type_id, $chargeNames)) {
+                        $formattedCharge =
+                            $charge->amount === null
+                                ? "N/A"
+                                : "<span class='sup'>$</span>" .
+                                    number_format($charge->amount, $decimals) .
+                                    $perThousand;
+                        $output .=
+                            "<td class='price-table__td price-table--charge text-dark align-baseline'>{$formattedCharge}</td>" .
+                            PHP_EOL;
+                    }
                 }
 
                 $output .= "</tr>" . PHP_EOL;

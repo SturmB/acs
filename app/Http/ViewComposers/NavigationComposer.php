@@ -93,8 +93,18 @@ class NavigationComposer
             ->groupBy('product_subcategory_id')
             ->map(function (Collection $productLineGroup) use ($activeArray) {
 
+                // Filter to only the Product Lines that are active.
+                $productLineActive = $productLineGroup->filter(function (
+                    $productLine
+                ) use ($activeArray) {
+                    return in_array(
+                        $productLine->active,
+                        $activeArray
+                    );
+                });
+
                 // Filter to only the Print Methods that are active.
-                $printMethodActive = $productLineGroup->filter(function (
+                $printMethodActive = $productLineActive->filter(function (
                     $productLine
                 ) use ($activeArray) {
                     return in_array(

@@ -85,6 +85,11 @@
             $(this).find(".thumbnail__image.thumbnail__image--sample").toggle();
           });
 
+          // Make `singleton`s centered and a bit wider than normal.
+          $(".singleton")
+            .parent().removeClass("col-xl-6").addClass("col-md-8")
+            .parent().addClass("justify-content-center");
+
         });
 
     </script>
