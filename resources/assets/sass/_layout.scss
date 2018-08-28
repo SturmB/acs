@@ -591,6 +591,7 @@ header a {
 
 } // .thumbnail__ribbon
 
+// Thumbnails
 .thumbnail__overlay--rollover {
   width: 200px;
   height: 200px;
@@ -646,6 +647,7 @@ header a {
   } // media-breakpoint-up(lg)
 } // .thumbnail__image
 
+// Price Table
 .item-info__price-table {
   border: 2px solid color(accent-dark);
   //table-layout: fixed; // Removed as it makes the Quantity column far too narrow on some tables.
@@ -694,6 +696,7 @@ header a {
   font-size: 0.8em;
 } // .price-table--charge
 
+// Footnotes
 .item-info__notes {
   font-size: 0.7em;
   line-height: 1.2em;
@@ -703,6 +706,66 @@ header a {
   position: relative;
   bottom: 0.15em;
 } // .svg-bullet
+
+// Color Swatches --------------------------------------------------
+#swatch-tabs {
+  border-bottom-color: color(bg-main);
+} // #swatch-tabs
+
+.nav-tabs .swatches__tab__link {
+  font-weight: bold;
+  font-style: normal;
+  border-color: color(bg-main);
+  color: color(link);
+  font-size: 0.75rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1rem;
+  } // media-breakpoint-up(sm)
+
+  &:hover,
+  &:focus {
+    color: color(link-hover);
+    border-color: color(bg-lighter);
+    border-bottom-color: transparent;
+  } // :hover
+  &:active {
+    color: color(link-active);
+    border-color: color(bg-lightest);
+    border-bottom-color: transparent;
+  } // :active
+
+  &.active {
+    background: color(bg-abs-lighter);
+    color: color(text-alt);
+    border-color: color(bg-main);
+  } // &.active
+
+} // .nav-tabs .swatches__tab__link
+
+.swatches__content {
+  padding: 1em;
+  background: color(bg-abs-lighter) grad(swatch-bg);
+} // .swatches__content
+
+.swatches__header {
+  font-size: 0.85em;
+  width: 20%;
+
+  @include media-breakpoint-up(md) {
+    width: 15%;
+  } // media-breakpoint-up(md)
+
+} // .swatches__header
+
+.swatches__item {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid color(text);
+  font-size: 0.75em;
+  line-height: 1em;
+  color: #ffffff;
+} // .swatches__item
 
 // Footer --------------------------------------------------
 footer {

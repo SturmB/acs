@@ -5,10 +5,8 @@ use App\AcsPrice;
 use App\Product;
 use App\ProductFeature;
 use App\ProductLine;
-use App\ProductLineQuantityBreak;
 use App\ProductNote;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -69,6 +67,12 @@ class ProductController extends Controller
         // Get and construct the product cards for this Product Line.
         $productCards = $this->getProducts($productLine, $activeArray);
 
+        // Get and construct the product color swatches area.
+        $swatchesProduct = $this->getSwatchesProduct(
+            $productLine,
+            $activeArray
+        );
+
         return view(
             'product',
             compact(
@@ -78,7 +82,8 @@ class ProductController extends Controller
                 'hasNotes',
                 'notesHtml',
                 'productLineText',
-                'productCards'
+                'productCards',
+                'swatchesProduct'
             )
         );
     }
@@ -661,6 +666,51 @@ class ProductController extends Controller
             $output .= "</div>" . PHP_EOL; // div.item-info
 
             $output .= "</div>" . PHP_EOL; // div.col-12.col-sm-6
+        }
+
+        return $output;
+    }
+
+    private function getSwatchesProduct($productLine, array $activeArray)
+    {
+        $output = "";
+
+        $products = Product::with([
+            'colors' => function ($query) use ($activeArray) {
+                $query
+                    ->whereIn('active', $activeArray)
+                    ->orderBy('priority', 'asc');
+            }
+        ])
+            ->where(
+                'product_subcategory_id',
+                $productLine->product_subcategory_id
+            )
+            ->whereIn('active', $activeArray)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        foreach ($products as $product) {
+            $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
+            $output .=
+                "<h6 class='swatches__header align-self-center mr-3 text-right flex-shrink-0' id='{$product->id}-title'>{$product->name}:</h6>" .
+                PHP_EOL;
+            $output .= "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" . PHP_EOL;
+
+            foreach ($product->colors as $color) {
+                $hexColor = "#" . $color->hex;
+                $gradient = "";
+                if ($color->color_type_id === 'ink-metallic') {
+                    $hexColor2 = shadeColor2($hexColor, -0.5);
+                    $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
+                }
+                $output .=
+                    "<li class='swatches__item text-stroke-black m-1 d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient}'>{$color->short_name}</li>" .
+                    PHP_EOL;
+            }
+
+            $output .= "</ul>" . PHP_EOL;
+            $output .= "</div>" . PHP_EOL;
         }
 
         return $output;

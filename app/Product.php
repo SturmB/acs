@@ -71,6 +71,7 @@ class Product extends Model
         )
             ->withPivot('price')
             ->withTimestamps();
+//            ->orderBy('priority', 'asc');
     }
 
     /**

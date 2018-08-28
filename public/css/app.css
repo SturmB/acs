@@ -10668,7 +10668,7 @@ footer a:hover {
 .small,
 .sub,
 .sup {
-  font-size: 0.60em;
+  font-size: 0.6em;
 }
 
 .sub {
@@ -10678,6 +10678,10 @@ footer a:hover {
 .sup {
   position: relative;
   bottom: 1ex;
+}
+
+.text-stroke-black {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .icon img {
@@ -11491,6 +11495,69 @@ header a {
 .svg-bullet {
   position: relative;
   bottom: 0.15em;
+}
+
+#swatch-tabs {
+  border-bottom-color: #333333;
+}
+
+.nav-tabs .swatches__tab__link {
+  font-weight: bold;
+  font-style: normal;
+  border-color: #333333;
+  color: #2c679b;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .nav-tabs .swatches__tab__link {
+    font-size: 1rem;
+  }
+}
+
+.nav-tabs .swatches__tab__link:hover,
+.nav-tabs .swatches__tab__link:focus {
+  color: #5c9ad1;
+  border-color: #807f7f;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs .swatches__tab__link:active {
+  color: #accbe7;
+  border-color: #cccccc;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs .swatches__tab__link.active {
+  background: #333333;
+  color: #c4c3c3;
+  border-color: #333333;
+}
+
+.swatches__content {
+  padding: 1em;
+  background: #333333 -webkit-gradient(linear, left top, left bottom, from(#333333), to(#1a1919));
+  background: #333333 linear-gradient(to bottom, #333333, #1a1919);
+}
+
+.swatches__header {
+  font-size: 0.85em;
+  width: 20%;
+}
+
+@media (min-width: 768px) {
+  .swatches__header {
+    width: 15%;
+  }
+}
+
+.swatches__item {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #444444;
+  font-size: 0.75em;
+  line-height: 1em;
+  color: #ffffff;
 }
 
 footer p {

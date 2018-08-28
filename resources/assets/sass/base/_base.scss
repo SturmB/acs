@@ -13,7 +13,6 @@ html {
   @include media-breakpoint-up(lg) {
     font-size: 1.3rem;
   } // media-breakpoint-up(lg)
-
 } // html
 
 //noinspection CssNoGenericFontName
@@ -88,8 +87,10 @@ footer {
   font-weight: normal;
 } // .aside
 
-.small, .sub, .sup {
-  font-size: 0.60em;
+.small,
+.sub,
+.sup {
+  font-size: 0.6em;
 } // .small, .sub, .sup
 .sub {
   vertical-align: sub;
@@ -100,6 +101,10 @@ footer {
   bottom: 1ex;
 } // .sup
 
+.text-stroke-black {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+} // .text-stroke-black
 
 // Icons --------------------------------------------------
 .icon {
