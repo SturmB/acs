@@ -45,4 +45,16 @@ class PrintMethod extends Model
             )
             ->withTimestamps();
     }
+
+    /**
+     * Color relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class)->using(
+            ColorPrintMethod::class
+        );
+    }
 }

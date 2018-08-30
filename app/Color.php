@@ -9,7 +9,13 @@ class Color extends Model
 
     public function getNameAttribute()
     {
-        return $this->color_type_id . '_' . strtolower(str_replace(['/', ' ', '*'], ['_', '_', ''], $this->short_name));
+        return (
+            $this->color_type_id .
+            '_' .
+            strtolower(
+                str_replace(['/', ' ', '*'], ['_', '_', ''], $this->long_name)
+            )
+        );
     }
 
     /**
@@ -32,5 +38,17 @@ class Color extends Model
         return $this->belongsToMany(Product::class)
             ->withPivot('priority')
             ->withTimestamps();
+    }
+
+    /**
+     * Print Method relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function printMethods()
+    {
+        return $this->belongsToMany(PrintMethod::class)->using(
+            ColorPrintMethod::class
+        );
     }
 }

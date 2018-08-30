@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductLine extends Model
 {
-    public $additional_attributes=['name'];
+    public $additional_attributes = ['name'];
 
     /**
      * Create an accessor to substitute in for the `id`.
@@ -15,7 +15,8 @@ class ProductLine extends Model
      */
     public function getNameAttribute()
     {
-        return "{$this->productSubcategory->product_category_id}-{$this->productSubcategory->short_name}-{$this->print_method_id}";
+        return "{$this->productSubcategory->product_category_id}-{$this
+            ->productSubcategory->short_name}-{$this->print_method_id}";
     }
 
     /**
@@ -94,7 +95,10 @@ class ProductLine extends Model
      */
     public function acsPrices()
     {
-        return $this->hasManyThrough(AcsPrice::class, ProductLineQuantityBreak::class);
+        return $this->hasManyThrough(
+            AcsPrice::class,
+            ProductLineQuantityBreak::class
+        );
     }
 
     /**
@@ -105,5 +109,15 @@ class ProductLine extends Model
     public function productLineQuantityBreaks()
     {
         return $this->hasMany(ProductLineQuantityBreak::class);
+    }
+
+    /**
+     * Color Type relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function colorTypes()
+    {
+        return $this->belongsToMany(ColorType::class)->withTimestamps();
     }
 }

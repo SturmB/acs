@@ -671,6 +671,13 @@ class ProductController extends Controller
         return $output;
     }
 
+    /**
+     * Get all of the Color swatches for a given Product Line.
+     *
+     * @param $productLine
+     * @param array $activeArray
+     * @return string
+     */
     private function getSwatchesProduct($productLine, array $activeArray)
     {
         $output = "";
@@ -705,7 +712,7 @@ class ProductController extends Controller
                     $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
                 }
                 $output .=
-                    "<li class='swatches__item text-stroke-black m-1 d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient}'>{$color->short_name}</li>" .
+                    "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient}'>{$color->short_name}</li>" .
                     PHP_EOL;
             }
 

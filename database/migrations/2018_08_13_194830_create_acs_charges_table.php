@@ -17,17 +17,23 @@ class CreateAcsChargesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id')
-                ->comment('PK.');
-            $table->integer('product_line_quantity_break_id')
+            $table->increments('id')->comment('PK.');
+            $table
+                ->integer('product_line_quantity_break_id')
                 ->unsigned()
-                ->comment('The Product Line / Quantity Break foreign key for which an additional Charge will be applied.');
-            $table->string('charge_type_id', 45)
-                ->comment('The Charge Type foreign key for the Product Line / Quantity Break combo.');
-            $table->decimal('amount', 19, 4)
+                ->comment(
+                    'The Product Line / Quantity Break foreign key for which an additional Charge will be applied.'
+                );
+            $table
+                ->string('charge_type_id', 45)
+                ->comment(
+                    'The Charge Type foreign key for the Product Line / Quantity Break combo in snake_case.'
+                );
+            $table
+                ->decimal('amount', 19, 4)
                 ->unsigned()
                 ->nullable()
-                ->comment('The amount of the additional Charge');
+                ->comment('The amount of the additional Charge in Decimal format.');
             $table->timestamps();
 
             $table

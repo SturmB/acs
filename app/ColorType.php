@@ -28,4 +28,14 @@ class ColorType extends Model
     {
         return $this->hasMany(Color::class);
     }
+
+    /**
+     * Product Line relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function productLines()
+    {
+        return $this->belongsToMany(ProductLine::class)->withTimestamps();
+    }
 }

@@ -18,7 +18,7 @@ class CreatePrintMethodsTable extends Migration
     {
         Schema::create('' . $this->tableName . '', function (Blueprint $table) {
             $table->string('id', 45)
-                ->comment('PK. The short name of the Print Method. i.e., “Traditions”.');
+                ->comment('PK. The short name of the Print Method in snake_case. i.e., “tradition”.');
             $table->tinyInteger('active')
                 ->default(1)
                 ->comment('Boolean value for whether or not the Print Method is active.');
