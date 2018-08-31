@@ -120,4 +120,14 @@ class ProductLine extends Model
     {
         return $this->belongsToMany(ColorType::class)->withTimestamps();
     }
+
+    /**
+     * Imprint Type relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function imprintTypes()
+    {
+        return $this->belongsToMany(ImprintType::class)->withTimestamps();
+    }
 }

@@ -768,6 +768,26 @@ header a {
   color: #ffffff;
 } // .swatches__item
 
+.swatches__caption {
+  font-size: 0.75em;
+} // .swatches__caption
+
+.swatches__image {
+  width: 80px;
+  height: 80px;
+  border: 2px solid color(text);
+
+  @include media-breakpoint-up(md) {
+    width: 100px;
+    height: 100px;
+  } // media-breakpoint-up(md)
+
+  @include media-breakpoint-up(lg) {
+    width: 120px;
+    height: 120px;
+  } // media-breakpoint-up(lg)
+}
+
 // Footer --------------------------------------------------
 footer {
   p {

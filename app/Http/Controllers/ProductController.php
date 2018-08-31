@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\AcsPrice;
 use App\ColorType;
+use App\ImprintType;
 use App\Product;
 use App\ProductFeature;
 use App\ProductLine;
@@ -53,14 +54,10 @@ class ProductController extends Controller
             ->first();
 
         // Get and construct the Features & Options list for this Product Line.
-        $features = $this->getFeatures($productLine->id, $activeArray);
-        $hasFeatures = $features->count() > 0;
-        $featuresHtml = $this->formatFeatures($features);
+        $productFeatures = $this->getFeatures($productLine->id, $activeArray);
 
         // Get and construct other notes for this Product Line.
-        $notes = $this->getTextNotes($productLine->id, $activeArray);
-        $hasNotes = $notes->count() > 0;
-        $notesHtml = $this->formatTextNotes($productLine, $notes);
+        $productNotes = $this->getTextNotes($productLine, $activeArray);
 
         // Get the splash image for this Product Line.
         $productLineText = "{$category}-{$subcategory}-{$printMethod}";
@@ -75,7 +72,13 @@ class ProductController extends Controller
         );
 
         // Get and construct the imprint color swatches area.
-        $swatchesImprint = $this->getSwatchesImprint(
+        $swatchesImprintColor = $this->getSwatchesImprintColor(
+            $productLine,
+            $activeArray
+        );
+
+        // Get and construct the imprint types swatches area.
+        $swatchesImprintType = $this->getSwatchesImprintType(
             $productLine,
             $activeArray
         );
@@ -84,14 +87,13 @@ class ProductController extends Controller
             'product',
             compact(
                 'productLine',
-                'hasFeatures',
-                'featuresHtml',
-                'hasNotes',
-                'notesHtml',
+                'productFeatures',
+                'productNotes',
                 'productLineText',
                 'productCards',
                 'swatchesProduct',
-                'swatchesImprint'
+                'swatchesImprintColor',
+                'swatchesImprintType'
             )
         );
     }
@@ -101,7 +103,7 @@ class ProductController extends Controller
      *
      * @param $productLineId
      * @param $activeArray
-     * @return Collection
+     * @return string
      */
     private function getFeatures($productLineId, $activeArray)
     {
@@ -168,7 +170,9 @@ class ProductController extends Controller
             }
         });
 
-        return $productFeatures;
+        return $productFeatures->count() > 0
+            ? $this->formatFeatures($productFeatures)
+            : null;
     }
 
     /**
@@ -182,7 +186,6 @@ class ProductController extends Controller
     {
         $html = "";
 
-        //        if (gettype($features) === 'object')
         if ($features->count() > 0) {
             $html .= "<ul>" . PHP_EOL;
             foreach ($features as $feature) {
@@ -200,32 +203,32 @@ class ProductController extends Controller
     /**
      * Get all of the Text Notes for a given Product Line.
      *
-     * @param $productLineId
+     * @param $productLine
      * @param $activeArray
-     * @return ProductNote[]|\Illuminate\Database\Eloquent\Builder[]|Collection
+     * @return string
      */
-    private function getTextNotes($productLineId, $activeArray)
+    private function getTextNotes($productLine, $activeArray)
     {
         // Get the Notes associated with the given Product Line ID.
-        $allProductNotes = ProductNote::with(['productLines'])
-            ->orderBy('priority', 'asc')
-            ->get();
+        $expandedProductLine = $productLine
+            ->load([
+                'productNotes' => function ($query) use ($activeArray) {
+                    $query
+                        ->whereIn('active', $activeArray)
+                        ->orderBy('priority', 'asc');
+                }
+            ])
+            ->load([
+                'imprintTypes' => function ($query) use ($activeArray) {
+                    $query
+                        ->whereIn('active', $activeArray)
+                        ->orderBy('priority', 'asc');
+                }
+            ]);
 
-        // Narrow the results to only the Product Notes we want for the given Product Line ID.
-        $narrowedProductNotes = $allProductNotes
-            ->reject(function ($productNote) use ($productLineId) {
-                $productLines = $productNote->productLines->filter(function (
-                    $productLine
-                ) use ($productLineId) {
-                    return $productLine->id == $productLineId;
-                });
-                return empty(sizeof($productLines));
-            })
-            ->filter(function ($productNote) use ($activeArray) {
-                return in_array($productNote->active, $activeArray);
-            });
-
-        return $narrowedProductNotes;
+        return $expandedProductLine->count() > 0
+            ? $this->formatTextNotes($expandedProductLine)
+            : null;
     }
 
     /**
@@ -236,7 +239,7 @@ class ProductController extends Controller
      * @param $notes
      * @return string
      */
-    private function formatTextNotes($productLine, $notes)
+    private function formatTextNotes($productLine)
     {
         $html = "";
 
@@ -272,13 +275,24 @@ class ProductController extends Controller
 
         // Now add the notes we retrieved earlier.
         $html .= "<dl>" . PHP_EOL;
-        foreach ($notes as $note) {
+        foreach ($productLine->productNotes as $note) {
             $title = "";
             if (!empty($note->title)) {
                 $title = "<dt>{$note->title}</dt>" . PHP_EOL;
             }
             $html .= $title;
             $html .= "<dd>{$note->body}</dd>" . PHP_EOL;
+        }
+        foreach ($productLine->imprintTypes as $imprintType) {
+            // Only show an Imprint Type if the `body` field is not null.
+            if (!empty($imprintType->body)) {
+                $title = $body = "";
+                if (!empty($imprintType->title)) {
+                    $title = "<dt>{$imprintType->title} -</dt>" . PHP_EOL;
+                }
+                $body .= "<dd>{$imprintType->body}</dd>" . PHP_EOL;
+                $html .= $title . $body;
+            }
         }
         $html .= "</dl>" . PHP_EOL;
 
@@ -692,39 +706,45 @@ class ProductController extends Controller
         $numColors = 0;
 
         foreach ($swatchCategories as $category) {
-            $numColors += $category->colors->count();
-            $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
-            $output .=
-                "<h6 class='swatches__header align-self-center mr-3 text-right flex-shrink-0' id='{$category->id}-title'>{$category->$nameField}:</h6>" .
-                PHP_EOL;
-            $output .=
-                "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" .
-                PHP_EOL;
-
-            foreach ($category->colors as $color) {
-                $hexColor = "#" . $color->hex;
-                $gradient = "";
-                $background = "";
-                if ($color->color_type_id === 'ink-metallic') {
-                    $hexColor2 = shadeColor2($hexColor, -0.5);
-                    $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
-                }
-                if ($color->color_type_id === 'foil') {
-                    $spacesRemoved = str_replace(" ", "", $color->long_name);
-                    $lowered = strtolower($spacesRemoved);
-                    $filename = $lowered . ".jpg";
-                    $background = "background: url(/images/swatches-foils-assets/{$filename}); background-size: cover;";
-                }
+            if ($category->colors->count() > 0) {
+                $numColors += $category->colors->count();
+                $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
                 $output .=
-                    "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient} {$background}'>{$color->short_name}</li>" .
+                    "<h6 class='swatches__header align-self-center mr-3 text-right flex-shrink-0' id='{$category->id}-title'>{$category->$nameField}:</h6>" .
                     PHP_EOL;
-            }
+                $output .=
+                    "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" .
+                    PHP_EOL;
 
-            $output .= "</ul>" . PHP_EOL;
-            $output .= "</div>" . PHP_EOL;
-        }
+                foreach ($category->colors as $color) {
+                    $hexColor = "#" . $color->hex;
+                    $gradient = "";
+                    $background = "";
+                    if ($color->color_type_id === 'ink-metallic') {
+                        $hexColor2 = shadeColor2($hexColor, -0.5);
+                        $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
+                    }
+                    if ($color->color_type_id === 'foil') {
+                        $spacesRemoved = str_replace(
+                            " ",
+                            "",
+                            $color->long_name
+                        );
+                        $lowered = strtolower($spacesRemoved);
+                        $filename = $lowered . ".jpg";
+                        $background = "background: url(/images/swatches-foils-assets/{$filename}); background-size: cover;";
+                    }
+                    $output .=
+                        "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient} {$background}'>{$color->short_name}</li>" .
+                        PHP_EOL;
+                }
 
-        // If there are no product colors _at all_, just return null.
+                $output .= "</ul>" . PHP_EOL;
+                $output .= "</div>" . PHP_EOL;
+            } // if (!empty($category->colors))
+        } // foreach ($swatchCategories as $category)
+
+        // If there are no colors _at all_, just return null.
         if (empty($numColors)) {
             return null;
         }
@@ -766,7 +786,7 @@ class ProductController extends Controller
      * @param array $activeArray
      * @return null|string
      */
-    private function getSwatchesImprint($productLine, array $activeArray)
+    private function getSwatchesImprintColor($productLine, array $activeArray)
     {
         // Retrieve the Color Types for this Product Line and its associated info that we need.
         $colorTypes = ColorType::whereHas('productLines', function (
@@ -805,5 +825,60 @@ class ProductController extends Controller
             ->get();
 
         return $this->formatSwatches($colorTypes, 'long_name');
+    }
+
+    /**
+     * Get all of the Imprint Type swatches for a given Product Line.
+     *
+     * @param $productLine
+     * @param array $activeArray
+     * @return null|string
+     */
+    private function getSwatchesImprintType($productLine, array $activeArray)
+    {
+        $output = "";
+
+        $imprintTypes = ImprintType::whereHas('productLines', function (
+            $query
+        ) use ($activeArray, $productLine) {
+            $query
+                ->where('product_line_id', $productLine->id)
+                ->whereIn('active', $activeArray);
+        })
+            ->whereIn('active', $activeArray)
+            ->orderBy('priority', 'asc')
+            ->get();
+
+        // If there are no imprint types _at all_, just return null.
+        if ($imprintTypes->count() < 2) {
+            return null;
+        }
+
+        $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
+        $output .=
+            "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" .
+            PHP_EOL;
+        foreach ($imprintTypes as $imprintType) {
+            // Set up the file name for this imprint type.
+            $imageFile = asset(
+                "images/imprint-types-assets/{$imprintType->id}.jpg"
+            );
+
+            $output .= "<li class='text-center m-1'>" . PHP_EOL;
+            $output .= "<figure>" . PHP_EOL;
+            $output .=
+                "<figcaption class='swatches__caption'>{$imprintType->title}</figcaption>" .
+                PHP_EOL;
+            $output .=
+                "<img src='{$imageFile}' data-rjs='3' alt='{$imprintType->title}' class='swatches__image'>" .
+                PHP_EOL;
+            $output .= "</figure>" . PHP_EOL;
+            $output .= "</li>" . PHP_EOL;
+        }
+
+        $output .= "</ul>" . PHP_EOL;
+        $output .= "</div>" . PHP_EOL;
+
+        return $output;
     }
 }

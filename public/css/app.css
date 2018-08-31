@@ -11561,6 +11561,30 @@ header a {
   color: #ffffff;
 }
 
+.swatches__caption {
+  font-size: 0.75em;
+}
+
+.swatches__image {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #444444;
+}
+
+@media (min-width: 768px) {
+  .swatches__image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .swatches__image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 footer p {
   text-align: center;
 }

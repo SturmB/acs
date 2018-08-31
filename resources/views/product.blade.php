@@ -4,7 +4,7 @@
 @section('content')
 
     <?php
-    $showSidebar = $hasFeatures || $hasNotes;
+    $showSidebar = !empty($productFeatures) || !empty($productNotes);
     $imageContentClasses = 'col-12';
     $splashImageClass = 'px-3';
     if ($showSidebar) {
@@ -37,16 +37,16 @@
             @if($showSidebar)
             <div class="col-md-4 col-lg-3 order-md-first my-3">
                 <div id="fo-column">
-                    @if($hasFeatures)
+                    @if(!empty($productFeatures))
                     <div id="features-options">
                         <h2 style="color: {{ $methodColor }};">{{ $productLine->printMethod->long_name }}</h2>
                         <h2>Features &amp; Options</h2>
-                        {!! $featuresHtml !!}
+                        {!! $productFeatures !!}
                     </div>
                     @endif
-                    @if($hasNotes)
+                    @if(!empty($productNotes))
                     <div id="text-notes">
-                        {!! $notesHtml !!}
+                        {!! $productNotes !!}
                     </div>
                     @endif
                 </div>
@@ -58,7 +58,7 @@
             {!! $productCards !!}
         </div> {{--Prices--}}
 
-        @if(!empty($swatchesProduct) || !empty($swatchesImprint))
+        @if(!empty($swatchesProduct) || !empty($swatchesImprintColor) || !empty($swatchesImprintType))
         <div class="row">
             <div class="col">
                 <ul class="nav nav-tabs" id="swatch-tabs" role="tablist">
@@ -69,9 +69,15 @@
                     </li>
                     @endif
 
-                    @if(!empty($swatchesImprint))
+                    @if(!empty($swatchesImprintColor))
                     <li class="nav-item swatches__title">
-                        <a class="swatches__tab__link nav-link" id="swatches__imprint-color__tab" data-toggle="tab" href="#swatches__imprint-color" role="tab" aria-controls="swatches__ink-color" aria-selected="false">Imprint Color Choices</a>
+                        <a class="swatches__tab__link nav-link" id="swatches__imprint-color__tab" data-toggle="tab" href="#swatches__imprint-color" role="tab" aria-controls="swatches__imprint-color" aria-selected="false">Imprint Color Choices</a>
+                    </li>
+                    @endif
+
+                    @if(!empty($swatchesImprintType))
+                    <li class="nav-item swatches__title">
+                        <a class="swatches__tab__link nav-link" id="swatches__imprint-type__tab" data-toggle="tab" href="#swatches__imprint-type" role="tab" aria-controls="swatches__imprint-type" aria-selected="false">Imprint Type Choices</a>
                     </li>
                     @endif
 
@@ -85,10 +91,17 @@
                     </div>
                     @endif
 
-                    @if(!empty($swatchesImprint))
+                    @if(!empty($swatchesImprintColor))
                     <div class="tab-pane fade swatches__content" id="swatches__imprint-color"
                          role="tabpanel" aria-labelledby="swatches__imprint-color__tab">
-                        {!! $swatchesImprint !!}
+                        {!! $swatchesImprintColor !!}
+                    </div>
+                    @endif
+
+                    @if(!empty($swatchesImprintType))
+                    <div class="tab-pane fade swatches__content" id="swatches__imprint-type"
+                         role="tabpanel" aria-labelledby="swatches__imprint-type__tab">
+                        {!! $swatchesImprintType !!}
                     </div>
                     @endif
 
