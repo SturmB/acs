@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\AcsPrice;
+use App\ColorType;
 use App\Product;
 use App\ProductFeature;
 use App\ProductLine;
@@ -73,6 +74,12 @@ class ProductController extends Controller
             $activeArray
         );
 
+        // Get and construct the imprint color swatches area.
+        $swatchesImprint = $this->getSwatchesImprint(
+            $productLine,
+            $activeArray
+        );
+
         return view(
             'product',
             compact(
@@ -83,7 +90,8 @@ class ProductController extends Controller
                 'notesHtml',
                 'productLineText',
                 'productCards',
-                'swatchesProduct'
+                'swatchesProduct',
+                'swatchesImprint'
             )
         );
     }
@@ -672,7 +680,60 @@ class ProductController extends Controller
     }
 
     /**
-     * Get all of the Color swatches for a given Product Line.
+     * Format a collection of categorized Colors into nice HTML.
+     *
+     * @param $swatchCategories
+     * @param $nameField
+     * @return null|string
+     */
+    private function formatSwatches($swatchCategories, $nameField)
+    {
+        $output = "";
+        $numColors = 0;
+
+        foreach ($swatchCategories as $category) {
+            $numColors += $category->colors->count();
+            $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
+            $output .=
+                "<h6 class='swatches__header align-self-center mr-3 text-right flex-shrink-0' id='{$category->id}-title'>{$category->$nameField}:</h6>" .
+                PHP_EOL;
+            $output .=
+                "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" .
+                PHP_EOL;
+
+            foreach ($category->colors as $color) {
+                $hexColor = "#" . $color->hex;
+                $gradient = "";
+                $background = "";
+                if ($color->color_type_id === 'ink-metallic') {
+                    $hexColor2 = shadeColor2($hexColor, -0.5);
+                    $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
+                }
+                if ($color->color_type_id === 'foil') {
+                    $spacesRemoved = str_replace(" ", "", $color->long_name);
+                    $lowered = strtolower($spacesRemoved);
+                    $filename = $lowered . ".jpg";
+                    $background = "background: url(/images/swatches-foils-assets/{$filename}); background-size: cover;";
+                }
+                $output .=
+                    "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient} {$background}'>{$color->short_name}</li>" .
+                    PHP_EOL;
+            }
+
+            $output .= "</ul>" . PHP_EOL;
+            $output .= "</div>" . PHP_EOL;
+        }
+
+        // If there are no product colors _at all_, just return null.
+        if (empty($numColors)) {
+            return null;
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get all of the Product Color swatches for a given Product Line.
      *
      * @param $productLine
      * @param array $activeArray
@@ -680,8 +741,6 @@ class ProductController extends Controller
      */
     private function getSwatchesProduct($productLine, array $activeArray)
     {
-        $output = "";
-
         $products = Product::with([
             'colors' => function ($query) use ($activeArray) {
                 $query
@@ -697,29 +756,54 @@ class ProductController extends Controller
             ->orderBy('id', 'asc')
             ->get();
 
-        foreach ($products as $product) {
-            $output .= "<div class='d-flex flex-row'>" . PHP_EOL;
-            $output .=
-                "<h6 class='swatches__header align-self-center mr-3 text-right flex-shrink-0' id='{$product->id}-title'>{$product->name}:</h6>" .
-                PHP_EOL;
-            $output .= "<ul class='swatches__list list-unstyled d-flex flex-wrap'>" . PHP_EOL;
+        return $this->formatSwatches($products, 'name');
+    }
 
-            foreach ($product->colors as $color) {
-                $hexColor = "#" . $color->hex;
-                $gradient = "";
-                if ($color->color_type_id === 'ink-metallic') {
-                    $hexColor2 = shadeColor2($hexColor, -0.5);
-                    $gradient = "background-image: linear-gradient(135deg, {$hexColor} 0%, {$hexColor2} 100%);";
+    /**
+     * Get all of the Imprint Color swatches for a given Product Line.
+     *
+     * @param $productLine
+     * @param array $activeArray
+     * @return null|string
+     */
+    private function getSwatchesImprint($productLine, array $activeArray)
+    {
+        // Retrieve the Color Types for this Product Line and its associated info that we need.
+        $colorTypes = ColorType::whereHas('productLines', function (
+            $query
+        ) use ($activeArray, $productLine) {
+            $query
+                ->where('product_line_id', $productLine->id)
+                ->whereIn('active', $activeArray);
+        })
+            ->with([
+                'colors' => function ($query) use ($activeArray, $productLine) {
+                    $query
+                        ->with([
+                            'printMethods' => function ($subquery) use (
+                                $activeArray,
+                                $productLine
+                            ) {
+                                $subquery
+                                    ->where(
+                                        'print_method_id',
+                                        $productLine->print_method_id
+                                    )
+                                    ->whereIn(
+                                        'color_print_method.active',
+                                        $activeArray
+                                    )
+                                    ->orderBy('priority', 'asc');
+                            }
+                        ])
+                        ->whereIn('active', $activeArray);
                 }
-                $output .=
-                    "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient}'>{$color->short_name}</li>" .
-                    PHP_EOL;
-            }
+            ])
+            ->whereIn('active', $activeArray)
+            ->where('id', '<>', 'product')
+            ->orderBy('priority', 'asc')
+            ->get();
 
-            $output .= "</ul>" . PHP_EOL;
-            $output .= "</div>" . PHP_EOL;
-        }
-
-        return $output;
+        return $this->formatSwatches($colorTypes, 'long_name');
     }
 }

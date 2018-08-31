@@ -58,29 +58,43 @@
             {!! $productCards !!}
         </div> {{--Prices--}}
 
-        @if(preg_match("/color/i", $productLine->productSubcategory->short_name))
-            <div class="row">
-                <div class="col">
-                    <ul class="nav nav-tabs" id="swatch-tabs" role="tablist">
-                        <li class="nav-item swatches__title">
-                            <a class="swatches__tab__link nav-link active" id="swatches__product-color__tab" data-toggle="tab" href="#swatches__product-color" role="tab" aria-controls="swatches__product-color" aria-selected="true">Product Color Choices</a>
-                        </li>
-                        <li class="nav-item swatches__title">
-                            <a class="swatches__tab__link nav-link" id="swatches__ink-color__tab" data-toggle="tab" href="#swatches__ink-color" role="tab" aria-controls="swatches__ink-color" aria-selected="false">Ink Color Choices</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="swatch-tabs-content">
-                        <div class="tab-pane fade show active swatches__content" id="swatches__product-color"
-                             role="tabpanel" aria-labelledby="swatches__product-color__tab">
-                            {!! $swatchesProduct !!}
-                        </div>
-                        <div class="tab-pane fade swatches__content" id="swatches__ink-color"
-                             role="tabpanel" aria-labelledby="swatches__ink-color__tab">
-                            Some content here.
-                        </div>
+        @if(!empty($swatchesProduct) || !empty($swatchesImprint))
+        <div class="row">
+            <div class="col">
+                <ul class="nav nav-tabs" id="swatch-tabs" role="tablist">
+
+                    @if(!empty($swatchesProduct))
+                    <li class="nav-item swatches__title">
+                        <a class="swatches__tab__link nav-link" id="swatches__product-color__tab" data-toggle="tab" href="#swatches__product-color" role="tab" aria-controls="swatches__product-color" aria-selected="false">Product Color Choices</a>
+                    </li>
+                    @endif
+
+                    @if(!empty($swatchesImprint))
+                    <li class="nav-item swatches__title">
+                        <a class="swatches__tab__link nav-link" id="swatches__imprint-color__tab" data-toggle="tab" href="#swatches__imprint-color" role="tab" aria-controls="swatches__ink-color" aria-selected="false">Imprint Color Choices</a>
+                    </li>
+                    @endif
+
+                </ul>
+                <div class="tab-content" id="swatch-tabs-content">
+
+                    @if(!empty($swatchesProduct))
+                    <div class="tab-pane fade swatches__content" id="swatches__product-color"
+                         role="tabpanel" aria-labelledby="swatches__product-color__tab">
+                        {!! $swatchesProduct !!}
                     </div>
+                    @endif
+
+                    @if(!empty($swatchesImprint))
+                    <div class="tab-pane fade swatches__content" id="swatches__imprint-color"
+                         role="tabpanel" aria-labelledby="swatches__imprint-color__tab">
+                        {!! $swatchesImprint !!}
+                    </div>
+                    @endif
+
                 </div>
             </div>
+        </div>
         @endif
 
     </div>
@@ -92,6 +106,10 @@
     <script type="text/javascript">
 
         $(function() {
+
+          // Show the first tab in the swatches area.
+          $(".swatches__tab__link").first().addClass("active").attr("aria-selected", "true");
+          $(".tab-pane").first().addClass("show active");
 
           // Set a .rollover class for _only_ those individual product images that _have_ a "Sample" version.
           $(".thumbnail__image--blank").each(function() {
