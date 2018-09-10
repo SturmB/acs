@@ -11,8 +11,11 @@
         $imageContentClasses = 'col-md-8 col-lg-9';
         $splashImageClass .= ' pl-md-0 pr-md-3';
     }
-    $methodColor = '#' . $productLine->printMethod->hex;
+    if (isset($productLine)) {
+        $methodColor = '#' . $productLine->printMethod->hex;
+    }
     ?>
+
 
     <div id="product-content" class="p-3">
 

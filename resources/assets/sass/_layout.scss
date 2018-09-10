@@ -788,6 +788,58 @@ header a {
   } // media-breakpoint-up(lg)
 }
 
+// General Content --------------------------------------------------
+#general-content {
+  background: color(bg-lighter) grad(menu);
+  color: color(bg-abs);
+} // #general-content
+
+.inlay-text {
+  text-shadow: 0 1px 0 lighten(color(menu-stop1), 10%), 0 -1px 0 darken(color(menu-stop1), 20%);
+} // .inlay-text
+
+// Clipart Page --------------------------------------------------
+.clipart__subtitle {
+  background-color: color(accent);
+  color: color(menu-stop1);
+  border-radius: 100em;
+} // .clipart__subtitle
+
+/*
+.clipart__sample-sketch {
+  width: 80%;
+
+  @include media-breakpoint-up(md) {
+    width: 30%;
+  } // media-breakpoint-up(md)
+
+} // .clipart__sample-sketch
+*/
+
+/*
+.clipart__sample-combo {
+  width: 20%;
+  float: right;
+} // .clipart__sample-combo
+*/
+
+.clipart__thumb {
+  //width: 8em;
+} // .clipart__thumb
+
+.img-thumbnail {
+  //padding: 4px;
+  padding-bottom: 100%;
+  //background: #FFFFFF;
+  border-color: color(text);
+} // .thumbnail
+
+.thumbnail__img {
+  width: 100%;
+  width: 95%;
+  height: 95%;
+} // .thumbnail__img
+
 // Footer --------------------------------------------------
 footer {
   p {
