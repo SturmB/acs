@@ -48,6 +48,6 @@
         </div> {{--.clipart__info--}}
 
 
-    </div> {{--#clipart-content--}}
+    </div> {{--#general-content--}}
 
 @endsection

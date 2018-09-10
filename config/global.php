@@ -9,5 +9,6 @@
 return [
 
     'clipartPath' => public_path('storage/images/clipart/'),
+    'typefacesPath' => public_path('storage/images/fonts/'),
 
 ];

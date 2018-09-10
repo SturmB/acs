@@ -11630,6 +11630,10 @@ header a {
   height: 95%;
 }
 
+.typefaces__name {
+  border-bottom: 1px solid #c61d23;
+}
+
 footer p {
   text-align: center;
 }

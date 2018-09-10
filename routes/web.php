@@ -18,5 +18,6 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('products/{category}/{subcategory}/{method}/{includeInactive?}', 'ProductController@index')->name('product');
 Route::get('features/{productLineId}/{includeInactive?}', 'ProductController@getFeatures');
 Route::get('clipart/{category}', 'ClipartController@index')->name('clipart');
+Route::get('typefaces', 'TypefacesController@index')->name('typefaces');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');

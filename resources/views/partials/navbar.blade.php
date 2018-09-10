@@ -23,7 +23,7 @@
                             <div class="flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240">
                                 <ul class="dropdown_flyout">
                                     <li><a href="orderform.pdf" target="_blank" title="Order Form">Order Form</a></li>
-                                    <li><a href="typefaces.php" target="_self" title="Fonts">Typefaces</a></li>
+                                    <li><a href="{{ route('typefaces') }}" target="_self" title="Fonts">Typefaces</a></li>
                                     <li><a href="general_information.php" target="_self" title="General Information">General Info</a></li>
                                     <li><a href="about.php" target="_self" title="About Us">About Us</a></li>
                                     <li><a href="contact.php" target="_self" title="Contact Information">Contact Info</a></li>
