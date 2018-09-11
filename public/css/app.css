@@ -10834,7 +10834,7 @@ header a {
 
 @media (min-width: 992px) {
   #splash h1 {
-    font-size: 3.0em;
+    font-size: 3em;
   }
 }
 
@@ -11301,7 +11301,7 @@ header a {
   font: bold 15px Sans-Serif;
   color: #140304;
   text-align: center;
-  text-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px;
+  text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
   text-transform: uppercase;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -11591,33 +11591,31 @@ header a {
   color: #000000;
 }
 
+#general-content h1,
+#general-content h2,
+#general-content h3,
+#general-content h4,
+#general-content h5,
+#general-content h6 {
+  color: #c61d23;
+  text-shadow: 0 1px 0 #f4f4f4, 0 -1px 0 #a9a6a6;
+}
+
 .inlay-text {
   text-shadow: 0 1px 0 #f4f4f4, 0 -1px 0 #a9a6a6;
 }
 
-.clipart__subtitle {
-  background-color: #c61d23;
-  color: #dbdada;
-  border-radius: 100em;
+.paragraph__heading {
+  color: #c61d23;
+  font-weight: 900;
 }
 
-/*
-.clipart__sample-sketch {
-  width: 80%;
-
-  @include media-breakpoint-up(md) {
-    width: 30%;
-  } // media-breakpoint-up(md)
-
-} // .clipart__sample-sketch
-*/
-
-/*
-.clipart__sample-combo {
-  width: 20%;
-  float: right;
-} // .clipart__sample-combo
-*/
+.clipart__subtitle {
+  background-color: #c61d23;
+  color: #dbdada !important;
+  text-shadow: none !important;
+  border-radius: 100em;
+}
 
 .img-thumbnail {
   padding-bottom: 100%;
@@ -11625,13 +11623,34 @@ header a {
 }
 
 .thumbnail__img {
-  width: 100%;
   width: 95%;
   height: 95%;
 }
 
 .typefaces__name {
   border-bottom: 1px solid #c61d23;
+}
+
+@media (max-width: 767.98px) {
+  .general-info {
+    font-size: 0.8em;
+  }
+}
+
+.general-info__image {
+  display: block;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 40em;
+  height: auto;
+}
+
+#info-linethickness {
+  max-width: 180px;
+}
+
+#info-fontsizes {
+  max-width: 3.1458in;
 }
 
 footer p {

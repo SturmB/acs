@@ -63,3 +63,15 @@
   text-shadow: 0 1px 0 darken($color, 10%), 0 -1px 0 darken($color, 20%);
   box-shadow: 0 $offset 0 darken($color, 20%);
 } // method-button-selected
+
+// Text --------------------------------------------------
+@mixin accented() {
+  color: color(accent);
+}
+
+@mixin inlay-text(
+  $lightColor: lighten(color(menu-stop1), 10%),
+  $darkColor: darken(color(menu-stop1), 20%)
+) {
+  text-shadow: 0 1px 0 $lightColor, 0 -1px 0 $darkColor;
+}

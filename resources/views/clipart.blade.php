@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col">
                 <div id="title" class="text-center">
-                    <h1 class="is-accented inlay-text mt-4">Clip Art</h1>
+                    <h1 class="mt-4">Clip Art</h1>
                     <h3 class="clipart__subtitle d-inline-block px-4 py-1">{{ $clipartSubcategory->long_name }}</h3>
                 </div>
             </div>

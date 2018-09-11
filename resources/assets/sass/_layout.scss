@@ -143,14 +143,14 @@ header a {
     font-size: 1.5em;
     color: #ffffff;
     text-indent: 1em;
-    text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.50);
+    text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.5);
 
     @include media-breakpoint-up(sm) {
       font-size: 2.5em;
     } // media-breakpoint-up(sm)
 
     @include media-breakpoint-up(lg) {
-      font-size: 3.0em;
+      font-size: 3em;
     } // media-breakpoint-up(lg)
 
     @include media-breakpoint-up(xl) {
@@ -359,7 +359,6 @@ header a {
 
   // At the Top --------------------------------------------------
   #title {
-
     .method-button {
       display: inline-block;
       background: darken(color(accent), 30%) grad(accent);
@@ -519,7 +518,6 @@ header a {
     border-bottom: 0;
     border-right: 2px groove color(accent-darker);
   } // @include media-breakpoint-up(sm)
-
 } // .item-info__num-thumb-desc
 
 //noinspection CssNoGenericFontName
@@ -536,7 +534,6 @@ header a {
   @extend %item-info__shared;
   font-size: 0.9em;
 } // .item-info__description
-
 
 // Corner Ribbon
 .thumbnail__ribbon-area {
@@ -555,29 +552,30 @@ header a {
   font: bold 15px Sans-Serif;
   color: darken(color(accent), 40%);
   text-align: center;
-  text-shadow: rgba(255,255,255,0.2) 0px 1px 0px;
+  text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
   text-transform: uppercase;
   -webkit-transform: rotate(-45deg);
-  -moz-transform:    rotate(-45deg);
-  -ms-transform:     rotate(-45deg);
-  -o-transform:      rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
   position: relative;
   padding: 5px 0;
   right: -8px;
   top: 20px;
   width: 120px;
   background: color(accent) grad(accent-selected);
-  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  -moz-box-shadow:    0 0 3px rgba(0,0,0,0.3);
-  box-shadow:         0 0 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   float: right;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: "";
-    border-top:   2px solid darken(color(accent), 30%);
-    border-left:  2px solid transparent;
+    border-top: 2px solid darken(color(accent), 30%);
+    border-left: 2px solid transparent;
     border-right: 2px solid transparent;
-    position:absolute;
+    position: absolute;
     bottom: -2px;
   } // &:before, &:after
 
@@ -588,7 +586,6 @@ header a {
   &:after {
     right: 0;
   } // &:after
-
 } // .thumbnail__ribbon
 
 // Thumbnails
@@ -609,9 +606,7 @@ header a {
     .thumbnail__ribbon-area {
       display: block;
     } // .thumbnail__ribbon-area
-
   } // &:hover
-
 } // .thumbnail__overlay--rollover
 
 .item-info__thumbnail {
@@ -678,7 +673,6 @@ header a {
   &.price-table--columns6 {
     width: percentage(1/6);
   } // &.price-table--columns6
-
 } // .price-table__th
 
 //noinspection CssNoGenericFontName
@@ -740,7 +734,6 @@ header a {
     color: color(text-alt);
     border-color: color(bg-main);
   } // &.active
-
 } // .nav-tabs .swatches__tab__link
 
 .swatches__content {
@@ -755,7 +748,6 @@ header a {
   @include media-breakpoint-up(md) {
     width: 15%;
   } // media-breakpoint-up(md)
-
 } // .swatches__header
 
 .swatches__item {
@@ -790,52 +782,51 @@ header a {
 
 // General Content --------------------------------------------------
 #general-content {
+
   background: color(bg-lighter) grad(menu);
   color: color(bg-abs);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include accented;
+    @include inlay-text(
+      lighten(color(menu-stop1), 10%),
+      darken(color(menu-stop1), 20%)
+    );
+  } // h1, h2, h3, h4, h5, h6
+
 } // #general-content
 
 .inlay-text {
-  text-shadow: 0 1px 0 lighten(color(menu-stop1), 10%), 0 -1px 0 darken(color(menu-stop1), 20%);
+  @include inlay-text(
+    lighten(color(menu-stop1), 10%),
+    darken(color(menu-stop1), 20%)
+  );
 } // .inlay-text
+
+.paragraph__heading {
+  @include accented;
+  font-weight: 900;
+}
 
 // Clipart Page --------------------------------------------------
 .clipart__subtitle {
   background-color: color(accent);
-  color: color(menu-stop1);
+  color: color(menu-stop1) !important;
+  text-shadow: none !important;
   border-radius: 100em;
 } // .clipart__subtitle
 
-/*
-.clipart__sample-sketch {
-  width: 80%;
-
-  @include media-breakpoint-up(md) {
-    width: 30%;
-  } // media-breakpoint-up(md)
-
-} // .clipart__sample-sketch
-*/
-
-/*
-.clipart__sample-combo {
-  width: 20%;
-  float: right;
-} // .clipart__sample-combo
-*/
-
-.clipart__thumb {
-  //width: 8em;
-} // .clipart__thumb
-
 .img-thumbnail {
-  //padding: 4px;
   padding-bottom: 100%;
-  //background: #FFFFFF;
   border-color: color(text);
 } // .thumbnail
 
 .thumbnail__img {
-  width: 100%;
   width: 95%;
   height: 95%;
 } // .thumbnail__img
@@ -844,6 +835,32 @@ header a {
 .typefaces__name {
   border-bottom: 1px solid color(accent);
 } // .typefaces__name
+
+// General Information Page --------------------------------------------------
+.general-info {
+
+  @include media-breakpoint-down(sm) {
+    font-size: 0.8em;
+  } // media-breakpoint-up(md)
+
+} // .general-info
+
+.general-info__image {
+  display: block;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 40em;
+  height: auto;
+} // .general-info__image
+
+#info-linethickness {
+  max-width: 180px;
+} // #info-linethickness
+
+#info-fontsizes {
+  max-width: 3.1458in;
+} // #info-fontsizes
+
 
 // Footer --------------------------------------------------
 footer {

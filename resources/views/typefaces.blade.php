@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col">
                 <div id="title" class="text-center">
-                    <h1 class="is-accented inlay-text mt-4">Typefaces</h1>
+                    <h1 class="mt-4">Typefaces</h1>
                 </div>
             </div>
         </div> {{--Title--}}
@@ -23,7 +23,7 @@
                             $filename = str_replace('_', ' ', $filenameUnderscored);
                         @endphp
                         <div class="typefaces__typeface col-12 col-md-6 mb-5">
-                            <h5 class="typefaces__name is-accented inlay-text">{{ $filename }}</h5>
+                            <h5 class="typefaces__name">{{ $filename }}</h5>
                             <img src="{{ asset('images/fonts/' . $typeface) }}" alt="{{ $filename }}">
                         </div>
                     @endforeach
