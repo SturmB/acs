@@ -631,8 +631,8 @@ header a {
 .thumbnail__image {
   position: absolute;
   border: none;
-  width: 200px;
-  height: 200px;
+  width: 200px - ($size-border * 2);
+  height: 200px - ($size-border * 2);
   top: 0;
   left: 0;
 

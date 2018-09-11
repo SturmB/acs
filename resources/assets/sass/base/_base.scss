@@ -20,6 +20,12 @@ body {
   background: color(bg-abs) image(bg-main) no-repeat top center;
   font-family: font(paragraph);
   color: color(text);
+  -ms-word-break: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 } // body
 
 h1,

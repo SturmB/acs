@@ -5,14 +5,9 @@
 
     <div id="general-content" class="p-3">
 
-        <div class="row">
-            <div class="col">
-                <div id="title" class="text-center">
-                    <h1 class="mt-4">Clip Art</h1>
-                    <h3 class="clipart__subtitle d-inline-block px-4 py-1">{{ $clipartSubcategory->long_name }}</h3>
-                </div>
-            </div>
-        </div> {{--Title--}}
+        @component('partials.general-content__title', ['title' => 'Clip Art'])
+            <h3 class="clipart__subtitle d-inline-block px-4 py-1">{{ $clipartSubcategory->long_name }}</h3>
+        @endcomponent
 
         <div class="row clipart__info m-2 m-md-4">
 

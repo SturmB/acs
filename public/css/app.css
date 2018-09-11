@@ -10604,6 +10604,11 @@ body {
   background: #000000 url("/images/background-planes-2800x1600.jpg") no-repeat top center;
   font-family: proxima-nova, Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #444444;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 h1,
@@ -11427,8 +11432,8 @@ header a {
 .thumbnail__image {
   position: absolute;
   border: none;
-  width: 200px;
-  height: 200px;
+  width: 194px;
+  height: 194px;
   top: 0;
   left: 0;
 }

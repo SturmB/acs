@@ -5,13 +5,8 @@
 
     <div id="general-content" class="p-3">
 
-        <div class="row">
-            <div class="col">
-                <div id="title" class="text-center">
-                    <h1 class="mt-4">General Information</h1>
-                </div>
-            </div>
-        </div> {{--Title--}}
+        @component('partials.general-content__title', ['title' => 'General Information'])
+        @endcomponent
 
         <div class="row general-info m-2 m-md-4">
             <div class="col-12">

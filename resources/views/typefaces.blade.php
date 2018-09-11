@@ -5,13 +5,8 @@
 
     <div id="general-content" class="p-3">
 
-        <div class="row">
-            <div class="col">
-                <div id="title" class="text-center">
-                    <h1 class="mt-4">Typefaces</h1>
-                </div>
-            </div>
-        </div> {{--Title--}}
+        @component('partials.general-content__title', ['title' => 'Typefaces'])
+        @endcomponent
 
         <div class="row typefaces__info m-2 m-md-4">
             @if(count($typefaces) > 0)
