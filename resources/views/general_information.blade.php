@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col">
                 <div id="title" class="text-center">
-                    <h1 class="is-accented inlay-text mt-4">General Information</h1>
+                    <h1 class="mt-4">General Information</h1>
                 </div>
             </div>
         </div> {{--Title--}}
@@ -213,7 +213,7 @@
                 <p class="paragraph__heading">It is understood that by submitting an order to the factory, the customer agrees to all of the factory's terms and conditions, regardless of what is on the customer's purchase order.</p>
 
             </div> {{--.col-12--}}
-        </div> {{--.typefaces__info--}}
+        </div> {{--.general-info--}}
 
 
     </div> {{--#general-content--}}

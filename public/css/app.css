@@ -11653,6 +11653,14 @@ header a {
   max-width: 3.1458in;
 }
 
+#about-image {
+  max-width: 50%;
+}
+
+.signature {
+  max-width: 15em;
+}
+
 footer p {
   text-align: center;
 }

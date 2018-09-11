@@ -813,6 +813,7 @@ header a {
   font-weight: 900;
 }
 
+
 // Clipart Page --------------------------------------------------
 .clipart__subtitle {
   background-color: color(accent);
@@ -831,10 +832,12 @@ header a {
   height: 95%;
 } // .thumbnail__img
 
+
 // Typefaces Page --------------------------------------------------
 .typefaces__name {
   border-bottom: 1px solid color(accent);
 } // .typefaces__name
+
 
 // General Information Page --------------------------------------------------
 .general-info {
@@ -861,6 +864,15 @@ header a {
   max-width: 3.1458in;
 } // #info-fontsizes
 
+
+// About Us Page --------------------------------------------------
+#about-image {
+  max-width: 50%;
+} // #about-image
+
+.signature {
+  max-width: 15em;
+} // .signature
 
 // Footer --------------------------------------------------
 footer {

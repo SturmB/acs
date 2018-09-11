@@ -25,7 +25,7 @@
                                     <li><a href="orderform.pdf" target="_blank" title="Order Form">Order Form</a></li>
                                     <li><a href="{{ route('typefaces') }}" target="_self" title="Fonts">Typefaces</a></li>
                                     <li><a href="{{ route('generalInfo') }}" target="_self" title="General Information">General Info</a></li>
-                                    <li><a href="about.php" target="_self" title="About Us">About Us</a></li>
+                                    <li><a href="{{ route('about') }}" target="_self" title="About Us">About Us</a></li>
                                     <li><a href="contact.php" target="_self" title="Contact Information">Contact Info</a></li>
                                 </ul>
                             </div>

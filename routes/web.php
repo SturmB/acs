@@ -20,5 +20,6 @@ Route::get('features/{productLineId}/{includeInactive?}', 'ProductController@get
 Route::get('clipart/{category}', 'ClipartController@index')->name('clipart');
 Route::get('typefaces', 'TypefacesController@index')->name('typefaces');
 Route::view('general_information', 'general_information')->name('generalInfo');
+Route::view('about', 'about')->name('about');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');
