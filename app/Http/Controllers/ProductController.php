@@ -226,7 +226,8 @@ class ProductController extends Controller
                 }
             ]);
 
-        return $expandedProductLine->count() > 0
+        $numNotes = $expandedProductLine->productNotes->count() + $expandedProductLine->imprintTypes->count();
+        return $numNotes > 0
             ? $this->formatTextNotes($expandedProductLine)
             : null;
     }
