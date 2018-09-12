@@ -315,7 +315,7 @@ class ProductController extends Controller
             "<div class='thumbnail__ribbon-area'><div class='thumbnail__ribbon'>Sample</div></div>" .
             PHP_EOL;
 
-        $folder = "images/products-assets/{$productLine->productSubcategory
+        $folder = "storage/images/products-assets/{$productLine->productSubcategory
             ->productCategory->id}/{$productLine->productSubcategory
             ->short_name}/";
         //        $html_folder = substr($folder, 3);
@@ -573,13 +573,13 @@ class ProductController extends Controller
                 $iconBaseName = "charge-{$charge->charge_type_id}";
                 $chargeLongName = $charge->chargeType->long_name;
                 $iconHeader = asset(
-                    "images/charges-icons/{$iconBaseName}-th.svg"
+                    "storage/images/charges-icons/{$iconBaseName}-th.svg"
                 );
                 $iconPrint = asset(
-                    "images/charges-icons/{$iconBaseName}-print.svg"
+                    "storage/images/charges-icons/{$iconBaseName}-print.svg"
                 );
                 $iconLegend = asset(
-                    "images/charges-icons/{$iconBaseName}-legend.svg"
+                    "storage/images/charges-icons/{$iconBaseName}-legend.svg"
                 );
 
                 $symbolLegend .= "<li>" . PHP_EOL;
@@ -862,7 +862,7 @@ class ProductController extends Controller
         foreach ($imprintTypes as $imprintType) {
             // Set up the file name for this imprint type.
             $imageFile = asset(
-                "images/imprint-types-assets/{$imprintType->id}.jpg"
+                "storage/images/imprint-types-assets/{$imprintType->id}.jpg"
             );
 
             $output .= "<li class='text-center m-1'>" . PHP_EOL;
