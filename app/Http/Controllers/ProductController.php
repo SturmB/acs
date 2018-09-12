@@ -733,7 +733,7 @@ class ProductController extends Controller
                         );
                         $lowered = strtolower($spacesRemoved);
                         $filename = $lowered . ".jpg";
-                        $background = "background: url(/images/swatches-foils-assets/{$filename}); background-size: cover;";
+                        $background = "background: url(/storage/images/swatches-foils-assets/{$filename}); background-size: cover;";
                     }
                     $output .=
                         "<li class='swatches__item text-stroke-black d-flex justify-content-center align-items-center text-center' style='background-color: {$hexColor}; {$gradient} {$background}'>{$color->short_name}</li>" .
