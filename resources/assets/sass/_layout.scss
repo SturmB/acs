@@ -611,7 +611,7 @@ header a {
 
 .item-info__thumbnail {
   @include retina(
-    "/images/product-background.jpg",
+    "/storage/images/product-background.jpg",
     3,
     cover,
     center center no-repeat
