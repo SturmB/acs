@@ -19,7 +19,7 @@
                         @endphp
                         <div class="typefaces__typeface col-12 col-md-6 mb-5">
                             <h5 class="typefaces__name">{{ $filename }}</h5>
-                            <img src="{{ asset('images/fonts/' . $typeface) }}" alt="{{ $filename }}" class="svg">
+                            <img src="{{ asset('storage/images/fonts/' . $typeface) }}" alt="{{ $filename }}" class="svg">
                         </div>
                     @endforeach
                 </div> {{--.typefaces__gallery--}}

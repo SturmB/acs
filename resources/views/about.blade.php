@@ -11,7 +11,7 @@
         <div class="row about-info m-2 m-md-4">
             <div class="col-12">
 
-                <img src="{{ asset('images/plane_N21T_onground.jpg') }}" alt="N21T plane on ground" class="accent-image float-right m-2" id="about-image">
+                <img src="{{ asset('storage/images/plane_N21T_onground.jpg') }}" alt="N21T plane on ground" class="accent-image float-right m-2" id="about-image">
 
                 <p class="font-weight-bold">Dear Aviator,</p>
 
@@ -21,7 +21,7 @@
 
                 <p>Today, {{ date("Y") - 1985 }} years later, American Cabin Supply is a bit bigger, a bit more diverse, but in many ways still the same. We’re still in the same small Kentucky town. We’re still on the vanguard of the drinkware business. And most important, we still thrive on the quality and service that my parents instilled upon the company. Our skilled craftsmen pride themselves on producing a quality product, within a 5 day turnaround time, that will appeal to our discerning customer, and is backed by the best guarantee available anywhere.</p>
 
-                <img src="{{ asset('images/signature-ShawnClaggett-black.png') }}" alt="Shawn Claggett" class="signature">
+                <img src="{{ asset('storage/images/signature-ShawnClaggett-black.png') }}" alt="Shawn Claggett" class="signature">
 
                 <p class="font-weight-bold">Shawn Claggett<br>
                     President, 2nd Generation</p>

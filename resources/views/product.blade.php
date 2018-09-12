@@ -31,7 +31,7 @@
             <div class="{{ $imageContentClasses }} order-md-last my-3">
                 <div id="images-content">
                     <div id="splash-image">
-                        <img src='{{ asset("images/product-subcategories-assets/{$productLineText}.png") }}'
+                        <img src='{{ asset("storage/images/product-subcategories-assets/{$productLineText}.png") }}'
                              alt="{{ $productLineText }}" class="img-fluid mx-auto d-block" data-rjs="3">
                     </div>
                 </div>

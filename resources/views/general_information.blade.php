@@ -54,7 +54,7 @@
                 <p>Pros of 4-Color Process: Unlimited colors & color choices and special effect friendly (drop shadows, glows, and gradients).
                 <p>Cons of 4-Color Process: Degraded color matching ability, loss of solid color integrity, gradients & tints only fade to 20%, and a loss of sharpness in photos or illustration quality.</p>
 
-                <img src="{{ asset('images/info-cmyk.png') }}" alt="4 Color Process Example" data-rjs="3" id="info-cmyk" class="general-info__image">
+                <img src="{{ asset('storage/images/info-cmyk.png') }}" alt="4 Color Process Example" data-rjs="3" id="info-cmyk" class="general-info__image">
 
                 <p><span class="paragraph__heading">Emboss &amp; Deboss:</span> Embossing and debossing are printing methods which use heat and pressure to create a raised or recessed image into the product. This printing method is best suited for bold imprints without fine detail, halftones, nor reversed images. These imprint methods are available on all napkins. However please be aware that the image is not as crisp on the Almost Linen Napkins due to the thickness of the product.</p>
 
@@ -69,21 +69,21 @@
 
                 <p><span class="paragraph__heading">Halftones &amp; Screen Tints:</span> Halftones will not appear as smooth on printed products as they appear on a computer screen or printout unless the output device is set to print tints at 55 LPI (for screen-printed napkins), 65 LPI (for screen-printed cups), or 90 LPI (for pad-printed and process-printed items). (See graphic example below.) Tints below 20% at 65 LPI cannot be achieved and tints over 80% at 65 LPI will appear solid. Due to the coarseness of the halftones, our factory recommends that images be given a solid outline. (See graphic example below.)</p>
 
-                <img src="{{ asset('images/info-halftones.png') }}" alt="Halftones" data-rjs="3" id="info-halftones" class="general-info__image">
+                <img src="{{ asset('storage/images/info-halftones.png') }}" alt="Halftones" data-rjs="3" id="info-halftones" class="general-info__image">
 
                 <p><span class="paragraph__heading">Thin Lines:</span> Our factory recommends you use 1pt line or thicker. Reversed-out lines require 2pts or thicker. (See graphic example below.) If recommendations are not followed, our factory can not be held responsible for the outcome.</p>
 
-                <img src="{{ asset('images/info-linethickness.svg') }}" alt="Line Thicknesses" id="info-linethickness" class="general-info__image">
+                <img src="{{ asset('storage/images/info-linethickness.svg') }}" alt="Line Thicknesses" id="info-linethickness" class="general-info__image">
 
                 <p><span class="paragraph__heading">Small Font:</span> Factory recommends using 8pt fonts or larger. Script and reversed-out fonts should be 10pts or larger. (See graphic example below.)</p>
 
-                <img src="{{ asset('images/info-fontsizes.svg') }}" alt="Font Sizes" id="info-fontsizes" class="general-info__image">
+                <img src="{{ asset('storage/images/info-fontsizes.svg') }}" alt="Font Sizes" id="info-fontsizes" class="general-info__image">
 
                 <p><span class="paragraph__heading">Standard Ink Colors:</span> If you do not have a PMS #, you may choose from the following color swatches. Please note we do not charge for PMS matching, so feel free to supply a Pantone&reg; color if it is available. 2X & 4-digit metallic PMS colors are not available. 800-series colors are limited to the PMS numbers shown. Asterisk (<sup>*</sup>) represents the default color when more than one choice is available.</p>
 
                 <p><span class="paragraph__heading">Ink Color Match:</span> We do not charge for PMS matching. We take great pride in our ability to match PMS colors. However, color match is only guaranteed +/- one shade on white/clear items. We cannot guarantee color match on dark-colored items. If purchase orders say to use a PMS #, and you describe the color, the factory is only responsible for the PMS #. We do not check to see if the PMS # provided is the color stated. 2X and 4-digit metallic PMS numbers are not available. 800-series colors are limited to the PMS # shown.</p>
 
-                <img src="{{ asset('images/info-inkcolors.svg') }}" alt="Ink Colors" id="info-inkcolors" class="general-info__image">
+                <img src="{{ asset('storage/images/info-inkcolors.svg') }}" alt="Ink Colors" id="info-inkcolors" class="general-info__image">
 
                 <p><span class="paragraph__heading">Ink Odor:</span> Paper products are printed with inks that must evaporate to dry. These vapors may be trapped in the plastic packaging before they have completely dissipated. The inks are dry, but there may be a residual odor in the package from these vapors. Some colors of ink have more odor than others, and the amount of ink coverage can also affect the amount of odor. This odor, should it be present, is not considered a defect. It is similar to painting a room in your home. The paint will be dry, but there will be an odor that remains for several days. Should this odor be a concern, remove the paper products from the plastic packaging and let them air to eliminate the odor. Normally, once the products are placed for use, any odor that remains will quickly dissipate.</p>
 
@@ -99,7 +99,7 @@
 
                 <p><span class="paragraph__heading">Standard Layout:</span> Unless otherwise specified, we will default to our standard placement (marked in red). The gray areas on napkins indicate a ruffled edge. Cups are printed one-sided. (There is no charge for 2-sided or wrap imprint, but it must be specified.)</p>
 
-                <img src="{{ asset('images/info-layouts-stacked.svg') }}" alt="Standard Layouts" id="info-layouts" class="general-info__image">
+                <img src="{{ asset('storage/images/info-layouts-stacked.svg') }}" alt="Standard Layouts" id="info-layouts" class="general-info__image">
 
 
                 <h3>Proofs:</h3>

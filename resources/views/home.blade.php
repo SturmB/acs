@@ -8,7 +8,7 @@
             <div class="jumbotron p-0" id="splash">
                 <h1>Your Plane<br>
                     Our Product</h1>
-                <img src="{{ asset('images/hero-02.jpg') }}" data-rjs="3" alt="Airplane soaring" class="w-100">
+                <img src="{{ asset('storage/images/hero-02.jpg') }}" data-rjs="3" alt="Airplane soaring" class="w-100">
             </div>
         </div> {{--col--}}
     </div> {{--row--}}
@@ -20,20 +20,20 @@
 
                 <div id="welcome-aboard-special" class="col-12 article">
                     <h2>Welcome Aboard Special - $445*</h2>
-                    <img src="{{ asset('images/welcome-aboard-special-photo_01.jpg') }}" class="img-fluid promo-photo" data-rjs="3" alt="Welcome Aboard Special">
+                    <img src="{{ asset('storage/images/welcome-aboard-special-photo_01.jpg') }}" class="img-fluid promo-photo" data-rjs="3" alt="Welcome Aboard Special">
                     <p>A great way to sample our products at a savings!</p>
                     <h4>Here's what you'll get:</h4>
                     <p>100 each of our 8oz Foam Cups, our shatter resistant 10oz FrostFlex Tumblers, and 250 of our White Beverage Napkins. Order Another Welcome Aboard Special at the same time for your Office, Boat, Farm, Ranch, or Vacation Home and get <span class="font-weight-bold">10% off</span> the additional order!</p>
                     <div class="row">
-                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/S8.png') }}" data-rjs="3" alt="Foam Cup">
+                        <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/S8.png') }}" data-rjs="3" alt="Foam Cup">
                             <h4>100</h4>
                             <p>8oz Foam Cups</p>
                         </div>
-                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/N10.png') }}" data-rjs="3" alt="Beverage Napkin">
+                        <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/N10.png') }}" data-rjs="3" alt="Beverage Napkin">
                             <h4>250</h4>
                             <p>White Beverage Napkins</p>
                         </div>
-                        <div class="col was-item"><img src="{{ asset('images/welcome-aboard-assets/P10.png') }}" data-rjs="3" alt="Frost-Flex Cup">
+                        <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/P10.png') }}" data-rjs="3" alt="Frost-Flex Cup">
                             <h4>100</h4>
                             <p>10 oz Frost-Flex Tumblers</p>
                         </div>
@@ -50,7 +50,7 @@
                             <a href="#" class="product-cat" id="napkins">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/napkins.png') }}"
+                                         src="{{ asset('storage/images/product-categories-assets/napkins.png') }}"
                                          data-rjs="3" alt="Napkins">
                                 </figure>
                                 Napkins
@@ -60,7 +60,7 @@
                             <a href="#" class="product-cat" id="coasters">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/coasters.png') }}" data-rjs="3"
+                                         src="{{ asset('storage/images/product-categories-assets/coasters.png') }}" data-rjs="3"
                                          alt="Coasters">
                                 </figure>
                                 Coasters
@@ -70,7 +70,7 @@
                             <a href="#" class="product-cat" id="stirpiks">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/stirpiks.png') }}" data-rjs="3"
+                                         src="{{ asset('storage/images/product-categories-assets/stirpiks.png') }}" data-rjs="3"
                                          alt="Drink Stirrers, Food Piks, &amp; Ice Cream Spoons">
                                 </figure>
                                 Stirrers &amp; Piks
@@ -80,7 +80,7 @@
                             <a href="#" class="product-cat" id="plates">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/plates.png') }}"
+                                         src="{{ asset('storage/images/product-categories-assets/plates.png') }}"
                                          data-rjs="3" alt="Plates">
                                 </figure>
                                 Plates
@@ -90,7 +90,7 @@
                             <a href="#" class="product-cat" id="cups">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/cups.png') }}"
+                                         src="{{ asset('storage/images/product-categories-assets/cups.png') }}"
                                          data-rjs="3" alt="Cups">
                                 </figure>
                                 Cups
@@ -100,7 +100,7 @@
                             <a href="#" class="product-cat" id="utensils">
                                 <figure class="figure">
                                     <img class="img-fluid"
-                                         src="{{ asset('images/product-categories-assets/utensils.png') }}" data-rjs="3"
+                                         src="{{ asset('storage/images/product-categories-assets/utensils.png') }}" data-rjs="3"
                                          alt="Lids, Straws, &amp; Utensils">
                                 </figure>
                                 Lids &amp; Utensils
@@ -126,7 +126,7 @@
                     <ol>
                         <li>Pick your aircraft from our vast clipart library.</li>
                         <li>Provide text and/or &ldquo;N&rdquo; number with chosen font.</li>
-                        <li>Fill out our <a href="{{ asset('orderform.pdf') }}" title="Order Form" target="_blank">order form<i class="fas fa-download ml-1" aria-hidden="true"></i></a>.
+                        <li>Fill out our <a href="{{ asset('storage/orderform.pdf') }}" title="Order Form" target="_blank">order form<i class="fas fa-download ml-1" aria-hidden="true"></i></a>.
                         </li>
                         <li>Approve your proof provided to you within 1 business day.</li>
                     </ol>
@@ -142,7 +142,7 @@
                 <div class="feature">
                     <h4>Downloadable 2018 Catalog</h4>
                     <a href="Default.html" target="_blank">
-                        <img src="{{ asset('images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
+                        <img src="{{ asset('storage/images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
                     </a>
                     <p>
                         Why wait for the mail? Get our digital catalog instantly and be eco-friendly. Browse through our many products to see which ones are right for you. If you can’t decide, call customer service and ask for a free spec sample. We will gladly send you the actual item to see if it fits your cup holders as well as to see if you like the product.<br>

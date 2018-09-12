@@ -7,26 +7,26 @@
 <title>{{ setting('site.title') }}</title>
 
 <!-- Favicons! -->
-<link rel="apple-touch-icon-precomposed" href="{{ asset('favicons/favicon-180.png') }}">
-<link rel="apple-touch-icon-precomposed" href="{{ asset('favicons/favicon-152.png') }}">
-<link rel="apple-touch-icon-precomposed" href="{{ asset('favicons/favicon-120.png') }}">
-<link rel="apple-touch-icon-precomposed" href="{{ asset('favicons/favicon-76.png') }}">
-<link rel="apple-touch-icon-precomposed" href="{{ asset('favicons/favicon-57.png') }}">
-<link rel="mask-icon" href="{{ asset('favicons/icon.svg') }}" color="#591315">
-<link rel="shortcut icon" sizes="196x196" href="{{ asset('favicons/favicon-196.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-180.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-152.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-120.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-76.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-57.png') }}">
+<link rel="mask-icon" href="{{ asset('storage/favicons/icon.svg') }}" color="#591315">
+<link rel="shortcut icon" sizes="196x196" href="{{ asset('storage/favicons/favicon-196.png') }}">
 
-<link rel="icon" href="{{ asset('favicons/favicon-228.png') }}" sizes="228x228">
-<link rel="icon" href="{{ asset('favicons/favicon-195.png') }}" sizes="195x195">
-<link rel="icon" href="{{ asset('favicons/favicon-144.png') }}" sizes="144x144">
-<link rel="icon" href="{{ asset('favicons/favicon-128.png') }}" sizes="128x128">
-<link rel="icon" href="{{ asset('favicons/favicon-96.png') }}" sizes="96x96">
-<link rel="icon" href="{{ asset('favicons/favicon-32.png') }}" sizes="32x32">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-228.png') }}" sizes="228x228">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-195.png') }}" sizes="195x195">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-144.png') }}" sizes="144x144">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-128.png') }}" sizes="128x128">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-96.png') }}" sizes="96x96">
+<link rel="icon" href="{{ asset('storage/favicons/favicon-32.png') }}" sizes="32x32">
 
 <meta name="msapplication-TileColor" content="#591315">
-<meta name="msapplication-TileImage" content="{{ asset('favicons/favicon-144.png') }}">
+<meta name="msapplication-TileImage" content="{{ asset('storage/favicons/favicon-144.png') }}">
 <meta name="application-name" content="American Cabin Supply">
 <meta name="msapplication-tooltip" content="American Cabin Supply">
-<meta name="msapplication-config" content="{{ asset('favicons/ieconfig.xml') }}">
+<meta name="msapplication-config" content="{{ asset('storage/favicons/ieconfig.xml') }}">
 <!-- End Favicons -->
 
 <!-- TypeKit -->
