@@ -22,7 +22,7 @@
                         <li><span>Information</span>
                             <div class="flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_240">
                                 <ul class="dropdown_flyout">
-                                    <li><a href="orderform.pdf" target="_blank" title="Order Form">Order Form</a></li>
+                                    <li><a href="{{ asset('storage/orderform.pdf') }}" target="_blank" title="Order Form">Order Form</a></li>
                                     <li><a href="{{ route('typefaces') }}" target="_self" title="Fonts">Typefaces</a></li>
                                     <li><a href="{{ route('generalInfo') }}" target="_self" title="General Information">General Info</a></li>
                                     <li><a href="{{ route('about') }}" target="_self" title="About Us">About Us</a></li>
