@@ -87,7 +87,7 @@ fabric.properties
 
 
 ### Laravel template
-vendor/
+#vendor/
 node_modules/
 npm-debug.log
 
@@ -217,7 +217,7 @@ composer.phar
 
 
 ### Paid vendor files
-public/vendor/fontawesome-pro*/
+#public/vendor/fontawesome-pro*/
 
 
 ### Typically large master files (including Adobe formats)
