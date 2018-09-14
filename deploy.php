@@ -1,13 +1,14 @@
 <?php
 namespace Deployer;
 
+/** @noinspection PhpIncludeInspection */
 require 'recipe/laravel.php';
 
 // Project name
-set('application', 'American Cabin Supply');
+set('application', 'americancabin.com');
 
 // Project repository
-set('repository', 'https://github.com/SturmB/acs.git');
+set('repository', 'git@github.com:SturmB/acs.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
@@ -20,11 +21,19 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 
+// Overrides
+set('default_stage', 'beta');
+set('http-user', 'www-data');
+
 // Hosts
 
 host('skyubuntu')
-    ->become('sturm')
-    ->set('deploy_path', '/var/www/americancabin.com');
+    ->stage('beta')
+    ->set('deploy_path', '/var/www/{{application}}');
+
+host('skyweb')
+    ->stage('prod')
+    ->set('deploy_path', '/var/www/{{application}}');
     
 // Tasks
 
@@ -39,3 +48,5 @@ after('deploy:failed', 'deploy:unlock');
 
 before('deploy:symlink', 'artisan:migrate');
 
+// If on the production server, execute a few other tasks.
+//before('artisan:config:cache', 'artisan:route:cache');
