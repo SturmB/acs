@@ -23,7 +23,8 @@ add('writable_dirs', []);
 
 // Overrides
 set('default_stage', 'beta');
-set('http-user', 'www-data');
+//set('http_user', 'chris');
+set('http_group', 'www-data');
 
 // Hosts
 
@@ -41,6 +42,12 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+// Copy over the "fixed" Voyager vendor files.
+task('fix:voyager', function () {
+    upload('vendor/tcg/', '{{release_path}}/vendor/tcg');
+});
+
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
@@ -48,5 +55,6 @@ after('deploy:failed', 'deploy:unlock');
 
 before('deploy:symlink', 'artisan:migrate');
 
-// If on the production server, execute a few other tasks.
+// Execute a few other tasks.
+after('deploy:vendors', 'fix:voyager');
 //before('artisan:config:cache', 'artisan:route:cache');
