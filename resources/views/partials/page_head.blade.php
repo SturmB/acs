@@ -4,7 +4,7 @@
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KC9V8S');</script>
+  })(window,document,'script','dataLayer','{{ setting('acs.google_analytics_tracking_id') }}');</script>
 <!-- End Google Tag Manager -->
 
 <meta charset="UTF-8">
@@ -33,8 +33,8 @@
 
 <meta name="msapplication-TileColor" content="#591315">
 <meta name="msapplication-TileImage" content="{{ asset('storage/favicons/favicon-144.png') }}">
-<meta name="application-name" content="American Cabin Supply">
-<meta name="msapplication-tooltip" content="American Cabin Supply">
+<meta name="application-name" content="{{ setting('acs.site_title') }}">
+<meta name="msapplication-tooltip" content="{{ setting('acs.site_title') }}">
 <meta name="msapplication-config" content="{{ asset('storage/favicons/ieconfig.xml') }}">
 <!-- End Favicons -->
 

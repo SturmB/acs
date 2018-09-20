@@ -18,9 +18,9 @@ mix.autoload({
 */
 
 mix
-  .js("resources/assets/js/app.js", "public/js")
+  .js("resources/js/app.js", "public/js")
   .extract(["retinajs"])
-  .sass("resources/assets/sass/app.scss", "public/css")
+  .sass("resources/sass/app.scss", "public/css")
   .browserSync("acs.test");
 
 if (!mix.inProduction()) {
