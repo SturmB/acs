@@ -13,19 +13,19 @@
 
                 <h3>Artwork:</h3>
 
-                <p>We request camera ready art and will resize it appropriately, or will follow your instructions, if given. We have a large selection of clipart. If what you need is not available, we business cards, brochures, etc. If you need our extra design assistance creating artwork, it is available at a reasonable charge. Artwork isn't limited to logos only. Sketch out a diagram of how you want the item to look. Remember that type can be placed on an arc, at angles, placed on either side of clip art, italicized, etc., to create a well balanced design. Use additional paper to sketch your designs and layouts. We reserve the right to determine what constitutes camera-ready vector art or high-resolution digital art. Digital proofs are sent via email for all new orders and reorders.</p>
+                <p>We request camera ready art and will resize it appropriately, or will follow your instructions, if given. We have a large selection of clipart. If what you need is not available, we have a cutting-edge art department and can assist you in creating custom art from photographs, business cards, brochures, etc. If you need our extra design assistance creating artwork, it is available at a reasonable charge. Artwork isn&rsquo;t limited to logos only. Sketch out a diagram of how you want the item to look. Remember that type can be placed on an arc, at angles, placed on either side of clip art, italicized, etc., to create a well balanced design. Use additional paper to sketch your designs and layouts. We reserve the right to determine what constitutes camera-ready vector art or high-resolution digital art. Digital proofs are sent via email for all new orders and reorders.</p>
 
-                <p>Call our customer service representatives if you have questions concerning art at 1-800-932-9933. We're happy to help! You can also email us your artwork to the address below.</p>
+                <p>Call our customer service representatives if you have questions concerning art at {{ setting('acs.phone_cs') }}. We&rsquo;re happy to help! You can also email us your artwork to the address below.</p>
 
-                <p>Art email: <a href="mailto:customerservice@americancabin.com">customerservice@americancabin.com</a></p>
+                <p>Art email: <a href="mailto:{{ setting('acs.email_cs') }}">{{ setting('acs.email_cs') }}</a></p>
 
                 <h4>Acceptable Digital Art:</h4>
                 <ol>
-                    <li>We use digital vector (line art) files from these vector drawing programs: Corel Draw - (.cdr) files (versions 3 through 2017). Adobe Illustrator - (.ai) or (.eps) (versions 3 through CC 2018). *All .eps files need to be saved as "vector" or "editable" .eps formats from vector programs; not to be confused with a raster .eps from Photoshop or paint programs.</li>
+                    <li>We use digital vector (line art) files from these vector drawing programs: Corel Draw - (.cdr) files (versions 3 through 2017). Adobe Illustrator - (.ai) or (.eps) (versions 3 through CC 2018). *All .eps files need to be saved as &ldquo;vector&rdquo; or &ldquo;editable&rdquo; .eps formats from vector programs; not to be confused with a raster .eps from Photoshop or paint programs.</li>
                     <li>All vector art containing fonts MUST BE CONVERTED TO CURVES OR OUTLINES.</li>
                     <li>We accept monochrome (1 color-black) bitmap image files such as: .tif, .bmp, and .jpg. They must be high-resolution (600ppi or greater) and BLACK ONLY.</li>
                 </ol>
-                <p>*Emailed artwork can be sent to: <a href="mailto:customerservice@americancabin.com">customerservice@americancabin.com</a>. Please reference all pertinent information: company name, phone &amp; fax numbers, and PO#. Also please name your artwork by PO# to help us match files.</p>
+                <p>*Emailed artwork can be sent to: <a href="mailto:{{ setting('acs.email_cs') }}">{{ setting('acs.email_cs') }}</a>. Please reference all pertinent information: company name, phone &amp; fax numbers, and PO#. Also please name your artwork by PO# to help us match files.</p>
 
                 <h4>Unacceptable Digital Art:</h4>
                 <ol>
@@ -41,7 +41,7 @@
 
                 <p><span class="paragraph__heading">Art Work Retrieval Fee:</span> To retrieve and forward a digital copy of artwork from current or past orders there will be an artwork retrieval fee of $30.</p>
 
-                <p><span class="paragraph__heading">Trademarks:</span> All copy/art submitted by the customer will be accepted by the factory as being submitted in full compliance with all applicable laws regarding trademark, licensing, copyright, right of privacy, patent, or similar protection. Factory will be held harmless from all claims and cost arising from these issues. Trademarked, licensed, and copyrighted logos contained in this catalog are not for sale. They are for the illustration of printing capabilities only and do not represent endorsement from their respective owners. By placing an order, customer understands that overruns may be used for digital or print media illustrating factory's printing capability.</p>
+                <p><span class="paragraph__heading">Trademarks:</span> All copy/art submitted by the customer will be accepted by the factory as being submitted in full compliance with all applicable laws regarding trademark, licensing, copyright, right of privacy, patent, or similar protection. Factory will be held harmless from all claims and cost arising from these issues. Trademarked, licensed, and copyrighted logos contained in this catalog are not for sale. They are for the illustration of printing capabilities only and do not represent endorsement from their respective owners. By placing an order, customer understands that overruns may be used for digital or print media illustrating factory&rsquo;s printing capability.</p>
 
 
                 <h3>Printing Characteristics:</h3>
@@ -50,7 +50,7 @@
 
                 <p><span class="paragraph__heading">Pad Printing:</span> Pad Printing is a printing method which uses a silicon pad to pick up ink from a plate and transfer the ink directly onto the item being printed. This printing method is best suited for unusually-shaped items, imprints with fine detail, and halftones. Disadvantages of this printing method are the limited imprint area, ink opacity, and subtle tonal changes in the imprint on large solid areas. Due to the thin ink transfer and limited ink opacity, it is not recommended to print on dark substrates without first putting a white base down. This adds an additional color charge to the cost of the item being printed. On most of our items we are limited to 5 colors of imprint.</p>
 
-                <p><span class="paragraph__heading">4-Color Process:</span> Best for Photo or special effect reproduction. Process printing allows for less than full saturation of the primary colors; tiny dots (halftones) of each primary color are printed in a pattern small enough that it is perceived as a solid color. With half toning, a full continuous range of colors can be produced. Colors may not match exactly if you attempt to print spot color artwork as a CMYK job. We will simply change the colors to a CMYK equivalent in your original files. Keep in mind that spot colors will not convert exactly and may not match material that you've previously printed as spot color. It should be noted that the color created by 4-color process printing are not solid colors at all, but rather a series of dots. This is most noticeable in the photographs reproduced in your local newspaper. Four-color reproduction can utilize either vector-based or pixel-based versions of your artwork (as long as the image has adequate resolution). It's recommended that your digital files are no lower than 300ppi (absolutely not from the internet).</p>
+                <p><span class="paragraph__heading">4-Color Process:</span> Best for Photo or special effect reproduction. Process printing allows for less than full saturation of the primary colors; tiny dots (halftones) of each primary color are printed in a pattern small enough that it is perceived as a solid color. With half toning, a full continuous range of colors can be produced. Colors may not match exactly if you attempt to print spot color artwork as a CMYK job. We will simply change the colors to a CMYK equivalent in your original files. Keep in mind that spot colors will not convert exactly and may not match material that you&rsquo;ve previously printed as spot color. It should be noted that the color created by 4-color process printing are not solid colors at all, but rather a series of dots. This is most noticeable in the photographs reproduced in your local newspaper. Four-color reproduction can utilize either vector-based or pixel-based versions of your artwork (as long as the image has adequate resolution). It&rsquo;s recommended that your digital files are no lower than 300ppi (absolutely not from the internet).</p>
                 <p>Pros of 4-Color Process: Unlimited colors & color choices and special effect friendly (drop shadows, glows, and gradients).
                 <p>Cons of 4-Color Process: Degraded color matching ability, loss of solid color integrity, gradients & tints only fade to 20%, and a loss of sharpness in photos or illustration quality.</p>
 
@@ -79,7 +79,7 @@
 
                 <img src="{{ asset('storage/images/info-fontsizes.svg') }}" alt="Font Sizes" id="info-fontsizes" class="general-info__image">
 
-                <p><span class="paragraph__heading">Standard Ink Colors:</span> If you do not have a PMS #, you may choose from the following color swatches. Please note we do not charge for PMS matching, so feel free to supply a Pantone&reg; color if it is available. 2X & 4-digit metallic PMS colors are not available. 800-series colors are limited to the PMS numbers shown. Asterisk (<sup>*</sup>) represents the default color when more than one choice is available.</p>
+                <p><span class="paragraph__heading">Standard Ink Colors:</span> If you do not have a PMS #, you may choose from the following color swatches. Please note we do not charge for PMS matching, so feel free to supply a Pantone&reg; color if it is available. 2X & 4-digit metallic PMS colors are not available. 800-series colors are limited to the PMS numbers shown. Asterisk (*) represents the default color when more than one choice is available.</p>
 
                 <p><span class="paragraph__heading">Ink Color Match:</span> We do not charge for PMS matching. We take great pride in our ability to match PMS colors. However, color match is only guaranteed +/- one shade on white/clear items. We cannot guarantee color match on dark-colored items. If purchase orders say to use a PMS #, and you describe the color, the factory is only responsible for the PMS #. We do not check to see if the PMS # provided is the color stated. 2X and 4-digit metallic PMS numbers are not available. 800-series colors are limited to the PMS # shown.</p>
 
@@ -87,7 +87,7 @@
 
                 <p><span class="paragraph__heading">Ink Odor:</span> Paper products are printed with inks that must evaporate to dry. These vapors may be trapped in the plastic packaging before they have completely dissipated. The inks are dry, but there may be a residual odor in the package from these vapors. Some colors of ink have more odor than others, and the amount of ink coverage can also affect the amount of odor. This odor, should it be present, is not considered a defect. It is similar to painting a room in your home. The paint will be dry, but there will be an odor that remains for several days. Should this odor be a concern, remove the paper products from the plastic packaging and let them air to eliminate the odor. Normally, once the products are placed for use, any odor that remains will quickly dissipate.</p>
 
-                <p><span class="paragraph__heading">Ink Adhesion:</span> Plastic bottles, cups, and plates are sold as disposable and for one time use only. Some cups are stamped as residential top rack dishwasher safe. However, due to environmental variables beyond the factory's control the imprint is not guaranteed to stay on.</p>
+                <p><span class="paragraph__heading">Ink Adhesion:</span> Plastic bottles, cups, and plates are sold as disposable and for one time use only. Some cups are stamped as residential top rack dishwasher safe. However, due to environmental variables beyond the factory&rsquo;s control the imprint is not guaranteed to stay on.</p>
 
                 <p><span class="paragraph__heading">Ink Changes:</span> Ink color changes are available only in increments of 50 pieces at $15 per change.</p>
 
@@ -104,7 +104,7 @@
 
                 <h3>Proofs:</h3>
 
-                <p>Digital proofs are emailed within 24 hours. One change can be made to a proof; thereafter, each change will be $10. Any change, including ink color, quantity, packaging, etc will require a new proof. If requesting a proof without factory's receipt of purchase order for printed items, there will be a $30 charge per item and each additional change is $10. Your order will not be put into the production schedule until the final signed proof is received.</p>
+                <p>Digital proofs are emailed within 24 hours. One change can be made to a proof; thereafter, each change will be $10. Any change, including ink color, quantity, packaging, etc will require a new proof. If requesting a proof without factory&rsquo;s receipt of purchase order for printed items, there will be a $30 charge per item and each additional change is $10. Your order will not be put into the production schedule until the final signed proof is received.</p>
 
                 <p><span class="paragraph__heading">All Proofs:</span> Your order is not given a ship date until the signed proof approval and any instructed pre-payments are received. After receipt of all signed proof approval & prepayments are received, you will receive a fax copy of the order acknowledgment showing ship date. Reorders will require a proof.</p>
 
@@ -113,14 +113,15 @@
 
                 <h3>Production Time:</h3>
 
-                <p>Normal production is 5 working days from receipt of signed proof approval. We're quite proud of our performance in providing quality work on time.</p>
+                <p>Normal production is 5 working days from receipt of signed proof approval. We&rsquo;re quite proud of our performance in providing quality work on time.</p>
 
-                <p><span class="paragraph__heading">Production Time:</span> Production does not begin until all written approvals and any instructed pre-payments are received. Approvals received after 2:00 pm EST will be treated as being received the following business day for production scheduling proposes. Orders received with in-hands date sooner than the standard production time will be treated as a rush job. Please see Rush Service below.</p>
+                <p><span class="paragraph__heading">Production Time:</span> Production does not begin until all written approvals and any instructed pre-payments are received. Approvals received after 2:00 pm EST will be treated as being received the following business day for production scheduling proposes. Orders received with in-hands date sooner than the standard production time will be treated as a rush job. Please see
+                    <a href="#section-rush">Rush Service</a> below.</p>
 
 
-                <h3>Rush Service:</h3>
+                <h3 id="section-rush">Rush Service:</h3>
 
-                <p>Rush service is available at no extra charge and based on production &amp; inventory availability. However, your order will be required to ship via an AIR METHOD. If this is not acceptable, your order will be given standard production time. All rush orders must ship overnight to ensure you meet your deadline. Call our customer service representatives at 1-800-932-9933 for availability of rush service. Our hours are 8:30 a.m. until 5:00 p.m. EST Monday through Friday. Let us help you!</p>
+                <p>Rush service is available at no extra charge and based on production &amp; inventory availability. However, your order will be required to ship via an AIR METHOD. If this is not acceptable, your order will be given standard production time. All rush orders must ship overnight to ensure you meet your deadline. Call our customer service representatives at {{ setting('acs.phone_cs') }} for availability of rush service. Our hours are 8:30 a.m. until 5:00 p.m. EST Monday through Friday. Let us help you!</p>
 
 
                 <h3>Shipping:</h3>
@@ -141,11 +142,11 @@
 
                 <p><span class="paragraph__heading">Freight Quotes:</span> These are for estimating purposes only.</p>
 
-                <p><span class="paragraph__heading">Carriers Address Corrections:</span> These will be billed at cost and is customer's responsibility.</p>
+                <p><span class="paragraph__heading">Carriers Address Corrections:</span> These will be billed at cost and is customer&rsquo;s responsibility.</p>
 
                 <p><span class="paragraph__heading">International Shipments:</span> The customer is responsible for all duties, taxes, and fees on international shipments. Freight quotes will not be provided, and must ship on 3rd party account numbers.</p>
 
-                <p><span class="paragraph__heading">In-Hands Dates:</span> If there is an "in-hands date" listed, without specific or contradicting shipping information, our factory reserves the right to ship via an expedited method to meet the event date.</p>
+                <p><span class="paragraph__heading">In-Hands Dates:</span> If there is an &ldquo;in-hands date&rdquo; listed, without specific or contradicting shipping information, our factory reserves the right to ship via an expedited method to meet the event date.</p>
 
                 <p><span class="paragraph__heading">Product Damage Claims:</span> All claims must be made within 5 days. Please note that you should expect a reasonable percentage of breakage on disposable plastic drinkware. If, after inspection of the entire shipment, you feel that a claim with the carrier is warranted, we will be happy to help in filing a claim on your behalf. We are not responsible for breakage or damage in transit. Should damage occur, you must save all boxes and packing material as well as broken items for possible inspection by the carrier on your premises. Without the box and packaging material, claims will be automatically denied. Call our customer service representatives and they will assist you in filing a claim.</p>
 
@@ -175,7 +176,7 @@
 
                 <p><span class="paragraph__heading">Product Color:</span> Every effort is made to verify the color accuracy of the products on this site. However, due to printing and computer monitor limitations, we cannot be held liable for variations in color. If color is important, please order random samples or a product proof.</p>
 
-                <p><span class="paragraph__heading">Product Color Variation:</span> White napkins will vary in "brightness" from lot to lot. The paper of colored napkins is dyed to achieve its respective color. Therefore, each lot could appear as a slightly different shade. Napkin color could "bleed" when wet. Plastic product colors may vary in color from lot to lot as well. The above stated variation is not considered to be a defect.</p>
+                <p><span class="paragraph__heading">Product Color Variation:</span> White napkins will vary in &ldquo;brightness&rdquo; from lot to lot. The paper of colored napkins is dyed to achieve its respective color. Therefore, each lot could appear as a slightly different shade. Napkin color could &ldquo;bleed&rdquo; when wet. Plastic product colors may vary in color from lot to lot as well. The above stated variation is not considered to be a defect.</p>
 
                 <p><span class="paragraph__heading">Product Count:</span> The product count has been verified several times throughout the manufacturing and packaging process. When questions arise, the actual shipping weight receipt, automatically generated from the shipping scale, will be used to verify count.</p>
 
@@ -183,7 +184,7 @@
 
                 <p><span class="paragraph__heading">Scuffs &amp; Scratches:</span> It is the nature of plastic to scuff and scratch during stacking and shipping. Clear and dark-colored plastic items show this the most. The above stated variation is not considered to be a defect.</p>
 
-                <p><span class="paragraph__heading">Product Substitutions:</span> Factory reserves the right to substitute our products with one of a similar design and function. Notice may or may not be given at our factory's discretion.</p>
+                <p><span class="paragraph__heading">Product Substitutions:</span> Factory reserves the right to substitute our products with one of a similar design and function. Notice may or may not be given at our factory&rsquo;s discretion.</p>
 
                 <p><span class="paragraph__heading">Order Cancellation:</span> Any cancellation to a processed order must be in writing and is subject to $30 charge in addition to any material/labor cost.</p>
 
@@ -193,7 +194,7 @@
 
                 <p><span class="paragraph__heading">Unimprinted Items:</span> To order unimprinted items, the cost is based on screen-printed pricing, less a 10% discount. Returns of unimprinted items will only be accepted if packages are unopened, and will be subject to a restocking fee of 25%. All freight charges will be the responsibility of the customer. Packaging for unimprinted items may vary from the packaging listed on the product pages on this site.</p>
 
-                <p><span class="paragraph__heading">Acknowledgements:</span> All orders are acknowledged with pricing information within 24 hours. It is the customer's responsibility to check for discrepancies, as the order will be produced accordingly. Please note, after the paper proof is approved, you will receive another acknowledgment showing the ship date and method. Again, it is the responsibility of the customer to verify the information.</p>
+                <p><span class="paragraph__heading">Acknowledgements:</span> All orders are acknowledged with pricing information within 24 hours. It is the customer&rsquo;s responsibility to check for discrepancies, as the order will be produced accordingly. Please note, after the paper proof is approved, you will receive another acknowledgment showing the ship date and method. Again, it is the responsibility of the customer to verify the information.</p>
 
                 <p><span class="paragraph__heading">Factory Compliance Policy:</span> The customer must make their own determination that their use of product(s) is safe, lawful, and technically suitable in their intended applications.</p>
 
@@ -202,10 +203,10 @@
 
                 <h3>Privacy Policy:</h3>
 
-                <p>We know that your privacy on the Internet is very important to you. As a result, we have prepared this Privacy Policy to let you know there is no information-collecting cookies on American Cabin Supply's web site, reassuring you of your privacy while browsing our site. You have our word.</p>
+                <p>We know that your privacy on the Internet is very important to you. As a result, we have prepared this Privacy Policy to let you know there is no information-collecting cookies on {{ setting('acs.site_title') }}&rsquo;s web site, reassuring you of your privacy while browsing our site. You have our word.</p>
 
 
-                <p class="paragraph__heading">It is understood that by submitting an order to the factory, the customer agrees to all of the factory's terms and conditions, regardless of what is on the customer's purchase order.</p>
+                <p class="font-weight-bold">It is understood that by submitting an order to the factory, the customer agrees to all of the factory&rsquo;s terms and conditions, regardless of what is on the customer&rsquo;s purchase order.</p>
 
             </div> {{--.col-12--}}
         </div> {{--.general-info--}}

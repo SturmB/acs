@@ -15,7 +15,7 @@ html {
   } // media-breakpoint-up(lg)
 } // html
 
-//noinspection CssNoGenericFontName
+//noinspection CssNoGenericFontName,CssUnknownProperty
 body {
   background: color(bg-abs) image(bg-main) no-repeat top center;
   font-family: font(paragraph);
@@ -67,7 +67,7 @@ a {
 
 // Footer --------------------------------------------------
 footer {
-  color: color(text);
+  color: lighten(color(text), 30%);
 
   a {
     color: lighten(color(text), 60%);

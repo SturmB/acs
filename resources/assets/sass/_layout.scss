@@ -331,7 +331,7 @@ header a {
     font-family: font(headings);
     font-weight: bold;
     border-bottom: $size-border solid color(text-alt);
-    text-shadow: 0 1px 0 color(text-shadow1), 0 -1px 0 color(text-shadow2);
+    text-shadow: 0 -1px 0 color(text-shadow2), 0 1px 0 color(text-shadow1);
   } // h2, h3, h4
 
   p,
@@ -845,6 +845,11 @@ header a {
 
 // General Information Page --------------------------------------------------
 .general-info {
+
+  h3 {
+    border-bottom: 2px solid color(accent);
+    margin-top: 1.2em;
+  }
 
   @include media-breakpoint-down(sm) {
     font-size: 0.8em;

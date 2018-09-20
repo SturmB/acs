@@ -226,3 +226,4 @@ composer.phar
 *.tif
 *.ai
 *.eps
+/assets-raw/

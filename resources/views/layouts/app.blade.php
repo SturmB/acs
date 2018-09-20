@@ -4,6 +4,10 @@
         @include('partials.page_head')
     </head>
     <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC9V8S"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
 
         @include('layouts.layout_main')
 
@@ -14,6 +18,7 @@
 
         <!-- FontAwesome 5 Pro -->
         {{--<script defer type="text/javascript" src="{{ asset('vendor/fontawesome-pro-5.2.0-web/js/all.js') }}"></script>--}}
+        <!--suppress JSUnresolvedLibraryURL -->
         <script defer src="https://pro.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-eAVkiER0fL/ySiqS7dXu8TLpoR8d9KRzIYtG0Tz7pi24qgQIIupp0fn2XA1H90fP" crossorigin="anonymous"></script>
         <!-- FlexiNav -->
         <script type="text/javascript" src="{{ asset('vendor/flexinav/js/jquery.js') }}"></script>

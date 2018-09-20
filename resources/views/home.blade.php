@@ -26,15 +26,15 @@
                     <p>100 each of our 8oz Foam Cups, our shatter resistant 10oz FrostFlex Tumblers, and 250 of our White Beverage Napkins. Order Another Welcome Aboard Special at the same time for your Office, Boat, Farm, Ranch, or Vacation Home and get <span class="font-weight-bold">10% off</span> the additional order!</p>
                     <div class="row">
                         <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/S8.png') }}" data-rjs="3" alt="Foam Cup">
-                            <h4>100</h4>
+                            <h4 class="mb-0">100</h4>
                             <p>8oz Foam Cups</p>
                         </div>
                         <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/N10.png') }}" data-rjs="3" alt="Beverage Napkin">
-                            <h4>250</h4>
+                            <h4 class="mb-0">250</h4>
                             <p>White Beverage Napkins</p>
                         </div>
                         <div class="col was-item"><img src="{{ asset('storage/images/welcome-aboard-assets/P10.png') }}" data-rjs="3" alt="Frost-Flex Cup">
-                            <h4>100</h4>
+                            <h4 class="mb-0">100</h4>
                             <p>10 oz Frost-Flex Tumblers</p>
                         </div>
                     </div>
@@ -135,13 +135,13 @@
                 <div class="feature">
                     <h4>A Pilot's Guide to Custom Imprinted Drinkware</h4>
                     <p>
-                        As a professional pilot or business owner, have you ever tried to track down galley supplies for your airplane? You see them everywhere but no one seems to know where to get them, and when you find a source, it is 2&ndash;3 weeks before your product ships. This company represents the classic &ldquo;saw a need and filled it&rdquo; story. <a href="about.html" title="About Us" target="_self">More on our story&hellip;</a>
+                        As a professional pilot or business owner, have you ever tried to track down galley supplies for your airplane? You see them everywhere but no one seems to know where to get them, and when you find a source, it is 2&ndash;3 weeks before your product ships. This company represents the classic &ldquo;saw a need and filled it&rdquo; story. <a href="{{ route('about') }}" title="About Us" target="_self">More on our story&hellip;</a>
                     </p>
                 </div> {{--feature--}}
 
                 <div class="feature">
                     <h4>Downloadable 2018 Catalog</h4>
-                    <a href="Default.html" target="_blank">
+                    <a href="{{ asset('storage/2018_American_Cabin_Supply_Catalog_OPT.pdf') }}" target="_blank">
                         <img src="{{ asset('storage/images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
                     </a>
                     <p>

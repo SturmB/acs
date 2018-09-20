@@ -46,6 +46,20 @@ task('build', function () {
 task('fix:voyager', function () {
     upload('vendor/tcg/', '{{release_path}}/vendor/tcg');
 });
+// Reload php-fpm.
+task('reload:php-fpm', function () {
+    run('sudo /usr/sbin/service php7.2-fpm reload');
+});
+// Change the group to www-data.
+task('regroup', function() {
+    run('sudo /bin/chgrp -R {{http_group}} {{deploy_path}}');
+});
+
+// Combine the above tasks into one.
+task('cleanup', [
+    'reload:php-fpm',
+    'regroup'
+]);
 
 
 // [Optional] if deploy fails automatically unlock.
@@ -57,4 +71,4 @@ before('deploy:symlink', 'artisan:migrate');
 
 // Execute a few other tasks.
 after('deploy:vendors', 'fix:voyager');
-//before('artisan:config:cache', 'artisan:route:cache');
+//after('deploy', 'cleanup');
