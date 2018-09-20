@@ -1103,7 +1103,7 @@
   </command>
   <command>
     <name>ide-helper:models</name>
-    <help><![CDATA[Generate autocompletion for models<br/><br/><table> <tr><td><strong>Options:</strong></td></tr> <tr><td>--filename</td><td>(-F)</td><td>The path to the helper file</td></tr> <tr><td>--dir</td><td>(-D)</td><td>The model dir</td></tr> <tr><td>--write</td><td>(-W)</td><td>Write to Model file</td></tr> <tr><td>--nowrite</td><td>(-N)</td><td>Don't write to Model file</td></tr> <tr><td>--reset</td><td>(-R)</td><td>Remove the original phpdocs instead of appending</td></tr> <tr><td>--ignore</td><td>(-I)</td><td>Which models to ignore</td></tr> <tr><td>--help</td><td>(-h)</td><td>Display this help message</td></tr> <tr><td>--quiet</td><td>(-q)</td><td>Do not output any message</td></tr> <tr><td>--verbose</td><td>(-v)</td><td>Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug</td></tr> <tr><td>--version</td><td>(-V)</td><td>Display this application version</td></tr> <tr><td>--ansi</td><td></td><td>Force ANSI output</td></tr> <tr><td>--no-ansi</td><td></td><td>Disable ANSI output</td></tr> <tr><td>--no-interaction</td><td>(-n)</td><td>Do not ask any interactive question</td></tr> <tr><td>--env</td><td></td><td>The environment the command should run under</td></tr> </table> <br/>]]></help>
+    <help><![CDATA[Generate autocompletion for models<br/><br/><table> <tr><td><strong>Options:</strong></td></tr> <tr><td>--filename</td><td>(-F)</td><td>The path to the helper file</td></tr> <tr><td>--dir</td><td>(-D)</td><td>The model dir</td></tr> <tr><td>--write</td><td>(-W)</td><td>Write to Model file</td></tr> <tr><td>--nowrite</td><td>(-N)</td><td>Don't write to Model file</td></tr> <tr><td>--reset</td><td>(-R)</td><td>Remove the original phpdocs instead of appending</td></tr> <tr><td>--smart-reset</td><td>(-r)</td><td>Refresh the properties/methods list, but keep the text</td></tr> <tr><td>--ignore</td><td>(-I)</td><td>Which models to ignore</td></tr> <tr><td>--help</td><td>(-h)</td><td>Display this help message</td></tr> <tr><td>--quiet</td><td>(-q)</td><td>Do not output any message</td></tr> <tr><td>--verbose</td><td>(-v)</td><td>Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug</td></tr> <tr><td>--version</td><td>(-V)</td><td>Display this application version</td></tr> <tr><td>--ansi</td><td></td><td>Force ANSI output</td></tr> <tr><td>--no-ansi</td><td></td><td>Disable ANSI output</td></tr> <tr><td>--no-interaction</td><td>(-n)</td><td>Do not ask any interactive question</td></tr> <tr><td>--env</td><td></td><td>The environment the command should run under</td></tr> </table> <br/>]]></help>
     <params>model[=null]</params>
     <optionsBefore>
       <option name="--filename" shortcut="-F" pattern="equals">
@@ -1120,6 +1120,9 @@
       </option>
       <option name="--reset" shortcut="-R">
         <help><![CDATA[Remove the original phpdocs instead of appending]]></help>
+      </option>
+      <option name="--smart-reset" shortcut="-r">
+        <help><![CDATA[Refresh the properties/methods list, but keep the text]]></help>
       </option>
       <option name="--ignore" shortcut="-I" pattern="equals">
         <help><![CDATA[Which models to ignore]]></help>
@@ -1289,7 +1292,7 @@
   </command>
   <command>
     <name>make:controller</name>
-    <help><![CDATA[Create a new controller class<br/><br/><table> <tr><td><strong>Options:</strong></td></tr> <tr><td>--model</td><td>(-m)</td><td>Generate a resource controller for the given model.</td></tr> <tr><td>--resource</td><td>(-r)</td><td>Generate a resource controller class.</td></tr> <tr><td>--parent</td><td>(-p)</td><td>Generate a nested resource controller class.</td></tr> <tr><td>--api</td><td></td><td>Exclude the create and edit methods from the controller.</td></tr> <tr><td>--help</td><td>(-h)</td><td>Display this help message</td></tr> <tr><td>--quiet</td><td>(-q)</td><td>Do not output any message</td></tr> <tr><td>--verbose</td><td>(-v)</td><td>Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug</td></tr> <tr><td>--version</td><td>(-V)</td><td>Display this application version</td></tr> <tr><td>--ansi</td><td></td><td>Force ANSI output</td></tr> <tr><td>--no-ansi</td><td></td><td>Disable ANSI output</td></tr> <tr><td>--no-interaction</td><td>(-n)</td><td>Do not ask any interactive question</td></tr> <tr><td>--env</td><td></td><td>The environment the command should run under</td></tr> </table> <br/>]]></help>
+    <help><![CDATA[Create a new controller class<br/><br/><table> <tr><td><strong>Options:</strong></td></tr> <tr><td>--model</td><td>(-m)</td><td>Generate a resource controller for the given model.</td></tr> <tr><td>--resource</td><td>(-r)</td><td>Generate a resource controller class.</td></tr> <tr><td>--invokable</td><td>(-i)</td><td>Generate a single method, invokable controller class.</td></tr> <tr><td>--parent</td><td>(-p)</td><td>Generate a nested resource controller class.</td></tr> <tr><td>--api</td><td></td><td>Exclude the create and edit methods from the controller.</td></tr> <tr><td>--help</td><td>(-h)</td><td>Display this help message</td></tr> <tr><td>--quiet</td><td>(-q)</td><td>Do not output any message</td></tr> <tr><td>--verbose</td><td>(-v)</td><td>Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug</td></tr> <tr><td>--version</td><td>(-V)</td><td>Display this application version</td></tr> <tr><td>--ansi</td><td></td><td>Force ANSI output</td></tr> <tr><td>--no-ansi</td><td></td><td>Disable ANSI output</td></tr> <tr><td>--no-interaction</td><td>(-n)</td><td>Do not ask any interactive question</td></tr> <tr><td>--env</td><td></td><td>The environment the command should run under</td></tr> </table> <br/>]]></help>
     <params>name</params>
     <optionsBefore>
       <option name="--model" shortcut="-m" pattern="equals">
@@ -1297,6 +1300,9 @@
       </option>
       <option name="--resource" shortcut="-r">
         <help><![CDATA[Generate a resource controller class.]]></help>
+      </option>
+      <option name="--invokable" shortcut="-i">
+        <help><![CDATA[Generate a single method, invokable controller class.]]></help>
       </option>
       <option name="--parent" shortcut="-p" pattern="equals">
         <help><![CDATA[Generate a nested resource controller class.]]></help>
