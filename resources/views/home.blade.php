@@ -126,7 +126,7 @@
                     <ol>
                         <li>Pick your aircraft from our vast clipart library.</li>
                         <li>Provide text and/or &ldquo;N&rdquo; number with chosen font.</li>
-                        <li>Fill out our <a href="{{ asset('storage/orderform.pdf') }}" title="Order Form" target="_blank">order form<i class="fas fa-download ml-1" aria-hidden="true"></i></a>.
+                        <li>Fill out our <a href="{{ asset('storage/acs_orderform.pdf') }}" title="Order Form" target="_blank">order form<i class="fas fa-download ml-1" aria-hidden="true"></i></a>.
                         </li>
                         <li>Approve your proof provided to you within 1 business day.</li>
                     </ol>
@@ -141,7 +141,7 @@
 
                 <div class="feature">
                     <h4>Downloadable 2018 Catalog</h4>
-                    <a href="{{ asset('storage/2018_American_Cabin_Supply_Catalog_OPT.pdf') }}" target="_blank">
+                    <a href="{{ asset('storage/American_Cabin_Supply_Catalog_2018_OPT.pdf') }}" target="_blank">
                         <img src="{{ asset('storage/images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
                     </a>
                     <p>
