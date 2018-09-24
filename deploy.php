@@ -56,7 +56,7 @@ task('regroup', function() {
 });
 
 // Combine the above tasks into one.
-task('cleanup', [
+task('post-deploy', [
     'reload:php-fpm',
     'regroup'
 ]);
@@ -71,4 +71,4 @@ before('deploy:symlink', 'artisan:migrate');
 
 // Execute a few other tasks.
 after('deploy:vendors', 'fix:voyager');
-//after('deploy', 'cleanup');
+after('deploy', 'post-deploy');
