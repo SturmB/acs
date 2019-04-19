@@ -22,5 +22,6 @@ Route::get('typefaces', 'TypefacesController@index')->name('typefaces');
 Route::view('general_information', 'general_information')->name('generalInfo');
 Route::view('about', 'about')->name('about');
 Route::view('contact', 'contact')->name('contact');
+Route::view('phpinfo', 'phpinfo')->name('phpinfo');
 
 Route::get('/{includeInactive?}', 'HomeController@index')->name('home');
