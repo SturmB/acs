@@ -13,6 +13,13 @@ class ColorProduct extends Model
     protected $table = 'color_product';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
      * Color relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

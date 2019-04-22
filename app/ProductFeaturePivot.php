@@ -13,6 +13,13 @@ class ProductFeaturePivot extends Model
      */
     protected $table = 'product_features_pivot';
 
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
     public function productFeatures()
     {
         $this->belongsTo(ProductFeature::class);

@@ -13,6 +13,13 @@ class PrintMethodProduct extends Model
     protected $table = 'print_method_product';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
      * PrintMethod relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

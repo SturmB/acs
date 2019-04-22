@@ -48,17 +48,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Path to the Voyager Assets
-    |--------------------------------------------------------------------------
-    |
-    | Here you can specify the location of the voyager assets path
-    |
-    */
-
-    'assets_path' => '/vendor/tcg/voyager/assets',
-
-    /*
-    |--------------------------------------------------------------------------
     | Storage Config
     |--------------------------------------------------------------------------
     |
@@ -67,7 +56,7 @@ return [
     */
 
     'storage' => [
-        'disk' => 'public',
+        'disk' => env('FILESYSTEM_DRIVER', 'public'),
     ],
 
     /*
@@ -75,11 +64,33 @@ return [
     | Media Manager
     |--------------------------------------------------------------------------
     |
-    | Here you can specify if media manager can show hidden files like(.gitignore)
+    | Here you can specify media manager settings.
     |
     */
 
+    // Whether or not media manager can show hidden files (like .gitignore).
     'hidden_files' => false,
+    'media' => [
+        // The allowed mimetypes to be uploaded through the media-manager.
+        'allowed_mimetypes' => '*', //All types can be uploaded
+
+        /*'allowed_mimetypes' => [
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/bmp',
+            'video/mp4',
+        ],*/
+
+        // Path for media-manager. Relative to the filesystem.
+        'path'                => '/',
+        'show_folders'        => true,
+        'allow_upload'        => true,
+        'allow_move'          => true,
+        'allow_delete'        => true,
+        'allow_create_folder' => true,
+        'allow_rename'        => true,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -91,6 +102,7 @@ return [
     */
 
     'database' => [
+        'autoload_migrations' => true,
         'tables' => [
             'hidden' => ['migrations', 'data_rows', 'data_types', 'menu_items', 'password_resets', 'permission_role', 'settings'],
         ],
@@ -138,17 +150,17 @@ return [
     'dashboard' => [
         // Add custom list items to navbar's dropdown
         'navbar_items' => [
-            'Profile' => [
+            'voyager::generic.profile' => [
                 'route'      => 'voyager.profile',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
             ],
-            'Home' => [
+            'voyager::generic.home' => [
                 'route'        => '/',
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
-            'Logout' => [
+            'voyager::generic.logout' => [
                 'route'      => 'voyager.logout',
                 'icon_class' => 'voyager-power',
             ],
@@ -208,5 +220,17 @@ return [
          ],
          'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
      ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Compass config
+    |--------------------------------------------------------------------------
+    |
+    | Compass is now switched off automatically when the environment is not local.
+    | This can be overridden by the following new config-key
+    |
+    */
+
+    'compass_in_production' => true
 
 ];

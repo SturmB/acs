@@ -8,6 +8,13 @@ class ProductLineQuantityBreak extends Model
     public $additional_attributes = ['product_line_quantity'];
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
      * Get the combination of ProductLine and QuantityBreak as a string.
      *
      * @return string

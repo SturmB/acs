@@ -11,10 +11,10 @@
         "php": "7.2.*",
         "doctrine/dbal": "2.7.*",
         "fideloper/proxy": "~4.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/tinker": "~1.0",
         "mopo922/laravel-treats": "^2.0",
-        "tcg/voyager": "1.1.*"
+        "tcg/voyager": "1.2.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

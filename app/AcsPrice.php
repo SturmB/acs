@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class AcsPrice extends Model
 {
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
      * Product relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
