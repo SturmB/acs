@@ -11,15 +11,14 @@ set('application', 'americancabin.com');
 set('repository', 'git@github.com:SturmB/acs.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
-// Shared files/dirs between deploys 
+// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', []);
-
 
 // Overrides
 set('default_stage', 'beta');
@@ -35,7 +34,7 @@ host('skyubuntu')
 host('skyweb')
     ->stage('prod')
     ->set('deploy_path', '/var/www/{{application}}');
-    
+
 // Tasks
 
 task('build', function () {
@@ -51,16 +50,12 @@ task('reload:php-fpm', function () {
     run('sudo /usr/sbin/service php7.2-fpm reload');
 });
 // Change the group to www-data.
-task('regroup', function() {
+task('regroup', function () {
     run('sudo /bin/chgrp -R {{http_group}} {{deploy_path}}');
 });
 
 // Combine the above tasks into one.
-task('post-deploy', [
-    'reload:php-fpm',
-    'regroup'
-]);
-
+task('post-deploy', ['reload:php-fpm', 'regroup']);
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
