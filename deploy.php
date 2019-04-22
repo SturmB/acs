@@ -66,4 +66,4 @@ before('deploy:symlink', 'artisan:migrate');
 
 // Execute a few other tasks.
 after('deploy:vendors', 'fix:voyager');
-after('deploy', 'post-deploy');
+after('cleanup', 'post-deploy');
