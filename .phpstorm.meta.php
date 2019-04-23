@@ -4,7 +4,7 @@
 namespace PHPSTORM_META {
     /**
      * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-     * Generated on 2019-04-19 20:36:31.
+     * Generated on 2019-04-23 15:00:21.
      *
      * @author Barry vd. Heuvel <barryvdh@gmail.com>
      * @see https://github.com/barryvdh/laravel-ide-helper
@@ -111,8 +111,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -138,8 +137,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -153,8 +151,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -244,8 +241,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -380,8 +376,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -407,8 +402,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -422,8 +416,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -513,8 +506,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -649,8 +641,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -676,8 +667,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -691,8 +681,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -782,8 +771,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -918,8 +906,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -945,8 +932,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -960,8 +946,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -1051,8 +1036,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -1187,8 +1171,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -1214,8 +1197,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -1229,8 +1211,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -1320,8 +1301,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -1456,8 +1436,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -1483,8 +1462,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -1498,8 +1476,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -1589,8 +1566,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,
@@ -1725,8 +1701,7 @@ namespace PHPSTORM_META {
             'command.exception.make' =>
                 \Illuminate\Foundation\Console\ExceptionMakeCommand::class,
             'command.factory.make' =>
-                \Illuminate\Database\Console\Factories\FactoryMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Factories\FactoryMakeCommand::class,
             'command.ide-helper.eloquent' =>
                 \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
             'command.ide-helper.generate' =>
@@ -1752,8 +1727,7 @@ namespace PHPSTORM_META {
             'command.migrate.install' =>
                 \Illuminate\Database\Console\Migrations\InstallCommand::class,
             'command.migrate.make' =>
-                \Illuminate\Database\Console\Migrations\MigrateMakeCommand
-                    ::class,
+                \Illuminate\Database\Console\Migrations\MigrateMakeCommand::class,
             'command.migrate.refresh' =>
                 \Illuminate\Database\Console\Migrations\RefreshCommand::class,
             'command.migrate.reset' =>
@@ -1767,8 +1741,7 @@ namespace PHPSTORM_META {
             'command.notification.make' =>
                 \Illuminate\Foundation\Console\NotificationMakeCommand::class,
             'command.notification.table' =>
-                \Illuminate\Notifications\Console\NotificationTableCommand
-                    ::class,
+                \Illuminate\Notifications\Console\NotificationTableCommand::class,
             'command.observer.make' =>
                 \Illuminate\Foundation\Console\ObserverMakeCommand::class,
             'command.optimize' =>
@@ -1858,8 +1831,7 @@ namespace PHPSTORM_META {
             'migration.creator' =>
                 \Illuminate\Database\Migrations\MigrationCreator::class,
             'migration.repository' =>
-                \Illuminate\Database\Migrations\DatabaseMigrationRepository
-                    ::class,
+                \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'migrator' => \Illuminate\Database\Migrations\Migrator::class,
             'queue' => \Illuminate\Queue\QueueManager::class,
             'queue.connection' => \Illuminate\Queue\SyncQueue::class,

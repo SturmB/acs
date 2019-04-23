@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.13 on 2019-04-19 20:36:30.
+ * Generated for Laravel 5.8.14 on 2019-04-23 15:00:20.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5433,10 +5433,8 @@ namespace Illuminate\Support\Facades {
          * @static
          */
 
-        public static function createClassListener(
-            $listener,
-            $wildcard = false
-        ) {
+        public static function createClassListener($listener, $wildcard = false)
+        {
             /** @var \Illuminate\Events\Dispatcher $instance */
             return $instance->createClassListener($listener, $wildcard);
         }
@@ -8600,6 +8598,21 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
             return $instance->setConnectionName($name);
+        }
+
+        /**
+         * Get the retry delay for an object-based queue handler.
+         *
+         * @param mixed $job
+         * @return mixed
+         * @static
+         */
+
+        public static function getJobRetryDelay($job)
+        {
+            //Method inherited from \Illuminate\Queue\Queue
+            /** @var \Illuminate\Queue\SyncQueue $instance */
+            return $instance->getJobRetryDelay($job);
         }
 
         /**
@@ -13817,11 +13830,8 @@ namespace Illuminate\Support\Facades {
          * @static
          */
 
-        public static function download(
-            $path,
-            $name = null,
-            $headers = array()
-        ) {
+        public static function download($path, $name = null, $headers = array())
+        {
             /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
             return $instance->download($path, $name, $headers);
         }
@@ -14068,11 +14078,8 @@ namespace Illuminate\Support\Facades {
          * @static
          */
 
-        public static function writeStream(
-            $path,
-            $resource,
-            $options = array()
-        ) {
+        public static function writeStream($path, $resource, $options = array())
+        {
             /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
             return $instance->writeStream($path, $resource, $options);
         }
@@ -17056,7 +17063,7 @@ namespace TCG\Voyager\Facades {
     }
 }
 
-namespace  {
+namespace {
     class App extends \Illuminate\Support\Facades\App
     {
     }
@@ -17232,11 +17239,8 @@ namespace  {
          * @static
          */
 
-        public static function orWhere(
-            $column,
-            $operator = null,
-            $value = null
-        ) {
+        public static function orWhere($column, $operator = null, $value = null)
+        {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->orWhere($column, $operator, $value);
         }
@@ -18311,12 +18315,8 @@ namespace  {
          * @static
          */
 
-        public static function leftJoinWhere(
-            $table,
-            $first,
-            $operator,
-            $second
-        ) {
+        public static function leftJoinWhere($table, $first, $operator, $second)
+        {
             /** @var \Illuminate\Database\Query\Builder $instance */
             return $instance->leftJoinWhere($table, $first, $operator, $second);
         }
@@ -20228,6 +20228,5 @@ namespace Illuminate\Support {
      */
     class Fluent
     {
-
     }
 }
