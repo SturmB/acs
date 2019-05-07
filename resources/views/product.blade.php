@@ -22,7 +22,11 @@
         <div class="row">
             <div class="col">
                 <div id="title" class="text-center text-md-left">
-                    <h1 class="is-accented">{{ $productLine->productSubcategory->long_name }}</h1>
+                    <h1 class="is-accented">{{ $productLine->productSubcategory->long_name }}
+                    @if (!is_null($productLine->productSubcategory->subhead))
+                        | <small>{{ $productLine->productSubcategory->subhead }}</small>
+                    @endif
+                    </h1>
                 </div>
             </div>
         </div> {{--Title--}}
