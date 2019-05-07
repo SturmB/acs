@@ -30,6 +30,26 @@ class Product extends Model
     }
 
     /**
+     * Shape relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function shape()
+    {
+        return $this->belongsTo(Shape::class);
+    }
+
+    /**
+     * Thickness relationship setup.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function thickness()
+    {
+        return $this->belongsTo(Thickness::class);
+    }
+
+    /**
      * Print Method relationship setup.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -71,7 +91,7 @@ class Product extends Model
         )
             ->withPivot('price')
             ->withTimestamps();
-//            ->orderBy('priority', 'asc');
+        //            ->orderBy('priority', 'asc');
     }
 
     /**

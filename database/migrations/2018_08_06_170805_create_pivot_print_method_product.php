@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePivotPrintMethodProduct extends Migration
 {
     private $tableName = 'print_method_product';
-    private $tableComment = 'Pivot table for Product Lines and Product Features';
+    private $tableComment = 'Pivot table for Product Lines and Product Features.';
 
     /**
      * Run the migrations.

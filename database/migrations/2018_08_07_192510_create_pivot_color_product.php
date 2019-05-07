@@ -46,14 +46,7 @@ class CreatePivotColorProduct extends Migration
                 ->on('colors')
                 ->onUpdate('cascade');
 
-            $table->unique(
-                ['product_id', 'color_id'],
-                'product_color_unique'
-            );
-            $table->unique(
-                ['product_id', 'priority'],
-                'product_priority_unique'
-            );
+            $table->unique(['product_id', 'color_id'], 'product_color_unique');
         });
 
         DB::statement(

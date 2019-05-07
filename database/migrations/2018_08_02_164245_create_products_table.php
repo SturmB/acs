@@ -44,29 +44,35 @@ class CreateProductsTable extends Migration
             $table
                 ->integer('case_quantity')
                 ->unsigned()
+                ->nullable()
                 ->comment('Number of Products in a case (or box).');
             // If need be, these "case" fields can (hopefully) be increased to SMALLINT later on.
             $table
                 ->tinyInteger('case_weight')
                 ->unsigned()
+                ->nullable()
                 ->comment('The weight of the Product case in pounds.');
             $table
                 ->tinyInteger('case_dim_weight')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The "Dimensional Weight" of the Product case in pounds. (Not the _actual_ weight.)'
                 );
             $table
                 ->tinyInteger('case_length')
                 ->unsigned()
+                ->nullable()
                 ->comment('Length of the Product case.');
             $table
                 ->tinyInteger('case_width')
                 ->unsigned()
+                ->nullable()
                 ->comment('Width of the Product case.');
             $table
                 ->tinyInteger('case_height')
                 ->unsigned()
+                ->nullable()
                 ->comment('Height of the Product case.');
             // If need be, these "dimension" fields can (hopefully) be changed to DECIMAL later on.
             $table
@@ -107,30 +113,35 @@ class CreateProductsTable extends Migration
             $table
                 ->smallInteger('pallet_quantity')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The number of Product cases (boxes) that ship on a single pallet.'
                 );
             $table
                 ->tinyInteger('pallet_length')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The length of the pallet in inches when fully loaded with Product cases.'
                 );
             $table
                 ->tinyInteger('pallet_width')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The width of the pallet in inches when fully loaded with Product cases.'
                 );
             $table
                 ->tinyInteger('pallet_height')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The height of the pallet in inches when fully loaded with Product cases.'
                 );
             $table
                 ->smallInteger('pallet_weight')
                 ->unsigned()
+                ->nullable()
                 ->comment(
                     'The weight of the pallet in pounds when fully loaded with Product cases.'
                 );

@@ -7,15 +7,22 @@ class Color extends Model
 {
     public $additional_attributes = ['name'];
 
+    /**
+     * Accessor which combines the `ColorType` and `long_name` into a db-friendly name
+     *
+     * @return string The db-friendly name combination of the ColorType and long_name
+     */
     public function getNameAttribute()
     {
-        return (
-            $this->color_type_id .
+        return $this->color_type_id .
             '_' .
             strtolower(
-                str_replace(['/', ' ', '*'], ['_', '_', ''], $this->long_name)
-            )
-        );
+                str_replace(
+                    [' / ', ' ', '*', '(', ')'],
+                    ['_', '_', '', '', ''],
+                    $this->long_name . '_' . $this->pantone
+                )
+            );
     }
 
     /**

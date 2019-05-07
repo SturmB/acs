@@ -43,13 +43,11 @@ class ProductController extends Controller
                 $subcategory,
                 $printMethod
             ) {
-                return (
-                    $productLine->productSubcategory->short_name ===
-                        $subcategory &&
+                return $productLine->productSubcategory->short_name ===
+                    $subcategory &&
                     $productLine->productSubcategory->product_category_id ===
                         $category &&
-                    $productLine->print_method_id === $printMethod
-                );
+                    $productLine->print_method_id === $printMethod;
             })
             ->first();
 
@@ -163,7 +161,8 @@ class ProductController extends Controller
                 });
 
                 if ($filteredChildren->isNotEmpty()) {
-                    $childIds = $filteredChildren->pluck('id');
+                    $childIds = $filteredChildren->pluck('id'); //***Maybe
+                    // just ADD instead of ASSIGN. ** DOESN'T WORK.
                     $tempFeature['children'] = collect($filteredChildren);
                 }
                 $productFeatures->push($tempFeature);
@@ -226,7 +225,9 @@ class ProductController extends Controller
                 }
             ]);
 
-        $numNotes = $expandedProductLine->productNotes->count() + $expandedProductLine->imprintTypes->count();
+        $numNotes =
+            $expandedProductLine->productNotes->count() +
+            $expandedProductLine->imprintTypes->count();
         return $numNotes > 0
             ? $this->formatTextNotes($expandedProductLine)
             : null;
@@ -315,9 +316,7 @@ class ProductController extends Controller
             "<div class='thumbnail__ribbon-area'><div class='thumbnail__ribbon'>Sample</div></div>" .
             PHP_EOL;
 
-        $folder = "storage/images/products-assets/{$productLine->productSubcategory
-            ->productCategory->id}/{$productLine->productSubcategory
-            ->short_name}/";
+        $folder = "storage/images/products-assets/{$productLine->productSubcategory->productCategory->id}/{$productLine->productSubcategory->short_name}/";
         //        $html_folder = substr($folder, 3);
         $productList = [$decodedProductName];
 
@@ -521,10 +520,8 @@ class ProductController extends Controller
             // Narrow those Breaks down to only those whose PLQB's Product Line's print_method_id is the one we currently need.
             $quantityBreaks = $allQuantityBreaks
                 ->filter(function ($value) use ($productLine) {
-                    return (
-                        $value->productLineQuantityBreak->productLine
-                            ->print_method_id === $productLine->print_method_id
-                    );
+                    return $value->productLineQuantityBreak->productLine
+                        ->print_method_id === $productLine->print_method_id;
                 })
                 ->sortBy('productLineQuantityBreak.quantity_break_id');
 
@@ -567,7 +564,8 @@ class ProductController extends Controller
             $symbolLegend = "";
             foreach ($chargeNames as $chargeName) {
                 // Convert the _name_ of the charge into a Charge object.
-                $charge = $productLine->productLineQuantityBreaks->first()
+                $charge = $productLine->productLineQuantityBreaks
+                    ->first()
                     ->acsCharges->where('charge_type_id', $chargeName)
                     ->first();
                 $iconBaseName = "charge-{$charge->charge_type_id}";
