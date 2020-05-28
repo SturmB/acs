@@ -609,7 +609,7 @@ class ProductController extends Controller
             $everyThousand = false;
             foreach ($quantityBreaks as $index => $break) {
                 // Keep only those charges that have amounts for them.
-                $charges = $break->productLineQuantityBreak->acsCharges;
+                $charges = $break->productLineQuantityBreak->acsCharges->sortBy('charge_type_id');
                 //                $charges = $charges->reject(function ($charge) {
                 //                    return empty($charge->amount);
                 //                });

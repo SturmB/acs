@@ -3,7 +3,7 @@
 
         <nav>
 
-            <div id="flexinav1" class="flexinav flexinav_red">
+            <div id="flexinav1" class="flexinav flexinav_acs">
                 <div class="flexinav_wrapper">
                     {{--<ul class="navbar-nav nav-fill w-100">--}}
                     <ul class="flexinav_menu">

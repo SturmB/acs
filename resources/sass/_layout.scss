@@ -49,44 +49,27 @@ header a {
   @include border-radius(6px);
 } // .flexinav, .flexinav_collapse
 
-/* ACS Light Red */
-.flexinav_acslightred,
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li,
-.flexinav_acslightred .flexinav_wrapper .flexinav_menu > li.noactive,
-.flexinav_acslightred + .flexinav_btn {
-  //background: #5f0609;
-  background: color(accent);
-}
-.flexinav_acslightred .flexinav_ddown a,
-.flexinav_acslightred .dropdown_flyout li span {
-  //color: #7f080c;
-  color: lighten(color(accent), 10%);
-}
-.flexinav_acslightred .flexinav_ddown a:hover,
-.flexinav_acslightred .dropdown_flyout li span:hover {
-  //color: #af0b11;
-  color: lighten(color(accent), 30%);
-}
-.flexinav_acslightred
-  .flexinav_wrapper
-  .flexinav_menu
-  > li.flexinav_collapse_active,
-.flexinav_acslightred
-  .flexinav_wrapper
-  .flexinav_menu
-  > li.flexinav_collapse_active:hover {
-  //background: #3f0406;
+/* ACS */
+.flexinav_acs,
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li,
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li.noactive,
+.flexinav_acs +  .flexinav_btn {
   background: darken(color(accent), 10%);
 }
-.flexinav_acslightred
-  .flexinav_wrapper
-  .flexinav_menu
-  > li.flexinav_collapse_noactive,
-.flexinav_acslightred
-  .flexinav_wrapper
-  .flexinav_menu
-  > li.flexinav_collapse_noactive:hover {
-  //background: #5f0609;
+.flexinav_acs .flexinav_ddown a,
+.flexinav_acs .dropdown_flyout li span {
+  color: color(accent);
+}
+.flexinav_acs .flexinav_ddown a:hover,
+.flexinav_acs .dropdown_flyout li span:hover {
+  color: lighten(color(accent), 10%);
+}
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active,
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+  background: darken(color(accent), 50%);
+}
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive,
+.flexinav_acs .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
   background: color(accent);
 }
 
@@ -95,7 +78,8 @@ header a {
   .dropdown_parent span:after,
   .dropdown_parent_left span:after {
     content: "\f105";
-    font-family: "Font Awesome 5 Pro", sans-serif;
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-weight: 900;
     float: right;
     padding-top: 1px;
   } // .dropdown_parent span:after, .dropdown_parent_left span:after
@@ -331,7 +315,7 @@ header a {
     font-family: font(headings);
     font-weight: bold;
     border-bottom: $size-border solid color(text-alt);
-    text-shadow: 0 -1px 0 color(text-shadow2), 0 1px 0 color(text-shadow1);
+    //text-shadow: 0 -1px 0 color(text-shadow2), 0 1px 0 color(text-shadow1);
   } // h2, h3, h4
 
   p,
@@ -454,7 +438,7 @@ header a {
 
     //noinspection CssNoGenericFontName
     h2 {
-      color: color(accent);
+      color: color(text-white);
       font-family: font(headings);
       text-transform: uppercase;
       font-size: 1.5em;
@@ -480,7 +464,7 @@ header a {
 
   dt {
     float: left;
-    color: color(accent);
+    color: color(bg-lightest);
     margin-right: 0.5em;
   } // dt
 

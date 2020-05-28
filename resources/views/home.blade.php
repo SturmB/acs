@@ -140,8 +140,10 @@
                 </div> {{--feature--}}
 
                 <div class="feature">
-                    <h4>Downloadable 2018 Catalog</h4>
-                    <a href="{{ asset('storage/American_Cabin_Supply_Catalog_2018_OPT.pdf') }}" target="_blank">
+                    <h4>Downloadable 2020 Catalog</h4>
+                    <a href="{{ asset
+                    ('storage/American_Cabin_Supply_Catalog_2020_OPT.pdf')
+                    }}" target="_blank">
                         <img src="{{ asset('storage/images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
                     </a>
                     <p>

@@ -17,7 +17,7 @@ html {
 
 //noinspection CssNoGenericFontName,CssUnknownProperty
 body {
-  background: color(bg-abs) image(bg-main) no-repeat top center;
+  background: #000000 image(bg-main) no-repeat top center;
   font-family: font(paragraph);
   color: color(text);
   -ms-word-break: break-word;
@@ -39,7 +39,8 @@ h5 {
 // Coloring --------------------------------------------------
 // Color certain texts. (Mostly meant for use with `<span>`.)
 .is-accented {
-  color: color(accent);
+  color: color(text-white);
+  text-shadow: 0px 0px 5px color(text-black);
 } // .is-accented
 
 .bg-accent {

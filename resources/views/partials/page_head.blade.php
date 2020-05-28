@@ -15,6 +15,9 @@
 
 <title>{{ setting('site.title') }}</title>
 
+{{-- FontAwesome --}}
+<script src="https://kit.fontawesome.com/8055eacedd.js" crossorigin="anonymous"></script>
+
 <!-- Favicons! -->
 <link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-180.png') }}">
 <link rel="apple-touch-icon-precomposed" href="{{ asset('storage/favicons/favicon-152.png') }}">

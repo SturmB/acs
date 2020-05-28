@@ -8656,3 +8656,7 @@ Apublic/vendor/fontawesome-pro-5.3.1-web/webfonts/fa-solid-900.svg,2\3\23f5c7a6
 	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
 l
 <public/vendor/jquery-infinite-rotator/js/infinite-rotator.js,b\e\be61a7e7e050ed79386ac036ff8774a4c532d24a
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
