@@ -121,11 +121,11 @@ header a {
   //noinspection CssNoGenericFontName
   h1 {
     position: absolute;
-    left: 50%;
+    left: 5%;
     top: 10%;
     font-family: font(script);
     font-size: 1.5em;
-    color: #ffffff;
+    color: color(bg-main);
     text-indent: 1em;
     text-shadow: 2px 2px 14px rgba(color(bg-abs), 0.5);
 

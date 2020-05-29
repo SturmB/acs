@@ -10976,11 +10976,11 @@ header a {
 
 #splash h1 {
   position: absolute;
-  left: 50%;
+  left: 5%;
   top: 10%;
   font-family: spumante, script;
   font-size: 1.5em;
-  color: #ffffff;
+  color: #002662;
   text-indent: 1em;
   text-shadow: 2px 2px 14px rgba(0, 18, 47, 0.5);
 }
