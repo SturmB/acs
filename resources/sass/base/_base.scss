@@ -17,7 +17,7 @@ html {
 
 //noinspection CssNoGenericFontName,CssUnknownProperty
 body {
-  background: #000000 image(bg-main) no-repeat top center;
+  background: color(bg-abs) image(bg-main) no-repeat top center;
   font-family: font(paragraph);
   color: color(text);
   -ms-word-break: break-word;
