@@ -417,6 +417,7 @@ class ProductController extends Controller
                 $productLine->productSubcategory->id
             )
             ->whereIn('active', $activeArray)
+            ->orderBy('priority', 'asc')
             ->get();
 
         // Get all of the Prices along with their associated ProductLineQuantityBreaks, ProductLines, QuantityBreaks, and Products.
