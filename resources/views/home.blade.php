@@ -147,7 +147,12 @@
                         <img src="{{ asset('storage/images/catalog-cover-front.jpg') }}" data-rjs="3" alt="Downloadable Catalog" id="cat-cover">
                     </a>
                     <p>
-                        Why wait for the mail? Get our digital catalog instantly and be eco-friendly. Browse through our many products to see which ones are right for you. If you can’t decide, call customer service and ask for a free spec sample. We will gladly send you the actual item to see if it fits your cup holders as well as to see if you like the product.<br>
+                        Why wait for the mail? Get our digital catalog
+                        instantly and be eco-friendly. Browse through our
+                        many products to see which ones are right for you. If
+                        you can’t decide, call customer service and ask for a
+                        free random sample. We will gladly send you the actual
+                        item to see if it fits your cup holders as well as to see if you like the product.<br>
                         <br>
                         Download the catalog to refer to later on your laptop. 15 pages of top of the line customizable drinkware items waiting for your planes picture and &ldquo;N&rdquo; numbers.<br>
                         <br>
