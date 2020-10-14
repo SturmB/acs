@@ -9,6 +9,8 @@ branches:
     - master
     - main
 before_install:
+  - openssl aes-256-cbc -K $encrypted_f9e1b166ba47_key -iv $encrypted_f9e1b166ba47_iv
+    -in .travis/.env.travis.enc -out ./.env -d
   - openssl aes-256-cbc -K $encrypted_04c1f44da757_key -iv $encrypted_04c1f44da757_iv
     -in .travis/travis_ed.enc -out ~/.ssh/travis_ed -d
 install:
