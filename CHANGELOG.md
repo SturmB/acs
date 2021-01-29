@@ -1,5 +1,19 @@
 # Changelog
 
+<a name="2020.9.1"></a>
+## 2020.9.1 (2021-01-29)
+
+### Changed
+
+- ⬆️ Updates to Laravel 7.0 [[bbdd2a2](https://github.com/skyunlimitedinc/acs/commit/bbdd2a21fed997ab05ff5f09e0b4df6a962a61f4)]
+
+### Fixed
+
+- 💚 Removes the Composer downgrade from CI [[596bebf](https://github.com/skyunlimitedinc/acs/commit/596bebf7124a1c14abf4db281da2a07b9b2aad8d)]
+- 💚 Sets Travis to use Composer v1 [[347f7eb](https://github.com/skyunlimitedinc/acs/commit/347f7eb2ff0409b42c0f7a48099e8ff1ba81bdc9)]
+- 💚 Fixes PHP version number for Travis [[4172f31](https://github.com/skyunlimitedinc/acs/commit/4172f31be7ae7c1c3a6d9a8783525083efaeb0d2)]
+
+
 <a name="2020.9.0"></a>
 ## 2020.9.0 (2021-01-29)
 
