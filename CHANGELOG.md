@@ -1,5 +1,20 @@
 # Changelog
 
+<a name="2020.9.2"></a>
+## 2020.9.2 (2021-02-03)
+
+### Added
+
+- ➕ Replaces deprecated faker library with FakerPHP [[b72834a](https://github.com/skyunlimitedinc/acs/commit/b72834afc3602383afb7a2d082fd8402affd11db)]
+
+### Changed
+
+- 👽 Replaces sample factory with new L8 version [[3ee5bdd](https://github.com/skyunlimitedinc/acs/commit/3ee5bddf2cd134707d759ad9ed514398ddc9639d)]
+- 👽 Namespaces factories and seeders [[89e6f17](https://github.com/skyunlimitedinc/acs/commit/89e6f171cd4b472b0e6660068e30957f0a6f0fb1)]
+- ⬆️ Updates to Laravel 8.0 [[fb609ee](https://github.com/skyunlimitedinc/acs/commit/fb609ee1c8d2da3c30aaedc509d54a23680dd6c0)]
+- ⬆️ Updates a couple of composer dependencies [[93126e9](https://github.com/skyunlimitedinc/acs/commit/93126e92e0dab2187fa15fcea395310df94c8f01)]
+
+
 <a name="2020.9.1"></a>
 ## 2020.9.1 (2021-01-29)
 

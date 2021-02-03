@@ -26,7 +26,7 @@ services:
         uid: 1000
       context: .
       dockerfile: Dockerfile
-    image: "sturmb/sky-acs:2020.9.1"
+    image: "sturmb/sky-acs:2020.9.2"
     container_name: acs
     restart: unless-stopped
     working_dir: /var/www/html
