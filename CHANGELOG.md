@@ -1,5 +1,30 @@
 # Changelog
 
+<a name="2020.10.1"></a>
+## 2020.10.1 (2021-02-05)
+
+### Miscellaneous
+
+- 🔨 Updates the docker compose file to the &#x27;master&#x27; version [[20b573a](https://github.com/skyunlimitedinc/acs/commit/20b573ad9b84006253b06b1e811452937f7b0515)]
+
+
+<a name="2020.10.0"></a>
+## 2020.10.0 (2021-02-05)
+
+### Changed
+
+- 🔧 Configures PhpRedis and sets it to be used for caching [[345c3b8](https://github.com/skyunlimitedinc/acs/commit/345c3b8d9cd1ee1e8806ba1ea9cd126f44e903ed)]
+- ⚡ Adds caching to the &#x60;ProductController&#x60; [[043ad74](https://github.com/skyunlimitedinc/acs/commit/043ad74d9c511e5ddf3fe36f678374e8d9ad33b2)]
+- 🔧 Fixes PhpStorm&#x27;s list of databases [[351197a](https://github.com/skyunlimitedinc/acs/commit/351197a4b44e40c86d9f3bdfc00803bed5258dfe)]
+- 🎨 Prettifies &#x60;ProductController&#x60; [[e6f41d2](https://github.com/skyunlimitedinc/acs/commit/e6f41d207de47e353a5c6886995308f1a260efae)]
+- ⚡ Adds caching to the &#x60;ClipartController&#x60; [[c2b7d10](https://github.com/skyunlimitedinc/acs/commit/c2b7d10b2b457926e714452db44d49c13ed2fc81)]
+- 🔧 Configure Prettier [[3946315](https://github.com/skyunlimitedinc/acs/commit/39463150a5c83f36a78c3d89ac6222399dafb408)]
+
+### Miscellaneous
+
+-  :adhesive_bandage: Let the Docker image use Composer 2 [[2804089](https://github.com/skyunlimitedinc/acs/commit/28040892b6be18a1d09da2fec9c1642d09290ef5)]
+
+
 <a name="2020.9.2"></a>
 ## 2020.9.2 (2021-02-03)
 
