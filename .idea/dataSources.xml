@@ -21,5 +21,25 @@
         <property name="zeroDateTimeBehavior" value="convertToNull" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="schedule-db@localhost" uuid="ce94264a-18d2-4721-b4b9-f2876da71ece">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="schedule-db@skyubuntu" uuid="0a447ddc-63fa-48a2-8206-d157e87a2aac">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.1.71:3306/</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
