@@ -34,4 +34,6 @@ deploy:
     script: bash scripts/deploy.sh
     on:
       repo: skyunlimitedinc/acs
-      branch: master,main
+      branch:
+        - master
+        - main
