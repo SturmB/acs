@@ -18,7 +18,6 @@ install:
   - npm install
   - npm run production
   - php artisan view:clear
-  - php artisan config:clear
   - php artisan key:generate
   - php artisan storage:link
   - php artisan config:cache
