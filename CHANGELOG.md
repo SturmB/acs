@@ -1,5 +1,24 @@
 # Changelog
 
+<a name="2020.10.2"></a>
+## 2020.10.2 (2021-02-12)
+
+### Added
+
+- 👷‍♂️ Save some time during artisan commands [[e9bdb90](https://github.com/skyunlimitedinc/acs/commit/e9bdb90d55d21f146b0931e533c573cf8a6704cb)]
+- 👷‍♂️ Set deployment to run from two branches [[d7d3c69](https://github.com/skyunlimitedinc/acs/commit/d7d3c691e0e03103244b057e5c5201d97bcf2d2b)]
+
+### Changed
+
+- 🔧 Updates encodec environment file with Redis info [[30998bd](https://github.com/skyunlimitedinc/acs/commit/30998bd0c892d088920cadbf41cedc8f149de60e)]
+- 🚨 Lints the deployment shell script [[a5c615d](https://github.com/skyunlimitedinc/acs/commit/a5c615d72eb33948373ab994da47b459fc80ce7d)]
+
+### Fixed
+
+- 🐛 Updates encoded environment file with Redis info [[0a59733](https://github.com/skyunlimitedinc/acs/commit/0a5973376a6294797cf50d6678bd6b82ea712f65)]
+- 💚 Sets environment file to use redis for caching [[39c59de](https://github.com/skyunlimitedinc/acs/commit/39c59de34b37c5fdc0a25bedbf87752ce9eb82e0)]
+
+
 <a name="2020.10.1"></a>
 ## 2020.10.1 (2021-02-05)
 
