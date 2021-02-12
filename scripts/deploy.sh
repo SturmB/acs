@@ -2,11 +2,8 @@
 set -e
 ssh-keyscan -H "$IP" >>~/.ssh/known_hosts
 
-# Remove existing link if it exists
-ssh -t "$USER_NAME"@"$IP" "cd $DEPLOY_PATH && unlink $DEPLOY_PATH/public/storage 2> /dev/null"
-
 # Copy files to the server
-rsync -aO --chown=www-data:www-data --fake-super --exclude='.git' --exclude='.env' --del ./ "$USER_NAME"@"$IP":"$DEPLOY_PATH"
+rsync -aO --chown=www-data:www-data --fake-super --exclude='.git' --exclude='.env' ./ "$USER_NAME"@"$IP":"$DEPLOY_PATH"
 
 # Install dependencies
 ssh -t "$USER_NAME"@"$IP" "cd $DEPLOY_PATH && composer install --no-progress --no-interaction --optimize-autoloader --no-dev"
