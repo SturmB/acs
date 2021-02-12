@@ -1,5 +1,15 @@
 # Changelog
 
+<a name="2020.10.3"></a>
+## 2020.10.3 (2021-02-12)
+
+### Fixed
+
+- 💚 Fixes `.env` using Redis and hopefully file cache deletion [[5be4b08](https://github.com/skyunlimitedinc/acs/commit/5be4b088e5ba925d482cd2e4c38b2f727c03ff1a)]
+- 💚 Band-aid fix for the deletion problems during deployment [[c583363](https://github.com/skyunlimitedinc/acs/commit/c5833630ee6c8d5f6a0e9d6a2ee9c9b9655750cb)]
+- 💚 Hope to fix deletion problems during deployment [[4341b8b](https://github.com/skyunlimitedinc/acs/commit/4341b8b935886e23bba44259f4fcdda9ce38efe8)]
+
+
 <a name="2020.10.2"></a>
 ## 2020.10.2 (2021-02-12)
 
@@ -24,7 +34,7 @@
 
 ### Miscellaneous
 
-- 🔨 Updates the docker compose file to the &#x27;master&#x27; version [[20b573a](https://github.com/skyunlimitedinc/acs/commit/20b573ad9b84006253b06b1e811452937f7b0515)]
+- 🔨 Updates the docker compose file to the 'master' version [[20b573a](https://github.com/skyunlimitedinc/acs/commit/20b573ad9b84006253b06b1e811452937f7b0515)]
 
 
 <a name="2020.10.0"></a>
@@ -33,10 +43,10 @@
 ### Changed
 
 - 🔧 Configures PhpRedis and sets it to be used for caching [[345c3b8](https://github.com/skyunlimitedinc/acs/commit/345c3b8d9cd1ee1e8806ba1ea9cd126f44e903ed)]
-- ⚡ Adds caching to the &#x60;ProductController&#x60; [[043ad74](https://github.com/skyunlimitedinc/acs/commit/043ad74d9c511e5ddf3fe36f678374e8d9ad33b2)]
-- 🔧 Fixes PhpStorm&#x27;s list of databases [[351197a](https://github.com/skyunlimitedinc/acs/commit/351197a4b44e40c86d9f3bdfc00803bed5258dfe)]
-- 🎨 Prettifies &#x60;ProductController&#x60; [[e6f41d2](https://github.com/skyunlimitedinc/acs/commit/e6f41d207de47e353a5c6886995308f1a260efae)]
-- ⚡ Adds caching to the &#x60;ClipartController&#x60; [[c2b7d10](https://github.com/skyunlimitedinc/acs/commit/c2b7d10b2b457926e714452db44d49c13ed2fc81)]
+- ⚡ Adds caching to the `ProductController` [[043ad74](https://github.com/skyunlimitedinc/acs/commit/043ad74d9c511e5ddf3fe36f678374e8d9ad33b2)]
+- 🔧 Fixes PhpStorm's list of databases [[351197a](https://github.com/skyunlimitedinc/acs/commit/351197a4b44e40c86d9f3bdfc00803bed5258dfe)]
+- 🎨 Prettifies `ProductController` [[e6f41d2](https://github.com/skyunlimitedinc/acs/commit/e6f41d207de47e353a5c6886995308f1a260efae)]
+- ⚡ Adds caching to the `ClipartController` [[c2b7d10](https://github.com/skyunlimitedinc/acs/commit/c2b7d10b2b457926e714452db44d49c13ed2fc81)]
 - 🔧 Configure Prettier [[3946315](https://github.com/skyunlimitedinc/acs/commit/39463150a5c83f36a78c3d89ac6222399dafb408)]
 
 ### Miscellaneous
