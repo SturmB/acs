@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="2020.10.4"></a>
+## 2020.10.4 (2021-02-12)
+
+### Changed
+
+- ⏪ Excludes `.env` file from rsync again [[cbe087c](https://github.com/skyunlimitedinc/acs/commit/cbe087ccadb06694de97180fc130b13e456baa98)]
+
+
 <a name="2020.10.3"></a>
 ## 2020.10.3 (2021-02-12)
 
