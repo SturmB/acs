@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="2020.10.5"></a>
+## 2020.10.5 (2021-02-15)
+
+### Fixed
+
+- 💚 Updates exclusions during rsync [[10084eb](https://github.com/skyunlimitedinc/acs/commit/10084eb91563eb52e535a7dd67fc0b61c622b464)]
+
+
 <a name="2020.10.4"></a>
 ## 2020.10.4 (2021-02-12)
 
