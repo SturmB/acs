@@ -1,11 +1,24 @@
 # Changelog
 
+<a name="2020.10.6"></a>
+## 2020.10.6 (2021-02-17)
+
+### Changed
+
+- 🔧 Uses the latest MySQL for the db [[1916fab](https://github.com/skyunlimitedinc/acs/commit/1916fab373c1d53dc5ab952ea60c90cda8fc6d90)]
+
+### Miscellaneous
+
+- 📦 Compiles dev files [[189dbf7](https://github.com/skyunlimitedinc/acs/commit/189dbf7ea18df7422223782fb71999b8b06e169b)]
+- 🙈 Stops committing sensitive files [[a7a3d44](https://github.com/skyunlimitedinc/acs/commit/a7a3d4493698c1bf07ff14f24da764e90307583e)]
+
+
 <a name="2020.10.5"></a>
 ## 2020.10.5 (2021-02-15)
 
 ### Fixed
 
-- 💚 Updates exclusions during rsync [[10084eb](https://github.com/skyunlimitedinc/acs/commit/10084eb91563eb52e535a7dd67fc0b61c622b464)]
+- 💚 Updates exclusions during rsync [[983a5d6](https://github.com/skyunlimitedinc/acs/commit/983a5d696922867552337f4a24d975f851aa5deb)]
 
 
 <a name="2020.10.4"></a>
@@ -13,7 +26,7 @@
 
 ### Changed
 
-- ⏪ Excludes `.env` file from rsync again [[cbe087c](https://github.com/skyunlimitedinc/acs/commit/cbe087ccadb06694de97180fc130b13e456baa98)]
+- ⏪ Excludes `.env` file from rsync again [[759e112](https://github.com/skyunlimitedinc/acs/commit/759e1126efcae0dc2d82c63df9c2afedefd35429)]
 
 
 <a name="2020.10.3"></a>
@@ -21,9 +34,9 @@
 
 ### Fixed
 
-- 💚 Fixes `.env` using Redis and hopefully file cache deletion [[5be4b08](https://github.com/skyunlimitedinc/acs/commit/5be4b088e5ba925d482cd2e4c38b2f727c03ff1a)]
-- 💚 Band-aid fix for the deletion problems during deployment [[c583363](https://github.com/skyunlimitedinc/acs/commit/c5833630ee6c8d5f6a0e9d6a2ee9c9b9655750cb)]
-- 💚 Hope to fix deletion problems during deployment [[4341b8b](https://github.com/skyunlimitedinc/acs/commit/4341b8b935886e23bba44259f4fcdda9ce38efe8)]
+- 💚 Fixes `.env` using Redis and hopefully file cache deletion [[e81a25b](https://github.com/skyunlimitedinc/acs/commit/e81a25be87be7b4a97fc9c4d07cc91e10bb066ee)]
+- 💚 Band-aid fix for the deletion problems during deployment [[31a57f6](https://github.com/skyunlimitedinc/acs/commit/31a57f647c7d6c67a1a3d026f4a749f46184dfdc)]
+- 💚 Hope to fix deletion problems during deployment [[426235e](https://github.com/skyunlimitedinc/acs/commit/426235e227ce065e3ab01f87b9cc1b2d98e66313)]
 
 
 <a name="2020.10.2"></a>
@@ -31,18 +44,18 @@
 
 ### Added
 
-- 👷‍♂️ Save some time during artisan commands [[e9bdb90](https://github.com/skyunlimitedinc/acs/commit/e9bdb90d55d21f146b0931e533c573cf8a6704cb)]
-- 👷‍♂️ Set deployment to run from two branches [[d7d3c69](https://github.com/skyunlimitedinc/acs/commit/d7d3c691e0e03103244b057e5c5201d97bcf2d2b)]
+- 👷‍♂️ Save some time during artisan commands [[71afd73](https://github.com/skyunlimitedinc/acs/commit/71afd73eddfd4e0784a324e6a8ea23824d303c8e)]
+- 👷‍♂️ Set deployment to run from two branches [[3741cad](https://github.com/skyunlimitedinc/acs/commit/3741cad40b316604db47acc6dbfa545843e0f840)]
 
 ### Changed
 
-- 🔧 Updates encodec environment file with Redis info [[30998bd](https://github.com/skyunlimitedinc/acs/commit/30998bd0c892d088920cadbf41cedc8f149de60e)]
-- 🚨 Lints the deployment shell script [[a5c615d](https://github.com/skyunlimitedinc/acs/commit/a5c615d72eb33948373ab994da47b459fc80ce7d)]
+- 🔧 Updates encodec environment file with Redis info [[a440db2](https://github.com/skyunlimitedinc/acs/commit/a440db2e59af871754ff2b8abf5730296780fb29)]
+- 🚨 Lints the deployment shell script [[eab0b48](https://github.com/skyunlimitedinc/acs/commit/eab0b480c4803eb650c7441f6ab8155c8198b9ab)]
 
 ### Fixed
 
-- 🐛 Updates encoded environment file with Redis info [[0a59733](https://github.com/skyunlimitedinc/acs/commit/0a5973376a6294797cf50d6678bd6b82ea712f65)]
-- 💚 Sets environment file to use redis for caching [[39c59de](https://github.com/skyunlimitedinc/acs/commit/39c59de34b37c5fdc0a25bedbf87752ce9eb82e0)]
+- 🐛 Updates encoded environment file with Redis info [[fddae89](https://github.com/skyunlimitedinc/acs/commit/fddae89344115063dd265b294c478f9f61575323)]
+- 💚 Sets environment file to use redis for caching [[244993e](https://github.com/skyunlimitedinc/acs/commit/244993ea5141249e68820c1b88647550ebe189d8)]
 
 
 <a name="2020.10.1"></a>
@@ -50,7 +63,8 @@
 
 ### Miscellaneous
 
-- 🔨 Updates the docker compose file to the 'master' version [[20b573a](https://github.com/skyunlimitedinc/acs/commit/20b573ad9b84006253b06b1e811452937f7b0515)]
+- 🚧 Possibly accept two branches for deployment [[10ab0b8](https://github.com/skyunlimitedinc/acs/commit/10ab0b88457f802b323f8331696884b4ffdfdf48)]
+- 🔨 Updates the docker compose file to the 'master' version [[be60607](https://github.com/skyunlimitedinc/acs/commit/be60607990729361fd68218a886acc9d72d288cb)]
 
 
 <a name="2020.10.0"></a>
@@ -58,16 +72,16 @@
 
 ### Changed
 
-- 🔧 Configures PhpRedis and sets it to be used for caching [[345c3b8](https://github.com/skyunlimitedinc/acs/commit/345c3b8d9cd1ee1e8806ba1ea9cd126f44e903ed)]
-- ⚡ Adds caching to the `ProductController` [[043ad74](https://github.com/skyunlimitedinc/acs/commit/043ad74d9c511e5ddf3fe36f678374e8d9ad33b2)]
-- 🔧 Fixes PhpStorm's list of databases [[351197a](https://github.com/skyunlimitedinc/acs/commit/351197a4b44e40c86d9f3bdfc00803bed5258dfe)]
-- 🎨 Prettifies `ProductController` [[e6f41d2](https://github.com/skyunlimitedinc/acs/commit/e6f41d207de47e353a5c6886995308f1a260efae)]
-- ⚡ Adds caching to the `ClipartController` [[c2b7d10](https://github.com/skyunlimitedinc/acs/commit/c2b7d10b2b457926e714452db44d49c13ed2fc81)]
-- 🔧 Configure Prettier [[3946315](https://github.com/skyunlimitedinc/acs/commit/39463150a5c83f36a78c3d89ac6222399dafb408)]
+- 🔧 Configures PhpRedis and sets it to be used for caching [[0c24701](https://github.com/skyunlimitedinc/acs/commit/0c2470183e1e4fed706778d58abfa2b5f4fa8445)]
+- ⚡ Adds caching to the `ProductController` [[3fdd860](https://github.com/skyunlimitedinc/acs/commit/3fdd8600a0f304e835a09cf1be3c4f466ecd4497)]
+- 🔧 Fixes PhpStorm's list of databases [[2b9af2d](https://github.com/skyunlimitedinc/acs/commit/2b9af2d855c7b869300f6d874b6a71b66e37e17f)]
+- 🎨 Prettifies `ProductController` [[f4d4a62](https://github.com/skyunlimitedinc/acs/commit/f4d4a62de43b126c33fac8a3c65b577e328275a9)]
+- ⚡ Adds caching to the `ClipartController` [[3be78b5](https://github.com/skyunlimitedinc/acs/commit/3be78b5722bb77aaa1219911d794f4a05a3ab961)]
+- 🔧 Configure Prettier [[787debe](https://github.com/skyunlimitedinc/acs/commit/787debe41b977adae107170cee5b23e562646e89)]
 
 ### Miscellaneous
 
--  :adhesive_bandage: Let the Docker image use Composer 2 [[2804089](https://github.com/skyunlimitedinc/acs/commit/28040892b6be18a1d09da2fec9c1642d09290ef5)]
+-  :adhesive_bandage: Let the Docker image use Composer 2 [[63ac76e](https://github.com/skyunlimitedinc/acs/commit/63ac76e0909228b69386aaca7a112b0326a2e733)]
 
 
 <a name="2020.9.2"></a>
@@ -75,14 +89,14 @@
 
 ### Added
 
-- ➕ Replaces deprecated faker library with FakerPHP [[b72834a](https://github.com/skyunlimitedinc/acs/commit/b72834afc3602383afb7a2d082fd8402affd11db)]
+- ➕ Replaces deprecated faker library with FakerPHP [[a8e1af0](https://github.com/skyunlimitedinc/acs/commit/a8e1af0010bdf20db973ab463312a8b4dc22edd7)]
 
 ### Changed
 
-- 👽 Replaces sample factory with new L8 version [[3ee5bdd](https://github.com/skyunlimitedinc/acs/commit/3ee5bddf2cd134707d759ad9ed514398ddc9639d)]
-- 👽 Namespaces factories and seeders [[89e6f17](https://github.com/skyunlimitedinc/acs/commit/89e6f171cd4b472b0e6660068e30957f0a6f0fb1)]
-- ⬆️ Updates to Laravel 8.0 [[fb609ee](https://github.com/skyunlimitedinc/acs/commit/fb609ee1c8d2da3c30aaedc509d54a23680dd6c0)]
-- ⬆️ Updates a couple of composer dependencies [[93126e9](https://github.com/skyunlimitedinc/acs/commit/93126e92e0dab2187fa15fcea395310df94c8f01)]
+- 👽 Replaces sample factory with new L8 version [[bec458f](https://github.com/skyunlimitedinc/acs/commit/bec458f9f425a5d718e912cf71de1fdf9ab37ee2)]
+- 👽 Namespaces factories and seeders [[b791f97](https://github.com/skyunlimitedinc/acs/commit/b791f97fb61a34ef5e656095d63460eadc3a1872)]
+- ⬆️ Updates to Laravel 8.0 [[997fdf1](https://github.com/skyunlimitedinc/acs/commit/997fdf1ce8eb4e451a8f722af6da7bcb7f0958db)]
+- ⬆️ Updates a couple of composer dependencies [[931fb38](https://github.com/skyunlimitedinc/acs/commit/931fb38d46ba5884d6d36c8e5c8065fa7d643d66)]
 
 
 <a name="2020.9.1"></a>
@@ -90,13 +104,13 @@
 
 ### Changed
 
-- ⬆️ Updates to Laravel 7.0 [[bbdd2a2](https://github.com/skyunlimitedinc/acs/commit/bbdd2a21fed997ab05ff5f09e0b4df6a962a61f4)]
+- ⬆️ Updates to Laravel 7.0 [[dc8e054](https://github.com/skyunlimitedinc/acs/commit/dc8e054915ec6d67e6b2faf2bd338b0fbebef66b)]
 
 ### Fixed
 
-- 💚 Removes the Composer downgrade from CI [[596bebf](https://github.com/skyunlimitedinc/acs/commit/596bebf7124a1c14abf4db281da2a07b9b2aad8d)]
-- 💚 Sets Travis to use Composer v1 [[347f7eb](https://github.com/skyunlimitedinc/acs/commit/347f7eb2ff0409b42c0f7a48099e8ff1ba81bdc9)]
-- 💚 Fixes PHP version number for Travis [[4172f31](https://github.com/skyunlimitedinc/acs/commit/4172f31be7ae7c1c3a6d9a8783525083efaeb0d2)]
+- 💚 Removes the Composer downgrade from CI [[ea829f1](https://github.com/skyunlimitedinc/acs/commit/ea829f10c1c2700443ada273c586d8e08783aca4)]
+- 💚 Sets Travis to use Composer v1 [[7a904cf](https://github.com/skyunlimitedinc/acs/commit/7a904cf2bdf677e52f53853fc81c88746e896a3c)]
+- 💚 Fixes PHP version number for Travis [[af372ed](https://github.com/skyunlimitedinc/acs/commit/af372ed008bb256c4bc5275190cfcf66c410d888)]
 
 
 <a name="2020.9.0"></a>
@@ -104,43 +118,43 @@
 
 ### Changed
 
-- ⬆️ Updates to Laravel 6.0 [[eef5933](https://github.com/skyunlimitedinc/acs/commit/eef5933653ad57e594e2df873f23e2b0d90056cc)]
-- ⬆️ Updates Composer dependencies for Laravel 5.8 [[51badae](https://github.com/skyunlimitedinc/acs/commit/51badae9c9ebce969a399f683bf4e175a469bce5)]
-- 🔧 Configures PhpStorm to behave better [[772a24b](https://github.com/skyunlimitedinc/acs/commit/772a24b92b755a1d3c295dd992aac208f5fdec36)]
-- 🔧 JetBrains config files updated [skip ci] [[39d53e4](https://github.com/skyunlimitedinc/acs/commit/39d53e4a37834e14ba9ae4bf52ecd67f1983340d)]
+- ⬆️ Updates to Laravel 6.0 [[f6ed719](https://github.com/skyunlimitedinc/acs/commit/f6ed719ed9526ec0247fa571557ccd493fab03fd)]
+- ⬆️ Updates Composer dependencies for Laravel 5.8 [[b32dfe5](https://github.com/skyunlimitedinc/acs/commit/b32dfe57d16ea8260d65d9565ebf0872b14b7be0)]
+- 🔧 Configures PhpStorm to behave better [[c75a6fb](https://github.com/skyunlimitedinc/acs/commit/c75a6fbd4534a1641d60bd959c78c4db88d7f4df)]
+- 🔧 JetBrains config files updated [skip ci] [[f09f76b](https://github.com/skyunlimitedinc/acs/commit/f09f76b8aaa57c45d92269b8a87e50795652419c)]
 
 ### Removed
 
-- 🔥 Removes old and unnecessary dev scripts [[a7c4f46](https://github.com/skyunlimitedinc/acs/commit/a7c4f467cb7f4ab6e1cadd0637b3d1496b867906)]
+- 🔥 Removes old and unnecessary dev scripts [[5a478c1](https://github.com/skyunlimitedinc/acs/commit/5a478c18306f3ddb1acc82f7fe48eaf442a5e6d2)]
 
 ### Miscellaneous
 
-- 🔨 Adds two config files that were left behind [[4931d12](https://github.com/skyunlimitedinc/acs/commit/4931d12764000988bbcef92220ef5196ec8969f6)]
-- 🔨 Runs the PhpStorm IDE Helper [[c14dfb7](https://github.com/skyunlimitedinc/acs/commit/c14dfb770264a2f578c565bf54ba595ca69bd42f)]
-- 🔨 Updates Docker build script and tweaks port numbers [[6131a3e](https://github.com/skyunlimitedinc/acs/commit/6131a3e07e120e9790dccbcab54d84af8a95dbb8)]
-- 🔨 Adds project info to `package.json` [[893e1b4](https://github.com/skyunlimitedinc/acs/commit/893e1b4b33078ce4d6d06c203e2500125eaceeb6)]
-- 🙈 Updates .gitignore to modern settings [skip ci] [[e6fc1b6](https://github.com/skyunlimitedinc/acs/commit/e6fc1b6ed21a0c201f262a530b20908da6ee7eb1)]
+- 🔨 Adds two config files that were left behind [[972eb08](https://github.com/skyunlimitedinc/acs/commit/972eb0808eb0703c0fb6d80fc8a5d928a3318b17)]
+- 🔨 Runs the PhpStorm IDE Helper [[0590836](https://github.com/skyunlimitedinc/acs/commit/05908367a8a3ddb0f4cf6f7a945005dc15def981)]
+- 🔨 Updates Docker build script and tweaks port numbers [[13e9c0c](https://github.com/skyunlimitedinc/acs/commit/13e9c0c63835ae45708fc9d90ae7ef6f062cfdea)]
+- 🔨 Adds project info to `package.json` [[8c6bf2c](https://github.com/skyunlimitedinc/acs/commit/8c6bf2cf78c1b8950958e53b0d7a5bf791d677bd)]
+- 🙈 Updates .gitignore to modern settings [skip ci] [[39b1420](https://github.com/skyunlimitedinc/acs/commit/39b1420b3001e89ad63ae8a02a0e5b1a26fed113)]
 
 <a name="The Before Times"></a>
 ## The Before Times
 
--  README fix [[1c8a524](https://github.com/skyunlimitedinc/acs/commit/1c8a524617ef74783c18039100c596f94e871d75)]
--  README Build Status [[76e5f07](https://github.com/skyunlimitedinc/acs/commit/76e5f071813a1b723cbb0f720fcdd1bfdd1a3105)]
--  .env.travis.enc [[8057aee](https://github.com/skyunlimitedinc/acs/commit/8057aeeb6023c72ddfb9ed4c7a8173a7f1dde893)]
--  Travis [[1d7c90f](https://github.com/skyunlimitedinc/acs/commit/1d7c90fcc77bb44b75724addc29a86a213f81de4)]
--  Merge branch 'master' of github.com:SturmB/acs [[53a379b](https://github.com/skyunlimitedinc/acs/commit/53a379bff895bac04982d68f54caf3f2f3e5e001)]
--  Layout Image [[2590618](https://github.com/skyunlimitedinc/acs/commit/259061877dd84d68da70323d991541af6f05c2f9)]
--  Layout Image [[241873b](https://github.com/skyunlimitedinc/acs/commit/241873b8aa28a1adce63263f9e0565ed60fbcd28)]
--  August 2020 Fixes [[73bde98](https://github.com/skyunlimitedinc/acs/commit/73bde984f641c216822cc1232760fb0132b6e1c5)]
--  Images [[da372d0](https://github.com/skyunlimitedinc/acs/commit/da372d001d1b717dce7b9000185edbe59c8bf3c6)]
--  Include Images [[0701e7e](https://github.com/skyunlimitedinc/acs/commit/0701e7e3315a9c57ea8764ebb7ad09851f2c4656)]
--  Merge branch 'dockerize' [[f49aa38](https://github.com/skyunlimitedinc/acs/commit/f49aa38eb5cf30d4563d0918d74cfeca27aa24bd)]
+-  README fix [[e4845b1](https://github.com/skyunlimitedinc/acs/commit/e4845b13c5f6ec59a9c39332c2546203eee6a652)]
+-  README Build Status [[1235b6c](https://github.com/skyunlimitedinc/acs/commit/1235b6c6748e1e6276f06bb7d133b9d82f1d8d09)]
+-  .env.travis.enc [[2fee2f0](https://github.com/skyunlimitedinc/acs/commit/2fee2f089c2ea7b02e150add2b5787dd59aff996)]
+-  Travis [[b9cf0e1](https://github.com/skyunlimitedinc/acs/commit/b9cf0e17c72a584306f143d35dce6d60a4465fa4)]
+-  Merge branch 'master' of github.com:SturmB/acs [[73170cd](https://github.com/skyunlimitedinc/acs/commit/73170cd79ae7a4eb1c587ff8593d5a81c4e53ea6)]
+-  Layout Image [[d4bb153](https://github.com/skyunlimitedinc/acs/commit/d4bb1533d0ce8f969dbc2a1de432245465751269)]
+-  Layout Image [[eba8638](https://github.com/skyunlimitedinc/acs/commit/eba8638cd50d810b3dff0b73b478ca852bca583f)]
+-  August 2020 Fixes [[b27069e](https://github.com/skyunlimitedinc/acs/commit/b27069e5fdfb407de3f81b3e33bff2bc6d059949)]
+-  Images [[60d85f1](https://github.com/skyunlimitedinc/acs/commit/60d85f157f014cc17b28d9c494d13d279a44ce45)]
+-  Include Images [[8ea3ecc](https://github.com/skyunlimitedinc/acs/commit/8ea3ecce16377f2bc69fef3766e2e6cc3bfaddc7)]
+-  Merge branch 'dockerize' [[3276a79](https://github.com/skyunlimitedinc/acs/commit/3276a79894b1b8b2c1725a7043a13e1301eb7744)]
 -  Workspace [[f4ac6a3](https://github.com/skyunlimitedinc/acs/commit/f4ac6a39e76af8c909c11beb76b99220c5a3f57e)]
--  Backend ACS Name [[bdb16e0](https://github.com/skyunlimitedinc/acs/commit/bdb16e038b12a3ca65229eb30d979286f8a86ab7)]
--  HAProxy [[03e8c27](https://github.com/skyunlimitedinc/acs/commit/03e8c27efcfaa3f2c99784936becba4e66d43439)]
--  Workspace [[a35c7b0](https://github.com/skyunlimitedinc/acs/commit/a35c7b03981dc8e106afba1fd1adda69c0837967)]
--  Sort Thumbnails [[f967d22](https://github.com/skyunlimitedinc/acs/commit/f967d22ac15da1da189ce10b7522365ccd1f1442)]
--  Initial dockerized version [[09ab4a8](https://github.com/skyunlimitedinc/acs/commit/09ab4a8feb538dbf5a523a035be6cb4dddd78de0)]
+-  Backend ACS Name [[d7a4d17](https://github.com/skyunlimitedinc/acs/commit/d7a4d172bffd0603de7a1c1bad0ac7fbfb394664)]
+-  HAProxy [[687cd37](https://github.com/skyunlimitedinc/acs/commit/687cd37e8dc58699999005f754820aafac5e3ca2)]
+-  Workspace [[bc4b1b8](https://github.com/skyunlimitedinc/acs/commit/bc4b1b8c59081e1600fd12856e3e1b9d1202893f)]
+-  Sort Thumbnails [[a3016bf](https://github.com/skyunlimitedinc/acs/commit/a3016bf3e69fcc07c6d7f8e7f2ed6c1fb4e2d4c9)]
+-  Initial dockerized version [[a2cf030](https://github.com/skyunlimitedinc/acs/commit/a2cf030570ccf3a53fe343c3bc2dad67b89e07b5)]
 -  JetBrains Configs [[e0f97a7](https://github.com/skyunlimitedinc/acs/commit/e0f97a7e98f84394282aaf1a632cfbbd4094b269)]
 -  Spec -> Random [[e7275e8](https://github.com/skyunlimitedinc/acs/commit/e7275e89784f39d2e132d430e1a207ee8d87c6e9)]
 -  Merge remote-tracking branch 'origin/master' [[b713d1a](https://github.com/skyunlimitedinc/acs/commit/b713d1af81a27d02f9aee2e2e31d4be36bee2275)]
@@ -207,47 +221,47 @@
 -  Infinite Rotator [[c41292b](https://github.com/skyunlimitedinc/acs/commit/c41292b5e40166fb05a35a0a95fa1f25a079ea6c)]
 -  A commit [[d7e9052](https://github.com/skyunlimitedinc/acs/commit/d7e90525ff888e93c6e136d8077330fb405c7eef)]
 -  Pricing Structure [[ccc42e6](https://github.com/skyunlimitedinc/acs/commit/ccc42e696c2922d9d1a0bac47e5eb0ccc98ed989)]
--  Charges [[aad1577](https://github.com/skyunlimitedinc/acs/commit/aad1577799cf76dfed755d8a4d8d9ebdd5f8328e)]
--  Prices [[7cd4f7e](https://github.com/skyunlimitedinc/acs/commit/7cd4f7e286768ccf1d960a48d3eae8af06d83f80)]
--  Product Cards [[52f7675](https://github.com/skyunlimitedinc/acs/commit/52f76757868841b0ac8f76bd5eefe292c5d65c0d)]
--  Colors, Part Deux [[b28c7aa](https://github.com/skyunlimitedinc/acs/commit/b28c7aa889184852dad88d250a166c56f1522df6)]
--  Colors [[8b7e7cf](https://github.com/skyunlimitedinc/acs/commit/8b7e7cf2b5b9337c6bd96fb299f441474afa09f6)]
--  Color Type [[ca81849](https://github.com/skyunlimitedinc/acs/commit/ca8184953f9e5fd1460d41f4e708577c2c6390af)]
--  Products, part 1 [[611de8c](https://github.com/skyunlimitedinc/acs/commit/611de8c6ff936594c68354ce4f153ca1a7457f87)]
--  Product Splash Image [[f80697b](https://github.com/skyunlimitedinc/acs/commit/f80697b490913c5286a2d78b49a48157b6def80b)]
--  Cleanup [[95ed56b](https://github.com/skyunlimitedinc/acs/commit/95ed56bac773758bd5aac187cc02e4a72b97dc42)]
--  Product Notes [[c966961](https://github.com/skyunlimitedinc/acs/commit/c9669614cb68eab93615860f8c4dfb54fe30e225)]
--  Un-migrated Migration [[ad6b574](https://github.com/skyunlimitedinc/acs/commit/ad6b574d46dbd41fb76c07be2a5f3293132647c4)]
--  Minor Adjustments [[4122e32](https://github.com/skyunlimitedinc/acs/commit/4122e32364f823d8717246d53c3783c1cea377a8)]
--  FontAwesome 5.1.0 [[737d0d9](https://github.com/skyunlimitedinc/acs/commit/737d0d995ed8008cb186d083fadbb4f1ac3d9d75)]
--  Updates to July 2018 [[7dab1d9](https://github.com/skyunlimitedinc/acs/commit/7dab1d9bbfd64e722019566cdf01e6427f537d22)]
--  Good-bye, npm. Hello, yarn. [[fb8dcab](https://github.com/skyunlimitedinc/acs/commit/fb8dcab22c6e5f826eecee702f9f1bbd92c10fc0)]
--  PHP 7.2 and Cleanup [[d1f28c5](https://github.com/skyunlimitedinc/acs/commit/d1f28c57cdca01a4ef63e337100d7aca90fc69e3)]
--  Returning Prep [[a098210](https://github.com/skyunlimitedinc/acs/commit/a098210f1da56d5da66dc43ad430f7a71aa3b462)]
--  Text Notes Prep [[58323ef](https://github.com/skyunlimitedinc/acs/commit/58323efcaf7a16c23b6b895282ad1814d3860927)]
--  Features & Options [[ac68f20](https://github.com/skyunlimitedinc/acs/commit/ac68f20dfae1aa29d67829586c13916a0715794e)]
--  Finalizing Navbar and Home Page [[0ab1dcb](https://github.com/skyunlimitedinc/acs/commit/0ab1dcb3b20c4499ae262aecec5425d6d95704f5)]
--  Changing the Navbar, part 1 [[8cb1bfb](https://github.com/skyunlimitedinc/acs/commit/8cb1bfbbbc4d175581953a471e3af1835c636a38)]
--  Removing Vue.js (for now, anyway)# [[8705a6c](https://github.com/skyunlimitedinc/acs/commit/8705a6c2b8e79c1e770f89957a61f679ea11c80c)]
+-  # Charges # [[aad1577](https://github.com/skyunlimitedinc/acs/commit/aad1577799cf76dfed755d8a4d8d9ebdd5f8328e)]
+-  # Prices # [[7cd4f7e](https://github.com/skyunlimitedinc/acs/commit/7cd4f7e286768ccf1d960a48d3eae8af06d83f80)]
+-  # Product Cards # [[52f7675](https://github.com/skyunlimitedinc/acs/commit/52f76757868841b0ac8f76bd5eefe292c5d65c0d)]
+-  # Colors, Part Deux # [[b28c7aa](https://github.com/skyunlimitedinc/acs/commit/b28c7aa889184852dad88d250a166c56f1522df6)]
+-  # Colors # [[8b7e7cf](https://github.com/skyunlimitedinc/acs/commit/8b7e7cf2b5b9337c6bd96fb299f441474afa09f6)]
+-  # Color Type # [[ca81849](https://github.com/skyunlimitedinc/acs/commit/ca8184953f9e5fd1460d41f4e708577c2c6390af)]
+-  # Products, part 1 # [[611de8c](https://github.com/skyunlimitedinc/acs/commit/611de8c6ff936594c68354ce4f153ca1a7457f87)]
+-  # Product Splash Image # [[f80697b](https://github.com/skyunlimitedinc/acs/commit/f80697b490913c5286a2d78b49a48157b6def80b)]
+-  # Cleanup # [[95ed56b](https://github.com/skyunlimitedinc/acs/commit/95ed56bac773758bd5aac187cc02e4a72b97dc42)]
+-  # Product Notes # [[c966961](https://github.com/skyunlimitedinc/acs/commit/c9669614cb68eab93615860f8c4dfb54fe30e225)]
+-  # Un-migrated Migration # [[ad6b574](https://github.com/skyunlimitedinc/acs/commit/ad6b574d46dbd41fb76c07be2a5f3293132647c4)]
+-  # Minor Adjustments # [[4122e32](https://github.com/skyunlimitedinc/acs/commit/4122e32364f823d8717246d53c3783c1cea377a8)]
+-  # FontAwesome 5.1.0 # [[737d0d9](https://github.com/skyunlimitedinc/acs/commit/737d0d995ed8008cb186d083fadbb4f1ac3d9d75)]
+-  # Updates to July 2018 # [[7dab1d9](https://github.com/skyunlimitedinc/acs/commit/7dab1d9bbfd64e722019566cdf01e6427f537d22)]
+-  # Good-bye, npm. Hello, yarn. # [[fb8dcab](https://github.com/skyunlimitedinc/acs/commit/fb8dcab22c6e5f826eecee702f9f1bbd92c10fc0)]
+-  # PHP 7.2 and Cleanup # [[d1f28c5](https://github.com/skyunlimitedinc/acs/commit/d1f28c57cdca01a4ef63e337100d7aca90fc69e3)]
+-  # Returning Prep # [[a098210](https://github.com/skyunlimitedinc/acs/commit/a098210f1da56d5da66dc43ad430f7a71aa3b462)]
+-  # Text Notes Prep # [[58323ef](https://github.com/skyunlimitedinc/acs/commit/58323efcaf7a16c23b6b895282ad1814d3860927)]
+-  # Features & Options # [[ac68f20](https://github.com/skyunlimitedinc/acs/commit/ac68f20dfae1aa29d67829586c13916a0715794e)]
+-  # Finalizing Navbar and Home Page # [[0ab1dcb](https://github.com/skyunlimitedinc/acs/commit/0ab1dcb3b20c4499ae262aecec5425d6d95704f5)]
+-  # Changing the Navbar, part 1 # [[8cb1bfb](https://github.com/skyunlimitedinc/acs/commit/8cb1bfbbbc4d175581953a471e3af1835c636a38)]
+-  # Removing Vue.js (for now, anyway)# [[8705a6c](https://github.com/skyunlimitedinc/acs/commit/8705a6c2b8e79c1e770f89957a61f679ea11c80c)]
 -  .gitignore fix [[f1d9f81](https://github.com/skyunlimitedinc/acs/commit/f1d9f81c0642fd0295eef4cfbce1e595496d3d17)]
--  Pre-.gitignore fix [[d6ec8b6](https://github.com/skyunlimitedinc/acs/commit/d6ec8b6404083d0c6cff0e60744e54e570121a2f)]
--  Vue.js Integration [[51a32f8](https://github.com/skyunlimitedinc/acs/commit/51a32f882a24a5e03b42605af0bf44a03faed275)]
--  Product Page Started [[4ba4f81](https://github.com/skyunlimitedinc/acs/commit/4ba4f81fa82d883fbf38b5ebcc1f79c8ca10ca7f)]
--  Navbar View Composer [[d32430a](https://github.com/skyunlimitedinc/acs/commit/d32430a3731a95031cd0febfcef997895d5adde6)]
--  Home Page Complete! [[8330681](https://github.com/skyunlimitedinc/acs/commit/8330681b795736f124329bee724016488a001c7a)]
--  Sidebar Complete [[07cf469](https://github.com/skyunlimitedinc/acs/commit/07cf469406dea6c54074ae17af2ebc1bedcdc4d4)]
--  Product Category Complete (Mostly) [[6c45d63](https://github.com/skyunlimitedinc/acs/commit/6c45d63a5688f83bd3d373d745647b8014d051d1)]
--  Product Category Buttons [[d0eb08f](https://github.com/skyunlimitedinc/acs/commit/d0eb08f83b90a01ccf3764edba0ebce70965b391)]
--  Jumbotron Complete [[37264df](https://github.com/skyunlimitedinc/acs/commit/37264df29526007b0e21b1562691c674fa9d213a)]
--  Navbar Built [[51ecc7c](https://github.com/skyunlimitedinc/acs/commit/51ecc7c49a9e2da4eed5a7c48edfefa7b9442ba2)]
--  Further Database Updates/Additions [[8a48d23](https://github.com/skyunlimitedinc/acs/commit/8a48d23bab7ea70d05a933f3e93161bb84973053)]
--  Re-creation Without Composites [[90d63c6](https://github.com/skyunlimitedinc/acs/commit/90d63c6b4b1103fbb072fffa4416cb4797ef0134)]
--  Going Back [[d7560a3](https://github.com/skyunlimitedinc/acs/commit/d7560a3395219c214e01df2f27b1c51e0425cc3c)]
--  Database Creation, Part 1 [[f3119d0](https://github.com/skyunlimitedinc/acs/commit/f3119d082928b8f2106eccd218afaf2d704a35be)]
--  Company Logo [[27bed6a](https://github.com/skyunlimitedinc/acs/commit/27bed6a4160472a1d0e5bf125e83652f309a3db2)]
--  Voyager [[29a6ed3](https://github.com/skyunlimitedinc/acs/commit/29a6ed389813e6b90ae1e2dd50bfa7dbf4088ddb)]
--  Laravel IDE Helper & DBAL [[a5c8dba](https://github.com/skyunlimitedinc/acs/commit/a5c8dba86ca5d1811a39204c1275440529183155)]
--  License & Readme [[6020609](https://github.com/skyunlimitedinc/acs/commit/6020609721a700a0d51fefdb2c57cac05c031907)]
+-  # Pre-.gitignore fix # [[d6ec8b6](https://github.com/skyunlimitedinc/acs/commit/d6ec8b6404083d0c6cff0e60744e54e570121a2f)]
+-  # Vue.js Integration # [[51a32f8](https://github.com/skyunlimitedinc/acs/commit/51a32f882a24a5e03b42605af0bf44a03faed275)]
+-  # Product Page Started # [[4ba4f81](https://github.com/skyunlimitedinc/acs/commit/4ba4f81fa82d883fbf38b5ebcc1f79c8ca10ca7f)]
+-  # Navbar View Composer # [[d32430a](https://github.com/skyunlimitedinc/acs/commit/d32430a3731a95031cd0febfcef997895d5adde6)]
+-  # Home Page Complete! # [[8330681](https://github.com/skyunlimitedinc/acs/commit/8330681b795736f124329bee724016488a001c7a)]
+-  # Sidebar Complete # [[07cf469](https://github.com/skyunlimitedinc/acs/commit/07cf469406dea6c54074ae17af2ebc1bedcdc4d4)]
+-  # Product Category Complete (Mostly) # [[6c45d63](https://github.com/skyunlimitedinc/acs/commit/6c45d63a5688f83bd3d373d745647b8014d051d1)]
+-  # Product Category Buttons # [[d0eb08f](https://github.com/skyunlimitedinc/acs/commit/d0eb08f83b90a01ccf3764edba0ebce70965b391)]
+-  # Jumbotron Complete # [[37264df](https://github.com/skyunlimitedinc/acs/commit/37264df29526007b0e21b1562691c674fa9d213a)]
+-  # Navbar Built # [[51ecc7c](https://github.com/skyunlimitedinc/acs/commit/51ecc7c49a9e2da4eed5a7c48edfefa7b9442ba2)]
+-  # Further Database Updates/Additions # [[8a48d23](https://github.com/skyunlimitedinc/acs/commit/8a48d23bab7ea70d05a933f3e93161bb84973053)]
+-  # Re-creation Without Composites # [[90d63c6](https://github.com/skyunlimitedinc/acs/commit/90d63c6b4b1103fbb072fffa4416cb4797ef0134)]
+-  # Going Back # [[d7560a3](https://github.com/skyunlimitedinc/acs/commit/d7560a3395219c214e01df2f27b1c51e0425cc3c)]
+-  # Database Creation, Part 1 # [[f3119d0](https://github.com/skyunlimitedinc/acs/commit/f3119d082928b8f2106eccd218afaf2d704a35be)]
+-  # Company Logo # [[27bed6a](https://github.com/skyunlimitedinc/acs/commit/27bed6a4160472a1d0e5bf125e83652f309a3db2)]
+-  # Voyager # [[29a6ed3](https://github.com/skyunlimitedinc/acs/commit/29a6ed389813e6b90ae1e2dd50bfa7dbf4088ddb)]
+-  # Laravel IDE Helper & DBAL # [[a5c8dba](https://github.com/skyunlimitedinc/acs/commit/a5c8dba86ca5d1811a39204c1275440529183155)]
+-  # License & Readme # [[6020609](https://github.com/skyunlimitedinc/acs/commit/6020609721a700a0d51fefdb2c57cac05c031907)]
 -  Initial commit [[b70abcb](https://github.com/skyunlimitedinc/acs/commit/b70abcb9711e6dda44ad42ff3c135fd68d31fc53)]
 
 
