@@ -40,7 +40,7 @@ services:
 
   # MySQL Service for the ACS and AYS sites' databases
   acsays-db:
-    image: mysql:5.7.29
+    image: mysql
     container_name: acsays-db
     restart: unless-stopped
     ports:
