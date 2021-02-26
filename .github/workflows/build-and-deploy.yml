@@ -1,0 +1,118 @@
+name: Build-and-Deploy
+on:
+  push:
+    branches:
+      - actions
+jobs:
+  build:
+    name: Build & Deploy Laravel App
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+
+      - name: Install Node Packages
+        run: npm install
+
+      - name: Compile JavaScript & CSS
+        run: npm run production
+
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: '7.4'
+          extensions: mbstring, dom, fileinfo, mysql
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Use composer.json for key, if composer.lock is not committed.
+          # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Decrypt Environment File
+        run: >
+          gpg --quiet --batch --yes --decrypt --passphrase="$ENV_PASSPHRASE"
+          --output "./.env" "./.github/secrets/.env.gpg"
+        env:
+          ENV_PASSPHRASE: ${{ secrets.ENV_PASSPHRASE }}
+
+      - name: Prepare the application
+        run: |
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+      - name: Generate Key
+        run: php artisan key:generate
+
+      - name: Link Storage
+        run: php artisan storage:link
+
+      - name: Prepare SSH
+        run: >
+          cd ~ && mkdir .ssh &&
+          touch ~/.ssh/known_hosts &&
+          ssh-keyscan -H "$IP" >>~/.ssh/known_hosts
+        env:
+          IP: ${{ secrets.IP }}
+
+      - name: SSH Deploy
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.TRAVIS_SSH_KEY }}
+          ARGS: >-
+            -rptgoDO
+            --chown=www-data:www-data
+            --fake-super
+            --exclude='.git'
+            --exclude='.env'
+            --exclude='storage/logs'
+            --exclude='storage/framework/cache/data'
+            --exclude='bootstrap/cache/*'
+            --exclude='node_modules/'
+            --exclude='vendor/'
+            --del
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.IP }}
+          REMOTE_USER: ${{ secrets.USER_NAME }}
+          TARGET: ${{ secrets.DEPLOY_PATH }}
+
+      - name: SSH Prep for Production
+        uses: appleboy/ssh-action@v0.1.4
+        env:
+          IP: ${{ secrets.IP }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        with:
+          host: ${{ secrets.IP }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.TRAVIS_SSH_KEY }}
+          envs: IP,USER_NAME,DEPLOY_PATH
+          script_stop: true
+          script: |
+            # Install dependencies
+            cd "$DEPLOY_PATH"
+            chmod -R g+w .
+            composer install --no-progress --no-interaction --optimize-autoloader --no-dev
+            npm install
+            # Prep for production
+            npm run production
+            php artisan cache:clear
+            php artisan key:generate
+            php artisan storage:link
+            php artisan config:cache
+            php artisan route:cache
