@@ -1,5 +1,19 @@
 # Changelog
 
+<a name="2020.11.0"></a>
+## 2020.11.0 (2021-03-01)
+
+### Removed
+
+- 🔥 Removes Travis files [[2b9b755](https://github.com/skyunlimitedinc/acs/commit/2b9b7557ac7437cfd37f87b5252b218b7e97c20a)]
+
+### Miscellaneous
+
+-  👷 Changes CI trigger to `main` branch only [[90ee3dd](https://github.com/skyunlimitedinc/acs/commit/90ee3dd1ff1a349417ac17d0dd7d41efdf95ec62)]
+-  👷 Moves to using GitHub Actions for CI/CD [[89dedf1](https://github.com/skyunlimitedinc/acs/commit/89dedf102f6bbaef8817ada80996cb14791b7720)]
+- 🙈 Only ignores `.env` files in the root directory [[9cad616](https://github.com/skyunlimitedinc/acs/commit/9cad61676699134c67ba6675e87be172cfbbc97c)]
+
+
 <a name="2020.10.6"></a>
 ## 2020.10.6 (2021-02-17)
 
