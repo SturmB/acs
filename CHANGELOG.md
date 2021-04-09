@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="2020.11.1"></a>
+## 2020.11.1 (2021-04-09)
+
+### Changed
+
+- ⬆️ Updates `ssh-deploy` to v2.1.6 [[513868e](https://github.com/skyunlimitedinc/acs/commit/513868e7a02ad314e145ca58ea5e70e49e91af77)]
+
+### Fixed
+
+- 🐛 Fixes caching the clip art subcategories [[d1096be](https://github.com/skyunlimitedinc/acs/commit/d1096be7116cdf47f7a2d0acb9140a7355bf3c7c)]
+
+
 <a name="2020.11.0"></a>
 ## 2020.11.0 (2021-03-01)
 
