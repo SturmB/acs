@@ -1,5 +1,18 @@
 # Changelog
 
+<a name="2020.11.2"></a>
+## 2020.11.2 (2021-04-14)
+
+### Fixed
+
+- 💚 Removes `--chown` argument during rsync [[3a976a8](https://github.com/skyunlimitedinc/acs/commit/3a976a879f407f818cc6aebd914de75b3d59665b)]
+
+### Miscellaneous
+
+-  👷 Changes user for CI [[b7e1f62](https://github.com/skyunlimitedinc/acs/commit/b7e1f62a2c22d83a5c271a3e0b18a98b9defa538)]
+- 🔨 PhpStorm's `Project_Default.xml` file updated [[f6c9ccc](https://github.com/skyunlimitedinc/acs/commit/f6c9ccc935121d638917efef6bc1a6fc5e2abe40)]
+
+
 <a name="2020.11.1"></a>
 ## 2020.11.1 (2021-04-09)
 
